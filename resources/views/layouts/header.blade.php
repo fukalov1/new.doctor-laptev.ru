@@ -3,102 +3,65 @@
     <!--/header -->
     <header class="nav_w3pvt text-center ">
 
-        <nav class="wthree-w3ls navbar navbar-default navbar-static-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="#">Project name</a>
-                </div>
-                <div id="navbar" class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">Home</a></li>
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Contact</a></li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li class="dropdown-header">Nav header</li>
-                                <li><a href="#">Separated link</a></li>
-                                <li><a href="#">One more separated link</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="../navbar/">Default</a></li>
-                        <li class="active"><a href="./">Static top <span class="sr-only">(current)</span></a></li>
-                        <li><a href="../navbar-fixed-top/">Fixed top</a></li>
-                    </ul>
-                </div><!--/.nav-collapse -->
-            </div>
-        </nav>
+        <nav class="wthree-w3ls navbar-nav navbar-expand-lg navbar-light navbar-custom bg-transparent">
+            <a class="navbar-brand" href="#">ДОКТОР ЛАПТЕВ</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    @foreach($pages as $page)
+                        @if($page->relation)
+                            <li class="dropdown">
+                                @if($page->redirect=='')
+                                    @if($page->relation)
+                                        <a href="#" class="nav-link dropdown-toggle"
+                                           data-toggle="dropdown"
+                                           role="button" aria-haspopup="true"
+                                           aria-expanded="false">
+                                            {!! $page->name  !!}
 
-        <nav class="navbar navbar-default navbar-static-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="#">ДОКТОР ЛАПТЕВ</a>
-                </div>
-                <div id="navbar" class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        @foreach($pages as $page)
-                            @if($page->relation)
-                                @if($page->relation)
-                                    <li class="dropdown">
-                                        @if($page->redirect=='')
-                                            @if($page->relation)
-                                                <a href="#" class="dropdown-toggle"
-                                                   data-toggle="dropdown"
-                                                   role="button" aria-haspopup="true"
-                                                   aria-expanded="false">
-                                                    {!! $page->name  !!}
-                                                    <span class="caret"></span>
-                                                </a>
-                                            @else
-                                                <a href='/{{ $page->url }}'>{!! $page->name  !!} </a>
-                                            @endif
-                                        @else
-                                            <a href='/{{ $page->redirect }}'>{!! $page->name  !!} </a>
-                                        @endif
-                                        <ul class="dropdown-menu">
-                                            @foreach($page->sub_pages as $sub_page)
-                                                @if($sub_page->redirect=='')
-                                                    <li><a href='/{{ $sub_page->url }}'>{!! $sub_page->name  !!} </a></li>
-                                                @else
-                                                    <li><a href='/{{ $sub_page->redirect }}'>{!! $sub_page->name  !!} </a></li>
-                                                @endif
-                                            @endforeach
-                                        </ul>
-                                    </li>
+                                        </a>
+                                    @else
+                                        <a  class="nav-link" href='/{{ $page->url }}'>{!! $page->name  !!} </a>
+                                    @endif
                                 @else
-                                    <li>
-                                        @if($page->redirect=='')
-                                            <a href='/{{ $page->url }}'>{!! $page->name  !!} </a>
-                                        @else
-                                            <a href='{{ $page->redirect }}'>{!! $page->name  !!} </a>
-                                        @endif
-                                    </li>
+                                    <a  class="nav-link" href='/{{ $page->redirect }}'>{!! $page->name  !!} </a>
                                 @endif
-                            @endif
-                        @endforeach
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    @foreach($page->sub_pages as $sub_page)
+                                        @if($sub_page->redirect=='')
+                                            <a class="dropdown-item"  href='/{{ $sub_page->url }}'>{!! $sub_page->name  !!} </a>
+                                        @else
+                                            <a class="dropdown-item" href='/{{ $sub_page->redirect }}'>{!! $sub_page->name  !!} </a>
+                                        @endif
+                                    @endforeach
+                                </div>
+                            </li>
+                        @else
+                            <li class="nav-item">
+                                @if($page->redirect=='')
+                                    <a class="nav-link" href='/{{ $page->url }}'>{!! $page->name  !!} </a>
+                                @else
+                                    <a class="nav-link" href='{{ $page->redirect }}'>{!! $page->name  !!} </a>
+                                @endif
+                            </li>
+                        @endif
+                    @endforeach
+                        <li class="social-icons ml-lg-3"><a href="#" class="p-0 social-icon"><span class="fa fa-facebook-official" aria-hidden="true"></span>
+                                <div class="tooltip">Facebook</div>
+                            </a> </li>
+                        <li class="social-icons"><a href="#" class="p-0 social-icon"><span class="fa fa-twitter" aria-hidden="true"></span>
+                                <div class="tooltip">Twitter</div>
+                            </a> </li>
+                        <li class="social-icons"><a href="#" class="p-0 social-icon"><span class="fa fa-instagram" aria-hidden="true"></span>
+                                <div class="tooltip">Instagram</div>
+                            </a> </li>
 
-                    </ul>
-                </div><!--/.nav-collapse -->
+                </ul>
             </div>
         </nav>
+
 
         <!-- nav -->
 {{--        <nav class="wthree-w3ls">--}}
@@ -169,15 +132,6 @@
 {{--                <li><a href="#gallery">Projects</a></li>--}}
 {{--                <li><a href="contact.html">Contact</a></li>--}}
 
-{{--                <li class="social-icons ml-lg-3"><a href="#" class="p-0 social-icon"><span class="fa fa-facebook-official" aria-hidden="true"></span>--}}
-{{--                        <div class="tooltip">Facebook</div>--}}
-{{--                    </a> </li>--}}
-{{--                <li class="social-icons"><a href="#" class="p-0 social-icon"><span class="fa fa-twitter" aria-hidden="true"></span>--}}
-{{--                        <div class="tooltip">Twitter</div>--}}
-{{--                    </a> </li>--}}
-{{--                <li class="social-icons"><a href="#" class="p-0 social-icon"><span class="fa fa-instagram" aria-hidden="true"></span>--}}
-{{--                        <div class="tooltip">Instagram</div>--}}
-{{--                    </a> </li>--}}
 {{--            </ul>--}}
 {{--        </nav>--}}
         <!-- //nav -->
