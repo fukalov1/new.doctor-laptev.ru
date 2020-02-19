@@ -45,7 +45,7 @@ class PageController extends Controller
                 'data' => $page
             ];
         }
-
+        $template = 'main';
         //  баннера для зоны новостей
 //        $banners = $this->sliderItem->where('slider_id',4)->get();
 //        $limit_news = 4;
