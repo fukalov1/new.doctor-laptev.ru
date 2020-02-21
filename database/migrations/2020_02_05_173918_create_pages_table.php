@@ -24,8 +24,6 @@ class CreatePagesTable extends Migration
             $table->boolean('relation')->default(false);
             $table->string('name');
             $table->string('image')->nullable();
-            $table->integer('number_direct')->default(0);
-            $table->boolean('news_branch')->default(false);
             $table->integer('order')->default(0);
             $table->timestamps();
         });

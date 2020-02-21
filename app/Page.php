@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Page extends Model
 {
 
+    protected $fillable = ['anons','parent_id','title','description','keywords','name','url','image', 'order'];
+
     public function sub_pages()
     {
         return $this->hasMany(Page::class,'parent_id','id')->where('order', '>', 0)->orderBy('order');
