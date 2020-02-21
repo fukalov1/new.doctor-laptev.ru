@@ -59,6 +59,7 @@ class PageController extends Controller
         $data['email'] = config('email');
         $data['address'] = config('address');
         $data['pages'] = $this->page->getMenu();
+        $data['main_article'] = $this->page->getMainArticle();
         $page_blocks = $this->pageBlock->where('page_id', $page->id)->where('orders','>',0)->orderBy('orders')->get();
         $data['page_blocks'] = $page_blocks;
 //        $data['banners'] = $banners;

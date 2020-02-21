@@ -16,7 +16,7 @@ class Page extends Model
 
     public function page_blocks()
     {
-        return $this->hasMany(PageBlock::class)->orderBy('orders');;
+        return $this->hasMany(PageBlock::class)->orderBy('orders');
     }
 
     public function getMenu()
@@ -24,6 +24,16 @@ class Page extends Model
         return Page::where('parent_id', 0)
             ->where('order', '>', 0)
             ->get()->sortBy('order');
+    }
+
+    public function getMainArticle() {
+
+        return Page::where('parent_id', 9)
+            ->where('order', '>', 0)
+            ->take(4)
+            ->orderBy('id', 'desc')
+            ->get();
+
     }
 
 

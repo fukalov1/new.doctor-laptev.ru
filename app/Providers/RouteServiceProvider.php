@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Routing\Router;
 use App\Page;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
 class RouteServiceProvider extends ServiceProvider
@@ -41,6 +42,7 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->mapWebRoutes();
 
+        if (Schema::hasTable('pages')) {
             $router->group(['middleware' => ['web']], function ($router) {
                 $pages = Page::all();
                 foreach ($pages as $page) {
@@ -55,7 +57,7 @@ class RouteServiceProvider extends ServiceProvider
                         }]);
                 }
             });
-
+        }
 
     }
 

@@ -396,54 +396,59 @@
     <section class="blog-posts" id="blog">
         <div class="blog-w3pvt-info-content container-fluid">
             <h3 class="tittle-w3ls text-center mb-5">Что почитать...</h3>
+
             <div class="blog-grids-main row text-left">
+                @foreach($main_article as $item)
+                    @if($loop->iteration<3)
                 <div class="col-lg-3 col-md-6 blog-grid-img px-0">
-                    <img src="images/g2.jpg" alt="Popup Image" class="img-fluid" />
+                    <img src="{{ asset('uploads/images/'.$item->image) }}" alt="Popup Image" class="img-fluid" />
                 </div>
                 <div class="col-lg-3 col-md-6 blog-grid-info px-0">
                     <div class="date-post">
-                        <h6 class="date">May, 04th 2019</h6>
-                        <h4><a class="link-hny" href="single.html">Как удержать вес после похудения</a></h4>
-                        <p>Как стать стройным, похудеть, обрести желанные формы – большинство полных людей знают о здоровом образе жизни всё, или почти всё. Несмотря на это, армия страдающих ожирением неуклонно растёт. Интернет буквально напичкан разными советами - как похудеть быстро, «сжечь» лишние калории, убрать жир с живота, какой диеты придерживаться.</p>
+                        <h6 class="date">{{ $item->created_at }}</h6>
+                        <h4><a class="link-hny" href="single.html">{{ $item->name }}</a></h4>
+                        <p>{!! $item->anons !!}</p>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 blog-grid-img px-0">
-                    <img src="images/g4.jpg" alt="Popup Image" class="img-fluid" />
-                </div>
-                <div class="col-lg-3 col-md-6 blog-grid-info px-0 ">
-                    <div class="date-post">
-                        <h6 class="date">May, 04th 2019</h6>
-                        <h4><a class="link-hny" href="single.html">Слабительные средства при похудении</a></h4>
-                        <p>При похудении очень важна регулярная работа кишечника. Сбои в работе пищеварительной системы не только мешают похудеть, но и ведут к быстрой утомляемости, нарушению сна, неприятной тяжести и вздутию в области живота.</p>
-                    </div>
-                </div>
-
+                    @else
+                        <div class="col-lg-3 col-md-6 blog-grid-info px-0">
+                            <div class="date-post">
+                                <h6 class="date">{{ $item->created_at }}</h6>
+                                <h4><a class="link-hny" href="single.html">{{ $item->name }}</a></h4>
+                                <p>{!! $item->anons !!}</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 blog-grid-img px-0">
+                            <img src="{{ asset('uploads/images/'.$item->image) }}" alt="Popup Image" class="img-fluid" />
+                        </div>
+                    @endif
+                @endforeach
             </div>
-            <div class="blog-grids-main row text-left">
+{{--            <div class="blog-grids-main row text-left">--}}
 
-                <div class="col-lg-3 col-md-6 blog-grid-info px-0">
-                    <div class="date-post">
-                        <h6 class="date">May, 04th 2019</h6>
-                        <h4><a class="link-hny" href="single.html">Витамины и микроэлементы для быстрого похудения</a></h4>
-                        <p>В современном мире взаимоотношение человека и природы стало качественно меняться. Создано множество искусственных экосистем, среда обитания стала другой, природные ресурсы существенно истощились. Неконтролируемая деятельность человека влияет на его здоровье, внешний вид и самочувствие.</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 blog-grid-img px-0">
-                    <img src="images/g6.jpg" alt="Popup Image" class="img-fluid" />
-                </div>
+{{--                <div class="col-lg-3 col-md-6 blog-grid-info px-0">--}}
+{{--                    <div class="date-post">--}}
+{{--                        <h6 class="date">May, 04th 2019</h6>--}}
+{{--                        <h4><a class="link-hny" href="single.html">Витамины и микроэлементы для быстрого похудения</a></h4>--}}
+{{--                        <p>В современном мире взаимоотношение человека и природы стало качественно меняться. Создано множество искусственных экосистем, среда обитания стала другой, природные ресурсы существенно истощились. Неконтролируемая деятельность человека влияет на его здоровье, внешний вид и самочувствие.</p>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="col-lg-3 col-md-6 blog-grid-img px-0">--}}
+{{--                    <img src="images/g6.jpg" alt="Popup Image" class="img-fluid" />--}}
+{{--                </div>--}}
 
-                <div class="col-lg-3 col-md-6 blog-grid-info px-0">
-                    <div class="date-post">
-                        <h6 class="date">May, 04th 2019</h6>
-                        <h4><a class="link-hny" href="single.html">Углеводы - условие для похудения</a></h4>
-                        <p>Мнение, что углеводы ведут к лишнему весу, верно лишь отчасти. Для жизнедеятельности организма они необходимы. Здоровое питание предполагает, что при составлении меню для похудения следует учитывать гликемический индекс продуктов, которые мы потребляем.</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 blog-grid-img px-0">
-                    <img src="images/g8.jpg" alt="Popup Image" class="img-fluid" />
-                </div>
+{{--                <div class="col-lg-3 col-md-6 blog-grid-info px-0">--}}
+{{--                    <div class="date-post">--}}
+{{--                        <h6 class="date">May, 04th 2019</h6>--}}
+{{--                        <h4><a class="link-hny" href="single.html">Углеводы - условие для похудения</a></h4>--}}
+{{--                        <p>Мнение, что углеводы ведут к лишнему весу, верно лишь отчасти. Для жизнедеятельности организма они необходимы. Здоровое питание предполагает, что при составлении меню для похудения следует учитывать гликемический индекс продуктов, которые мы потребляем.</p>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="col-lg-3 col-md-6 blog-grid-img px-0">--}}
+{{--                    <img src="images/g8.jpg" alt="Popup Image" class="img-fluid" />--}}
+{{--                </div>--}}
 
-            </div>
+{{--            </div>--}}
         </div>
 
     </section>
