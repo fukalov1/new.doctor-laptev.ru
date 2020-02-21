@@ -4,7 +4,7 @@
     <header class="nav_w3pvt text-center ">
 
         <nav class="wthree-w3ls navbar-nav navbar-expand-lg navbar-light navbar-custom bg-transparent">
-            <a class="navbar-brand" href="#">ДОКТОР ЛАПТЕВ</a>
+            <a class="navbar-brand brand-custom" href="#">Доктор Лаптев<sup>&reg;</sup></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -48,15 +48,15 @@
                             </li>
                         @endif
                     @endforeach
-                        <li class="social-icons ml-lg-3"><a href="#" class="p-0 social-icon"><span class="fa fa-facebook-official" aria-hidden="true"></span>
-                                <div class="tooltip">Facebook</div>
-                            </a> </li>
-                        <li class="social-icons"><a href="#" class="p-0 social-icon"><span class="fa fa-twitter" aria-hidden="true"></span>
-                                <div class="tooltip">Twitter</div>
-                            </a> </li>
-                        <li class="social-icons"><a href="#" class="p-0 social-icon"><span class="fa fa-instagram" aria-hidden="true"></span>
-                                <div class="tooltip">Instagram</div>
-                            </a> </li>
+{{--                        <li class="social-icons ml-lg-3"><a href="#" class="p-0 social-icon"><span class="fa fa-facebook-official" aria-hidden="true"></span>--}}
+{{--                                <div class="tooltip">Facebook</div>--}}
+{{--                            </a> </li>--}}
+{{--                        <li class="social-icons"><a href="#" class="p-0 social-icon"><span class="fa fa-twitter" aria-hidden="true"></span>--}}
+{{--                                <div class="tooltip">Twitter</div>--}}
+{{--                            </a> </li>--}}
+{{--                        <li class="social-icons"><a href="#" class="p-0 social-icon"><span class="fa fa-instagram" aria-hidden="true"></span>--}}
+{{--                                <div class="tooltip">Instagram</div>--}}
+{{--                            </a> </li>--}}
 
                 </ul>
             </div>
