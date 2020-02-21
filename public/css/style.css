@@ -60,7 +60,7 @@ body img {
 }
 
 /* navigation */
-.navbar-custom .navbar-brand {
+.navbar-custom .naпvbar-brand {
     color: #fff;
     font-size: 1.3em;
 }
@@ -82,9 +82,12 @@ nav {
     margin: 0;
     padding: 0;
 }
+.nav_w3pvt .navbar-light .navbar-brand {
+    color: rgba(255,255,255,.9);
+}
 
 a.navbar-brand {
-    font-size: 0.8em;
+    font-size: 1.8em;
     font-weight: 100;
     letter-spacing: 1px;
     line-height: 0.8em;

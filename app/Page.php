@@ -20,7 +20,6 @@ class Page extends Model
     public function getMenu()
     {
         return Page::where('parent_id', 0)
-            ->where('id', '!=', 1)
             ->where('order', '>', 0)
             ->get()->sortBy('order');
     }
