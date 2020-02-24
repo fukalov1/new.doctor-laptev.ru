@@ -45,6 +45,7 @@ class PageController extends Controller
                 'data' => $page
             ];
         }
+//        dd($page->id);
         $template = 'main';
         //  баннера для зоны новостей
 //        $banners = $this->sliderItem->where('slider_id',4)->get();
@@ -63,9 +64,8 @@ class PageController extends Controller
         $page_blocks = $this->pageBlock->where('page_id', $page->id)->where('orders','>',0)->orderBy('orders')->get();
         $data['page_blocks'] = $page_blocks;
 //        $data['banners'] = $banners;
-        $data['bread_crumbs'] = '<a href="/">Главная</a> /'.$this->bread_crubs;
+//        $data['bread_crumbs'] = '<a href="/">Главная</a> /'.$this->bread_crubs;
 
-//        dd($page->getMenu());
 //dd($subdomain);
         return view($template, $data);
     }
@@ -74,6 +74,7 @@ class PageController extends Controller
     private function getBeadCrumbs($id)
     {
         $page = Page::find($id);
+//        dd($id, $page);
         $this->bread_crubs = " <a href='/{$page->url}'>".preg_replace('/\<br\/\>/','',$page->name)."</a> / ".$this->bread_crubs;
 
         if ($page->parent_id>0) {

@@ -113,7 +113,7 @@ class PageBlockController extends Controller
         $grid->question('Функционал')->display(function () {
             $str = '';
             if ($this->type==2) {
-                $str = '<a href="/admin/directions?set='.$this->id.'">Каталог</a>';
+                $str = '<a href="/admin/directions?set='.$this->id.'">Текст с фото</a>';
             }
             elseif ($this->type==7) {
                 $str = '<a href="/admin/sliders?set='.$this->id.'">слайдеры</a>';
@@ -125,7 +125,7 @@ class PageBlockController extends Controller
                 $str = '<a href="/admin/mailforms?set='.$this->id.'">почтовая форма</a>';
             }
             elseif ($this->type==11) {
-                $str = '<a href="/admin/maps?set='.$this->id.'">карта</a>';
+                $str = '<a href="/admin/callback?set='.$this->id.'">Отзывы</a>';
             }
             elseif ($this->type==12) {
                 $str = '<a href="/admin/quest_blocks?set='.$this->id.'">вопросы-ответы</a>';
