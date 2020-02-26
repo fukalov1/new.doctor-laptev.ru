@@ -113,7 +113,7 @@ class PageBlockController extends Controller
         $grid->question('Функционал')->display(function () {
             $str = '';
             if ($this->type==2) {
-                $str = '<a href="/admin/directions?set='.$this->id.'">Каталог</a>';
+                $str = '<a href="/admin/directions?set='.$this->id.'">Блок с фото</a>';
             }
             elseif ($this->type==7) {
                 $str = '<a href="/admin/sliders?set='.$this->id.'">слайдеры</a>';
@@ -125,7 +125,7 @@ class PageBlockController extends Controller
                 $str = '<a href="/admin/mailforms?set='.$this->id.'">почтовая форма</a>';
             }
             elseif ($this->type==11) {
-                $str = '<a href="/admin/maps?set='.$this->id.'">карта</a>';
+                $str = '<a href="/admin/photo-reviews?set='.$this->id.'">Фото-отзывы</a>';
             }
             elseif ($this->type==12) {
                 $str = '<a href="/admin/quest_blocks?set='.$this->id.'">вопросы-ответы</a>';
@@ -179,13 +179,13 @@ class PageBlockController extends Controller
         $form->select('type', 'Тип текстового блока')->options(function ($id) {
             $list = [
                 '1' => 'Стандарт',
-                '2' => 'Каталог',
+                '2' => 'Блок с фото',
                 '3'=> 'Промо-блок',
                 '7'=> 'Слайдеры',
                 '8'=> 'Блок во всю ширину',
                 '9'=> 'Фотогалерея',
                 '10'=> 'Почтовая форма',
-                '11'=> 'Карта',
+                '11'=> 'Фото-отзывы',
                 '12'=> 'Вопросы-ответы'
                 ];
             return $list;

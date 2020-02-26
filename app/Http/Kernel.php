@@ -66,6 +66,7 @@ class Kernel extends HttpKernel
         'set_photoset' => \App\Http\Middleware\SetPhotoset::class,
         'set_slider' => \App\Http\Middleware\SetSlider::class,
         'set_direction' => \App\Http\Middleware\SetDirection::class,
+        'set_photo_review' => \App\Http\Middleware\SetPhotoReview::class,
         'set_mailform' => \App\Http\Middleware\SetMailForm::class,
     ];
 

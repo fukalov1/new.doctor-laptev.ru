@@ -24,8 +24,8 @@ Route::group([
     $router->resource('photos', PhotoController::class)->middleware('set_photoset');
     $router->resource('mailforms', MailFormController::class)->middleware('set_page_block');
     $router->resource('mailform_fields', MailFormFieldController::class)->middleware('set_mailform');
-    $router->resource('maps', MapController::class)->middleware('set_page_block');
-    $router->resource('map_points', MapPointController::class)->middleware('set_map');
+    $router->resource('photo-reviews', PhotoReviewController::class)->middleware('set_page_block');
+    $router->resource('photo-review-itemss', CreatePhotoReviewItems::class)->middleware('set_photo_review');
     $router->resource('map_sub_points', MapSubPointController::class)->middleware('set_point');
     $router->resource('quest_blocks', QuestBlockController::class)->middleware('set_page_block');
     $router->resource('questions', QuestionController::class)->middleware('set_quest_block');
