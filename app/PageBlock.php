@@ -24,9 +24,9 @@ class PageBlock extends Model
         return $this->hasMany(QuestBlock::class);
     }
 
-    public function  maps()
+    public function photo_reviews()
     {
-        return $this->hasMany(Map::class);
+        return $this->hasMany(PhotoReview::class);
     }
 
     public function  photosets()

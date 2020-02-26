@@ -36,5 +36,15 @@ class Page extends Model
 
     }
 
+    public function getMainPhotoReview() {
+
+        return PageBlock::where('page_id', 18)
+            ->where('orders', '>', 0)
+            ->take(6)
+            ->orderBy('id', 'desc')
+            ->get();
+
+    }
+
 
 }

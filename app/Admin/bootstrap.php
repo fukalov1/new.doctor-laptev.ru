@@ -24,9 +24,11 @@ Admin::js('/js/custom.js');
 use Encore\Admin\Form;
 use App\Admin\Extensions\Form\CKEditor;
 use App\Admin\Extensions\Form\Field\MyResizeImage;
+use App\Admin\Extensions\Form\Field\ImageReview;
 use App\Admin\Extensions\Form\Field\TextTranslate;
 
 Form::extend('ckeditor', CKEditor::class);
 Form::extend('translate', TextTranslate::class);
 Form::extend('myimage', MyResizeImage::class);
+Form::extend('imageReview', ImageReview::class);
 

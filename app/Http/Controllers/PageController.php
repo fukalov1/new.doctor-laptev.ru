@@ -61,6 +61,8 @@ class PageController extends Controller
         $data['address'] = config('address');
         $data['pages'] = $this->page->getMenu();
         $data['main_article'] = $this->page->getMainArticle();
+        $data['main_photo_review'] = $this->page->getMainPhotoReview();
+//        dd($this->page->getMainPhotoReview());
         $page_blocks = $this->pageBlock->where('page_id', $page->id)->where('orders','>',0)->orderBy('orders')->get();
         $data['page_blocks'] = $page_blocks;
 //        $data['banners'] = $banners;

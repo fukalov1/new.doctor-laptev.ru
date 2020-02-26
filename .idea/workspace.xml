@@ -2,14 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3c791e86-834c-48b9-b2fa-0e52a8ebe085" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Middleware/SetPhotoReview.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Admin/Extensions/Form/Field/ImageReview.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Admin/Controllers/PageBlockController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Admin/Controllers/PageBlockController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Data.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Data.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Admin/Controllers/PhotoReviewController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Admin/Controllers/PhotoReviewController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Admin/bootstrap.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Admin/bootstrap.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PageController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/banner1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/banner1.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/banner2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/banner2.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/banner3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/banner3.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Page.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Page.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/PageBlock.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/PageBlock.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/PhotoReviewItem.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/PhotoReviewItem.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/main.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/main.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -144,7 +144,7 @@
   <component name="ProjectId" id="1XwekaV3HMHoKu8cGuljl4cidvp" />
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Http/Middleware" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Admin/Extensions/Form/Field" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -152,6 +152,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/Admin/Extensions/Form/Field" />
       <recent name="$PROJECT_DIR$/app/Http/Middleware" />
     </key>
   </component>

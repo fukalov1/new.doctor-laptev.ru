@@ -79,9 +79,9 @@ class PhotoReviewController extends AdminController
             $form->number('orders', 'Номер показа')->default(1);
             $form->text('title','Заголовок');
             $form->textarea('text', 'Текст');
-            $form->myimage('image', 'Фото');
-            $form->myimage('image1', 'Фото1');
-            $form->myimage('image2', 'Фото2');
+            $form->imageReview('image', 'Фото');
+            $form->imageReview('image1', 'Фото1');
+            $form->imageReview('image2', 'Фото2');
 //                $form->file('image', 'Картинка');
         });
 

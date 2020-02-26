@@ -193,6 +193,38 @@
                 </div>
             </section>
         @endforeach
+   @elseif($page_block->type=='11')
+        @foreach($page_block->photo_reviews as $item)
+            <!-- /projects -->
+            <section class="projects py-5" id="block{{ $page_block->id }}">
+                            <div class="container py-md-5">
+                                <h3 class="tittle-w3ls text-left mb-5"><span class="pink">Потрясающие</span> результаты!</h3>
+                                <div class="row news-grids mt-md-5 mt-4 text-center">
+                                    @foreach($item->items as $item)
+                                        <div class="col-md-4 gal-img">
+                                        <a href="#gal1"><img src="{{ asset('uploads/images/thumbnail/'.$item->image) }}" alt="w3pvt" class="img-fluid"></a>
+                                        <div class="gal-info">
+                                            <h5>{{ $item->title }}<span class="decription">{{ $item->text }}</span></h5>
+                                        </div>
+                                    </div>
+                                    @endforeach
+                                </div>
+                                <!-- popup-->
+                                @foreach($item->items as $item)
+                                <div id="gal1" class="pop-overlay">
+                                    <div class="popup">
+                                        <img src="{{ asset('uploads/images/thumbnail/'.$item->image) }}" alt="Popup Image" class="img-fluid" />
+                                        <p class="mt-4">{{ $item->text }}</p>
+                                        <a class="close" href="#gallery">&times;</a>
+                                    </div>
+                                </div>
+                                @endforeach
+                                <!-- //popup -->
+                            </div>
+                        </section>
+            <!-- //projects -->
+
+        @endforeach
     @endif
     @endforeach
 
@@ -335,158 +367,49 @@
         </div>
     </section>
     <!--//services-->
-    <!-- /projects -->
-    <section class="projects py-5" id="gallery">
-        <div class="container py-md-5">
-            <h3 class="tittle-w3ls text-left mb-5"><span class="pink">Потрясающие</span> результаты!</h3>
-            <div class="row news-grids mt-md-5 mt-4 text-center">
-                <div class="col-md-4 gal-img">
-                    <a href="#gal1"><img src="images/g1.jpg" alt="w3pvt" class="img-fluid"></a>
-                    <div class="gal-info">
-                        <h5>View Project<span class="decription">Website</span></h5>
+
+    @foreach($main_photo_review as $page_block)
+        <section class="projects py-5" id="gallery">
+        @foreach($page_block->photo_reviews as $review)
+            <!-- /projects -->
+
+                <div class="container py-md-5">
+                    <h3 class="tittle-w3ls text-left mb-5"><span class="pink">Потрясающие</span> результаты!</h3>
+                    <div class="row news-grids mt-md-5 mt-4 text-center">
+                        @foreach($review->items as $item)
+                            <div class="col-md-4 gal-img">
+                                <a href="#gal1">
+                                    <img src="{{ asset('uploads/images/thumbnail/'.$item->image) }}"
+                                                     alt="w3pvt" class="img-fluid">
+                                    <img src="{{ asset('uploads/images/thumbnail/'.$item->image1) }}"
+                                                     alt="w3pvt" class="img-fluid">
+                                </a>
+                                <div class="gal-info">
+                                    <h5>{{ $item->title }}<span class="decription">{{ $item->text }}</span></h5>
+                                </div>
+                            </div>
+                        @endforeach
                     </div>
-                </div>
-                <div class="col-md-4 gal-img">
-                    <a href="#gal2"><img src="images/g2.jpg" alt="w3pvt" class="img-fluid"></a>
-                    <div class="gal-info">
-                        <h5>View Project<span class="decription">Website</span></h5>
-                    </div>
-                </div>
-                <div class="col-md-4 gal-img">
-                    <a href="#gal3"><img src="images/g3.jpg" alt="w3pvt" class="img-fluid"></a>
-                    <div class="gal-info">
-                        <h5>View Project<span class="decription">Website</span></h5>
-                    </div>
-                </div>
-                <div class="col-md-4 gal-img">
-                    <a href="#gal4"><img src="images/g4.jpg" alt="w3pvt" class="img-fluid"></a>
-                    <div class="gal-info">
-                        <h5>View Project<span class="decription">Website</span></h5>
-                    </div>
+                    <!-- popup-->
+                    @foreach($review->items as $item)
+                        <div id="gal1" class="pop-overlay">
+                            <div class="popup">
+                                <img src="{{ asset('uploads/images/'.$item->image) }}" alt="Popup Image"
+                                     class="img-fluid"/>
+                                <p class="mt-4">{{ $item->text }}</p>
+                                <a class="close" href="#gallery">&times;</a>
+                            </div>
+                        </div>
+                    @endforeach
+                <!-- //popup -->
                 </div>
 
-                <div class="col-md-4 gal-img">
-                    <a href="#gal5"><img src="images/g5.jpg" alt="w3pvt" class="img-fluid"></a>
-                    <div class="gal-info">
-                        <h5>View Project<span class="decription">Website</span></h5>
-                    </div>
-                </div>
-                <div class="col-md-4 gal-img">
-                    <a href="#gal6"><img src="images/g6.jpg" alt="w3pvt" class="img-fluid"></a>
-                    <div class="gal-info">
-                        <h5>View Project<span class="decription">Website</span></h5>
-                    </div>
-                </div>
-                <div class="col-md-4 gal-img">
-                    <a href="#gal7"><img src="images/g7.jpg" alt="w3pvt" class="img-fluid"></a>
-                    <div class="gal-info">
-                        <h5>View Project<span class="decription">Website</span></h5>
-                    </div>
-                </div>
-                <div class="col-md-4 gal-img">
-                    <a href="#gal8"><img src="images/g8.jpg" alt="w3pvt" class="img-fluid"></a>
-                    <div class="gal-info">
-                        <h5>View Project<span class="decription">Website</span></h5>
-                    </div>
-                </div>
-                <div class="col-md-4 gal-img">
-                    <a href="#gal9"><img src="images/g9.jpg" alt="w3pvt" class="img-fluid"></a>
-                    <div class="gal-info">
-                        <h5>View Project<span class="decription">Website</span></h5>
-                    </div>
-                </div>
+            <!-- //projects -->
 
-            </div>
-            <!-- popup-->
-            <div id="gal1" class="pop-overlay">
-                <div class="popup">
-                    <img src="images/g1.jpg" alt="Popup Image" class="img-fluid" />
-                    <p class="mt-4">Nulla viverra pharetra se, eget pulvinar neque pharetra ac int. placerat placerat dolor.</p>
-                    <a class="close" href="#gallery">&times;</a>
-                </div>
-            </div>
-            <!-- //popup -->
-            <!-- popup-->
-            <div id="gal2" class="pop-overlay">
-                <div class="popup">
-                    <img src="images/g2.jpg" alt="Popup Image" class="img-fluid" />
-                    <p class="mt-4">Nulla viverra pharetra se, eget pulvinar neque pharetra ac int. placerat placerat dolor.</p>
-                    <a class="close" href="#gallery">&times;</a>
-                </div>
-            </div>
-            <!-- //popup -->
-            <!-- popup-->
-            <div id="gal3" class="pop-overlay">
-                <div class="popup">
-                    <img src="images/g3.jpg" alt="Popup Image" class="img-fluid" />
-                    <p class="mt-4">Nulla viverra pharetra se, eget pulvinar neque pharetra ac int. placerat placerat dolor.</p>
-                    <a class="close" href="#gallery">&times;</a>
-                </div>
-            </div>
-            <!-- //popup3 -->
-            <!-- popup-->
-            <div id="gal4" class="pop-overlay">
-                <div class="popup">
-                    <img src="images/g4.jpg" alt="Popup Image" class="img-fluid" />
-                    <h5>View Project</h5>
-                    <p class="mt-4">Nulla viverra pharetra se, eget pulvinar neque pharetra ac int. placerat placerat dolor.</p>
-                    <a class="close" href="#gallery">&times;</a>
-                </div>
-            </div>
-            <!-- //popup -->
-            <!-- popup-->
-            <div id="gal5" class="pop-overlay">
-                <div class="popup">
-                    <img src="images/g5.jpg" alt="Popup Image" class="img-fluid" />
-                    <h5 class="mt-3">View Project</h5>
-                    <p class="mt-4">Nulla viverra pharetra se, eget pulvinar neque pharetra ac int. placerat placerat dolor.</p>
-                    <a class="close" href="#gallery">&times;</a>
-                </div>
-            </div>
-            <!-- //popup -->
-            <!-- popup-->
-            <div id="gal6" class="pop-overlay">
-                <div class="popup">
-                    <img src="images/g6.jpg" alt="Popup Image" class="img-fluid" />
-                    <h5 class="mt-3">View Project</h5>
-                    <p>Nulla viverra pharetra se, eget pulvinar neque pharetra ac int. placerat placerat dolor.</p>
-                    <a class="close" href="#gallery">&times;</a>
-                </div>
-            </div>
-            <!-- //popup -->
-            <!-- popup-->
-            <div id="gal7" class="pop-overlay">
-                <div class="popup">
-                    <img src="images/g7.jpg" alt="Popup Image" class="img-fluid" />
-                    <h5 class="mt-3">View Project</h5>
-                    <p class="mt-4">Nulla viverra pharetra se, eget pulvinar neque pharetra ac int. placerat placerat dolor.</p>
-                    <a class="close" href="#gallery">&times;</a>
-                </div>
-            </div>
-            <!-- //popup -->
-            <!-- popup-->
-            <div id="gal8" class="pop-overlay">
-                <div class="popup">
-                    <img src="images/g8.jpg" alt="Popup Image" class="img-fluid" />
-                    <h5 class="mt-3">View Project</h5>
-                    <p class="mt-4">Nulla viverra pharetra se, eget pulvinar neque pharetra ac int. placerat placerat dolor.</p>
-                    <a class="close" href="#gallery">&times;</a>
-                </div>
-            </div>
-            <!-- //popup -->
-            <!-- popup-->
-            <div id="gal9" class="pop-overlay">
-                <div class="popup">
-                    <img src="images/g9.jpg" alt="Popup Image" class="img-fluid" />
-                    <h5 class="mt-3">View Project</h5>s
-                    <p class="mt-4">Nulla viverra pharetra se, eget pulvinar neque pharetra ac int. placerat placerat dolor.</p>
-                    <a class="close" href="#gallery">&times;</a>
-                </div>
-            </div>
-            <!-- //popup -->
-        </div>
-    </section>
-    <!-- //projects -->
+        @endforeach
+        </section>
+    @endforeach
+
     <!-- /blogs -->
     <section class="blog-posts" id="blog">
         <div class="blog-w3pvt-info-content container-fluid">
