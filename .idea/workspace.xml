@@ -5,8 +5,12 @@
       <change afterPath="$PROJECT_DIR$/app/Http/Middleware/SetPhotoReview.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Admin/Controllers/PageBlockController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Admin/Controllers/PageBlockController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Admin/routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Admin/routes.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Data.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Data.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PageController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/banner1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/banner1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/banner2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/banner2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/banner3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/banner3.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/main.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/main.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

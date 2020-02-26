@@ -5,111 +5,206 @@
 
     <div id="home">
 
-        <!-- banner slider -->
-        <div id="homepage-slider" class="st-slider">
-            <input type="radio" class="cs_anchor radio" name="slider" id="play1" checked="" />
-            <input type="radio" class="cs_anchor radio" name="slider" id="slide1" />
-            <input type="radio" class="cs_anchor radio" name="slider" id="slide2" />
-            <input type="radio" class="cs_anchor radio" name="slider" id="slide3" />
-            <div class="images">
-                <div class="images-inner">
-                    <div class="image-slide">
-                        <div class="banner-w3pvt-1">
-                            <div class="overlay-w3ls">
-
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="image-slide">
-                        <div class="banner-w3pvt-2">
-                            <div class="overlay-w3ls">
-
+        @foreach($page_blocks as $page_block)
+            @if($page_block->type == '1')
+                <!-- about -->
+                    <section class="about py-5">
+                        <div class="container p-md-5">
+                            <div class="about-hny-info text-left px-md-5">
+                                <h3 class="tittle-w3ls mb-3"><span class="pink">Доктор</span> Лаптев</h3>
+                                <p class="sub-tittle mt-3 mb-4"> {!! $page_block->text !!}</p>
+                                <a class="btn more black" href="single.html" role="button">Читать больше</a>
                             </div>
                         </div>
-                    </div>
-                    <div class="image-slide">
-                        <div class="banner-w3pvt-3">
-                            <div class="overlay-w3ls">
+                    </section>
+                    <!-- //about -->
 
+            @elseif($page_block->type=='2')
+                    <section class="banner_bottom py-5">
+                        <div class="container py-md-5">
+                            <div class="row inner_sec_info">
+
+                                <div class="col-md-6 banner_bottom_grid help">
+                                    <img src="{{ asset('/uploads/'.$page_block->image) }}" alt=" " class="img-fluid">
+                                </div>
+                                <div class="col-md-6 banner_bottom_left mt-lg-0 mt-4">
+                                    <h4><a class="link-hny" href="services.html">
+                                            {{ $page_block->header }}</a></h4>
+                                    {!! $page_block->text !!}
+                                    <a class="btn more black mt-3" href="services.html" role="button">Подробнее</a>
+
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div class="labels">
-                <div class="fake-radio">
-                    <label for="slide1" class="radio-btn"></label>
-                    <label for="slide2" class="radio-btn"></label>
-                    <label for="slide3" class="radio-btn"></label>
-                </div>
-            </div>
-            <!-- banner-hny-info -->
-            <div class="banner-hny-info">
-                <h3>Создаем новое
-                    <br>Пишевое поведение</h3>
-                <div class="top-buttons mx-auto text-center mt-md-5 mt-3">
-                    <a href="single.html" class="btn more mr-2">Подробнее</a>
-                    <a href="contact.html" class="btn">Записаться</a>
-                </div>
-                <div class="d-flex hny-stats-inf">
-                    <div class="col-md-4 stats_w3pvt_counter_grid mt-3">
-                        <div class="d-md-flex justify-content-center">
-                            <h5 class="counter">38</h5>
-                            <p class="para-w3pvt">лет практики</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4 stats_w3pvt_counter_grid mt-3">
-                        <div class="d-md-flex justify-content-center">
-                            <h5 class="counter">200000</h5>
-                            <p class="para-w3pvt"> тренингов</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4 stats_w3pvt_counter_grid mt-3">
-                        <div class="d-md-flex justify-content-center">
-                            <h5 class="counter">300000</h5>
-                            <p class="para-w3pvt">пациентов</p>
-                        </div>
-                    </div>
-                </div>
+                    </section>
 
-            </div>
-            <!-- //banner-hny-info -->
-        </div>
-        <!-- //banner slider -->
+            @elseif($page_block->type=='3')
+                {!! $page_block->text !!}
+            @elseif($page_block->type=='4')
+                <section class="page-block-doc" id="block{{$page_block->id}}">
+                    <div class="container">
+                        <h1>{{ $page_block->header }}</h1>
+                        {!! $page_block->text !!}
+                    </div>
+                </section>
+            @elseif($page_block->type=='5')
+                <section class="page-block-link" id="block{{$page_block->id}}">
+                    <div class="container">
+                        <h1>{{ $page_block->header }}</h1>
+                        {!! $page_block->text !!}
+                    </div>
+                </section>
+            @elseif($page_block->type=='6')
+                <section class="page-block-pdf" id="block{{$page_block->id}}">
+                    <div class="container">
+                        <h1>{{ $page_block->header }}</h1>
+                        {!! $page_block->text !!}
+                    </div>
+                </section>
+            @elseif($page_block->type=='7')
+
+            <!-- banner slider -->
+                <div id="homepage-slider" class="st-slider">
+                    <input type="radio" class="cs_anchor radio" name="slider" id="play1" checked="" />
+                    @foreach($page_block->sliders as $slider)
+                        @foreach($slider->items as $item)
+                            <input type="radio" class="cs_anchor radio" name="slider" id="slide{{ $item->id }}" />
+                        @endforeach
+                    @endforeach
+                    <div class="images">
+                        <div class="images-inner">
+                            @foreach($page_block->sliders as $slider)
+                                @foreach($slider->items as $item)
+                                    <div class="image-slide">
+                                        <div class="banner-w3pvt-{{ $item->id }}"
+                                             style="background: url({{ asset('/uploads/'.$item->image) }}) no-repeat top;">
+                                            <div class="overlay-w3ls">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            @endforeach
+
+                        </div>
+                    </div>
+                    <div class="labels">
+                        <div class="fake-radio">
+                            @foreach($page_block->sliders as $slider)
+                                @foreach($slider->items as $item)
+                                    <label for="slide{{ $item->id }}" class="radio-btn"></label>
+                                @endforeach
+                            @endforeach
+                        </div>
+                    </div>
+                    <!-- banner-hny-info -->
+                    <div class="banner-hny-info">
+                        <h3>Создаем новое
+                            <br>Пишевое поведение</h3>
+                        <div class="top-buttons mx-auto text-center mt-md-5 mt-3">
+                            <a href="single.html" class="btn more mr-2">Подробнее</a>
+                            <a href="contact.html" class="btn">Записаться</a>
+                        </div>
+                        <div class="d-flex hny-stats-inf">
+                            <div class="col-md-4 stats_w3pvt_counter_grid mt-3">
+                                <div class="d-md-flex justify-content-center">
+                                    <h5 class="counter">{{ config('practic_years') }}</h5>
+                                    <p class="para-w3pvt">лет практики</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4 stats_w3pvt_counter_grid mt-3">
+                                <div class="d-md-flex justify-content-center">
+                                    <h5 class="counter">{{ config('trennings') }}</h5>
+                                    <p class="para-w3pvt"> тренингов</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4 stats_w3pvt_counter_grid mt-3">
+                                <div class="d-md-flex justify-content-center">
+                                    <h5 class="counter">{{ config('clients') }}</h5>
+                                    <p class="para-w3pvt">пациентов</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- //banner-hny-info -->
+                </div>
+                <!-- //banner slider -->
+
+            @elseif($page_block->type=='8')
+                    {!! $page_block->text !!}
+    @elseif($page_block->type=='9')
+        @foreach($page_block->photosets as $photoset)
+            <section id="photo-gallery">
+                <div class="container" id="block{{ $page_block->id }}">
+                    <h2>{{ $photoset->name }}</h2>
+                    <div class="wrapper flex">
+                        @foreach($photoset->photos as $photo)
+                            <div class="image-preview">
+                                <div class="photo-gallery-item">
+                                    <a href="/uploads/images/{{$photo->image}}" class="modalbox">
+                                        <img src="/uploads/images/thumbnail/{{$photo->image}}" alt="">
+                                    </a>
+
+                                    <div class="title">
+                                        {{ $photo->name }}
+                                    </div>
+                                    @if($photo->text!='')
+                                        <div class="title">
+                                            {{ $photo->text }}
+                                        </div>
+                                    @endif
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </section>
+        @endforeach
+    @elseif($page_block->type=='10')
+        @foreach($page_block->mail_forms as $item)
+            <section class="mail-form" id="block{{ $page_block->id }}">
+                <div class="container form-area{{ $item->id }}">
+                    <h2>{{ $item->name }}</h2>
+                    {!! $page_block->text  !!}
+                    <form id="sendform{{ $item->id }}" class="send-form" method="post">
+                        {{ csrf_field() }}
+                        <div class="row">
+                            @foreach($item->fields as $field)
+                                <div class="col4">
+                                    <input type="text" class="form-control {{ $field->field_name }}" rel="{{ $field->field_name }}"
+                                           id="{{ $field->field_name }}{{ $item->id }}"
+                                           name="{{ $field->field_name }}"
+                                           required
+                                           placeholder="{{ $field->field_value }}">
+                                </div>
+                            @endforeach
+                        </div>
+                        <div class="form-textarea">
+                                    <textarea name="message{{ $item->id }}" id="message{{ $item->id }}"
+                                              placeholder="Комментарий…"></textarea>
+                        </div>
+                        <div class="text-center">
+                            <button type="button" class="submit-button" rel="{{ $item->id }}">Отправить</button>
+                        </div>
+                        <div class="clearfix"></div>
+                        <input type="hidden" name="uid" value="{{ $item->id }}">
+                    </form>
+                </div>
+            </section>
+        @endforeach
+    @endif
+    @endforeach
+
+
     </div>
     <!-- //banner -->
 
     <!-- //home -->
 
-    <!-- about -->
-    <section class="about py-5">
-        <div class="container p-md-5">
-            <div class="about-hny-info text-left px-md-5">
-                <h3 class="tittle-w3ls mb-3"><span class="pink">Доктор</span> Лаптев</h3>
-                <p class="sub-tittle mt-3 mb-4">Лаптев Андрей Викторович - врач-психиатр, психотерапевт, нарколог, психолог.  Окончил московский  медицинский  институт им. Семашко, лечебный факультет. Специализация психиатрия и психотерапия. Врачебный стаж с 1983г. Работал врачом-ординатором в психиатрической больнице №15 в остром отделении и в отделении лечения наркоманов. Четыре года заведовал наркологическим стационаром. Более двадцати лет занимается частной психотерапевтической и психологической практикой. Гипнолог, суггестолог, аддиктолог (специалист по зависимостям), коучинг тренер. Работал во многих городах России и ближнего зарубежья. Широко известен авторскими психологическими тренингами по коррекции пищевого поведения. Огромный практический опыт сделал Лаптева Андрея Викторовича специалистом экстра-класса в этой области. На своих тренингах Андрей Викторович раскрывает тонкие психологические причины появления булимии, эмоциональной зависимости от еды и других признаков неправильного пищевого поведения. Каждый тренинг уникален и представляет собой сплав современных психотехник. Используется как групповой ,так и индивидуальный коучинг. В процессе тренинга происходит обучение новому пищевому поведению, вырабатываются приёмы самоконтроля и самосуггестии, нивелируются симптомы зависимости от еды.</p>
-                <a class="btn more black" href="single.html" role="button">Читать больше</a>
-            </div>
-        </div>
-    </section>
-    <!-- //about -->
     <!--/ab-->
     <section class="banner_bottom py-5">
         <div class="container py-md-5">
-            <div class="row inner_sec_info">
-
-                <div class="col-md-6 banner_bottom_grid help">
-                    <img src="images/ab.jpg" alt=" " class="img-fluid">
-                </div>
-                <div class="col-md-6 banner_bottom_left mt-lg-0 mt-4">
-                    <h4><a class="link-hny" href="services.html">
-                            Тренинги в городах и онлайн-поддержка</a></h4>
-                    <p>Постоянно проводим выездные треннинги в городах России</p>
-                    <p>Всегда на связи и рядом! Постоянная онлайн-поддержка и видео-сеансы для пациентов.</p>
-                    <a class="btn more black mt-3" href="services.html" role="button">Подробнее</a>
-
-                </div>
-            </div>
             <div class="row features-w3pvt-main" id="features">
                 <div class="col-md-4 feature-gird">
                     <div class="row features-hny-inner-gd">

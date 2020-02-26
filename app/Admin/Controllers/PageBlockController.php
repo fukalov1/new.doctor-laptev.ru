@@ -113,7 +113,7 @@ class PageBlockController extends Controller
         $grid->question('Функционал')->display(function () {
             $str = '';
             if ($this->type==2) {
-                $str = '<a href="/admin/directions?set='.$this->id.'">Блок с фото</a>';
+                $str = '<a href="/admin/directions?set='.$this->id.'">Текст с фото</a>';
             }
             elseif ($this->type==7) {
                 $str = '<a href="/admin/sliders?set='.$this->id.'">слайдеры</a>';
