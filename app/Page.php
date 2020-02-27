@@ -38,11 +38,7 @@ class Page extends Model
 
     public function getMainPhotoReview() {
 
-        return PageBlock::where('page_id', config('id_photo_reviews'))
-            ->where('orders', '>', 0)
-            ->take(6)
-            ->orderBy('id', 'desc')
-            ->get();
+        return PhotoReviewItem::inRandomOrder()->take(6)->get();
 
     }
 

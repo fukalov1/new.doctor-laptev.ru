@@ -133,6 +133,14 @@ nav ul {
     position: relative;
 }
 
+.paginator nav ul {
+    float: none;
+}
+
+.pagination {
+    display: block;
+}
+
 ul.menu {
     margin-top: 0.4em;
 }
@@ -1006,7 +1014,7 @@ span.decription {
 .popup {
     background: #fff;
     border-radius: 5px;
-    width: 35%;
+    width: 65%;
     position: relative;
     margin: 8em auto;
     padding: 3em 1em;
@@ -1046,9 +1054,15 @@ span.decription {
 .blog-grid-info {
     background: #212529;
 }
+.fill-top {
+    background-color: #3a3939;
+    position: absolute;
+    height: 70px;
+    width: 100%;
+}
 
 .date-post {
-    padding: 3em;
+    padding: 2.3em;
 }
 
 

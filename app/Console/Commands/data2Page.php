@@ -19,7 +19,7 @@ class data2Page extends Command
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Импорт статей';
     protected $data;
 
     /**

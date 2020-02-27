@@ -368,15 +368,11 @@
     </section>
     <!--//services-->
 
-    @foreach($main_photo_review as $page_block)
         <section class="projects py-5" id="gallery">
-        @foreach($page_block->photo_reviews as $review)
-            <!-- /projects -->
-
                 <div class="container py-md-5">
                     <h3 class="tittle-w3ls text-left mb-5"><span class="pink">Потрясающие</span> результаты!</h3>
                     <div class="row news-grids mt-md-5 mt-4 text-center">
-                        @foreach($review->items as $item)
+                        @foreach($main_photo_review as $item)
                             <div class="col-md-4 gal-img">
                                 <a href="#gal{{ $item->id }}">
                                     <div class="img-dbl">
@@ -387,13 +383,13 @@
                                     </div>
                                 </a>
                                 <div class="gal-info">
-                                    <h5>{{ $item->title }}<span class="decription">{{ $item->text }}</span></h5>
+                                    <h5>{{ $item->title }}<span class="decription">{!!  $item->text !!}</span></h5>
                                 </div>
                             </div>
                         @endforeach
                     </div>
                     <!-- popup-->
-                    @foreach($review->items as $item)
+                    @foreach($main_photo_review as $item)
                         <div id="gal{{ $item->id }}" class="pop-overlay">
                             <div class="popup">
                                 <img src="{{ asset('uploads/images/'.$item->image) }}" alt="Popup Image"
@@ -409,12 +405,8 @@
                     @endforeach
                 <!-- //popup -->
                 </div>
-
             <!-- //projects -->
-
-        @endforeach
         </section>
-    @endforeach
 
     <!-- /blogs -->
     <section class="blog-posts" id="blog">
@@ -425,7 +417,7 @@
                 @foreach($main_article as $item)
                     @if($loop->iteration<3)
                 <div class="col-lg-3 col-md-6 blog-grid-img px-0">
-                    <img src="{{ asset('uploads/images/'.$item->image) }}" alt="Popup Image" class="img-fluid" />
+                    <img src="{{ asset('uploads/images/thumbnail/'.$item->image) }}" alt="Popup Image" class="img-fluid" />
                 </div>
                 <div class="col-lg-3 col-md-6 blog-grid-info px-0">
                     <div class="date-post">
@@ -443,7 +435,7 @@
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-6 blog-grid-img px-0">
-                            <img src="{{ asset('uploads/images/'.$item->image) }}" alt="Popup Image" class="img-fluid" />
+                            <img src="{{ asset('uploads/images/thumbnail/'.$item->image) }}" alt="Popup Image" class="img-fluid" />
                         </div>
                     @endif
                 @endforeach

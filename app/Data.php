@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Intervention\Image\Facades\Image as Imagez;
 
 class Data extends Model
 {
@@ -16,24 +17,37 @@ class Data extends Model
 
         $pageBlocks = new PageBlock();
         foreach ($this->all() as $item) {
-            $page = $pages->create([
-                'anons' => $item->anons,
-                'name' => $item->name,
-                'parent_id' => $parent_id,
-                'title' => $item->title,
-                'description' => $item->description,
-                'keywords' => $item->keywords,
-                'order' => $item->orders,
-                'image' => $item->image,
-                'url' => '	posmotret-eshche/stati/'.$item->name,
-            ]);
-            $pageBlocks->create([
-                'page_id' => $page->id,
-                'header' => $item->title,
-                'text' => $item->text,
-                'image' => $item->image,
-                'orders' => 1,
-            ]);
+            if ($this->prepare($item->image)) {
+                echo "File ".$item->image." prepare\n";
+            }
+            else {
+                echo "File ".$item->image." not found\n";
+            }
+            try {
+                $page = Page::create([
+                    'anons' => $item->anons,
+                    'name' => $item->name,
+                    'parent_id' => $parent_id,
+                    'title' => $item->title,
+                    'description' => $item->description,
+                    'keywords' => $item->keywords,
+                    'order' => $item->orders,
+                    'image' => $item->image,
+                    'url' => '	posmotret-eshche/stati/' . $this->translit($item->name),
+                ]);
+//                dd('test', $page->id);
+
+                PageBlock::create([
+                    'page_id' => $page->id,
+                    'header' => $item->title,
+                    'text' => $item->text,
+                    'image' => $item->image,
+                    'orders' => 1,
+                ]);
+            } catch (\Exception $exception) {
+                echo 'Error: ' . $exception->getMessage() . "\n";
+                return false;
+            }
         }
     }
 
@@ -49,6 +63,45 @@ class Data extends Model
         $s = preg_replace("/[^0-9a-z-_ ]/i", "", $s); // очищаем строку от недопустимых символов
         $s = str_replace(" ", "-", $s); // заменяем пробелы знаком минус
         return $s; // возвращаем результат
+    }
+
+    private function prepare($filename)
+    {
+        $width = 396;
+        $height = 396;
+
+        $file = storage_path('source/' . $filename) ;
+        if (file_exists($file)) {
+
+            //Prepare preview image
+            try {
+                $i = Imagez::make($file);
+                $w = $i->width();
+                $h = $i->height();
+
+                if ($w / $h > $width / $height) {
+                    $i->resize(round($height * $w / $h, 0), $height);
+                }
+                else {
+                    $i->resize($width, round($width * $h / $w, 0));
+                }
+
+                if ($h > $height) {
+                    $i->resize(round($height * $w / $h, 0), $height);
+                    $i->resizeCanvas($width, $height, 'center', false, 'ffffff');
+                }
+                $i->save(public_path('uploads') . '/images/thumbnail/' . $filename);
+                copy($file, public_path('uploads/images/'.$filename) );
+            }
+            catch (\Exception $exception) {
+                echo 'Error: '.$exception->getMessage()."\n";
+                return false;
+            }
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
 }

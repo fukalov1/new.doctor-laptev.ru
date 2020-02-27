@@ -15,60 +15,38 @@ use App\MailForm;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
-class PageController extends Controller
+class ArticleController extends Controller
 {
     public $bread_crubs;
 
-    public function __construct(Page $page, PageBlock $pageBlock, Direction $direction, DirectionItem $directionItem,
-                                Slider $slider, SliderItem $sliderItem, Photoset $photoset, MailForm $mailForm)
+    public function __construct(Page $page, PageBlock $pageBlock, MailForm $mailForm)
     {
         $this->page = $page;
         $this->pageBlock = $pageBlock;
-        $this->slider = $slider;
-        $this->sliderItem = $sliderItem;
-        $this->direction = $direction;
-        $this->directionItem = $directionItem;
-        $this->photoset = $photoset;
         $this->mailForm = $mailForm;
     }
 
-    public function show(Page $page)
+    public function showAll()
     {
 
+        $page = Page::find(9);
         $location = '';
         $template = 'page';
         $data = ['data' => $page];
-        // Если главная страница
-        if ($page->id == 1) {
-            $template = 'main';
-            $data = [
-                'data' => $page
-            ];
-        }
 //        dd($page->id);
-//        $template = 'main';
         //  баннера для зоны новостей
-//        $banners = $this->sliderItem->where('slider_id',4)->get();
-//        $limit_news = 4;
-//        $limit_news = $limit_news - count($banners);
+
+        $articles = $this->page->where('parent_id',9)->orderBy('created_at', 'desc')->paginate(config('count_articles'));
 
         $this->getBeadCrumbs($page->id);
-        if ($location!='') {
-            $location .= '_';
-        }
+
         $data['phone'] = config('phone');
         $data['email'] = config('email');
         $data['address'] = config('address');
         $data['pages'] = $this->page->getMenu();
-        $data['main_article'] = $this->page->getMainArticle();
-        $data['main_photo_review'] = $this->page->getMainPhotoReview();
-//        dd($this->page->getMainPhotoReview());
+        $data['articles'] = $articles;
         $page_blocks = $this->pageBlock->where('page_id', $page->id)->where('orders','>',0)->orderBy('orders')->get();
         $data['page_blocks'] = $page_blocks;
-//        $data['banners'] = $banners;
-//        $data['bread_crumbs'] = '<a href="/">Главная</a> /'.$this->bread_crubs;
-
-//dd($subdomain);
         return view($template, $data);
     }
 
