@@ -60,6 +60,7 @@ class PageController extends Controller
         $data['email'] = config('email');
         $data['address'] = config('address');
         $data['pages'] = $this->page->getMenu();
+        $data['articles'] = collect([]);
         $data['main_article'] = $this->page->getMainArticle();
         $data['main_photo_review'] = $this->page->getMainPhotoReview();
 //        dd($this->page->getMainPhotoReview());

@@ -197,26 +197,38 @@
                     </section>
                 @endforeach
             @elseif($page_block->type=='11')
-                @foreach($page_block->photo_reviews as $item)
+                @foreach($page_block->photo_reviews as $review)
                 <!-- /projects -->
                     <section class="projects py-5" id="block{{ $page_block->id }}">
                         <div class="container py-md-5">
                             <h3 class="tittle-w3ls text-left mb-5"><span class="pink">Потрясающие</span> результаты!</h3>
                             <div class="row news-grids mt-md-5 mt-4 text-center">
-                                @foreach($item->items as $item)
+                                @foreach($review->items as $item)
                                     <div class="col-md-4 gal-img">
-                                        <a href="#gal1"><img src="{{ asset('uploads/images/thumbnail/'.$item->image) }}" alt="w3pvt" class="img-fluid"></a>
+                                        <a href="#gal{{ $item->id }}">
+                                            <div class="img-dbl">
+                                                <img src="{{ asset('uploads/images/thumbnail/'.$item->image) }}"
+                                                     alt="w3pvt" class="img-fluid">
+                                                <img src="{{ asset('uploads/images/thumbnail/'.$item->image1) }}"
+                                                     alt="w3pvt" class="img-fluid">
+                                            </div>
+                                        </a>
                                         <div class="gal-info">
-                                            <h5>{{ $item->title }}<span class="decription">{{ $item->text }}</span></h5>
+                                            <h5>{{ $item->title }}<span class="decription">{!!  $item->text !!}</span></h5>
                                         </div>
                                     </div>
                                 @endforeach
                             </div>
                             <!-- popup-->
-                            @foreach($item->items as $item)
-                                <div id="gal1" class="pop-overlay">
+                            @foreach($review->items as $item)
+                                <div id="gal{{ $item->id }}" class="pop-overlay">
                                     <div class="popup">
-                                        <img src="{{ asset('uploads/images/thumbnail/'.$item->image) }}" alt="Popup Image" class="img-fluid" />
+                                        <img src="{{ asset('uploads/images/'.$item->image) }}" alt="Popup Image"
+                                             class="img-fluid" width="30%"/>
+                                        <img src="{{ asset('uploads/images/'.$item->image1) }}" alt="Popup Image"
+                                             class="img-fluid" width="30%"/>
+                                        <img src="{{ asset('uploads/images/'.$item->image2) }}" alt="Popup Image"
+                                             class="img-fluid" width="30%"/>
                                         <p class="mt-4">{{ $item->text }}</p>
                                         <a class="close" href="#gallery">&times;</a>
                                     </div>
