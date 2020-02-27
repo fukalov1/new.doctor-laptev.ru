@@ -95,6 +95,15 @@ a.navbar-brand {
     color: #fff;
 }
 
+a.footer-brand {
+    font-size: 1.1em;
+    font-weight: 100;
+    letter-spacing: 1px;
+    line-height: 0.8em;
+    text-transform: uppercase;
+    color: #fff;
+}
+
 #logo a {
     float: left;
     display: initial;
@@ -922,9 +931,13 @@ section#gallery {
     position: relative;
 }
 
-.gal-img img {
-    padding: 6px;
-    background: #f0f0f1;
+.gal-img .img-dbl {
+    border: 6px solid #f0f0f1;
+    border-radius: 10px;
+    display: flex;
+}
+.gal-img .img-dbl .img-fluid {
+    display: flex;
 }
 
 .gal-info {

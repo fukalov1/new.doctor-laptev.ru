@@ -378,11 +378,13 @@
                     <div class="row news-grids mt-md-5 mt-4 text-center">
                         @foreach($review->items as $item)
                             <div class="col-md-4 gal-img">
-                                <a href="#gal1">
-                                    <img src="{{ asset('uploads/images/thumbnail/'.$item->image) }}"
+                                <a href="#gal{{ $item->id }}">
+                                    <div class="img-dbl">
+                                        <img src="{{ asset('uploads/images/thumbnail/'.$item->image) }}"
                                                      alt="w3pvt" class="img-fluid">
-                                    <img src="{{ asset('uploads/images/thumbnail/'.$item->image1) }}"
+                                        <img src="{{ asset('uploads/images/thumbnail/'.$item->image1) }}"
                                                      alt="w3pvt" class="img-fluid">
+                                    </div>
                                 </a>
                                 <div class="gal-info">
                                     <h5>{{ $item->title }}<span class="decription">{{ $item->text }}</span></h5>
@@ -392,10 +394,14 @@
                     </div>
                     <!-- popup-->
                     @foreach($review->items as $item)
-                        <div id="gal1" class="pop-overlay">
+                        <div id="gal{{ $item->id }}" class="pop-overlay">
                             <div class="popup">
                                 <img src="{{ asset('uploads/images/'.$item->image) }}" alt="Popup Image"
-                                     class="img-fluid"/>
+                                     class="img-fluid" width="30%"/>
+                                <img src="{{ asset('uploads/images/'.$item->image1) }}" alt="Popup Image"
+                                     class="img-fluid" width="30%"/>
+                                <img src="{{ asset('uploads/images/'.$item->image2) }}" alt="Popup Image"
+                                     class="img-fluid" width="30%"/>
                                 <p class="mt-4">{{ $item->text }}</p>
                                 <a class="close" href="#gallery">&times;</a>
                             </div>
@@ -442,31 +448,7 @@
                     @endif
                 @endforeach
             </div>
-{{--            <div class="blog-grids-main row text-left">--}}
 
-{{--                <div class="col-lg-3 col-md-6 blog-grid-info px-0">--}}
-{{--                    <div class="date-post">--}}
-{{--                        <h6 class="date">May, 04th 2019</h6>--}}
-{{--                        <h4><a class="link-hny" href="single.html">Витамины и микроэлементы для быстрого похудения</a></h4>--}}
-{{--                        <p>В современном мире взаимоотношение человека и природы стало качественно меняться. Создано множество искусственных экосистем, среда обитания стала другой, природные ресурсы существенно истощились. Неконтролируемая деятельность человека влияет на его здоровье, внешний вид и самочувствие.</p>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <div class="col-lg-3 col-md-6 blog-grid-img px-0">--}}
-{{--                    <img src="images/g6.jpg" alt="Popup Image" class="img-fluid" />--}}
-{{--                </div>--}}
-
-{{--                <div class="col-lg-3 col-md-6 blog-grid-info px-0">--}}
-{{--                    <div class="date-post">--}}
-{{--                        <h6 class="date">May, 04th 2019</h6>--}}
-{{--                        <h4><a class="link-hny" href="single.html">Углеводы - условие для похудения</a></h4>--}}
-{{--                        <p>Мнение, что углеводы ведут к лишнему весу, верно лишь отчасти. Для жизнедеятельности организма они необходимы. Здоровое питание предполагает, что при составлении меню для похудения следует учитывать гликемический индекс продуктов, которые мы потребляем.</p>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <div class="col-lg-3 col-md-6 blog-grid-img px-0">--}}
-{{--                    <img src="images/g8.jpg" alt="Popup Image" class="img-fluid" />--}}
-{{--                </div>--}}
-
-{{--            </div>--}}
         </div>
 
     </section>
@@ -575,25 +557,25 @@
     <!--//testimonials-->
 
     <!-- /news-letter -->
-    <section class="news-letter-w3pvt py-5">
-        <div class="container contact-form mx-auto text-left">
-            <h3 class="title-w3ls two text-left mb-3">Newsletter </h3>
-            <form method="post" action="#" class="w3ls-frm">
-                <div class="row subscribe-sec">
-                    <p class="news-para col-lg-3">Start working together?</p>
-                    <div class="col-lg-6 con-gd">
-                        <input type="email" class="form-control" id="email" placeholder="Your Email here..." name="email" required>
+{{--    <section class="news-letter-w3pvt py-5">--}}
+{{--        <div class="container contact-form mx-auto text-left">--}}
+{{--            <h3 class="title-w3ls two text-left mb-3">Newsletter </h3>--}}
+{{--            <form method="post" action="#" class="w3ls-frm">--}}
+{{--                <div class="row subscribe-sec">--}}
+{{--                    <p class="news-para col-lg-3">Start working together?</p>--}}
+{{--                    <div class="col-lg-6 con-gd">--}}
+{{--                        <input type="email" class="form-control" id="email" placeholder="Your Email here..." name="email" required>--}}
 
-                    </div>
-                    <div class="col-lg-3 con-gd">
-                        <button type="submit" class="btn submit">Subscribe</button>
-                    </div>
+{{--                    </div>--}}
+{{--                    <div class="col-lg-3 con-gd">--}}
+{{--                        <button type="submit" class="btn submit">Subscribe</button>--}}
+{{--                    </div>--}}
 
-                </div>
+{{--                </div>--}}
 
-            </form>
-        </div>
-    </section>
+{{--            </form>--}}
+{{--        </div>--}}
+{{--    </section>--}}
     <!-- //news-letter -->
 
 @stop

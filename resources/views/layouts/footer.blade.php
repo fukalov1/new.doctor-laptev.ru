@@ -4,11 +4,13 @@
         <div class="row footer-grids">
             <div class="col-lg-4 mt-4">
 
-                <h2> <a class="navbar-brand px-0 mx-0 mb-4" href="index.html">Infinitude
+                <h2> <a class="footer-brand px-0 mx-0 mb-4" href="index.html">Доктор Лаптев
                     </a>
                 </h2>
-                <p class="mb-3">Lorem Ipsum is simply text the printing and typesetting standard industry. Onec Consequat sapien ut cursus rhoncus. Nullam dui mi, vulputate ac metus.</p>
-                <h5>Trusted by <span>500+ People</span> </h5>
+                <p class="mb-3">
+                    <img src="{{asset('/images/logo.jpg')}}" width="300"/>
+                </p>
+                <h5>Одобрено <span> похудевшими людьми</span> </h5>
                 <div class="icon-social mt-4">
                     <a href="#" class="button-footr">
                         <span class="fa mx-2 fa-facebook"></span>
@@ -70,11 +72,10 @@
             </div>
             <div class="col-lg-4 mt-4 ad-info">
                 <h4 class="mb-4">Contact Info</h4>
-                <p><span class="fa fa-map-marker"></span>90 nsequursu dsdesdc,
-                    xxx Honey Street 049436.<span>Newyork, NY.</span></p>
-                <p class="phone"><span class="fa fa-phone"></span> +1(12) 123 456 789 </p>
-                <p class="phone"><span class="fa fa-fax"></span> +1(12) 123 456 789 </p>
-                <p><span class="fa fa-envelope"></span><a href="mailto:info@example.com">info@example.com</a></p>
+                <p><span class="fa fa-map-marker"></span>{{ config('address')  }}<span>Москва.</span></p>
+                <p class="phone"><span class="fa fa-phone"></span>{{ config('mobile')  }}</p>
+                <p class="phone"><span class="fa fa-fax"></span> {{ config('phone')  }} </p>
+                <p><span class="fa fa-envelope"></span><a href="mailto:{{ config('email')  }}">{{ config('email')  }}</a></p>
             </div>
 
         </div>
@@ -86,7 +87,7 @@
     <div class="container">
         <div class="row d-flex">
             <div class="col-lg-9 copy_w3pvt">
-                <p class="text-lg-left text-center">© 2019 Infinitude. All rights reserved.</p>
+                <p class="text-lg-left text-center">© 2019 Доктор Лаптев. Все права зарегистрированы.</p>
 
             </div>
             <!-- move top -->

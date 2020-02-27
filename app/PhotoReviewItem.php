@@ -12,4 +12,23 @@ class PhotoReviewItem extends Model
         return $this->belongsTo(PhotoReview::class);
     }
 
+    public function importReviews()
+    {
+        $id = 1;
+
+        $oldReview = OldReview::get();
+        $photoReviewItem = new PhotoReviewItem();
+        $i = 1;
+        foreach ($oldReview as $item) {
+            $photoReviewItem->create([
+                'photo_review_id' => $id,
+                'text' => $item->text,
+                'image' => $item->image,
+                'image1' => $item->image1,
+                'image2' => $item->image2,
+                'orders' => $i++,
+            ]);
+        }
+    }
+
 }

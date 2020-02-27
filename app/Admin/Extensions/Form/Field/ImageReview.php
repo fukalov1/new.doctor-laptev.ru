@@ -61,7 +61,7 @@ class ImageReview extends Image
                 $i->resize($width, round($width*$h/$w,0));
             }
             if ($w>$h) {
-                $i->rotate(90);
+//                $i->rotate(90);
 //                $w=$w+$h-$h=$w;
             }
             if ($h > $height) {
