@@ -82,6 +82,23 @@ nav {
     margin: 0;
     padding: 0;
 }
+.months {
+    margin: 5px;
+    font-size: 1.2em;
+}
+.months a {
+    color: #6e7275;
+}
+.months a:hover {
+    color: #9f000a;
+}
+.months a.selected {
+    color: #feac00;
+}
+.months a.selected:hover {
+    color: #9f000a;
+}
+
 .nav_w3pvt .navbar-light .navbar-brand {
     color: rgba(255,255,255,.9);
 }

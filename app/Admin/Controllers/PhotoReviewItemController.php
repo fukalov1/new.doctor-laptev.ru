@@ -75,7 +75,7 @@ class PhotoReviewItemController extends AdminController
         $form->text('title', __('Title'));
         $form->textarea('text', __('Text'));
         $form->url('url', __('Url'));
-        $form->image('image', __('Image'));
+        $form->imageReview('image', __('Image'));
         $form->number('orders', __('Orders'))->default(1);
 
         return $form;

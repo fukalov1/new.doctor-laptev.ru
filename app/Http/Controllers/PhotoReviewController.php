@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\PhotoReviewItem;
 use App\QuestBlock;
 use App\SubDomain;
 use Mail;
@@ -15,28 +16,29 @@ use App\MailForm;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
-class ArticleController extends Controller
+class PhotoReviewController extends Controller
 {
     public $bread_crubs;
 
-    public function __construct(Page $page, PageBlock $pageBlock, MailForm $mailForm)
+    public function __construct(Page $page, PageBlock $pageBlock, MailForm $mailForm, PhotoReviewItem $photoReviewItem)
     {
         $this->page = $page;
         $this->pageBlock = $pageBlock;
+        $this->photoReviewItem = $photoReviewItem;
         $this->mailForm = $mailForm;
     }
 
-    public function showAll()
+    public function show()
     {
 
-        $page = Page::find(9);
+        $page = Page::find(10);
         $location = '';
         $template = 'page';
         $data = ['data' => $page];
 //        dd($page->id);
         //  баннера для зоны новостей
 
-        $articles = $this->page->where('parent_id',9)->orderBy('created_at', 'desc')->paginate(config('count_articles'));
+        $reviews = $this->photoReviewItem->orderBy('created_at', 'desc')->paginate(config('count_reviews'));
 
         $this->getBeadCrumbs($page->id);
 
@@ -44,9 +46,9 @@ class ArticleController extends Controller
         $data['email'] = config('email');
         $data['address'] = config('address');
         $data['pages'] = $this->page->getMenu();
-        $data['articles'] = $articles;
+        $data['reviews'] = $reviews;
+        $data['articles'] = collect([]);
         $data['cities'] = collect([]);
-        $data['reviews'] = collect([]);
         $page_blocks = $this->pageBlock->where('page_id', $page->id)->where('orders','>',0)->orderBy('orders')->get();
         $data['page_blocks'] = $page_blocks;
         return view($template, $data);

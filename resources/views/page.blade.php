@@ -196,50 +196,51 @@
                         </div>
                     </section>
                 @endforeach
-            @elseif($page_block->type=='11')
-                @foreach($page_block->photo_reviews as $review)
-                <!-- /projects -->
-                    <section class="projects py-5" id="block{{ $page_block->id }}">
-                        <div class="container py-md-5">
-                            <h3 class="tittle-w3ls text-left mb-5"><span class="pink">Потрясающие</span> результаты!</h3>
-                            <div class="row news-grids mt-md-5 mt-4 text-center">
-                                @foreach($review->items as $item)
-                                    <div class="col-md-4 gal-img">
-                                        <a href="#gal{{ $item->id }}">
-                                            <div class="img-dbl">
-                                                <img src="{{ asset('uploads/images/thumbnail/'.$item->image) }}"
-                                                     alt="w3pvt" class="img-fluid">
-                                                <img src="{{ asset('uploads/images/thumbnail/'.$item->image1) }}"
-                                                     alt="w3pvt" class="img-fluid">
-                                            </div>
-                                        </a>
-                                        <div class="gal-info">
-                                            <h5>{{ $item->title }}<span class="decription">{!!  $item->text !!}</span></h5>
-                                        </div>
-                                    </div>
-                                @endforeach
-                            </div>
-                            <!-- popup-->
-                            @foreach($review->items as $item)
-                                <div id="gal{{ $item->id }}" class="pop-overlay">
-                                    <div class="popup">
-                                        <img src="{{ asset('uploads/images/'.$item->image) }}" alt="Popup Image"
-                                             class="img-fluid" width="30%"/>
-                                        <img src="{{ asset('uploads/images/'.$item->image1) }}" alt="Popup Image"
-                                             class="img-fluid" width="30%"/>
-                                        <img src="{{ asset('uploads/images/'.$item->image2) }}" alt="Popup Image"
-                                             class="img-fluid" width="30%"/>
-                                        <p class="mt-4">{{ $item->text }}</p>
-                                        <a class="close" href="#gallery">&times;</a>
-                                    </div>
-                                </div>
-                        @endforeach
-                        <!-- //popup -->
-                        </div>
-                    </section>
-                    <!-- //projects -->
 
-                @endforeach
+{{--            @elseif($page_block->type=='11')--}}
+{{--                @foreach($page_block->photo_reviews as $review)--}}
+{{--                <!-- /projects -->--}}
+{{--                    <section class="projects py-5" id="block{{ $page_block->id }}">--}}
+{{--                        <div class="container py-md-5">--}}
+{{--                            <h3 class="tittle-w3ls text-left mb-5"><span class="pink">Потрясающие</span> результаты!</h3>--}}
+{{--                            <div class="row news-grids mt-md-5 mt-4 text-center">--}}
+{{--                                @foreach($review->items as $item)--}}
+{{--                                    <div class="col-md-4 gal-img">--}}
+{{--                                        <a href="#gal{{ $item->id }}">--}}
+{{--                                            <div class="img-dbl">--}}
+{{--                                                <img src="{{ asset('uploads/images/thumbnail/'.$item->image) }}"--}}
+{{--                                                     alt="w3pvt" class="img-fluid">--}}
+{{--                                                <img src="{{ asset('uploads/images/thumbnail/'.$item->image1) }}"--}}
+{{--                                                     alt="w3pvt" class="img-fluid">--}}
+{{--                                            </div>--}}
+{{--                                        </a>--}}
+{{--                                        <div class="gal-info">--}}
+{{--                                            <h5>{{ $item->title }}<span class="decription">{!!  $item->text !!}</span></h5>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                @endforeach--}}
+{{--                            </div>--}}
+{{--                            <!-- popup-->--}}
+{{--                            @foreach($review->items as $item)--}}
+{{--                                <div id="gal{{ $item->id }}" class="pop-overlay">--}}
+{{--                                    <div class="popup">--}}
+{{--                                        <img src="{{ asset('uploads/images/'.$item->image) }}" alt="Popup Image"--}}
+{{--                                             class="img-fluid" width="30%"/>--}}
+{{--                                        <img src="{{ asset('uploads/images/'.$item->image1) }}" alt="Popup Image"--}}
+{{--                                             class="img-fluid" width="30%"/>--}}
+{{--                                        <img src="{{ asset('uploads/images/'.$item->image2) }}" alt="Popup Image"--}}
+{{--                                             class="img-fluid" width="30%"/>--}}
+{{--                                        <p class="mt-4">{{ $item->text }}</p>--}}
+{{--                                        <a class="close" href="#gallery">&times;</a>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                        @endforeach--}}
+{{--                        <!-- //popup -->--}}
+{{--                        </div>--}}
+{{--                    </section>--}}
+{{--                    <!-- //projects -->--}}
+
+{{--                @endforeach--}}
             @endif
         @endforeach
 
@@ -270,6 +271,116 @@
         <section class="banner_bottom py-5">
             <div class="container text-center paginator">
                 {{ $articles->links() }}
+            </div>
+        </section>
+    @endif
+
+    @if($reviews->count()>0)
+        <section class="projects py-5" id="gallery">
+            <div class="container py-md-5">
+                <h3 class="tittle-w3ls text-left mb-5"><span class="pink">Потрясающие</span> результаты!</h3>
+                <div class="row news-grids mt-md-5 mt-4 text-center">
+                    @foreach($reviews as $item)
+                        <div class="col-md-4 gal-img">
+                            <a href="#gal{{ $item->id }}">
+                                <div class="img-dbl">
+                                    <img src="{{ asset('uploads/images/thumbnail/'.$item->image) }}"
+                                         alt="w3pvt" class="img-fluid">
+                                    <img src="{{ asset('uploads/images/thumbnail/'.$item->image1) }}"
+                                         alt="w3pvt" class="img-fluid">
+                                </div>
+                            </a>
+                            <div class="gal-info">
+                                <h5>{{ $item->title }}<span class="decription">{!!  $item->text !!}</span></h5>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+                <!-- popup-->
+                @foreach($reviews as $item)
+                    <div id="gal{{ $item->id }}" class="pop-overlay">
+                        <div class="popup">
+                            <img src="{{ asset('uploads/images/'.$item->image) }}" alt="Popup Image"
+                                 class="img-fluid" width="30%"/>
+                            <img src="{{ asset('uploads/images/'.$item->image1) }}" alt="Popup Image"
+                                 class="img-fluid" width="30%"/>
+                            <img src="{{ asset('uploads/images/'.$item->image2) }}" alt="Popup Image"
+                                 class="img-fluid" width="30%"/>
+                            <p class="mt-4">{{ $item->text }}</p>
+                            <a class="close" href="#gallery">&times;</a>
+                        </div>
+                    </div>
+            @endforeach
+            <!-- //popup -->
+            </div>
+            <!-- //projects -->
+            <div class="container text-center paginator">
+                {{ $reviews->links() }}
+            </div>
+        </section>
+
+
+    @endif
+
+    @if($cities->count()>0)
+        <section class="projects py-5" id="gallery">
+            <div class="container py-md-5">
+                <h3 class="tittle-w3ls text-left mb-5"><span class="pink">Расписание</span> по городам</h3>
+
+                <div class="row">
+                    <div class="col-md-6">
+
+                    </div>
+                    <div class="col-md-3">
+                        <select class="form-control months">
+                            <option value="0">
+                                все месяцы
+                            </option>
+                            @foreach($months as $item)
+                                <option value="{{ $loop->index+1 }}">
+                                    {{ $item }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <button type="button" class="btn btn-primary">
+                            сбросить фильтр
+                        </button>
+                    </div>
+                </div>
+
+{{--                <ul class="nav months">--}}
+{{--                @foreach($months as $item)--}}
+{{--                    <li>--}}
+{{--                        <a href=""--}}
+{{--                           @if($loop->index+1==$month)--}}
+{{--                            class="selected"--}}
+{{--                           @endif--}}
+{{--                            >--}}
+{{--                            {{ $item }}--}}
+{{--                        </a> &nbsp;|&nbsp;--}}
+{{--                    </li>--}}
+{{--                @endforeach--}}
+
+{{--                </ul>--}}
+
+                @foreach($cities as $item)
+                        <div class="row inner_sec_info">
+
+                            <div class="col-md-4 banner_bottom_grid help">
+                                <img src="{{ asset('/uploads/images/thumbnail/'.$item->image) }}" alt=" " class="img-fluid">
+                            </div>
+                            <div class="col-md-8 banner_bottom_left mt-lg-0 mt-4">
+                                <h4><a class="link-hny" href="services.html">
+                                        {{ $item->name }}</a></h4>
+                                {!! $item->text !!}
+{{--                                <a class="btn more black mt-3" href="services.html" role="button">Подробнее</a>--}}
+
+                            </div>
+                        </div>
+                @endforeach
+                </div>
             </div>
         </section>
     @endif
