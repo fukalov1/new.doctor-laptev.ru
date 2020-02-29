@@ -32,8 +32,7 @@ class CityController extends Controller
     public function show()
     {
 
-        $page = Page::find(10);
-        $location = '';
+        $page = Page::find(3);
         $template = 'page';
         $data = ['data' => $page];
 //        dd($page->id);

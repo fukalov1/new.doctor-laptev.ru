@@ -150,6 +150,11 @@ nav ul {
     position: relative;
 }
 
+.img-article {
+    float: left;
+    padding: 0 10px;
+}
+
 .paginator nav ul {
     float: none;
 }

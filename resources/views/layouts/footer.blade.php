@@ -1,5 +1,5 @@
 <!-- footer -->
-<footer class="py-lg-5 py-4">
+<footer class="py-lg-5 py-4" id="contacts">
     <div class="container py-sm-3">
         <div class="row footer-grids">
             <div class="col-lg-4 mt-4">
@@ -10,7 +10,7 @@
                 <p class="mb-3">
                     <img src="{{asset('/images/logo.jpg')}}" width="300"/>
                 </p>
-                <h5>Одобрено <span> похудевшими людьми</span> </h5>
+                <h5>Одобрено <span>  людьми</span> </h5>
                 <div class="icon-social mt-4">
                     <a href="#" class="button-footr">
                         <span class="fa mx-2 fa-facebook"></span>

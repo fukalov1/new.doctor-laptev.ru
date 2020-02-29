@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class PageBlock extends Model
 {
-    protected $fillable = ['page_id', 'orders', 'header', 'image', 'text'];
+    protected $fillable = ['page_id', 'orders', 'header', 'image', 'text', 'type'];
 
     public function pages()
     {

@@ -30,8 +30,7 @@ class PhotoReviewController extends Controller
 
     public function show()
     {
-
-        $page = Page::find(10);
+        $page = Page::find(config('id_photo_reviews'));
         $location = '';
         $template = 'page';
         $data = ['data' => $page];

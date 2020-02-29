@@ -39,6 +39,7 @@ class Data extends Model
 
                 PageBlock::create([
                     'page_id' => $page->id,
+                    'type' => 3,
                     'header' => $item->title,
                     'text' => $item->text,
                     'image' => $item->image,

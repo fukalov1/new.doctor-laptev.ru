@@ -13,7 +13,7 @@
                             <div class="about-hny-info text-left px-md-5">
                                 <h3 class="tittle-w3ls mb-3"><span class="pink">Доктор</span> Лаптев</h3>
                                 <p class="sub-tittle mt-3 mb-4"> {!! $page_block->text !!}</p>
-                                <a class="btn more black" href="single.html" role="button">Читать больше</a>
+{{--                                <a class="btn more black" href="single.html" role="button">Читать больше</a>--}}
                             </div>
                         </div>
                     </section>
@@ -404,6 +404,9 @@
                         </div>
                     @endforeach
                 <!-- //popup -->
+                    <div class="text-right">
+                        <a class="btn more black" href="/photo-reviews" role="button">Смотреть еще</a>
+                    </div>
                 </div>
             <!-- //projects -->
         </section>
@@ -422,7 +425,7 @@
                 <div class="col-lg-3 col-md-6 blog-grid-info px-0">
                     <div class="date-post">
                         <h6 class="date">{{ $item->created_at }}</h6>
-                        <h4><a class="link-hny" href="single.html">{{ $item->name }}</a></h4>
+                        <h4><a class="link-hny" href="{{ $item->url }}">{{ $item->name }}</a></h4>
                         <p>{!! $item->anons !!}</p>
                     </div>
                 </div>
@@ -430,7 +433,7 @@
                         <div class="col-lg-3 col-md-6 blog-grid-info px-0">
                             <div class="date-post">
                                 <h6 class="date">{{ $item->created_at }}</h6>
-                                <h4><a class="link-hny" href="single.html">{{ $item->name }}</a></h4>
+                                <h4><a class="link-hny" href="{{ $item->url }}">{{ $item->name }}</a></h4>
                                 <p>{!! $item->anons !!}</p>
                             </div>
                         </div>
@@ -440,7 +443,6 @@
                     @endif
                 @endforeach
             </div>
-
         </div>
 
     </section>

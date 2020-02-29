@@ -16,7 +16,7 @@
                         <div class="about-hny-info text-left px-md-5">
                             <h3 class="tittle-w3ls mb-3"><span class="pink">Доктор</span> Лаптев</h3>
                             <p class="sub-tittle mt-3 mb-4"> {!! $page_block->text !!}</p>
-                            <a class="btn more black" href="single.html" role="button">Читать больше</a>
+
                         </div>
                     </div>
                 </section>
@@ -42,7 +42,17 @@
                 </section>
 
             @elseif($page_block->type=='3')
-                {!! $page_block->text !!}
+                <section class="about py-5">
+                    <div class="container p-md-5">
+                        <div class="about-hny-info text-left px-md-5">
+                            <h3 class="tittle-w3ls mb-3"><span class="pink">{{ $page_block->header }}</span></h3>
+                            <p class="sub-tittle mt-3 mb-4">
+{{--                                <img src="/uploads/images/thumbnail/{{ $page_block->image }}" class="img-article"/>--}}
+                                {!! $page_block->text !!}
+                            </p>
+                        </div>
+                    </div>
+                </section>
             @elseif($page_block->type=='4')
                 <section class="page-block-doc" id="block{{$page_block->id}}">
                     <div class="container">
@@ -249,25 +259,30 @@
     <!-- //banner -->
 
     @if($articles->count()>0)
+        <section class="banner_bottom py-5">
+            <div class="container py-md-5">
+                <h3 class="tittle-w3ls text-left mb-5"><span class="pink">Статьи</span> о похудении</h3>
         @foreach($articles as $article)
-            <section class="banner_bottom py-5">
-                <div class="container py-md-5">
+                    <div class="py-md-5">
                     <div class="row inner_sec_info">
 
                         <div class="col-md-6 banner_bottom_grid help">
                             <img src="{{ asset('/uploads/images/'.$article->image) }}" alt=" " class="img-fluid">
                         </div>
                         <div class="col-md-6 banner_bottom_left mt-lg-0 mt-4">
-                            <h4><a class="link-hny" href="services.html">
+                            <h4><a class="link-hny" href="{{ $article->url }}">
                                     {{ $article->name }}</a></h4>
                             {!! $article->anons !!}
-                            <a class="btn more black mt-3" href="services.html" role="button">Подробнее</a>
+                           <div class="text-right">
+                               <a class="btn more black mt-3" href="{{ $article->url }}" role="button">Читать</a>
+                           </div>
 
                         </div>
                     </div>
-                </div>
-            </section>
+                    </div>
         @endforeach
+            </div>
+        </section>
         <section class="banner_bottom py-5">
             <div class="container text-center paginator">
                 {{ $articles->links() }}
