@@ -28,15 +28,15 @@ class ArticleController extends Controller
 
     public function showAll()
     {
-
-        $page = Page::find(9);
+        $id_articles = config('id_articles');
+        $page = Page::find($id_articles);
         $location = '';
         $template = 'page';
         $data = ['data' => $page];
 //        dd($page->id);
         //  баннера для зоны новостей
 
-        $articles = $this->page->where('parent_id',9)->orderBy('created_at', 'desc')->paginate(config('count_articles'));
+        $articles = $this->page->where('parent_id',$id_articles)->orderBy('created_at', 'desc')->paginate(config('count_articles'));
 
         $this->getBeadCrumbs($page->id);
 

@@ -28,7 +28,7 @@ class Page extends Model
 
     public function getMainArticle() {
 
-        return Page::where('parent_id', 9)
+        return Page::where('parent_id', config('id_articles'))
             ->where('order', '>', 0)
             ->take(4)
             ->orderBy('id', 'desc')

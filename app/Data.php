@@ -10,7 +10,7 @@ class Data extends Model
     protected $table = 'data';
 
     public function data2Page() {
-        $parent_id = 9;
+        $parent_id = config('id_articles');
 
         $pages = new Page();
         $pages->delete();
