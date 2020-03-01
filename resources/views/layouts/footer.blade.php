@@ -4,7 +4,7 @@
         <div class="row footer-grids">
             <div class="col-lg-4 mt-4">
 
-                <h2> <a class="footer-brand px-0 mx-0 mb-4" href="index.html">Доктор Лаптев
+                <h2> <a class="footer-brand px-0 mx-0 mb-4" href="index.html">
                     </a>
                 </h2>
                 <p class="mb-3">

@@ -11,7 +11,7 @@
                     <section class="about py-5">
                         <div class="container p-md-5">
                             <div class="about-hny-info text-left px-md-5">
-                                <h3 class="tittle-w3ls mb-3"><span class="pink">Доктор</span> Лаптев</h3>
+                                <h3 class="tittle-w3ls mb-3">{{ $page_block->header }}</h3>
                                 <p class="sub-tittle mt-3 mb-4"> {!! $page_block->text !!}</p>
 {{--                                <a class="btn more black" href="single.html" role="button">Читать больше</a>--}}
                             </div>
@@ -99,8 +99,8 @@
                     </div>
                     <!-- banner-hny-info -->
                     <div class="banner-hny-info">
-                        <h3>Создаем новое
-                            <br>Пишевое поведение</h3>
+                        <h3>СОЗДАЕМ НОВОЕ
+                            <br>ПИЩЕВОЕ ПОВЕДЕНИЕ</h3>
                         <div class="top-buttons mx-auto text-center mt-md-5 mt-3">
                             <a href="single.html" class="btn more mr-2">Подробнее</a>
                             <a href="contact.html" class="btn">Записаться</a>
@@ -115,7 +115,7 @@
                             <div class="col-md-4 stats_w3pvt_counter_grid mt-3">
                                 <div class="d-md-flex justify-content-center">
                                     <h5 class="counter">{{ config('trennings') }}</h5>
-                                    <p class="para-w3pvt"> тренингов</p>
+                                    <p class="para-w3pvt"> проведено тренингов</p>
                                 </div>
                             </div>
                             <div class="col-md-4 stats_w3pvt_counter_grid mt-3">
