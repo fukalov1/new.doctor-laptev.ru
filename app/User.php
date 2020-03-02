@@ -45,4 +45,10 @@ class User extends Authenticatable
         return $this->hasMany(Profile::class);
     }
 
+
+    public function importUser() {
+        $users = \DB::connection('mysql2')->select('select * from users');
+        dd($users);
+    }
+
 }

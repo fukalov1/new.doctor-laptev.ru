@@ -115,13 +115,13 @@
                             <div class="col-md-4 stats_w3pvt_counter_grid mt-3">
                                 <div class="d-md-flex justify-content-center">
                                     <h5 class="counter">{{ config('trennings') }}</h5>
-                                    <p class="para-w3pvt"> проведено тренингов</p>
+                                    <p class="para-w3pvt">тренингов</p>
                                 </div>
                             </div>
                             <div class="col-md-4 stats_w3pvt_counter_grid mt-3">
                                 <div class="d-md-flex justify-content-center">
                                     <h5 class="counter">{{ config('clients') }}</h5>
-                                    <p class="para-w3pvt">пациентов</p>
+                                    <p class="para-w3pvt">клиентов</p>
                                 </div>
                             </div>
                         </div>
@@ -299,7 +299,7 @@
                                 <div class="row features-hny-inner-gd mt-3">
                                     <div class="col-md-2 featured_grid_left">
                                         <div class="icon_left_grid">
-                                            <span class="fa fa-paint-brush" aria-hidden="true"></span>
+{{--                                            <span class="fa fa-paint-brush" aria-hidden="true"></span>--}}
                                         </div>
                                     </div>
                                     <div class="col-md-10 featured_grid_right_info">
@@ -314,7 +314,7 @@
                                 <div class="row features-hny-inner-gd mt-3">
                                     <div class="col-md-2 featured_grid_left">
                                         <div class="icon_left_grid">
-                                            <span class="fa fa-bullhorn" aria-hidden="true"></span>
+{{--                                            <span class="fa fa-bullhorn" aria-hidden="true"></span>--}}
                                         </div>
                                     </div>
                                     <div class="col-md-10 featured_grid_right_info">
@@ -332,7 +332,7 @@
                                 <div class="row features-hny-inner-gd mt-3">
                                     <div class="col-md-2 featured_grid_left">
                                         <div class="icon_left_grid">
-                                            <span class="fa fa-shield" aria-hidden="true"></span>
+{{--                                            <span class="fa fa-shield" aria-hidden="true"></span>--}}
                                         </div>
                                     </div>
                                     <div class="col-md-10 featured_grid_right_info">
@@ -347,7 +347,7 @@
                                 <div class="row features-hny-inner-gd mt-3">
                                     <div class="col-md-2 featured_grid_left">
                                         <div class="icon_left_grid">
-                                            <span class="fa fa-lightbulb-o" aria-hidden="true"></span>
+{{--                                            <span class="fa fa-lightbulb-o" aria-hidden="true"></span>--}}
                                         </div>
                                     </div>
                                     <div class="col-md-10 featured_grid_right_info">
@@ -414,7 +414,7 @@
     <!-- /blogs -->
     <section class="blog-posts" id="blog">
         <div class="blog-w3pvt-info-content container-fluid">
-            <h3 class="tittle-w3ls text-center mb-5">Что почитать...</h3>
+            <h3 class="tittle-w3ls text-center mb-5">Полезная информация</h3>
 
             <div class="blog-grids-main row text-left">
                 @foreach($main_article as $item)
@@ -424,7 +424,9 @@
                 </div>
                 <div class="col-lg-3 col-md-6 blog-grid-info px-0">
                     <div class="date-post">
-                        <h6 class="date">{{ $item->created_at }}</h6>
+                        <h6 class="date">
+{{--                            {{ $item->created_at }}--}}
+                        </h6>
                         <h4><a class="link-hny" href="{{ $item->url }}">{{ $item->name }}</a></h4>
                         <p>{!! $item->anons !!}</p>
                     </div>
@@ -442,6 +444,10 @@
                         </div>
                     @endif
                 @endforeach
+
+            </div>
+            <div class="text-right">
+                <a class="btn more black" href="/articles" role="button">Читать еще</a>
             </div>
         </div>
 
