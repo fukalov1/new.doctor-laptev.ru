@@ -18,3 +18,7 @@ Route::get('/', function () {
 Route::get('/articles', 'ArticleController@showAll');
 Route::get('/photo-reviews', 'PhotoReviewController@show');
 Route::get('/cities', 'CityController@show');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
