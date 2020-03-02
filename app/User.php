@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Profile;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -16,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'phone', 'password', 'user_id', 'deleted_at', 'city_id'
     ];
 
     /**
@@ -47,8 +48,40 @@ class User extends Authenticatable
 
 
     public function importUser() {
-        $users = \DB::connection('mysql2')->select('select * from users');
-        dd($users);
+        $users = \DB::connection('mysql2')->select('select * from users where email<> ""');
+        $s=0;
+        $e=0;
+        foreach ($users as $user) {
+            try {
+                $result = $this->updateOrCreate([
+                        'name' => $user->fio,
+                        'phone' => $user->phone,
+                        'password' => '12345678',
+                        'city_id' => $user->city,
+                    ],
+                        ['email' => $user->email]);
+                if ($result->id) {
+                    Profile::create([
+                        'user_id' => $result->id,
+                        'age' => $user->age,
+                        'weight' => $user->weight,
+                        'rost' => $user->rost,
+                        'davlen' => $user->davlen,
+                        'response' => $user->response,
+                        'info' => $user->info,
+                        'type' => $user->type,
+                        'created_at' => $user->date,
+                        'deleted_at' => $user->timestamp,
+                    ]);
+                }
+                $s++;
+            }
+            catch (\Exception $exception) {
+                $e++;
+                echo "Error ".$exception->getMessage()."\n";
+            }
+        }
+        echo "Import $s records. Skip $e.\n";
     }
 
 }

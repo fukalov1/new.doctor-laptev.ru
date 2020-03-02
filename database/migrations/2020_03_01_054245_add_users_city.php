@@ -15,6 +15,7 @@ class AddUsersCity extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->bigInteger('city_id')->unsigned()->default(1);
+            $table->string('phone')->nullable();
         });
     }
 
@@ -27,6 +28,7 @@ class AddUsersCity extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('city_id');
+            $table->dropColumn('phone');
         });
     }
 }

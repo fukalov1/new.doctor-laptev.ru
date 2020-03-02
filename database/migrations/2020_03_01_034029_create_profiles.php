@@ -16,7 +16,7 @@ class CreateProfiles extends Migration
         Schema::create('profiles', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('user_id')->unsigned();
-            $table->boolean('status');
+            $table->boolean('status')->default(false);
             $table->smallInteger('age');
             $table->smallInteger('weight');
             $table->smallInteger('rost');
