@@ -3,6 +3,7 @@
 namespace App\Admin\Controllers;
 
 use App\City;
+use App\Profile;
 use App\User;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
@@ -27,12 +28,39 @@ class UserController extends AdminController
     {
         $grid = new Grid(new User());
 
+        $grid->filter(function($filter){
+
+            // Remove the default id filter
+            $filter->disableIdFilter();
+
+            // Add a column filter
+            $filter->like('name', 'ФИО');
+            $filter->like('email', 'E-mail');
+            $filter->like('city.name', 'Город');
+            $filter->like('profiles.code', 'Код клиента');
+            $filter->equal('profiles.type')->radio([
+                ''   => 'Все',
+                'первичная'    => 'Первичная анкета',
+                'вторичная'    => 'Вторичная анкета',
+            ]);
+
+        });
+
 //        $grid->column('id', __('Id'));
         $grid->column('city.name', __('Город'));
-        $grid->column('name', 'ФИО')->display(function ($city) {
-            return '<a href="/admin/profiles" title="анкета">fdsfsd</a>';
-        });
+        $grid->column('name', __('ФИО'));
+//        $grid->column('name', 'ФИО')->display(function ($city) {
+//            return '<a href="/admin/profiles" title="анкета"></a>';
+//        });
         $grid->column('email', __('Email'));
+        $grid->anketa('Анкета')->display(function () {
+            $profiles = Profile::where('user_id', $this->id)->get();
+            $data = '';
+            foreach ($profiles as $profile) {
+                $data .= '<a href="/admin/show-anketa/'.$this->id.'">'.$profile->type.' от ('.$profile->created_at.')</a><br/>';
+            }
+            return $data;
+        });
 //        $grid->column('email_verified_at', __('Email verified at'));
 //        $grid->column('password', __('Password'));
 //        $grid->column('remember_token', __('Remember token'));

@@ -62,18 +62,16 @@ return [
                 PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
             ]) : [],
         ],
-        'mysql2' => [
+        'old' => [
             'driver' => 'mysql',
             'url' => env('DATABASE_URL'),
-            'host' => '127.0.0.1',
-            'port' => env('DB_PORT', '3306'),
+            'host' => 'localhost',
+            'port' => '3306',
             'database' => 'laptev_old',
             'username' => 'root',
-            'password' => 'fai',
-            'unix_socket' => env('DB_SOCKET', ''),
+            'password' => 'prm3rtm10',
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
-            'prefix' => '',
             'prefix_indexes' => true,
             'strict' => true,
             'engine' => null,
@@ -81,7 +79,6 @@ return [
                 PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
             ]) : [],
         ],
-
         'pgsql' => [
             'driver' => 'pgsql',
             'url' => env('DATABASE_URL'),

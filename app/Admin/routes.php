@@ -10,6 +10,8 @@ Route::group([
     'middleware'    => config('admin.route.middleware'),
 ], function (Router $router) {
 
+    $router->get('/show-anketa/{id}', 'ProfileUserController@index');
+
     $router->get('/', 'HomeController@index')->name('admin.home');
     $router->resource('pages', PageController::class);
     $router->resource('sub_pages', SubPageController::class)->middleware('set_page');
@@ -32,8 +34,7 @@ Route::group([
     $router->resource('cities', CityController::class);
     $router->resource('users', UserController::class);
     $router->resource('profiles', ProfileController::class)->middleware('set_user');
-
-
+    $router->resource('questions', QuestionController::class);
 
     $router->resource('sub-domains', SubDomainController::class);
 });
