@@ -69,7 +69,7 @@ return [
             'port' => '3306',
             'database' => 'laptev_old',
             'username' => 'root',
-            'password' => 'prm3rtm10',
+            'password' => 'fai',
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
             'prefix_indexes' => true,

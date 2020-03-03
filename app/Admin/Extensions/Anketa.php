@@ -2,6 +2,7 @@
 
 namespace App\Admin\Extensions;
 
+use App\User;
 use App\Profile;
 use App\Question;
 use Encore\Admin\Admin;
@@ -20,12 +21,17 @@ class Anketa
 
     public static function index($id)
     {
-        $profile = Profile::find($id);
-        $questions = Question::where('type', $profile->type)->get();
 
+        $type = 'первичная';
+        if($profile = Profile::find($id)) {
+            $type = $profile->type;
+        }
+        $questions = Question::where('type', $type)->get();
+dd(User::find($profile->user_id));
         return view('admin.anketa', [
+            'user' => User::find($profile->user_id),
             'profile' => $profile,
-            'questions' => $questions
+            'questions' => $questions,
             ]);
 
     }
