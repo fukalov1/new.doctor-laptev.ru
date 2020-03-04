@@ -35,6 +35,8 @@ Route::group([
     $router->resource('users', UserController::class);
     $router->resource('profiles', ProfileController::class)->middleware('set_user');
     $router->resource('questions', QuestionController::class);
+    $router->resource('pay-services', PayServiceController::class);
+
 
     $router->resource('sub-domains', SubDomainController::class);
 });
