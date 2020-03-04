@@ -15,9 +15,10 @@ class ProfileUserController extends Controller
 {
     public function index(Content $content, $id)
     {
+        $profile = Profile::find($id);
          return $content
-            ->title('Анкета')
-            ->description(Profile::find($id)->type)
+            ->title('Анкета '.$profile->type.' от '.$profile->created_at)
+            ->description($profile->user->name)
             ->row(function (Row $row) use ($id) {
 
                 $row->column(6, function (Column $column) use ($id) {

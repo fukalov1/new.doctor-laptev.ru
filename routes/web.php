@@ -18,6 +18,8 @@ Route::get('/', function () {
 Route::get('/articles', 'ArticleController@showAll');
 Route::get('/photo-reviews', 'PhotoReviewController@show');
 Route::get('/cities', 'CityController@show');
+Route::get('/survey/{type?}', 'SurveyController@show');
+Route::post('/survey', 'SurveyController@save');
 
 Auth::routes();
 

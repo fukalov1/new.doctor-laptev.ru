@@ -2,8 +2,9 @@
 
 namespace App;
 
-use Illuminate\Support\Facades\DB;
 use App\Profile;
+use http\Env\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -55,13 +56,14 @@ class User extends Authenticatable
             $e = 0;
             foreach ($users as $user) {
                 try {
-                    $result = $this->updateOrCreate([
+                    $result = $this->updateOrCreate(
+                        ['email' => $user->email],
+                        [
                         'name' => $user->fio,
                         'phone' => $user->phone,
                         'password' => '12345678',
                         'city_id' => $user->city,
-                    ],
-                        ['email' => $user->email]);
+                        ]);
                     if ($result->id) {
                         $profile = Profile::create([
                             'user_id' => $result->id,
@@ -76,10 +78,10 @@ class User extends Authenticatable
                             'deleted_at' => $user->timestamp,
                         ]);
                         $responses = explode(',', $user->response);
-                        echo "Response $user->response Profile $profile->id Count ".count($responses)."\n";
+//                        echo "Response $user->response Profile $profile->id Count ".count($responses)."\n";
                         foreach ($responses as $item) {
                             if((int)$item != 0) {
-                                echo "Attache answer $item to profile $profile->id\n";
+//                                echo "Attache answer $item to profile $profile->id\n";
                                 $profile->answers()->attach($item);
                             }
                         }
@@ -94,6 +96,39 @@ class User extends Authenticatable
         }
         catch (\Exception $exception) {
             echo "Error connect to database! ".$exception->getMessage()."\n";
+        }
+    }
+
+    public function createUser($user)
+    {
+            $result = $this->updateOrCreate(
+                ['email' => $user->email],
+                [
+                'name' => $user->name,
+                'phone' => $user->phone,
+                'password' => '12345678',
+                'city_id' => $user->city,
+                ]);
+
+        if ($result->id) {
+            $profile = Profile::create([
+                'user_id' => $result->id,
+                'age' => $user->age,
+                'weight' => $user->weight,
+                'rost' => $user->rost,
+                'davlen' => $user->davlen,
+                'response' => $user->response,
+                'info' => 'Последний визит '.$user->last_visit.' Беспокоит: '.$user->diseases,
+                'type' => $user->type
+            ]);
+            $responses = explode(',', $user->answers);
+//            echo "Response $user->response Profile $profile->id Count " . count($responses) . "\n";
+            foreach ($user->answer as $item) {
+                if ((int)$item != 0) {
+//                    echo "Attache answer $item to profile $profile->id\n";
+                    $profile->answers()->attach($item);
+                }
+            }
         }
     }
 

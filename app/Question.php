@@ -13,7 +13,6 @@ class Question extends Model
         return $this->hasMany(Answer::class);
     }
 
-
     public function importQuestion() {
         try {
             $questions = DB::connection('old')->select('select * from requests order by id');

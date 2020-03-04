@@ -29,7 +29,7 @@ class CityController extends AdminController
         $grid->column('id', __('Id'));
         $grid->column('date', __('Дата'));
         $grid->column('name', __('Name'));
-        $grid->column('text', __('Text'));
+//        $grid->column('text', __('Text'));
         $grid->column('show', __('Show'));
         $grid->column('orders', __('Orders'));
         $grid->column('created_at', __('Created at'));
