@@ -50,7 +50,7 @@ class User extends Authenticatable
 
     public function importUser() {
         try {
-            $users = DB::connection('old')->select('select * from users where email<> ""');
+            $users = DB::connection('old')->select('select * from users where email<> "" and city<>0');
             $s = 0;
             $e = 0;
             foreach ($users as $user) {

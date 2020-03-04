@@ -17,15 +17,11 @@ class ProfileUserController extends Controller
     {
          return $content
             ->title('Анкета')
-            ->description('Description...'. $id)
+            ->description(Profile::find($id)->type)
             ->row(function (Row $row) use ($id) {
 
-                $row->column(4, function (Column $column) use ($id) {
+                $row->column(6, function (Column $column) use ($id) {
                     $column->append(Anketa::index($id));
-                });
-
-                $row->column(4, function (Column $column) {
-                    $column->append(2);
                 });
             });
     }

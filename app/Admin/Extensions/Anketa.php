@@ -27,7 +27,7 @@ class Anketa
             $type = $profile->type;
         }
         $questions = Question::where('type', $type)->get();
-dd(User::find($profile->user_id));
+//dd(User::find($profile->user_id));
         return view('admin.anketa', [
             'user' => User::find($profile->user_id),
             'profile' => $profile,
