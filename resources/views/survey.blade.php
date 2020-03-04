@@ -7,8 +7,16 @@
 
     </div>
 
-    @if($message)
-
+    @if(isset($message))
+        <section class="banner_bottom py-5">
+            <div class="container py-md-5">
+        <h3>
+            {{  $message }}
+            <br/> Через 5 секунд Вы будете перенаправлены на главную страницу
+            <meta http-equiv="refresh" content="5;URL=/">
+        </h3>
+            </div>
+        </section>
     @endif
 
     @if($questions->count()>0)

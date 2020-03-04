@@ -60,6 +60,7 @@ class SurveyController extends Controller
         $data['type'] = $type;
         $data['error'] = $error;
         $data['request'] = $request;
+        $data['message'] = null;
         $page_blocks = $this->pageBlock->where('page_id', $page->id)->where('orders','>',0)->orderBy('orders')->get();
         $data['page_blocks'] = $page_blocks;
         return view($template, $data);
@@ -124,7 +125,7 @@ class SurveyController extends Controller
         $data['message'] = 'Ваша анкета успешно зарегистрирована!';
         $page_blocks = $this->pageBlock->where('page_id', $page->id)->where('orders','>',0)->orderBy('orders')->get();
         $data['page_blocks'] = $page_blocks;
-
+//dd($data);
         return view('survey', $data);
     }
 

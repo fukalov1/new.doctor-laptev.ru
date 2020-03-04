@@ -11,19 +11,19 @@ class City extends Model
 
     public function importCity() {
         try {
-            $cities = DB::connection('old')->select('select * from cities order by id');
+            $cities = DB::connection('old')->select('select * from cities');
             $s = 0;
             $e = 0;
             foreach ($cities as $city) {
                 try {
                     $show = $city->orders ? true : false;
-                    $result = $this->updateOrCreate([
-                        'name' => $city->name,
+                    $result = $this->updateOrCreate(
+                        ['id' => $city->id],
+                        ['name' => $city->name,
                         'text' => $city->txt,
                         'date' => $city->data,
                         'show' => $show,
-                    ],
-                        ['id' => $city->id]);
+                    ]);
                     $s++;
                 } catch (\Exception $exception) {
                     $e++;
