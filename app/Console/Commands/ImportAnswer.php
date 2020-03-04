@@ -2,35 +2,35 @@
 
 namespace App\Console\Commands;
 
-use App\User;
+use App\Answer;
 use Illuminate\Console\Command;
 
-class ImportUser extends Command
+class ImportAnswer extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'command:import_users';
+    protected $signature = 'command:import_answers';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $user;
-    protected $description = 'Импорт клиентов';
+    protected $answer;
+    protected $description = 'Command description';
 
     /**
      * Create a new command instance.
      *
      * @return void
      */
-    public function __construct(user $user)
+    public function __construct(Answer $answer)
     {
         parent::__construct();
-        $this->user = $user;
+        $this->answer = $answer;
     }
 
     /**
@@ -40,6 +40,6 @@ class ImportUser extends Command
      */
     public function handle()
     {
-        $this->user->importUser();
+        $this->answer->importAnswer();
     }
 }

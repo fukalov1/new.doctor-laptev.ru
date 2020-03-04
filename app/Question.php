@@ -9,9 +9,14 @@ class Question extends Model
 {
     protected $fillable = ['name', 'text', 'date', 'type'];
 
+    public function answers() {
+        return $this->hasMany(Answer::class);
+    }
+
+
     public function importQuestion() {
         try {
-            $questions = DB::connection('old')->select('select * from requests order by orders');
+            $questions = DB::connection('old')->select('select * from requests order by id');
             $s = 0;
             $e = 0;
             foreach ($questions as $question) {

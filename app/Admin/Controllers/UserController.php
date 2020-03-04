@@ -57,7 +57,7 @@ class UserController extends AdminController
             $profiles = Profile::where('user_id', $this->id)->get();
             $data = '';
             foreach ($profiles as $profile) {
-                $data .= '<a href="/admin/show-anketa/'.$this->id.'">'.$profile->type.' от ('.$profile->created_at.')</a><br/>';
+                $data .= '<a href="/admin/show-anketa/'.$profile->id.'">'.$profile->type.' от ('.$profile->created_at.')</a><br/>';
             }
             return $data;
         });

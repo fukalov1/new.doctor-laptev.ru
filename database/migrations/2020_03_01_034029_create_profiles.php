@@ -25,6 +25,7 @@ class CreateProfiles extends Migration
             $table->string('response')->nullable();
             $table->text('info')->nullable();
             $table->enum('type', ['1'=>'первичная', '2'=>'вторичная']);
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->softDeletes();
             $table->timestamps();
         });

@@ -3,9 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="3c791e86-834c-48b9-b2fa-0e52a8ebe085" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Admin/Controllers/ProfileUserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Admin/Controllers/ProfileUserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Admin/Extensions/Anketa.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Admin/Extensions/Anketa.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Admin/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Admin/Controllers/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Console/Commands/ImportUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Console/Commands/ImportUser.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Profile.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Profile.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Question.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Question.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_03_01_034029_create_profiles.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_03_01_034029_create_profiles.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/anketa.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/anketa.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -190,7 +193,8 @@
       <workItem from="1582213831231" duration="4815000" />
       <workItem from="1582697787874" duration="659000" />
       <workItem from="1582702282064" duration="7066000" />
-      <workItem from="1583132899572" duration="25726000" />
+      <workItem from="1583132899572" duration="26908000" />
+      <workItem from="1583298848082" duration="9616000" />
     </task>
     <servers />
   </component>
@@ -209,16 +213,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/app/Admin/Extensions/Anketa.php</url>
-          <line>5</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

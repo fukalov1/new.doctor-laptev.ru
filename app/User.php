@@ -63,7 +63,7 @@ class User extends Authenticatable
                     ],
                         ['email' => $user->email]);
                     if ($result->id) {
-                        Profile::create([
+                        $profile = Profile::create([
                             'user_id' => $result->id,
                             'age' => $user->age,
                             'weight' => $user->weight,
@@ -75,11 +75,19 @@ class User extends Authenticatable
                             'created_at' => $user->date,
                             'deleted_at' => $user->timestamp,
                         ]);
+                        $responses = explode(',', $user->response);
+                        echo "Response $user->response Profile $profile->id Count ".count($responses)."\n";
+                        foreach ($responses as $item) {
+                            if((int)$item != 0) {
+                                echo "Attache answer $item to profile $profile->id\n";
+                                $profile->answers()->attach($item);
+                            }
+                        }
                     }
                     $s++;
                 } catch (\Exception $exception) {
                     $e++;
-                    echo "Error " . $exception->getMessage() . "\n";
+//                    echo "Error " . $exception->getMessage() . "\n";
                 }
             }
             echo "Import $s records. Skip $e.\n";

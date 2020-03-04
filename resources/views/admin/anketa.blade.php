@@ -28,14 +28,6 @@
             </tr>
             <tr>
                 <td>
-
-                </td>
-                <td>
-                    {{ $user->city->name }}
-                </td>
-            </tr>
-            <tr>
-                <td>
                     Email
                 </td>
                 <td>
@@ -76,43 +68,25 @@
             </tr>
             <tr>
                 <td>
-                    Информация
+                    Дополнительная информация
                 </td>
                 <td>
-                    {{ $profile->response }}
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Беспокоит
-                </td>
-                <td>
-                    {{ $profile->response }}
+                    {{ $profile->info }}
                 </td>
             </tr>
-            <tr>
-                <td>
-                    Инвалидность
-                </td>
-                <td>
 
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Что беспокоит
-                </td>
-                <td>
+{{--            {{ dd($profile->answers()) }}--}}
 
-                </td>
-            </tr>
+            @foreach($profile->answers as $answer)
+                <tr>
+                    <td>
+                        {{ $answer->question->text }}
+                    </td>
+                    <td>
+                        {{ $answer->text }}
+                    </td>
+                </tr>
+            @endforeach
         </tbody>
     </table>
-
-    <div class="col-sm-6">
-        @foreach($questions as $question)
-            {{ $question->text }}: <br/>
-            @endforeach
-
-    </div>
 </div>
