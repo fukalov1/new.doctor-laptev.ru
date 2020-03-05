@@ -26,14 +26,20 @@ class CityController extends AdminController
     {
         $grid = new Grid(new City());
 
-        $grid->column('id', __('Id'));
+//        $grid->column('id', __('Id'));
         $grid->column('date', __('Дата'));
-        $grid->column('name', __('Name'));
+        $grid->column('name', __('Город'));
+        $grid->column('image', 'Картинка')->display(function () {
+            $str = $this->image!='' ? '<img src="/uploads/images/'.$this->image.'" height="100"/>' : '';
+            return $str;
+        });
 //        $grid->column('text', __('Text'));
-        $grid->column('show', __('Show'));
-        $grid->column('orders', __('Orders'));
-        $grid->column('created_at', __('Created at'));
-        $grid->column('updated_at', __('Updated at'));
+        $grid->column('show', 'Активен')->display(function () {
+            return $this->show ? 'да' : 'нет';
+        });
+//        $grid->column('orders', __('Orders'));
+//        $grid->column('created_at', __('Created at'));
+//        $grid->column('updated_at', __('Updated at'));
 
         return $grid;
     }
@@ -67,7 +73,7 @@ class CityController extends AdminController
     protected function form()
     {
         $form = new Form(new City());
-
+        $form->switch('show', __('Активен'));
         $form->date('date', __('Дата'));
         $form->text('name', __('Наименование'));
         $form->myimage('image', __('Image'));
@@ -83,7 +89,7 @@ class CityController extends AdminController
                     'filebrowserWindowWidth' => '1000',
                     'filebrowserWindowHeight' => '700'
                 ])->default('-');
-        $form->switch('show', __('Активен'));
+
         $form->number('orders', __('Очередность'))->default(1);
 
         return $form;

@@ -37,8 +37,8 @@ class UserController extends AdminController
             $filter->like('name', 'ФИО');
             $filter->like('email', 'E-mail');
             $filter->like('city.name', 'Город');
-            $filter->like('profiles.code', 'Код клиента');
-            $filter->equal('profiles.type')->radio([
+//            $filter->like('profiles.code', 'Код клиента');
+            $filter->equal('profiles.type', 'Тип анкет')->radio([
                 ''   => 'Все',
                 'первичная'    => 'Первичная анкета',
                 'вторичная'    => 'Вторичная анкета',
@@ -46,12 +46,15 @@ class UserController extends AdminController
 
         });
 
+        $grid->model()->orderBy('id', 'desc');
+
 //        $grid->column('id', __('Id'));
         $grid->column('city.name', __('Город'));
         $grid->column('name', __('ФИО'));
 //        $grid->column('name', 'ФИО')->display(function ($city) {
 //            return '<a href="/admin/profiles" title="анкета"></a>';
 //        });
+        $grid->column('phone', __('Телефон'));
         $grid->column('email', __('Email'));
         $grid->anketa('Анкета')->display(function () {
             $profiles = Profile::where('user_id', $this->id)->get();
@@ -64,8 +67,8 @@ class UserController extends AdminController
 //        $grid->column('email_verified_at', __('Email verified at'));
 //        $grid->column('password', __('Password'));
 //        $grid->column('remember_token', __('Remember token'));
-        $grid->column('created_at', __('Created at'));
-        $grid->column('updated_at', __('Updated at'));
+//        $grid->column('created_at', __('Created at'));
+//        $grid->column('updated_at', __('Updated at'));
 
         return $grid;
     }

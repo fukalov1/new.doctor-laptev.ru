@@ -48,15 +48,15 @@ class CodeController extends AdminController
 
 //        $grid->column('id', __('Id'));
 //        $grid->column('group_code_id', __('Group code id'));
-        $grid->column('client', __('Клиент'));
+        $grid->column('client', __('Клиент'))->sortable();
         $grid->column('phone', __('Телефон'));
         $grid->column('email', __('Email'));
         $grid->column('code', __('Номер'));
-        $grid->column('count', __('Просмотры'));
+        $grid->column('count', __('Просмотры'))->sortable();
         $grid->column('free', __('Выдан'))->display(function () {
             return $this->free ? 'нет' : 'да';
-        });
-        $grid->column('date', __('Дата выдачи'));
+        })->sortable();
+        $grid->column('date', __('Дата выдачи'))->sortable();
 //        $grid->column('updated_at', __('Updated at'));
 
         return $grid;
