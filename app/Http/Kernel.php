@@ -69,6 +69,7 @@ class Kernel extends HttpKernel
         'set_direction' => \App\Http\Middleware\SetDirection::class,
         'set_photo_review' => \App\Http\Middleware\SetPhotoReview::class,
         'set_mailform' => \App\Http\Middleware\SetMailForm::class,
+        'set_group_code' => \App\Http\Middleware\SetGroupCode::class,
     ];
 
     /**

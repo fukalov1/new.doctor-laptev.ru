@@ -15,7 +15,7 @@ class CreateGroupCodes extends Migration
     {
         Schema::create('group_codes', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('pay_service_id')->unsigned();
+            $table->bigInteger('pay_service_id')->default(0)->unsigned();
             $table->string('name');
             $table->date('start_date');
             $table->date('end_date');

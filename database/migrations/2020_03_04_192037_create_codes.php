@@ -16,12 +16,14 @@ class CreateCodes extends Migration
         Schema::create('codes', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('group_code_id')->unsigned();
-            $table->string('client');
+            $table->string('client')->nullable();
             $table->string('phone')->nullable();
-            $table->string('email');
-            $table->string('code',10)->unique();
+            $table->string('email')->nullable();
+            $table->string('code',10);
             $table->integer('count')->default(0);
             $table->boolean('free')->default(true);
+            $table->unique(['group_code_id', 'code']);
+            $table->foreign('group_code_id')->on('group_codes')->references('id')->onDelete('cascade');
             $table->timestamps();
         });
     }

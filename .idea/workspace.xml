@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3c791e86-834c-48b9-b2fa-0e52a8ebe085" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Http/Middleware/SetGroupCode.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Admin/routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Admin/routes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_03_04_192020_create_group_codes.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_03_04_192020_create_group_codes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_03_04_192037_create_codes.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_03_04_192037_create_codes.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -139,7 +143,7 @@
   <component name="ProjectId" id="1XwekaV3HMHoKu8cGuljl4cidvp" />
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Http/Middleware" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -147,11 +151,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/Http/Middleware" />
       <recent name="$PROJECT_DIR$/resources/views" />
       <recent name="$PROJECT_DIR$/app/Http/Controllers" />
       <recent name="$PROJECT_DIR$/app/Admin/Extensions" />
       <recent name="$PROJECT_DIR$/app/Admin/Controllers" />
-      <recent name="$PROJECT_DIR$/resources/views/admin" />
     </key>
   </component>
   <component name="RunDashboard">
