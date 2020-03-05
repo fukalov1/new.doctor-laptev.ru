@@ -9,8 +9,9 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Home One || Liendo</title>
-    <meta name="description" content="">
+    <title>{{ $data->title  }}</title>
+    <meta name="description" content="{{ $data->description }}" />
+    <meta name="keywords" content="{{ $data->keywords }}"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     @include('layouts.styles')
