@@ -22,6 +22,7 @@ class CreateCodes extends Migration
             $table->string('code',10);
             $table->integer('count')->default(0);
             $table->boolean('free')->default(true);
+            $table->dateTime('date')->nullable();
             $table->unique(['group_code_id', 'code']);
             $table->foreign('group_code_id')->on('group_codes')->references('id')->onDelete('cascade');
             $table->timestamps();

@@ -26,6 +26,24 @@ class CodeController extends AdminController
     {
         $grid = new Grid(new Code());
 
+        $grid->filter(function($filter){
+
+            // Remove the default id filter
+            $filter->disableIdFilter();
+
+            // Add a column filter
+            $filter->like('client', 'Клиент');
+            $filter->like('email', 'E-mail');
+            $filter->like('code', 'Номер кода');
+            $filter->between('date', 'Дата выдачи')->date();
+            $filter->equal('free')->radio([
+                ''   => 'Все',
+                '1'    => 'свободные',
+                '0'    => 'выданные',
+            ]);
+
+        });
+
         $grid->model()->where('group_code_id', session('group_code_id'));
 
 //        $grid->column('id', __('Id'));
@@ -35,8 +53,10 @@ class CodeController extends AdminController
         $grid->column('email', __('Email'));
         $grid->column('code', __('Номер'));
         $grid->column('count', __('Просмотры'));
-        $grid->column('free', __('Свободен'));
-//        $grid->column('created_at', __('Created at'));
+        $grid->column('free', __('Выдан'))->display(function () {
+            return $this->free ? 'нет' : 'да';
+        });
+        $grid->column('date', __('Дата выдачи'));
 //        $grid->column('updated_at', __('Updated at'));
 
         return $grid;

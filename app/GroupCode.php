@@ -21,7 +21,7 @@ class GroupCode extends Model
     public function importCodes() {
         try {
             $datas = DB::connection('old')->select('select * from grp_codes');
-            $code_datas = DB::connection('old')->select('select * from codes');
+
             $s = 0;
             $e = 0;
             foreach ($datas as $item) {
@@ -33,7 +33,9 @@ class GroupCode extends Model
                             'end_date' => $item->date2,
                         ]);
                     if ($result->id) {
+                        $code_datas = DB::connection('old')->select('select * from codes where grp='.$result->id);
                         foreach ($code_datas as $item1) {
+                            $free = $item1->count ? false : true;
                             $codes = Code::updateOrCreate(
                                 ['id' => $item1->id],
                                 ['group_code_id' => $result->id,
@@ -42,7 +44,8 @@ class GroupCode extends Model
                                     'email' => $item1->email,
                                     'code' => $item1->code,
                                     'count' => $item1->count,
-                                    'free' => $item1->free,
+                                    'free' => $free,
+                                    'date' => $item1->timestamp,
                                 ]);
                         }
                     }
