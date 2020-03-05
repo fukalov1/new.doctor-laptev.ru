@@ -660,31 +660,29 @@
         },
         {
             "name": "encore/laravel-admin",
-            "version": "v1.7.10",
+            "version": "v1.7.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/z-song/laravel-admin.git",
-                "reference": "da7510f8c1ef49477eaba8a976e6f13e34fd0caf"
+                "reference": "326c9c31fa8ad76a0fefd15bff93c70dbdae7d7b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/z-song/laravel-admin/zipball/da7510f8c1ef49477eaba8a976e6f13e34fd0caf",
-                "reference": "da7510f8c1ef49477eaba8a976e6f13e34fd0caf",
+                "url": "https://api.github.com/repos/z-song/laravel-admin/zipball/326c9c31fa8ad76a0fefd15bff93c70dbdae7d7b",
+                "reference": "326c9c31fa8ad76a0fefd15bff93c70dbdae7d7b",
                 "shasum": ""
             },
             "require": {
                 "doctrine/dbal": "2.*",
-                "laravel/framework": "~5.5|~6.0",
+                "laravel/framework": ">=5.5",
                 "php": ">=7.0.0",
                 "symfony/dom-crawler": "~3.1|~4.0|~5.0"
             },
             "require-dev": {
                 "fzaninotto/faker": "~1.4",
                 "intervention/image": "~2.3",
-                "laravel/browser-kit-testing": "^2.0",
-                "laravel/laravel": "~5.5|~6.0",
-                "phpunit/phpunit": "~6.0|~8.0",
-                "symfony/css-selector": "~3.1"
+                "laravel/browser-kit-testing": "^6.0",
+                "laravel/laravel": ">=5.5"
             },
             "suggest": {
                 "intervention/image": "Required to handling and manipulation upload images (~2.3).",
@@ -727,7 +725,7 @@
                 "grid",
                 "laravel"
             ],
-            "time": "2020-03-02T15:56:33+00:00"
+            "time": "2020-03-04T14:17:40+00:00"
         },
         {
             "name": "fideloper/proxy",

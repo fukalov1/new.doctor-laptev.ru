@@ -1,3 +1,47 @@
+<section class="banner_bottom py-5" id="appointment">
+    <div class="container py-md-5">
+        <div class="row inner_sec_info">
+
+
+            <div class="col-lg-5 banner_bottom_left">
+
+                <div class="login p-md-5 p-4 mx-auto bg-white mw-100">
+                    <h4>
+                        Письмо Доктору Лаптеву</h4>
+                    <form action="#" method="post">
+                        <div class="form-group">
+                            <label>Ваше имя</label>
+
+                            <input type="text" class="form-control" id="validationDefault01" placeholder="" required="">
+                        </div>
+                        <div class="form-group">
+                            <label>Ваш Email</label>
+                            <input type="text" class="form-control" id="validationDefault02" placeholder="" required="">
+                        </div>
+
+                        <div class="form-group mb-4">
+                            <label class="mb-2">Ваш телефон</label>
+                            <input type="text" class="form-control" id="password1" placeholder="" required="">
+                        </div>
+
+                        <button type="submit" class="btn more black submit mb-4">Отправить</button>
+
+                    </form>
+
+                </div>
+
+            </div>
+            <div class="col-lg-7 banner_bottom_grid help pl-lg-5">
+                <img src="images/ab2.jpg" alt=" " class="img-fluid mb-4">
+                <h4><a class="link-hny" href="/onlayn-servis">Хотите начать худеть?</a></h4>
+                <p class="mt-3">Пройдите <a href="/survey">первичное анкетирование</a> и получите первоочередное право на <a href="/ob-avtore/moy-trenning">треннинг</a>.</p>
+
+            </div>
+        </div>
+
+    </div>
+</section>
+
 <!-- footer -->
 <footer class="py-lg-5 py-4" id="contacts">
     <div class="container py-sm-3">

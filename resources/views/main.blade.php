@@ -102,8 +102,8 @@
                         <h3>СОЗДАЕМ НОВОЕ
                             <br>ПИЩЕВОЕ ПОВЕДЕНИЕ</h3>
                         <div class="top-buttons mx-auto text-center mt-md-5 mt-3">
-                            <a href="single.html" class="btn more mr-2">Подробнее</a>
-                            <a href="contact.html" class="btn">Записаться</a>
+                            <a href="/ob-avtore/moy-trenning" class="btn more mr-2">Подробнее</a>
+                            <a href="/onlayn-servis" class="btn">Записаться</a>
                         </div>
                         <div class="d-flex hny-stats-inf">
                             <div class="col-md-4 stats_w3pvt_counter_grid mt-3">
@@ -453,51 +453,7 @@
 
     </section>
     <!-- //blogs -->
-    <!--/mid-->
-    <section class="banner_bottom py-5" id="appointment">
-        <div class="container py-md-5">
-            <div class="row inner_sec_info">
 
-
-                <div class="col-lg-5 banner_bottom_left">
-
-                    <div class="login p-md-5 p-4 mx-auto bg-white mw-100">
-                        <h4>
-                            Письмо Доктору Лаптеву</h4>
-                        <form action="#" method="post">
-                            <div class="form-group">
-                                <label>Ваше имя</label>
-
-                                <input type="text" class="form-control" id="validationDefault01" placeholder="" required="">
-                            </div>
-                            <div class="form-group">
-                                <label>Ваш Email</label>
-                                <input type="text" class="form-control" id="validationDefault02" placeholder="" required="">
-                            </div>
-
-                            <div class="form-group mb-4">
-                                <label class="mb-2">Ваш телефон</label>
-                                <input type="text" class="form-control" id="password1" placeholder="" required="">
-                            </div>
-
-                            <button type="submit" class="btn more black submit mb-4">Отправить</button>
-
-                        </form>
-
-                    </div>
-
-                </div>
-                <div class="col-lg-7 banner_bottom_grid help pl-lg-5">
-                    <img src="images/ab2.jpg" alt=" " class="img-fluid mb-4">
-                    <h4><a class="link-hny" href="contact.html">Stat Your Project Now?</a></h4>
-                    <p class="mt-3">Lorem Ipsum is simply text the printing and typesetting standard industry.Quisque sagittis lacus eu lorem. </p>
-
-                </div>
-            </div>
-
-        </div>
-    </section>
-    <!--//mid-->
 
     <!--/services-->
     <section class="testmonials" id="test">
