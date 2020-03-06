@@ -32,9 +32,9 @@
 
             </div>
             <div class="col-lg-7 banner_bottom_grid help pl-lg-5">
-                <img src="images/ab2.jpg" alt=" " class="img-fluid mb-4">
-                <h4><a class="link-hny" href="/onlayn-servis">Хотите начать худеть?</a></h4>
-                <p class="mt-3">Пройдите <a href="/survey">первичное анкетирование</a> и получите первоочередное право на <a href="/ob-avtore/moy-trenning">треннинг</a>.</p>
+                <img src="images/ab1.jpg" alt=" " class="img-fluid mb-4">
+                <h4><a class="link-hny" href="/onlayn-servis">НАЧНЕМ ПРОГРАММУ?</a></h4>
+                <p class="mt-3">Пройдите <a href="/survey">первичное анкетирование</a> и получите первоочередное право на <a href="/ob-avtore/moy-trenning">тренинг</a>.</p>
 
             </div>
         </div>
