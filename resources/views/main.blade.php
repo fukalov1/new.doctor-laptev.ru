@@ -461,77 +461,34 @@
             <div class="container py-md-5">
                 <h3 class="tittle-w3ls two text-center mb-5">Отзывы</h3>
                 <div class="row my-4">
+                    @foreach($reviews as $item)
                     <div class="col-lg-4 testimonials_grid mt-3">
                         <div class="p-lg-5 p-4 testimonials-gd-vj">
-                            <p class="sub-test"><span class="fa fa-quote-left s4" aria-hidden="true"></span> Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod possimus, omnis voluptas.
+                            <p class="text-main-review">
+{{--                                <span class="fa fa-quote-left s4" aria-hidden="true"></span>--}}
+                                {{ strip_tags($item->text) }}
                             </p>
                             <div class="row mt-4">
                                 <div class="col-3 testi-img-res">
-                                    <img src="images/t1.jpg" alt=" " class="img-fluid">
                                 </div>
                                 <div class="col-9 testi_grid">
-                                    <h5 class="mb-2">Thomas Carl</h5>
-                                    <p>Add xxxx</p>
+                                    <h5 class="mb-2">
+                                        {{ $item->name }}
+                                    </h5>
+                                    <p>{{ $item->city }}</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 testimonials_grid mt-3">
-                        <div class="p-lg-5 p-4 testimonials-gd-vj">
-                            <p class="sub-test"><span class="fa fa-quote-left s4" aria-hidden="true"></span>Quisque sagittis lacus eu lorem , cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod possimus.
-                            </p>
-                            <div class="row mt-4">
-                                <div class="col-3 testi-img-res">
-                                    <img src="images/t2.jpg" alt=" " class="img-fluid">
-                                </div>
-                                <div class="col-9 testi_grid">
-                                    <h5 class="mb-2">Adam Ster</h5>
-                                    <p>Add xxxx</p>
-                                </div>
-                            </div>
+                    @endforeach
+                        <div class="text-right">
+                            <a class="btn more black" href="/reviews" role="button">Все отзывы</a>
                         </div>
-                    </div>
-                    <div class="col-lg-4 testimonials_grid mt-3">
-                        <div class="p-lg-5 p-4 testimonials-gd-vj">
-                            <p class="sub-test"><span class="fa fa-quote-left s4" aria-hidden="true"></span> Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod possimus, omnis voluptas.
-                            </p>
-                            <div class="row mt-4">
-                                <div class="col-3 testi-img-res">
-                                    <img src="images/t1.jpg" alt=" " class="img-fluid">
-                                </div>
-                                <div class="col-9 testi_grid">
-                                    <h5 class="mb-2">Dane Walker</h5>
-                                    <p>Add xxxx</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
     </section>
     <!--//testimonials-->
 
-    <!-- /news-letter -->
-{{--    <section class="news-letter-w3pvt py-5">--}}
-{{--        <div class="container contact-form mx-auto text-left">--}}
-{{--            <h3 class="title-w3ls two text-left mb-3">Newsletter </h3>--}}
-{{--            <form method="post" action="#" class="w3ls-frm">--}}
-{{--                <div class="row subscribe-sec">--}}
-{{--                    <p class="news-para col-lg-3">Start working together?</p>--}}
-{{--                    <div class="col-lg-6 con-gd">--}}
-{{--                        <input type="email" class="form-control" id="email" placeholder="Your Email here..." name="email" required>--}}
-
-{{--                    </div>--}}
-{{--                    <div class="col-lg-3 con-gd">--}}
-{{--                        <button type="submit" class="btn submit">Subscribe</button>--}}
-{{--                    </div>--}}
-
-{{--                </div>--}}
-
-{{--            </form>--}}
-{{--        </div>--}}
-{{--    </section>--}}
-    <!-- //news-letter -->
 
 @stop

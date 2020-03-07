@@ -55,7 +55,7 @@ class CityController extends Controller
         $data['address'] = config('address');
         $data['pages'] = $this->page->getMenu();
         $data['cities'] = $cities;
-        $data['reviews'] = collect([]);
+        $data['photo_reviews'] = collect([]);
         $data['articles'] = collect([]);
         $page_blocks = $this->pageBlock->where('page_id', $page->id)->where('orders','>',0)->orderBy('orders')->get();
         $data['page_blocks'] = $page_blocks;

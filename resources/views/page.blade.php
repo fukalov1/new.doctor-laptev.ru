@@ -290,12 +290,12 @@
         </section>
     @endif
 
-    @if($reviews->count()>0)
+    @if($photo_reviews->count()>0)
         <section class="projects py-5" id="gallery">
             <div class="container py-md-5">
                 <h3 class="tittle-w3ls text-left mb-5"><span class="pink">Потрясающие</span> результаты!</h3>
                 <div class="row news-grids mt-md-5 mt-4 text-center">
-                    @foreach($reviews as $item)
+                    @foreach($photo_reviews as $item)
                         <div class="col-md-4 gal-img">
                             <a href="#gal{{ $item->id }}">
                                 <div class="img-dbl">
@@ -312,7 +312,7 @@
                     @endforeach
                 </div>
                 <!-- popup-->
-                @foreach($reviews as $item)
+                @foreach($photo_reviews as $item)
                     <div id="gal{{ $item->id }}" class="pop-overlay">
                         <div class="popup">
                             <img src="{{ asset('uploads/images/'.$item->image) }}" alt="Popup Image"
@@ -330,7 +330,7 @@
             </div>
             <!-- //projects -->
             <div class="container text-center paginator">
-                {{ $reviews->links() }}
+                {{ $photo_reviews->links() }}
             </div>
         </section>
 
@@ -365,20 +365,6 @@
                     </div>
                 </div>
 
-{{--                <ul class="nav months">--}}
-{{--                @foreach($months as $item)--}}
-{{--                    <li>--}}
-{{--                        <a href=""--}}
-{{--                           @if($loop->index+1==$month)--}}
-{{--                            class="selected"--}}
-{{--                           @endif--}}
-{{--                            >--}}
-{{--                            {{ $item }}--}}
-{{--                        </a> &nbsp;|&nbsp;--}}
-{{--                    </li>--}}
-{{--                @endforeach--}}
-
-{{--                </ul>--}}
 
                 @foreach($cities as $item)
                         <div class="row inner_sec_info">
@@ -390,7 +376,6 @@
                                 <h4><a class="link-hny" href="services.html">
                                         {{ $item->name }}</a></h4>
                                 {!! $item->text !!}
-{{--                                <a class="btn more black mt-3" href="services.html" role="button">Подробнее</a>--}}
 
                             </div>
                         </div>
@@ -401,44 +386,6 @@
     @endif
 
 
-    <!-- /blogs -->
-{{--    <section class="blog-posts" id="blog">--}}
-{{--        <div class="blog-w3pvt-info-content container-fluid">--}}
-{{--            <h3 class="tittle-w3ls text-center mb-5">Что почитать...</h3>--}}
-
-{{--            <div class="blog-grids-main row text-left">--}}
-{{--                @foreach($main_article as $item)--}}
-{{--                    @if($loop->iteration<3)--}}
-{{--                        <div class="col-lg-3 col-md-6 blog-grid-img px-0">--}}
-{{--                            <img src="{{ asset('uploads/images/thumbnail/'.$item->image) }}" alt="Popup Image" class="img-fluid" />--}}
-{{--                        </div>--}}
-{{--                        <div class="col-lg-3 col-md-6 blog-grid-info px-0">--}}
-{{--                            <div class="date-post">--}}
-{{--                                <h6 class="date">{{ $item->created_at }}</h6>--}}
-{{--                                <h4><a class="link-hny" href="single.html">{{ $item->name }}</a></h4>--}}
-{{--                                <p>{!! $item->anons !!}</p>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    @else--}}
-{{--                        <div class="col-lg-3 col-md-6 blog-grid-info px-0">--}}
-{{--                            <div class="date-post">--}}
-{{--                                <h6 class="date">{{ $item->created_at }}</h6>--}}
-{{--                                <h4><a class="link-hny" href="single.html">{{ $item->name }}</a></h4>--}}
-{{--                                <p>{!! $item->anons !!}</p>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                        <div class="col-lg-3 col-md-6 blog-grid-img px-0">--}}
-{{--                            <img src="{{ asset('uploads/images/thumbnail/'.$item->image) }}" alt="Popup Image" class="img-fluid" />--}}
-{{--                        </div>--}}
-{{--                    @endif--}}
-{{--                @endforeach--}}
-{{--            </div>--}}
-
-{{--        </div>--}}
-
-{{--    </section>--}}
-    <!-- //blogs -->
-    <!--/mid-->
 
 
 @stop

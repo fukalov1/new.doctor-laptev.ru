@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\QuestBlock;
+use App\Review;
 use App\SubDomain;
 use Mail;
 use App\Page;
@@ -20,7 +21,7 @@ class PageController extends Controller
     public $bread_crubs;
 
     public function __construct(Page $page, PageBlock $pageBlock, Direction $direction, DirectionItem $directionItem,
-                                Slider $slider, SliderItem $sliderItem, Photoset $photoset, MailForm $mailForm)
+                                Slider $slider, SliderItem $sliderItem, Photoset $photoset, MailForm $mailForm, Review $review)
     {
         $this->page = $page;
         $this->pageBlock = $pageBlock;
@@ -30,6 +31,7 @@ class PageController extends Controller
         $this->directionItem = $directionItem;
         $this->photoset = $photoset;
         $this->mailForm = $mailForm;
+        $this->reviews = $review;
     }
 
     public function show(Page $page)
@@ -60,9 +62,10 @@ class PageController extends Controller
         $data['email'] = config('email');
         $data['address'] = config('address');
         $data['pages'] = $this->page->getMenu();
-        $data['reviews'] = collect([]);
+        $data['photo_reviews'] = collect([]);
         $data['articles'] = collect([]);
         $data['cities'] = collect([]);
+        $data['reviews'] = $this->reviews->getMainReview();
         $data['main_article'] = $this->page->getMainArticle();
         $data['main_photo_review'] = $this->page->getMainPhotoReview();
 //        dd($this->page->getMainPhotoReview());

@@ -46,7 +46,7 @@ class ArticleController extends Controller
         $data['pages'] = $this->page->getMenu();
         $data['articles'] = $articles;
         $data['cities'] = collect([]);
-        $data['reviews'] = collect([]);
+        $data['photo_reviews'] = collect([]);
         $page_blocks = $this->pageBlock->where('page_id', $page->id)->where('orders','>',0)->orderBy('orders')->get();
         $data['page_blocks'] = $page_blocks;
         return view($template, $data);

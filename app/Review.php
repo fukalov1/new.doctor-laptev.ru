@@ -51,4 +51,10 @@ class Review extends Model
         return $result;
     }
 
+    public function getMainReview() {
+
+        return $this->inRandomOrder()->where('hide',false)->take(3)->get();
+
+    }
+
 }
