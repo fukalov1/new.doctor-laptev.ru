@@ -39,6 +39,7 @@ Route::group([
     $router->resource('group-codes', GroupCodeController::class);
     $router->resource('codes', CodeController::class)->middleware('set_group_code');
 
+    $router->resource('reviews', ReviewController::class);
 
-    $router->resource('sub-domains', SubDomainController::class);
+//    $router->resource('sub-domains', SubDomainController::class);
 });
