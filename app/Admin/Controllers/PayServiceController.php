@@ -15,7 +15,7 @@ class PayServiceController extends AdminController
      *
      * @var string
      */
-    protected $title = 'App\PayService';
+    protected $title = 'Платные сервисы';
 
     /**
      * Make a grid builder.
@@ -26,20 +26,43 @@ class PayServiceController extends AdminController
     {
         $grid = new Grid(new PayService());
 
+        $grid->actions(function ($actions) {
+            $actions->prepend('<a href=""><i class="fa fa-paper-plane"></i>Медиа-файлы</a>');
+        });
+
         $grid->column('name', __('Наименование'));
         $grid->column('price', __('Стоимость'));
         $grid->column('active', __('Активный'))->display(function () {
             return $this->active ? 'нет' : 'да';
         })->sortable();
-        $grid->column('show_count', __('Максимальное число показов'));
-        $grid->column('max_time', __('Максимальное время показа'));
-//        $grid->column('text', __('Text'));
-//        $grid->column('image', __('Image'));
-        $grid->column('video_m4v', __('Video m4v'));
-        $grid->column('video_webm', __('Video webm'));
-        $grid->column('video_ogv', __('Video ogv'));
-        $grid->column('video_mp4', __('Video mp4'));
-        $grid->column('audio_mp3', __('Audio mp3'));
+        $grid->column('show_count', __('Макс. число показов'));
+        $grid->column('max_time', __('Макс. время показа'));
+        $grid->column('image', __('Image'))->display(function () {
+            return $this->image ? '<img src="/uploads/'.$this->image.'" height="100"/>' : '';
+        });
+        $grid->media('Медиа-файлы')->display(function () {
+            $str = '';
+            if ($this->video_m4v)
+            $str = '<a href="'.$this->video_m4v.'">'.$this->video_m4v.'</a><br/>';
+            if ($this->video_webm)
+            $str .= '<a href="'.$this->video_webm.'">'.$this->video_webm.'</a><br/>';
+            if ($this->video_ogv)
+            $str .= '<a href="'.$this->video_ogv.'">'.$this->video_ogv.'</a><br/>';
+            if ($this->video_mp4)
+            $str .= '<a href="'.$this->video_mp4.'">'.$this->video_mp4.'</a><br/>';
+            if ($this->video_mp3)
+            $str .= '<a href="'.$this->video_mp3.'">'.$this->video_mp3.'</a><br/>';
+            $str .= '<a href="/admin/video-files"><i class="fa fa-paper-plane"></i>управлять</a>';
+            return $str;
+        });
+        $grid->payments('Оплаты')->display(function () {
+            return '<a href="/admin/payments"><i class="fa fa-money"></i>перейти</a>';
+        });
+//        $grid->column('video_m4v', __('Video m4v'));
+//        $grid->column('video_webm', __('Video webm'));
+//        $grid->column('video_ogv', __('Video ogv'));
+//        $grid->column('video_mp4', __('Video mp4'));
+//        $grid->column('audio_mp3', __('Audio mp3'));
 //        $grid->column('created_at', __('Created at'));
 //        $grid->column('updated_at', __('Updated at'));
 
@@ -102,11 +125,16 @@ class PayServiceController extends AdminController
                     'filebrowserWindowHeight' => '700'
                 ])->default('-');
         $form->image('image', __('Image'));
-        $form->file('video_m4v', __('Video m4v'));
-        $form->file('video_webm', __('Video webm'));
-        $form->file('video_ogv', __('Video ogv'));
-        $form->file('video_mp4', __('Video mp4'));
-        $form->file('audio_mp3', __('Audio mp3'));
+        $form->display('video_m4v', __('Video m4v'));
+        $form->display('video_webm', __('Video webm'));
+        $form->display('video_ogv', __('Video ogv'));
+        $form->display('video_mp4', __('Video mp4'));
+        $form->display('audio_mp3', __('Audio mp3'));
+//        $form->file('video_m4v', __('Video m4v'));
+//        $form->file('video_webm', __('Video webm'));
+//        $form->file('video_ogv', __('Video ogv'));
+//        $form->file('video_mp4', __('Video mp4'));
+//        $form->file('audio_mp3', __('Audio mp3'));
 
         return $form;
     }

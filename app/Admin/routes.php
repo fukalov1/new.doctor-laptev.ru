@@ -27,7 +27,7 @@ Route::group([
     $router->resource('mailforms', MailFormController::class)->middleware('set_page_block');
     $router->resource('mailform_fields', MailFormFieldController::class)->middleware('set_mailform');
     $router->resource('photo-reviews', PhotoReviewController::class)->middleware('set_page_block');
-    $router->resource('photo-review-itemss', CreatePhotoReviewItems::class)->middleware('set_photo_review');
+    $router->resource('photo-review-items', CreatePhotoReviewItems::class)->middleware('set_photo_review');
     $router->resource('map_sub_points', MapSubPointController::class)->middleware('set_point');
     $router->resource('quest_blocks', QuestBlockController::class)->middleware('set_page_block');
     $router->resource('questions', QuestionController::class)->middleware('set_quest_block');
@@ -40,6 +40,11 @@ Route::group([
     $router->resource('codes', CodeController::class)->middleware('set_group_code');
 
     $router->resource('reviews', ReviewController::class);
+    $router->resource('video-files', VideoFilesController::class);
+
+    Route::get('ajaxImageUpload', 'AjaxImageUploadController@ajaxImageUpload');
+    Route::post('ajaxImageUpload', 'AjaxImageUploadController@ajaxFileUploadPost')->name('ajaxFileUpload');
+
 
 //    $router->resource('sub-domains', SubDomainController::class);
 });
