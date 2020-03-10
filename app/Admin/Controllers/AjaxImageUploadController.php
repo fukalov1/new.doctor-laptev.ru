@@ -35,8 +35,9 @@ class AjaxImageUploadController extends AdminController
         if ($validator->passes()) {
 
             $input = $request->all();
-            $input['file'] = time().'.'.$request->file->extension();
-            $request->file->move(public_path('images'), $input['file']);
+            $input['file'] = $request->file->extension();
+            $image = $request->file->store('public/images');
+//            $request->file->move(public_path('images'), $input['file']);
 
 
             $payservice = new PayService();
@@ -45,7 +46,10 @@ class AjaxImageUploadController extends AdminController
                [$request->file->extension() => $input['file']]
                );
 
-            return response()->json(['success'=>'done']);
+            return Response()->json([
+                "success" => false,
+                "image" => ''
+            ]);
         }
 
 
