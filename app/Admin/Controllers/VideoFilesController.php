@@ -27,6 +27,8 @@ class VideoFilesController extends AdminController
     {
         $str = view('admin.videofileupload');
 
+//        dd(phpinfo());
+
         return $content
             ->header('Медиа файлы платного сервиса')
             ->description(' список текстовых блоков')

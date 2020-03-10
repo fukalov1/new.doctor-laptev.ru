@@ -1,12 +1,11 @@
-<form action="{{ route('ajaxFileUpload') }}" enctype="multipart/form-data" method="POST">
-
+<link href="{{ asset('/assets/css/style.css') }}" rel="stylesheet" />
 
     <div class="alert alert-danger print-error-msg" style="display:none">
         <ul></ul>
     </div>
 
 
-    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
 
 
     <div class="form-group">
@@ -17,9 +16,19 @@
 
 
     <div class="form-group">
-        <label>Файл</label>
-        <input type="hidden" name="id" value="1">
-        <input type="file" name="file" class="form-control">
+        <label>Файлы к сервису (jpg,m4v,webm,ogv,mp4,mp3,txt)</label>
+        <form id="upload" method="post" action="/admin/ajax-upload" enctype="multipart/form-data">
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+            <div id="drop">
+                <a>Выберите файл</a>
+                <input type="file" name="upl" multiple="" />
+            </div>
+
+            <ul>
+                <!-- The file uploads will be shown here -->
+            </ul>
+
+        </form>
     </div>
 
 
@@ -28,32 +37,13 @@
     </div>
 
 
-</form>
 
-<script type="text/javascript">
-    $("body").on("click",".upload-image",function(e){
-        $(this).parents("form").ajaxForm(options);
-    });
+<script src="{{ '/assets/js/jquery.knob.js' }}"></script>
 
+<!-- jQuery File Upload Dependencies -->
+<script src="{{ asset('/assets/js/jquery.ui.widget.js') }}"></script>
+<script src="{{ asset('/assets/js/jquery.iframe-transport.js') }}"></script>
+<script src="{{ asset('/assets/js/jquery.fileupload.js') }}"></script>
 
-    var options = {
-        complete: function(response)
-        {
-            if($.isEmptyObject(response.responseJSON.error)){
-                // $("input[name='title']").val('');
-                alert('Image Upload Successfully.');
-            }else{
-                printErrorMsg(response.responseJSON.error);
-            }
-        }
-    };
-
-
-    function printErrorMsg (msg) {
-        $(".print-error-msg").find("ul").html('');
-        $(".print-error-msg").css('display','block');
-        $.each( msg, function( key, value ) {
-            $(".print-error-msg").find("ul").append('<li>'+value+'</li>');
-        });
-    }
-</script>
+<!-- Our main JS file -->
+<script src="{{ asset('/assets/js/script.js') }}"></script>

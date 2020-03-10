@@ -42,8 +42,8 @@ Route::group([
     $router->resource('reviews', ReviewController::class);
     $router->resource('video-files', VideoFilesController::class);
 
-    Route::get('ajaxImageUpload', 'AjaxImageUploadController@ajaxImageUpload');
-    Route::post('ajaxImageUpload', 'AjaxImageUploadController@ajaxFileUploadPost')->name('ajaxFileUpload');
+    Route::get('ajaxImageUpload', 'AjaxFileUploadController@ajaxImageUpload');
+    Route::post('ajax-upload', 'AjaxFileUploadController@ajaxFileUploadPost')->name('ajaxFileUpload');
 
 
 //    $router->resource('sub-domains', SubDomainController::class);
