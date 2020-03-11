@@ -35,7 +35,7 @@
                         {!! $item->text !!}
                     </div>
                     <div class="col-md-2 text-right">
-                        <a href="" class="btn more black"> Смотреть</a>
+                        <a href="/pay-service/{{ $item->id }}" class="btn more black"> Смотреть</a>
                     </div>
                 </div>
                 @endforeach

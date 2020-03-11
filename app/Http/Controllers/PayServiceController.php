@@ -53,6 +53,30 @@ class PayServiceController extends Controller
         return view($template, $data);
     }
 
+    public function showService(Request $request)
+    {
+//dd($error);
+        $page = Page::find(config('payservice_id', 3));
+        $template = 'show_payservice';
+        $data = ['data' => $page];
+//        dd($page->id);
+        $error = '';
+
+        $this->getBeadCrumbs($page->id);
+
+        $data['phone'] = config('phone');
+        $data['email'] = config('email');
+        $data['address'] = config('address');
+        $data['pages'] = $this->page->getMenu();
+        $data['error'] = $error;
+        $data['request'] = $request;
+        $data['payservice'] = $this->payService->get();
+        $data['message'] = null;
+        $page_blocks = $this->pageBlock->where('page_id', $page->id)->where('orders','>',0)->orderBy('orders')->get();
+        $data['page_blocks'] = $page_blocks;
+        return view($template, $data);
+    }
+
 
     private function getBeadCrumbs($id)
     {

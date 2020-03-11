@@ -20,6 +20,7 @@ Route::get('/photo-reviews', 'PhotoReviewController@show');
 Route::get('/cities', 'CityController@show');
 Route::get('/survey/{type?}', 'SurveyController@show');
 Route::get('/pay-services', 'PayServiceController@show');
+Route::get('/pay-service/{id}', 'PayServiceController@showService');
 Route::post('/survey', 'SurveyController@save');
 Route::get('/reviews', 'ReviewController@show');
 Route::post('/reviews', 'ReviewController@save');
