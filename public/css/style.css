@@ -661,7 +661,7 @@ li>a:only-child:after {
     color: #fff;
     font-size: 16px;
     letter-spacing: 1px;
-    text-transform: capitalize;
+    /*text-transform: capitalize;*/
     display: inline-block;
 
 }
