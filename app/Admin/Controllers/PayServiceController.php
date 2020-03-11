@@ -42,9 +42,9 @@ class PayServiceController extends AdminController
             return $this->image ? '<img src="/uploads/'.$this->image.'" height="100"/>' : '';
         });
         $grid->media('Медиа-файлы')->display(function () {
-            $str = '';
+            $str = '<a href="/admin/video-files?set='.$this->id.'"><i class="fa fa-paper-plane"></i> управлять</a><br/>';
             if ($this->video_m4v)
-            $str = '<a href="'.$this->video_m4v.'">'.$this->video_m4v.'</a><br/>';
+            $str .= '<a href="'.$this->video_m4v.'">'.$this->video_m4v.'</a><br/>';
             if ($this->video_webm)
             $str .= '<a href="'.$this->video_webm.'">'.$this->video_webm.'</a><br/>';
             if ($this->video_ogv)
@@ -52,12 +52,12 @@ class PayServiceController extends AdminController
             if ($this->video_mp4)
             $str .= '<a href="'.$this->video_mp4.'">'.$this->video_mp4.'</a><br/>';
             if ($this->audio_mp3)
-            $str .= '<a href="'.$this->audio_mp3.'">'.$this->audio_mp3.'</a><br/>';
-            $str .= '<a href="/admin/video-files?set='.$this->id.'"><i class="fa fa-paper-plane"></i>управлять</a>';
+            $str .= '<a href="'.$this->audio_mp3.'">'.$this->audio_mp3.'</a>';
+
             return $str;
         });
         $grid->payments('Оплаты')->display(function () {
-            return '<a href="/admin/payments?set='.$this->id.'"><i class="fa fa-money"></i>перейти</a>';
+            return '<a href="/admin/payments?set='.$this->id.'"><i class="fa fa-money"></i> перейти</a>';
         });
 //        $grid->column('video_m4v', __('Video m4v'));
 //        $grid->column('video_webm', __('Video webm'));
