@@ -70,7 +70,8 @@
                 @endforeach
                 <div class="row">
                     <div class="col-md-12">
-                        <h4 class="tittle-w3ls text-left mb-5">Купить код доступа?</h4>
+                        <br/>
+                        <h4 class="tittle-w3ls text-left mb-5">Купить код доступа</h4>
                         <p>
                             ВНИМАНИЕ! ПЕРЕД ОПЛАТОЙ ПРОВЕРЬТЕ СВОЙ E-MAIL! КОД ПРИДЕТ НА УКАЗАННЫЙ АДРЕС! ЕСЛИ ВОЗНИКЛИ ПРОБЛЕМЫ, ЗВОНИТЕ +7 966 143 99 43 ИЛИ ПИШИТЕ НА office@doctor-laptev
                         </p>
