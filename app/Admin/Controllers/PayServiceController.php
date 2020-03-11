@@ -7,6 +7,7 @@ use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Show;
+use http\Env\Request;
 
 class PayServiceController extends AdminController
 {
@@ -50,13 +51,13 @@ class PayServiceController extends AdminController
             $str .= '<a href="'.$this->video_ogv.'">'.$this->video_ogv.'</a><br/>';
             if ($this->video_mp4)
             $str .= '<a href="'.$this->video_mp4.'">'.$this->video_mp4.'</a><br/>';
-            if ($this->video_mp3)
-            $str .= '<a href="'.$this->video_mp3.'">'.$this->video_mp3.'</a><br/>';
-            $str .= '<a href="/admin/video-files"><i class="fa fa-paper-plane"></i>управлять</a>';
+            if ($this->audio_mp3)
+            $str .= '<a href="'.$this->audio_mp3.'">'.$this->audio_mp3.'</a><br/>';
+            $str .= '<a href="/admin/video-files?set='.$this->id.'"><i class="fa fa-paper-plane"></i>управлять</a>';
             return $str;
         });
         $grid->payments('Оплаты')->display(function () {
-            return '<a href="/admin/payments"><i class="fa fa-money"></i>перейти</a>';
+            return '<a href="/admin/payments?set='.$this->id.'"><i class="fa fa-money"></i>перейти</a>';
         });
 //        $grid->column('video_m4v', __('Video m4v'));
 //        $grid->column('video_webm', __('Video webm'));
@@ -138,4 +139,6 @@ class PayServiceController extends AdminController
 
         return $form;
     }
+
+
 }

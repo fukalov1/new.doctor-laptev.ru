@@ -4,13 +4,9 @@
         <ul></ul>
     </div>
 
-
-
-
-
     <div class="form-group">
         <h1>
-            Заголовок
+           {{ $payservice->name }}
         </h1>
     </div>
 
@@ -29,11 +25,21 @@
             </ul>
 
         </form>
-    </div>
+        test {{ session('payservice_id') }}
+        <form action="/admin/save-video-files" method="post">
+            <div class="form-group">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <div class="row">
+                    <div class="col-md-6">
+                        <button class="btn btn-default" type="reset">Отменить</button>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <button class="btn btn-success" type="submit">Сохранить</button>
+                    </div>
+                </div>
+            </div>
+        </form>
 
-
-    <div class="form-group">
-        <button class="btn btn-success upload-image" type="submit">Загрузить</button>
     </div>
 
 

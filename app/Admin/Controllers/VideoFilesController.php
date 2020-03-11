@@ -8,6 +8,7 @@ use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Layout\Content;
 use Encore\Admin\Show;
+use http\Env\Request;
 
 class VideoFilesController extends AdminController
 {
@@ -25,7 +26,10 @@ class VideoFilesController extends AdminController
      */
     public function index(Content $content)
     {
-        $str = view('admin.videofileupload');
+
+        $data = ['payservice' => PayService::find(session('payservice_id', 1)) ];
+
+        $str = view('admin.videofileupload', $data);
 
 //        dd(phpinfo());
 
@@ -36,5 +40,19 @@ class VideoFilesController extends AdminController
 
     }
 
+    public function saveFiles()
+    {
+        $payservice = new PayService();
+        if (session('payservice_id')) {
+            if ($payservice->updateVideoFiles(session('payservice_id'))) {
+//                dd('success');
+            }
+            else {
+//                dd('failed');
+            }
+        }
+        return redirect('/admin/pay-services');
+
+    }
 
 }

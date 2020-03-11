@@ -36,11 +36,12 @@ Route::group([
     $router->resource('profiles', ProfileController::class)->middleware('set_user');
     $router->resource('questions', QuestionController::class);
     $router->resource('pay-services', PayServiceController::class);
+    $router->post('save-video-files', 'VideoFilesController@saveFiles');
     $router->resource('group-codes', GroupCodeController::class);
     $router->resource('codes', CodeController::class)->middleware('set_group_code');
 
     $router->resource('reviews', ReviewController::class);
-    $router->resource('video-files', VideoFilesController::class);
+    $router->resource('video-files', VideoFilesController::class)->middleware('set_payservice');;
 
     Route::get('ajaxImageUpload', 'AjaxFileUploadController@ajaxImageUpload');
     Route::post('ajax-upload', 'AjaxFileUploadController@ajaxFileUploadPost')->name('ajaxFileUpload');

@@ -44,6 +44,23 @@ class Kernel extends HttpKernel
     ];
 
     /**
+     * The priority-sorted list of middleware.
+     *
+     * This forces non-global middleware to always be in the given order.
+     *
+     * @var array
+     */
+    protected $middlewarePriority = [
+        \Illuminate\Session\Middleware\StartSession::class,
+        \Illuminate\View\Middleware\ShareErrorsFromSession::class,
+        \App\Http\Middleware\Authenticate::class,
+        \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        \Illuminate\Session\Middleware\AuthenticateSession::class,
+        \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        \Illuminate\Auth\Middleware\Authorize::class,
+    ];
+
+    /**
      * The application's route middleware.
      *
      * These middleware may be assigned to groups or used individually.
@@ -63,6 +80,7 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'set_user' => \App\Http\Middleware\SetUser::class,
         'set_page' => \App\Http\Middleware\SetPage::class,
+        'set_payservice' => \App\Http\Middleware\SetPayService::class,
         'set_page_block' => \App\Http\Middleware\SetPageBlock::class,
         'set_photoset' => \App\Http\Middleware\SetPhotoset::class,
         'set_slider' => \App\Http\Middleware\SetSlider::class,
@@ -70,22 +88,5 @@ class Kernel extends HttpKernel
         'set_photo_review' => \App\Http\Middleware\SetPhotoReview::class,
         'set_mailform' => \App\Http\Middleware\SetMailForm::class,
         'set_group_code' => \App\Http\Middleware\SetGroupCode::class,
-    ];
-
-    /**
-     * The priority-sorted list of middleware.
-     *
-     * This forces non-global middleware to always be in the given order.
-     *
-     * @var array
-     */
-    protected $middlewarePriority = [
-        \Illuminate\Session\Middleware\StartSession::class,
-        \Illuminate\View\Middleware\ShareErrorsFromSession::class,
-        \App\Http\Middleware\Authenticate::class,
-        \Illuminate\Routing\Middleware\ThrottleRequests::class,
-        \Illuminate\Session\Middleware\AuthenticateSession::class,
-        \Illuminate\Routing\Middleware\SubstituteBindings::class,
-        \Illuminate\Auth\Middleware\Authorize::class,
     ];
 }

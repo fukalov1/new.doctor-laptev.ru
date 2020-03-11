@@ -26,9 +26,9 @@ class AjaxFileUploadController extends AdminController
      */
     public function ajaxFileUploadPost(Request $request)
     {
+//        dd( pathinfo($_FILES['upl']['name'], PATHINFO_EXTENSION));
         $validator = Validator::make($request->all(), [
-            'id' => 'required',
-            'file' => 'required|image|mimes:jpeg,png,jpg,m4v,mp4,webm,ogg|max:51200',
+            'upl' => 'required|mimes:m4v,mp4,webm,ogv,mpga,wav,mp3|max:51200',
         ]);
 
 
@@ -41,8 +41,9 @@ class AjaxFileUploadController extends AdminController
                 if(isset($_FILES['upl']) && $_FILES['upl']['error'] == 0){
 
                     $extension = pathinfo($_FILES['upl']['name'], PATHINFO_EXTENSION);
+                    $filename  = md5(session('payservice_id', 1).env('SECRET_KEY')).'.'.$extension;
 
-                    if(move_uploaded_file($_FILES['upl']['tmp_name'], public_path('/uploads/files/tmp/'.$_FILES['upl']['name']))){
+                    if(move_uploaded_file($_FILES['upl']['tmp_name'], storage_path('/videoshow/tmp/'.$filename))) {
                         return Response()->json([
                             'status' => 'success'
                         ]);
