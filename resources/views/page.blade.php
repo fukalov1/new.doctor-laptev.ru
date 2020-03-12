@@ -6,6 +6,8 @@
     <div class="fill-top">
 
     </div>
+    <div class="container p-md-3">
+    </div>
     <div>
 
     @foreach($page_blocks as $page_block)

@@ -15,6 +15,7 @@ use App\DirectionItem;
 use App\Photoset;
 use App\User;
 use App\MailForm;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -87,7 +88,7 @@ class SurveyController extends Controller
         }
         else {
             try {
-                $this->user->createUser($request);
+                $this->user->addProfile($request);
 //                Log::channel('sitelog')->info('Send mail from ' . config('email') . '  name: ' . request('fio') . '  email: ' . request('email'));
                 return $this->showResult();
             } catch (\Exception $error) {

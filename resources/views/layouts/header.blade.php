@@ -3,6 +3,38 @@
     <!--/header -->
     <header class="nav_w3pvt text-center ">
 
+        <div class="col-md-12 nav-auth text-right">
+            <ul>
+            @guest
+                <li>
+                    <a  href="{{ route('login') }}">вход</a> <span>|</span>
+                </li>
+                @if (Route::has('register'))
+                    <li>
+                        <a href="{{ route('register') }}">регистрация</a>
+                    </li>
+                @endif
+            @else
+                <li class="nav-item dropdown">
+                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        {{ Auth::user()->name }} <span class="caret"></span>
+                    </a>
+
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ route('logout') }}"
+                           onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                            выход
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    </div>
+                </li>
+            @endguest
+            </ul>
+        </div>
         <nav class="wthree-w3ls navbar-nav navbar-expand-lg navbar-light navbar-custom bg-transparent">
             <a class="navbar-brand brand-custom" href="/">Доктор Лаптев<sup>&reg;</sup></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -48,47 +80,6 @@
                             </li>
                         @endif
                     @endforeach
-{{--                        <li class="social-icons ml-lg-3"><a href="#" class="p-0 social-icon"><span class="fa fa-facebook-official" aria-hidden="true"></span>--}}
-{{--                                <div class="tooltip">Facebook</div>--}}
-{{--                            </a> </li>--}}
-{{--                        <li class="social-icons"><a href="#" class="p-0 social-icon"><span class="fa fa-twitter" aria-hidden="true"></span>--}}
-{{--                                <div class="tooltip">Twitter</div>--}}
-{{--                            </a> </li>--}}
-{{--                        <li>--}}
-{{--                            @if(Auth::check())--}}
-{{--                                <a class="nav-link" href='/logout'> выход </a>--}}
-{{--                            @else--}}
-{{--                                <a class="nav-link" href="{{ route('register') }}">вход</a>--}}
-{{--                            @endif--}}
-{{--                        </li>--}}
-                        @guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">вход</a>
-                            </li>
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">регистрация</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        выход
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
                 </ul>
             </div>
         </nav>

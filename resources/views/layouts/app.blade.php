@@ -81,7 +81,9 @@
 {{--            </div>--}}
 {{--        </nav>--}}
 
-        <section class="about py-5">
+        <section class="about pt-5">
+            <div class="container p-md-3">
+            </div>
             <div class="container p-md-5">
             @yield('content')
             </div>

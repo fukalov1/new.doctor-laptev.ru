@@ -2,11 +2,8 @@ $(document).ready(function ($) {
 
     $("#modal").on('click', function (e) {
         if (e.target == this) $("#modal").fadeOut('fast');
-    })
+    });
 
-    // function func() {
-    //
-    // }
 
     // setTimeout(func, 5000);
 

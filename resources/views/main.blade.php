@@ -103,7 +103,7 @@
                             <br>ПИЩЕВОЕ ПОВЕДЕНИЕ</h3>
                         <div class="top-buttons mx-auto text-center mt-md-5 mt-3">
                             <a href="/ob-avtore/moy-trenning" class="btn more mr-2">Подробнее</a>
-                            <a href="/onlayn-servis" class="btn">Записаться</a>
+                            <a href="/onlayn-servis/anketirovanie" class="btn">Записаться</a>
                         </div>
                         <div class="d-flex hny-stats-inf">
                             <div class="col-md-4 stats_w3pvt_counter_grid mt-3">

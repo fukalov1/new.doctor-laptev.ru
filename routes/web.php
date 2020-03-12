@@ -10,6 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
@@ -25,9 +26,10 @@ Route::post('/survey', 'SurveyController@save');
 Route::get('/reviews', 'ReviewController@show');
 Route::post('/reviews', 'ReviewController@save');
 
-Route::get('logout', function() {
-    Auth::logout();
-    return redirect('/');
+
+Route::group(['middleware' => ['auth']], function () {
+    Route::post('/survey', 'SurveyController@save');
+    Route::post('/reviews', 'ReviewController@save');
 });
 
 Auth::routes();

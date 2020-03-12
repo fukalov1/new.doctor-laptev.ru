@@ -36,32 +36,32 @@
 <!-- main js
 ============================================ -->
 {{--<script src="{{ asset('/js/jquery.maskedinput.js') }}" type="text/javascript"></script>--}}
-<script src="{{ asset('/js/maskedinput/jquery.inputmask.js') }}" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js" type="text/javascript"></script>
 
 {{--<script src="/js/main.js"></script>--}}
 <script src="{{ asset('/js/site.js') }}"></script>
 <!-- Google Map js -->
-<script src="https://maps.googleapis.com/maps/api/js"></script>
-<script>
-    function initialize() {
-        var mapOptions = {
-            zoom: 15,
-            scrollwheel: false,
-            center: new google.maps.LatLng(40.663293, -73.956351)
-        };
+{{--<script src="https://maps.googleapis.com/maps/api/js"></script>--}}
+{{--<script>--}}
+{{--    function initialize() {--}}
+{{--        var mapOptions = {--}}
+{{--            zoom: 15,--}}
+{{--            scrollwheel: false,--}}
+{{--            center: new google.maps.LatLng(40.663293, -73.956351)--}}
+{{--        };--}}
 
-        var map = new google.maps.Map(document.getElementById('googleMap'),
-            mapOptions);
+{{--        var map = new google.maps.Map(document.getElementById('googleMap'),--}}
+{{--            mapOptions);--}}
 
 
-        var marker = new google.maps.Marker({
-            position: map.getCenter(),
-            animation:google.maps.Animation.BOUNCE,
-            icon: 'img/map-marker.png',
-            map: map
-        });
+{{--        var marker = new google.maps.Marker({--}}
+{{--            position: map.getCenter(),--}}
+{{--            animation:google.maps.Animation.BOUNCE,--}}
+{{--            icon: 'img/map-marker.png',--}}
+{{--            map: map--}}
+{{--        });--}}
 
-    }
+{{--    }--}}
 
-    google.maps.event.addDomListener(window, 'load', initialize);
-</script>
+{{--    google.maps.event.addDomListener(window, 'load', initialize);--}}
+{{--</script>--}}

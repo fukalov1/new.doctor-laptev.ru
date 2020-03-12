@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
@@ -42,9 +43,9 @@ class Review extends Model
     {
         $result = $this->create(
             [
-                'name' => $data->name,
-                'city' => $data->city,
-                'email' => $data->email,
+                'name' => Auth::user()->name,
+                'city' => Auth::user()->city->name,
+                'email' => Auth::user()->email,
                 'text' => $data->text,
             ]);
 

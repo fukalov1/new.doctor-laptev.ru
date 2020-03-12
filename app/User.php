@@ -4,6 +4,7 @@ namespace App;
 
 use App\Profile;
 use http\Env\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -99,20 +100,10 @@ class User extends Authenticatable
         }
     }
 
-    public function createUser($user)
+    public function addProfile($user)
     {
-            $result = $this->updateOrCreate(
-                ['email' => $user->email],
-                [
-                'name' => $user->name,
-                'phone' => $user->phone,
-                'password' => '12345678',
-                'city_id' => $user->city,
-                ]);
-
-        if ($result->id) {
             $profile = Profile::create([
-                'user_id' => $result->id,
+                'user_id' => Auth::id(),
                 'age' => $user->age,
                 'weight' => $user->weight,
                 'rost' => $user->rost,
@@ -129,7 +120,6 @@ class User extends Authenticatable
                     $profile->answers()->attach($item);
                 }
             }
-        }
     }
 
 }

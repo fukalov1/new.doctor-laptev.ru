@@ -6,6 +6,8 @@
     <div class="fill-top">
 
     </div>
+    <div class="container p-md-3">
+    </div>
 
     @if(isset($message))
         <section class="banner_bottom py-5">
@@ -53,8 +55,25 @@
                         @if($error!='')
                             <p style="color: #ff0000;">Проверка результата уравнения не прошла!</p>
                         @endif
+
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-3">
+                                ФИО<br/>
+                                <b>
+                                    {{ Auth::user()->name }}
+                                </b>
+                            </div>
+                            <div class="col-md-3">
+                                Телефон <br/><b>
+                                    {{ Auth::user()->phone }}
+                                </b>
+                            </div>
+                            <div class="col-md-3">
+                                Email <br/> <b>
+                                    {{ Auth::user()->email }}
+                                </b>
+                            </div>
+                            <div class="col-md-3">
                                 <label>Город</label>
                                 <select class="form-control" name="city">
                                     @foreach($cities as $item)
@@ -63,34 +82,6 @@
                                         </option>
                                     @endforeach
                                 </select>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <label>ФИО</label>
-                                <input type="text"
-                                       value="{{ $request->name }}"
-                                       name="name"
-                                       class="form-control"
-                                       placeholder="фамилия имя отчество">
-                            </div>
-                            <div class="col-md-4">
-                                <label>Телефон</label>
-                                <input type="text"
-                                       name="phone"
-                                       value="{{ $request->phone }}"
-                                       class="form-control"
-                                       placeholder="+7">
-                            </div>
-                            <div class="col-md-4">
-                                <label>Email</sub>
-                                </label>
-                                <input type="text"
-                                       name="email"
-                                       value="{{ $request->email }}"
-                                       class="form-control"
-                                       placeholder="">
-                                <sub>Внимание! В случае неверного (несуществующего) адреса Вы не сможете получить подтверждение о регистрации.</sub>
                             </div>
                         </div>
                         <div class="row">

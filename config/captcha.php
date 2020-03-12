@@ -12,9 +12,13 @@ return [
     'math' => [
         'length' => 9,
         'width' => 120,
-        'height' => 36,
+        'height' => 46,
         'quality' => 90,
         'math' => true,
+        'invert' => false,
+        'contrast' => 15,
+        'bgColor' => '#ecf2f4',
+        'fontColors' => ['#000000'],
     ],
 
     'flat' => [
@@ -36,13 +40,13 @@ return [
     'inverse' => [
         'length' => 5,
         'width' => 120,
-        'height' => 36,
+        'height' => 46,
         'quality' => 90,
-        'sensitive' => true,
-        'angle' => 12,
+        'sensitive' => false,
+        'angle' => 14,
         'sharpen' => 10,
         'blur' => 2,
         'invert' => true,
-        'contrast' => -5,
+        'contrast' => -15,
     ]
 ];
