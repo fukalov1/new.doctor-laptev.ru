@@ -10,36 +10,36 @@
 {{--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>--}}
 <!-- owl.carousel.min js
 ============================================ -->
-<script src="/js/owl.carousel.min.js"></script>
+{{--<script src="/js/owl.carousel.min.js"></script>--}}
 
 <!-- plugins js
 ============================================ -->
-<script src="/js/plugins.js"></script>
+{{--<script src="/js/plugins.js"></script>--}}
 <!-- counterup js
 ============================================ -->
-<script src="/js/jquery.counterup.min.js"></script>
-<script src="/js/waypoints.min.js"></script>
+{{--<script src="/js/jquery.counterup.min.js"></script>--}}
+{{--<script src="/js/waypoints.min.js"></script>--}}
 <!-- MixItUp js-->
-<script src="/js/jquery.mixitup.js"></script>
+{{--<script src="/js/jquery.mixitup.js"></script>--}}
 <!-- Nivo Slider JS -->
-<script src="/js/jquery.nivo.slider.pack.js"></script>
-<script src="/js/jquery.nav.js"></script>
+{{--<script src="/js/jquery.nivo.slider.pack.js"></script>--}}
+{{--<script src="/js/jquery.nav.js"></script>--}}
 <!-- wow js
 ============================================ -->
-<script src="/js/wow.js"></script>
+{{--<script src="/js/wow.js"></script>--}}
 <!--Activating WOW Animation only for modern browser-->
 <!--[if !IE]><!-->
-<script type="text/javascript">new WOW().init();</script>
+{{--<script type="text/javascript">new WOW().init();</script>--}}
 <!--<![endif]-->
 <!-- Add venobox ja -->
-<script type="text/javascript" src="/venobox/venobox.min.js"></script>
+{{--<script type="text/javascript" src="/venobox/venobox.min.js"></script>--}}
 <!-- main js
 ============================================ -->
-<script src="{{ asset('/js/jquery.maskedinput.js') }}" type="text/javascript"></script>
-<script src="{{ asset('/js/inputmask.js') }}" type="text/javascript"></script>
+{{--<script src="{{ asset('/js/jquery.maskedinput.js') }}" type="text/javascript"></script>--}}
+<script src="{{ asset('/js/maskedinput/jquery.inputmask.js') }}" type="text/javascript"></script>
 
-<script src="/js/main.js"></script>
-<script src="/js/site.js"></script>
+{{--<script src="/js/main.js"></script>--}}
+<script src="{{ asset('/js/site.js') }}"></script>
 <!-- Google Map js -->
 <script src="https://maps.googleapis.com/maps/api/js"></script>
 <script>

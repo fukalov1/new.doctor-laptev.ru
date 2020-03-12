@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Page;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
@@ -33,8 +34,16 @@ class LoginController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Page $page)
     {
+        $this->page = $page;
         $this->middleware('guest')->except('logout');
+    }
+
+    public function showLoginForm()
+    {
+        $data = ['pages'=>collect([])];
+        $data['pages'] = $this->page->getMenu();
+        return view('auth.login', $data);
     }
 }

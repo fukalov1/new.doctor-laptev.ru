@@ -214,7 +214,7 @@
                                 <div id="gal1" class="pop-overlay">
                                     <div class="popup">
                                         <img src="{{ asset('uploads/images/thumbnail/'.$item->image) }}" alt="Popup Image" class="img-fluid" />
-                                        <p class="mt-4">{{ $item->text }}</p>
+                                        <p class="mt-4">test{!! $item->text !!}</p>
                                         <a class="close" href="#gallery">&times;</a>
                                     </div>
                                 </div>
@@ -398,7 +398,7 @@
                                      class="img-fluid" width="30%"/>
                                 <img src="{{ asset('uploads/images/'.$item->image2) }}" alt="Popup Image"
                                      class="img-fluid" width="30%"/>
-                                <p class="mt-4">{{ $item->text }}</p>
+                                <p class="mt-4">{!! $item->text  !!}</p>
                                 <a class="close" href="#gallery">&times;</a>
                             </div>
                         </div>

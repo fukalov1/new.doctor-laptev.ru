@@ -54,87 +54,44 @@
 {{--                        <li class="social-icons"><a href="#" class="p-0 social-icon"><span class="fa fa-twitter" aria-hidden="true"></span>--}}
 {{--                                <div class="tooltip">Twitter</div>--}}
 {{--                            </a> </li>--}}
-{{--                        <li class="social-icons"><a href="#" class="p-0 social-icon"><span class="fa fa-instagram" aria-hidden="true"></span>--}}
-{{--                                <div class="tooltip">Instagram</div>--}}
-{{--                            </a> </li>--}}
+{{--                        <li>--}}
+{{--                            @if(Auth::check())--}}
+{{--                                <a class="nav-link" href='/logout'> выход </a>--}}
+{{--                            @else--}}
+{{--                                <a class="nav-link" href="{{ route('register') }}">вход</a>--}}
+{{--                            @endif--}}
+{{--                        </li>--}}
+                        @guest
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('login') }}">вход</a>
+                            </li>
+                            @if (Route::has('register'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('register') }}">регистрация</a>
+                                </li>
+                            @endif
+                        @else
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                </a>
 
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        выход
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                        @endguest
                 </ul>
             </div>
         </nav>
-
-
-        <!-- nav -->
-{{--        <nav class="wthree-w3ls">--}}
-{{--            <div id="logo">--}}
-{{--                <h1>--}}
-{{--                    <a class="navbar-brand px-0 mx-0" href="index.html">--}}
-{{--                        ДОКТОР ЛАПТЕВ--}}
-{{--                    </a>--}}
-{{--                </h1>--}}
-{{--            </div>--}}
-
-{{--            <label for="drop" class="toggle">Menu</label>--}}
-{{--            <input type="checkbox" id="drop" />--}}
-{{--            <ul class="menu mr-auto">--}}
-{{--                @foreach($pages as $page)--}}
-{{--                    @if($page->relation)--}}
-{{--                        <li>--}}
-{{--                            @if($page->redirect=='')--}}
-{{--                                @if($page->relation)--}}
-{{--                                    <label for="drop-{{ $page->id }}" class="toggle toggle-{{ $page->id }}">{!! $page->name  !!}--}}
-{{--                                        <span class="fa fa-angle-down" aria-hidden="true"></span>--}}
-{{--                                    </label>--}}
-{{--                                    <a href="#">{!! $page->name  !!}--}}
-{{--                                        <span class="fa fa-angle-down" aria-hidden="true"></span></a>--}}
-{{--                                        <input type="checkbox" id="drop-{{ $page->id }}" />--}}
-{{--                                @else--}}
-{{--                                    <a href='/{{ $page->url }}'>{!! $page->name  !!} </a>--}}
-{{--                                @endif--}}
-{{--                            @else--}}
-{{--                                <a href='/{{ $page->redirect }}'>{!! $page->name  !!} </a>--}}
-{{--                            @endif--}}
-{{--                            <ul>--}}
-{{--                                @foreach($page->sub_pages as $sub_page)--}}
-{{--                                    @if($sub_page->redirect=='')--}}
-{{--                                        <li><a href='/{{ $sub_page->url }}'>{!! $sub_page->name  !!} </a></li>--}}
-{{--                                    @else--}}
-{{--                                        <li><a href='/{{ $sub_page->redirect }}'>{!! $sub_page->name  !!} </a></li>--}}
-{{--                                    @endif--}}
-{{--                                @endforeach--}}
-{{--                            </ul>--}}
-{{--                        </li>--}}
-{{--                    @else--}}
-{{--                        <li>--}}
-{{--                            @if($page->redirect=='')--}}
-{{--                                <a href='/{{ $page->url }}'>{!! $page->name  !!} </a>--}}
-{{--                            @else--}}
-{{--                                <a href='{{ $page->redirect }}'>{!! $page->name  !!} </a>--}}
-{{--                            @endif--}}
-{{--                        </li>--}}
-{{--                    @endif--}}
-{{--                @endforeach--}}
-{{--                <li class="active"><a href="index.html">Home</a></li>--}}
-{{--                <li><a href="about.html">About</a></li>--}}
-{{--                <li>--}}
-{{--                    <!-- First Tier Drop Down -->--}}
-{{--                    <label for="drop-2" class="toggle toggle-2">Pages <span class="fa fa-angle-down" aria-hidden="true"></span> </label>--}}
-{{--                    <a href="#">Pages  <span class="fa fa-angle-down" aria-hidden="true"></span></a>--}}
-{{--                    <input type="checkbox" id="drop-2" />--}}
-{{--                    <ul>--}}
-
-{{--                        <li><a href="services.html" class="drop-text">Services</a></li>--}}
-{{--                        <li><a href="timeline.html" class="drop-text">Timeline</a></li>--}}
-{{--                        <li><a href="team.html" class="drop-text">Team</a></li>--}}
-{{--                        <li><a href="typo.html" class="drop-text">Typography</a></li>--}}
-{{--                        <li><a href="error.html" class="drop-text">404</a></li>--}}
-{{--                    </ul>--}}
-{{--                </li>--}}
-{{--                <li><a href="#gallery">Projects</a></li>--}}
-{{--                <li><a href="contact.html">Contact</a></li>--}}
-
-{{--            </ul>--}}
-{{--        </nav>--}}
-        <!-- //nav -->
     </header>
     <!--//header -->
 </div>

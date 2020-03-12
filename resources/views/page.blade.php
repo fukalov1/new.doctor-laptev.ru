@@ -321,7 +321,7 @@
                                  class="img-fluid" width="30%"/>
                             <img src="{{ asset('uploads/images/'.$item->image2) }}" alt="Popup Image"
                                  class="img-fluid" width="30%"/>
-                            <p class="mt-4">{{ $item->text }}</p>
+                            <p class="mt-4">{!! $item->text !!}</p>
                             <a class="close" href="#gallery">&times;</a>
                         </div>
                     </div>

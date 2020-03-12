@@ -25,6 +25,11 @@ Route::post('/survey', 'SurveyController@save');
 Route::get('/reviews', 'ReviewController@show');
 Route::post('/reviews', 'ReviewController@save');
 
+Route::get('logout', function() {
+    Auth::logout();
+    return redirect('/');
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
