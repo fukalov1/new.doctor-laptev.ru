@@ -53,44 +53,57 @@
 {{--                    <div class="col-md-12">--}}
 {{--                        <h3 class="tittle-w3ls text-left mb-5">Ваш код доступа недействителен. Обратитесь к администратору или купите новый.</h3>--}}
 {{--                    </div>--}}
-                    <div class="col-md-3">
-                        <input type="text" class="form-control" name="name" placeholder="ФИО">
-                    </div>
-                    <div class="col-md-2">
-                        <input type="text" class="form-control" name="city" placeholder="город">
-                    </div>
-                    <div class="col-md-3">
-                        <input type="text" class="form-control" name="email" placeholder="Email">
-                    </div>
-                    <div class="col-md-2">
-                        <input type="text" class="form-control" name="code" placeholder="код">
-                    </div>
-                    <div class="col-md-2 text-right">
-                        <button class="btn more black">смотреть</button>
-                    </div>
+
                 </div>
+
+                @guest
+                        <div class="container py-md-5">
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h4>Для получения услуги или покупки кода доступа Вам необходимо <a href="/login">авторизоваться</a> на сайте.</h4>
+                                </div>
+                            </div>
+                        </div>
+
+                @else
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm">
+                                    <div class="card" style="width: 18rem;">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Просмотр</h4>
+                                            <p class="card-text">Если у Вас купленный на сайте Доктора Лаптева код доступа или полученный на тренинге.</p>
+                                            <p>
+                                                <input type="text" class="form-control" name="code" placeholder="код">
+                                            </p>
+                                            <a href="#" class="btn btn-danger">Смотреть</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm">
+                                    <div class="card" style="width: 18rem;">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Покупка</h4>
+                                            <p class="card-text">Вы можете купить код доступа к услуге прямо сейчас и приступить к просмотру! </p>
+                                            <p>
+                                            <h5>Стоимость: {{ $item->price }} руб.</h5>
+                                            </p>
+                                            <p></p>
+                                            <a href="#" class="btn btn-success">Купить</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm">
+                                    &nbsp;
+                                </div>
+
+                            </div>
+                        </div>
+                @endguest
+
                 @endforeach
-                <div class="row">
-                    <div class="col-md-12">
-                        <br/>
-                        <h4 class="tittle-w3ls text-left mb-5">Купить код доступа</h4>
-                        <p>
-                            ВНИМАНИЕ! ПЕРЕД ОПЛАТОЙ ПРОВЕРЬТЕ СВОЙ E-MAIL! КОД ПРИДЕТ НА УКАЗАННЫЙ АДРЕС! ЕСЛИ ВОЗНИКЛИ ПРОБЛЕМЫ, ЗВОНИТЕ +7 966 143 99 43 ИЛИ ПИШИТЕ НА office@doctor-laptev
-                        </p>
-                    </div>
-                    <div class="col-md-4">
-                        Услуга "Восстанавливающий сеанс"
-                    </div>
-                    <div class="col-md-2">
-                        Стоимость: 1000 руб.
-                    </div>
-                    <div class="col-md-4">
-                        <input type="text" class="form-control" name="email" placeholder="Email">
-                    </div>
-                    <div class="col-md-2 text-right">
-                        <button class="btn more black">купить</button>
-                    </div>
-                </div>
+
             </div>
         </section>
 

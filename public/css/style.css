@@ -270,6 +270,10 @@ li>a:only-child:after {
     content: '';
 }
 
+.card {
+    min-height: 283px;
+}
+
 /* Media Queries
 --------------------------------------------- */
 
