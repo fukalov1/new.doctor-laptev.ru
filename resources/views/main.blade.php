@@ -107,19 +107,19 @@
                         </div>
                         <div class="d-flex hny-stats-inf">
                             <div class="col-md-4 stats_w3pvt_counter_grid mt-3">
-                                <div class="d-md-flex justify-content-center">
+                                <div class="justify-content-center">
                                     <h5 class="counter">{{ config('practic_years') }}</h5>
                                     <p class="para-w3pvt">лет практики</p>
                                 </div>
                             </div>
                             <div class="col-md-4 stats_w3pvt_counter_grid mt-3">
-                                <div class="d-md-flex justify-content-center">
+                                <div class="justify-content-center">
                                     <h5 class="counter">{{ config('trennings') }}</h5>
                                     <p class="para-w3pvt">тренингов</p>
                                 </div>
                             </div>
                             <div class="col-md-4 stats_w3pvt_counter_grid mt-3">
-                                <div class="d-md-flex justify-content-center">
+                                <div class="justify-content-center">
                                     <h5 class="counter">{{ config('clients') }}</h5>
                                     <p class="para-w3pvt">клиентов</p>
                                 </div>

@@ -47,6 +47,10 @@ return [
             'driver' => 'local',
             'root' => storage_path('app'),
         ],
+        'videoshow' => [
+            'driver' => 'local',
+            'root' => storage_path('videoshow'),
+        ],
 
         'admin' => [
             'driver' => 'local',

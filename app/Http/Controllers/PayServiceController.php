@@ -12,6 +12,7 @@ use App\PayService;
 use App\User;
 use App\MailForm;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Log;
 
 class PayServiceController extends Controller
@@ -50,6 +51,27 @@ class PayServiceController extends Controller
         $data['message'] = null;
         $page_blocks = $this->pageBlock->where('page_id', $page->id)->where('orders','>',0)->orderBy('orders')->get();
         $data['page_blocks'] = $page_blocks;
+        return view($template, $data);
+    }
+
+    public function showPrivate(Request $request)
+    {
+        $page = Page::find(config('payservice_id', 3));
+        $template = 'private';
+        $data = ['data' => $page];
+//        dd($page->id);
+        $error = '';
+
+        $this->getBeadCrumbs($page->id);
+
+        $data['phone'] = config('phone');
+        $data['email'] = config('email');
+        $data['address'] = config('address');
+        $data['pages'] = $this->page->getMenu();
+        $data['error'] = $error;
+        $data['payservice'] = $this->payService->find($request->id);
+        $data['message'] = null;
+//        dd($this->payService->find($request->id));
         return view($template, $data);
     }
 
@@ -151,6 +173,23 @@ class PayServiceController extends Controller
                 }
             }
         }
+    }
+
+
+    public function getData()
+    {
+        return json_encode($this->payService->first());
+    }
+
+    public function getFile($file)
+    {
+        try {
+            return Storage::disk('videoshow')->get($file);
+        } catch (\Exception $e) {
+            return 'Not found '.$e->getMessage();
+        }
+
+
     }
 
     public function sendQuestData($id)

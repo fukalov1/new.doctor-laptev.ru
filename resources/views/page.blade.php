@@ -123,7 +123,7 @@
                         <div class="d-flex hny-stats-inf">
                             <div class="col-md-4 stats_w3pvt_counter_grid mt-3">
                                 <div class="d-md-flex justify-content-center">
-                                    <h5 class="counter">{{ config('practic_years') }}</h5>
+                                    <h5 class="counter">{{ config('practic_years') }}</h5><br/>
                                     <p class="para-w3pvt">лет практики</p>
                                 </div>
                             </div>

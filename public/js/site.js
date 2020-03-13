@@ -8,7 +8,6 @@ $(document).ready(function ($) {
     // setTimeout(func, 5000);
 
     $(".phone").mask("+7(999) 999-9999");
-    $(".email").inputmask("email");
 
     $('.submit-button').click(function() {
 

@@ -4,6 +4,8 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+import axios from 'axios';
+
 require('./bootstrap');
 
 window.Vue = require('vue');
@@ -20,6 +22,7 @@ window.Vue = require('vue');
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('pay-service', require('./components/PayService.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -29,4 +32,37 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 
 const app = new Vue({
     el: '#app',
+});
+
+
+$(document).ready(function() {
+
+    /*
+            $.ajax({
+                url: "/vso.php",
+                data: {},
+                dataType: "html",
+                    success: function(data){
+    //				alert(data);
+                    $('#flash').html(data);
+                },
+                    error: function(data){
+                    $('#flash').html('<h1>Ошибка показа</h1>');
+                },
+                    complete: function(data){
+                }
+            });
+
+    */
+
+    $(document).on("click", "#video1-play", function () {
+
+        var  video = document.getElementById("video1"),
+        playBtn = document.getElementById("video1-play");
+        current = document.getElementById("video1-current");
+        duration = document.getElementById("video1-duration");
+
+        video.play();
+        $("#video1-play").hide();
+    });
 });

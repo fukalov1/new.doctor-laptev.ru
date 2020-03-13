@@ -22,6 +22,13 @@ Route::get('/cities', 'CityController@show');
 Route::get('/survey/{type?}', 'SurveyController@show');
 Route::get('/pay-services', 'PayServiceController@show');
 Route::get('/pay-service/{id}', 'PayServiceController@showService');
+Route::post('/pay-service/get', 'PayServiceController@showPrivate');
+Route::post('/pay-service/get/data', 'PayServiceController@getData');
+
+Route::get('/get-file/{file}', 'PayServiceController@getFile');
+
+
+
 Route::post('/survey', 'SurveyController@save');
 Route::get('/reviews', 'ReviewController@show');
 Route::post('/reviews', 'ReviewController@save');
@@ -31,6 +38,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/survey', 'SurveyController@save');
     Route::post('/reviews', 'ReviewController@save');
 });
+
 
 Auth::routes();
 

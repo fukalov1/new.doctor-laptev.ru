@@ -27,9 +27,7 @@
         <section class="banner_bottom py-5">
             <div class="container py-md-5">
                 <h3 class="tittle-w3ls text-left mb-5"><span class="pink">Онлайн</span> сервисы</h3>
-                @if($error!='')
-                    <p style="color: #ff0000;">Проверка результата уравнения не прошла!</p>
-                @endif
+
                 @foreach($payservice as $item)
                 <div class="row">
                     <div class="col-md-12">
@@ -71,14 +69,18 @@
                             <div class="row">
                                 <div class="col-sm">
                                     <div class="card" style="width: 18rem;">
+                                        <form method="Post" action="/pay-service/get">
+                                            @csrf
                                         <div class="card-body">
                                             <h4 class="card-title">Просмотр</h4>
                                             <p class="card-text">Если у Вас купленный на сайте Доктора Лаптева код доступа или полученный на тренинге.</p>
                                             <p>
-                                                <input type="text" class="form-control" name="code" placeholder="код">
+                                                <input type="hidden" name="id" value="{{ $item->id }}">
+                                                <input type="text" class="form-control" name="code" placeholder="код" required>
                                             </p>
-                                            <a href="#" class="btn btn-danger">Смотреть</a>
+                                            <button class="btn btn-danger">Смотреть</button>
                                         </div>
+                                        </form>
                                     </div>
                                 </div>
                                 <div class="col-sm">
