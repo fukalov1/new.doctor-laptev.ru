@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\City;
+use App\Code;
 use App\Question;
 use App\QuestBlock;
 use App\SubDomain;
@@ -19,7 +20,9 @@ class PayServiceController extends Controller
 {
     public $bread_crubs;
 
-    public function __construct(Page $page, PageBlock $pageBlock, MailForm $mailForm, City $city, Question $question, User $user, PayService $payService)
+    public function __construct(Page $page, PageBlock $pageBlock, MailForm $mailForm,
+                                City $city, Question $question, User $user,
+                                PayService $payService, Code $code)
     {
         $this->page = $page;
         $this->pageBlock = $pageBlock;
@@ -28,6 +31,7 @@ class PayServiceController extends Controller
         $this->question = $question;
         $this->user = $user;
         $this->payService = $payService;
+        $this->code = $code;
     }
 
     public function show(Request $request)
@@ -71,6 +75,8 @@ class PayServiceController extends Controller
         $data['error'] = $error;
         $data['payservice'] = $this->payService->find($request->id);
         $data['message'] = null;
+        $data['id'] = $request->id;
+        $data['code'] = $request->code;
 //        dd($this->payService->find($request->id));
         return view($template, $data);
     }
@@ -176,9 +182,35 @@ class PayServiceController extends Controller
     }
 
 
-    public function getData()
+    public function getData(Request $request)
     {
-        return json_encode($this->payService->first());
+        $id = $request->id;
+        $code = $request->code;
+        return json_encode($this->payService->find($id)->with(['group_code' => function($q) use ($code)  {
+            $q->with(['codes' => function ($query) use ($code)  {
+                $query->where('code',$code);
+            }]);
+        }])->first());
+    }
+
+    public function checkData(Request $request)
+    {
+        $id = $request->id;
+        $code = $request->code;
+
+        $this->code->where('group_code_id',  $id)->where('code', $code)->increment('count');
+//        $t = Code::where('group_code_id',  $id)->where('code', $code.'888')->update(['count' => 100]);
+//        dd($id, $code, $t);
+//        dd($codes);
+//        if ($codes) {
+//            $count = $codes->count+1;
+//            dd($count, $code);
+//            $this->code->where(['group_code_id' => $id, 'code' => $code], ['count' => $count]);
+            return json_encode(['success' => true]);
+//        }
+//        else {
+//            return json_encode(['success' => false]);
+//        }
     }
 
     public function getFile($file)

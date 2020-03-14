@@ -21,10 +21,10 @@ Route::get('/photo-reviews', 'PhotoReviewController@show');
 Route::get('/cities', 'CityController@show');
 Route::get('/survey/{type?}', 'SurveyController@show');
 Route::get('/pay-services', 'PayServiceController@show');
+Route::post('/get-pay-service', 'PayServiceController@getData');
+Route::post('/check-pay-service', 'PayServiceController@checkData');
 Route::get('/pay-service/{id}', 'PayServiceController@showService');
 Route::post('/pay-service/get', 'PayServiceController@showPrivate');
-Route::post('/pay-service/get/data', 'PayServiceController@getData');
-
 Route::get('/get-file/{file}', 'PayServiceController@getFile');
 
 

@@ -70,15 +70,15 @@
                                 <div class="col-sm">
                                     <div class="card" style="width: 18rem;">
                                         <form method="Post" action="/pay-service/get">
-                                            @csrf
+                                            {{ csrf_field() }}
                                         <div class="card-body">
                                             <h4 class="card-title">Просмотр</h4>
                                             <p class="card-text">Если у Вас купленный на сайте Доктора Лаптева код доступа или полученный на тренинге.</p>
                                             <p>
                                                 <input type="hidden" name="id" value="{{ $item->id }}">
-                                                <input type="text" class="form-control" name="code" placeholder="код" required>
+                                                <input id="code" type="text" class="form-control" name="code" placeholder="код" required>
                                             </p>
-                                            <button class="btn btn-danger">Смотреть</button>
+                                            <button class="btn btn-danger" type="submit">Смотреть</button>
                                         </div>
                                         </form>
                                     </div>

@@ -57,10 +57,10 @@ $(document).ready(function() {
 
     $(document).on("click", "#video1-play", function () {
 
-        var  video = document.getElementById("video1"),
-        playBtn = document.getElementById("video1-play");
-        current = document.getElementById("video1-current");
-        duration = document.getElementById("video1-duration");
+        var  video = document.getElementById("video1");
+        var playBtn = document.getElementById("video1-play");
+        var current = document.getElementById("video1-current");
+        var duration = document.getElementById("video1-duration");
 
         video.play();
         $("#video1-play").hide();

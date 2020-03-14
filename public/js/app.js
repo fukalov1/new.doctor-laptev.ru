@@ -1979,26 +1979,134 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'PayService',
+  props: {
+    id: {
+      type: Number,
+      required: true
+    },
+    code: {
+      type: String,
+      required: true
+    }
+  },
   data: function data() {
     return {
-      payservice: null
+      payservice: {
+        name: '',
+        image: null,
+        video_mp4: null,
+        video_m4v: null,
+        video_ogv: null,
+        video_webm: null
+      },
+      timer: null,
+      currentTime: 0,
+      finishPlay: false
     };
   },
-  mounted: function mounted() {
+  created: function created() {
     console.log('Component mounted.');
     this.loadData();
+  },
+  watch: {
+    currentTime: function currentTime(time) {
+      if (time === this.payservice.max_time) {
+        this.stopTimer();
+      }
+    }
+  },
+  computed: {
+    validCode: function validCode() {
+      var result = 0;
+
+      if (this.payservice.group_code) {
+        result = this.payservice.group_code.codes.length;
+      }
+
+      return result;
+    },
+    lastCount: function lastCount() {
+      var count = 0;
+
+      if (this.payservice.group_code) {
+        count = this.payservice.show_count - this.payservice.group_code.codes[0].count;
+      }
+
+      return count >= 0 ? count : 0;
+    }
   },
   methods: {
     loadData: function loadData() {
       var _this = this;
 
-      axios.post("/pay-service/get/data").then(function (response) {
+      axios.post("/get-pay-service", {
+        id: this.id,
+        code: this.code
+      }).then(function (response) {
+        var path = '/storage/videoshow';
         _this.payservice = response.data;
+        _this.payservice.image = "/uploads/".concat(_this.payservice.image);
+        _this.payservice.video_mp4 = "".concat(path, "/").concat(_this.payservice.video_mp4);
+        _this.payservice.video_m4v = "".concat(path, "/").concat(_this.payservice.video_m4v);
+        _this.payservice.video_ogv = "".concat(path, "/").concat(_this.payservice.video_ogv);
+        _this.payservice.video_webm = "".concat(path, "/").concat(_this.payservice.video_webm);
       })["catch"](function (error) {
         reject(error);
       });
+    },
+    playVideo: function playVideo() {
+      var _this2 = this;
+
+      console.log('start timer');
+      this.startTimer();
+      axios.post("/check-pay-service", {
+        id: this.payservice.group_code_id,
+        code: this.code
+      }).then(function (response) {
+        console.log(response.data.success); // if(response.data.success) {
+
+        _this2.payservice.group_code.codes[0].count++; // }
+      })["catch"](function (error) {});
+    },
+    startTimer: function startTimer() {
+      var _this3 = this;
+
+      this.timer = setInterval(function () {
+        _this3.currentTime++;
+      }, 1000);
+    },
+    stopTimer: function stopTimer() {
+      clearTimeout(this.timer);
+      this.finishPlay = true;
     }
   }
 });
@@ -6548,7 +6656,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.spacer {\n    height:493px;\n    width:640px;\n    z-index: 100;\n    position: relative;\n    /*background: url('/images/spacer.gif');*/\n}\n.easyhtml5video {\n    position:relative;\n    width:640px;\n    display: inline-grid;\n}\n", ""]);
+exports.push([module.i, "\n.spacer {\n    height:493px;\n    width:640px;\n    z-index: 100;\n    position: absolute  ;\n    /*background: url('/images/spacer.gif');*/\n}\n.easyhtml5video {\n    position:relative;\n    width:640px;\n    display: inline-grid;\n}\n", ""]);
 
 // exports
 
@@ -38069,136 +38177,124 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
     _c("div", { staticClass: "row justify-content-center" }, [
-      _vm._m(0),
+      _c("div", { staticClass: "col-md-6" }, [
+        _c("h4", { staticClass: "tittle-w3ls text-left mb-5" }, [
+          _vm._v(
+            "\n                    " +
+              _vm._s(_vm.payservice.name) +
+              "\n                "
+          )
+        ])
+      ]),
       _vm._v(" "),
-      _vm._m(1),
+      _c("div", { staticClass: "col-md-6 text-right" }, [
+        _vm.validCode > 0
+          ? _c("h5", [
+              _vm._v(
+                "\n                    Оставшееся количество просмотров: " +
+                  _vm._s(_vm.lastCount) +
+                  "\n                "
+              )
+            ])
+          : _vm._e()
+      ]),
       _vm._v(" "),
-      _vm._m(2),
+      _c("div", { staticClass: "col-md-12 text-center pb-5" }, [
+        _vm.lastCount > 0
+          ? _c(
+              "button",
+              {
+                staticClass: "btn btn-danger",
+                attrs: { id: "video1-play" },
+                on: {
+                  click: function($event) {
+                    return _vm.playVideo()
+                  }
+                }
+              },
+              [_vm._v("Начать просмотр")]
+            )
+          : _vm._e()
+      ]),
       _vm._v(" "),
       _c("div", { staticClass: "col-md-12 text-center" }, [
         _c("div", { staticClass: "easyhtml5video", attrs: { id: "frame" } }, [
-          _c(
-            "video",
-            {
-              staticStyle: { width: "100%" },
-              attrs: {
-                id: "video1",
-                poster: "/1459391843.jpg",
-                title: "1459391843"
-              }
-            },
-            [
-              _c("source", {
-                attrs: {
-                  src: "/get-file/" + _vm.payservice.video_mp4,
-                  type: "video/mp4"
-                }
-              }),
-              _vm._v(" "),
-              _c("source", {
-                attrs: { src: "/1459391843.webm", type: "video/webm" }
-              }),
-              _vm._v(" "),
-              _c("source", {
-                attrs: { src: "/1459391843.ogv", type: "video/ogg" }
-              }),
-              _vm._v(" "),
-              _c("source", { attrs: { src: "/1459391843.mp4" } }),
-              _vm._v(" "),
-              _vm._m(3)
-            ]
-          ),
+          _c("div", { staticClass: "spacer" }),
           _vm._v(" "),
-          _vm._m(4)
+          _vm.validCode == 0
+            ? _c("div", { staticClass: "h3" }, [
+                _vm._v(
+                  "\n                        Веденный код доступа не найден. Просмотр невозможен.\n                    "
+                )
+              ])
+            : _vm.payservice.group_code.codes[0].count >
+              _vm.payservice.show_count
+            ? _c("div", { staticClass: "h3" }, [
+                _vm._v(
+                  "\n                        Количество просмотров по введенному коду доступа использовано. Просмотр невозможен.\n                    "
+                )
+              ])
+            : _c("div", [
+                _vm.finishPlay
+                  ? _c("div", [
+                      _c("h4", { staticClass: "tittle-w3ls text-left mb-5" }, [
+                        _vm._v(
+                          "\n                                " +
+                            _vm._s(_vm.payservice.name) +
+                            " окончен.\n                            "
+                        )
+                      ])
+                    ])
+                  : _c("div", [
+                      _vm.payservice.video_mp4
+                        ? _c(
+                            "video",
+                            {
+                              staticStyle: { width: "100%" },
+                              attrs: {
+                                id: "video1",
+                                poster: _vm.payservice.image,
+                                title: _vm.payservice.name
+                              }
+                            },
+                            [
+                              _c("source", {
+                                attrs: {
+                                  src: _vm.payservice.video_mp4,
+                                  type: "video/mp4"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("source", {
+                                attrs: {
+                                  src: _vm.payservice.video_webm,
+                                  type: "video/webm"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("source", {
+                                attrs: {
+                                  src: _vm.payservice.video_ogv,
+                                  type: "video/ogg"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("source", {
+                                attrs: { src: _vm.payservice.video_m4v }
+                              })
+                            ]
+                          )
+                        : _vm._e()
+                    ])
+              ]),
+          _vm._v(" "),
+          _vm._m(0)
         ])
       ])
     ])
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-6" }, [
-      _c("h5", [_vm._v("Услуга: ")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-6 text-right" }, [
-      _c("h5", [_vm._v("Оставшееся количество просмотров: 4")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-12 text-center pb-5" }, [
-      _c(
-        "button",
-        { staticClass: "btn btn-danger", attrs: { id: "video1-play" } },
-        [_vm._v("Начать просмотр")]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "object",
-      {
-        staticStyle: { position: "relative" },
-        attrs: {
-          type: "application/x-shockwave-flash",
-          data: "/flashfox.swf",
-          width: "640",
-          height: "493"
-        }
-      },
-      [
-        _c("param", { attrs: { name: "movie", value: "/flashfox.swf" } }),
-        _vm._v(" "),
-        _c("param", { attrs: { name: "allowFullScreen", value: "true/" } }),
-        _vm._v(" "),
-        _c("param", {
-          attrs: {
-            name: "flashVars",
-            value:
-              "autoplay=false&controls=false&fullScreenEnabled=false&posterOnEnd=true&loop=false&poster=/1459391843.jpg&src=/1459391843.m4v"
-          }
-        }),
-        _vm._v(" "),
-        _c("embed", {
-          staticStyle: { position: "relative" },
-          attrs: {
-            src: "/flashfox.swf",
-            width: "640",
-            height: "493",
-            flashvars:
-              "autoplay=false&controls=false&fullScreenEnabled=false&posterOnEnd=true&loop=false&poster=/1459391843.jpg&src=/1459391843.m4v",
-            allowfullscreen: "true",
-            wmode: "transparent",
-            type: "application/x-shockwave-flash",
-            pluginspage: "http://www.adobe.com/go/getflashplayer_en"
-          }
-        }),
-        _vm._v(" "),
-        _c("img", {
-          staticStyle: { position: "absolute", left: "0" },
-          attrs: {
-            alt: "1459391843",
-            src: "/1459391843.jpg",
-            width: "100%",
-            title: "Video playback is not supported by your browser"
-          }
-        })
-      ]
-    )
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -50492,10 +50588,10 @@ $(document).ready(function () {
           });
    */
   $(document).on("click", "#video1-play", function () {
-    var video = document.getElementById("video1"),
-        playBtn = document.getElementById("video1-play");
-    current = document.getElementById("video1-current");
-    duration = document.getElementById("video1-duration");
+    var video = document.getElementById("video1");
+    var playBtn = document.getElementById("video1-play");
+    var current = document.getElementById("video1-current");
+    var duration = document.getElementById("video1-duration");
     video.play();
     $("#video1-play").hide();
   });
