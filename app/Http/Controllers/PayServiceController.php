@@ -6,6 +6,7 @@ use App\Code;
 use App\Question;
 use App\QuestBlock;
 use App\SubDomain;
+use Illuminate\Support\Facades\Auth;
 use Mail;
 use App\Page;
 use App\PageBlock;
@@ -198,19 +199,20 @@ class PayServiceController extends Controller
         $id = $request->id;
         $code = $request->code;
 
-        $this->code->where('group_code_id',  $id)->where('code', $code)->increment('count');
-//        $t = Code::where('group_code_id',  $id)->where('code', $code.'888')->update(['count' => 100]);
-//        dd($id, $code, $t);
-//        dd($codes);
-//        if ($codes) {
-//            $count = $codes->count+1;
-//            dd($count, $code);
-//            $this->code->where(['group_code_id' => $id, 'code' => $code], ['count' => $count]);
+        try {
+
+            $client_code = $this->code->where('group_code_id', $id)->where('code', $code);
+            $client_code->increment('count');
+            $client_code->update([
+                'client'=> Auth::user()->name,
+                'phone'=> Auth::user()->phone,
+                'email'=> Auth::user()->email,
+                ]);
             return json_encode(['success' => true]);
-//        }
-//        else {
-//            return json_encode(['success' => false]);
-//        }
+        }
+        catch (\Exception $exception) {
+            return json_encode(['success' => false]);
+        }
     }
 
     public function getFile($file)

@@ -2006,6 +2006,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'PayService',
   props: {
@@ -38187,11 +38190,11 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "col-md-6 text-right" }, [
+      _c("div", { staticClass: "col-md-6 text-right d-none d-sm-block" }, [
         _vm.validCode > 0
           ? _c("h5", [
               _vm._v(
-                "\n                    Оставшееся количество просмотров: " +
+                "\n                    Осталось просмотров: " +
                   _vm._s(_vm.lastCount) +
                   "\n                "
               )
@@ -38199,25 +38202,29 @@ var render = function() {
           : _vm._e()
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "col-md-12 text-center pb-5" }, [
-        _vm.lastCount > 0
-          ? _c(
-              "button",
-              {
-                staticClass: "btn btn-danger",
-                attrs: { id: "video1-play" },
-                on: {
-                  click: function($event) {
-                    return _vm.playVideo()
+      _c(
+        "div",
+        { staticClass: "col-md-12 text-center pb-5 d-none d-sm-block" },
+        [
+          _vm.lastCount > 0
+            ? _c(
+                "button",
+                {
+                  staticClass: "btn btn-danger",
+                  attrs: { id: "video1-play" },
+                  on: {
+                    click: function($event) {
+                      return _vm.playVideo()
+                    }
                   }
-                }
-              },
-              [_vm._v("Начать просмотр")]
-            )
-          : _vm._e()
-      ]),
+                },
+                [_vm._v("Начать просмотр")]
+              )
+            : _vm._e()
+        ]
+      ),
       _vm._v(" "),
-      _c("div", { staticClass: "col-md-12 text-center" }, [
+      _c("div", { staticClass: "col-md-12 text-center d-none d-sm-block" }, [
         _c("div", { staticClass: "easyhtml5video", attrs: { id: "frame" } }, [
           _c("div", { staticClass: "spacer" }),
           _vm._v(" "),
@@ -38290,7 +38297,9 @@ var render = function() {
           _vm._v(" "),
           _vm._m(0)
         ])
-      ])
+      ]),
+      _vm._v(" "),
+      _vm._m(1)
     ])
   ])
 }
@@ -38363,6 +38372,20 @@ var staticRenderFns = [
         ]
       )
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "col-md-12 text-center d-md-none d-xs-block" },
+      [
+        _c("h3", [
+          _vm._v("Услуга не доступна для получения на мобильных устройствах")
+        ])
+      ]
+    )
   }
 ]
 render._withStripped = true

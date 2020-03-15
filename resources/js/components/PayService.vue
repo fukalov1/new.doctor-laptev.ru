@@ -6,16 +6,16 @@
                     {{ payservice.name }}
                 </h4>
             </div>
-            <div class="col-md-6 text-right">
+            <div class="col-md-6 text-right d-none d-sm-block">
                 <h5  v-if="validCode>0">
-                    Оставшееся количество просмотров: {{ lastCount }}
+                    Осталось просмотров: {{ lastCount }}
                 </h5>
             </div>
-            <div class="col-md-12 text-center pb-5">
+            <div class="col-md-12 text-center pb-5 d-none d-sm-block">
                 <button class="btn btn-danger"
                         id="video1-play" @click="playVideo()" v-if="lastCount>0">Начать просмотр</button>
             </div>
-            <div class="col-md-12 text-center">
+            <div class="col-md-12 text-center d-none d-sm-block">
                 <div id="frame" class="easyhtml5video">
                     <div class="spacer">
 
@@ -57,6 +57,9 @@
                     </ul>
                     </div>
                 </div>
+            </div>
+            <div class="col-md-12 text-center d-md-none d-xs-block">
+                <h3>Услуга не доступна для получения на мобильных устройствах</h3>
             </div>
         </div>
 
