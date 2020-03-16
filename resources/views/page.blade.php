@@ -23,14 +23,14 @@
                     </div>
                 </section>
                 <!-- //about -->
-
+            {{--блок с фото слева--}}
             @elseif($page_block->type=='2')
                 <section class="banner_bottom py-5">
                     <div class="container py-md-5">
                         <div class="row inner_sec_info">
 
                             <div class="col-md-6 banner_bottom_grid help">
-                                <img src="{{ asset('/uploads/'.$page_block->image) }}" alt=" " class="img-fluid">
+                                <img src="{{ asset('/uploads/images/'.$page_block->image) }}" alt=" " class="img-fluid">
                             </div>
                             <div class="col-md-6 banner_bottom_left mt-lg-0 mt-4">
                                 <h4><a class="link-hny" href="services.html">
@@ -42,33 +42,62 @@
                         </div>
                     </div>
                 </section>
+                {{-- end блок с фото слева--}}
 
+                {{--блок с фото справа--}}
             @elseif($page_block->type=='3')
-                <section class="about py-5">
-                    <div class="container p-md-5">
-                        <div class="about-hny-info text-left px-md-5">
-                            <h3 class="tittle-w3ls mb-3"><span class="pink">{{ $page_block->header }}</span></h3>
-                            <p class="sub-tittle mt-3 mb-4">
-{{--                                <img src="/uploads/images/thumbnail/{{ $page_block->image }}" class="img-article"/>--}}
+                <section class="banner_bottom py-5">
+                    <div class="container py-md-5">
+                        <div class="row inner_sec_info">
+
+                            <div class="col-md-6 banner_bottom_left mt-lg-0 mt-4">
+                                <h4><a class="link-hny" href="services.html">
+                                        {{ $page_block->header }}</a></h4>
                                 {!! $page_block->text !!}
-                            </p>
+                                <a class="btn more black mt-3" href="services.html" role="button">Подробнее</a>
+                            </div>
+                            <div class="col-md-6 banner_bottom_grid help">
+                                <img src="{{ asset('/uploads/images/'.$page_block->image) }}" alt=" " class="img-fluid">
+                            </div>
+
                         </div>
                     </div>
                 </section>
+                {{--end блок с фото справа--}}
+
+                {{--блок для статьи--}}
             @elseif($page_block->type=='4')
-                <section class="page-block-doc" id="block{{$page_block->id}}">
-                    <div class="container">
-                        <h1>{{ $page_block->header }}</h1>
-                        {!! $page_block->text !!}
+                <section class="about py-5">
+                    <div class="container p-md-5">
+                        <div class="about-hny-info text-left px-md-5">
+                            <h3 class="tittle-w3ls mb-3">{{ $page_block->header }}</h3>
+                                <img src="{{ asset('/uploads/images/'.$page_block->image) }}" alt=" " class="img-fluid img-article">
+                            {!! $page_block->text !!}
+
+                        </div>
                     </div>
                 </section>
+                {{--блок для статьи--}}
+
+{{--            промо-блок--}}
             @elseif($page_block->type=='5')
-                <section class="page-block-link" id="block{{$page_block->id}}">
-                    <div class="container">
-                        <h1>{{ $page_block->header }}</h1>
-                        {!! $page_block->text !!}
+                <section class="services" id="block{{$page_block->id}}">
+                    <div class="over-lay-blue py-5">
+                        <div class="container py-md-5">
+                            <div class="row my-4">
+                                <div class="col-lg-5 services-innfo pr-5">
+                                    <h3 class="tittle-w3ls two mb-3 text-left"></h3>
+                                    <p class="sub-tittle mt-2 mb-sm-3 text-left">{{ $page_block->header }}</p>
+                                    <a href="services.html"><img src="{{ asset('/uploads/images/'.$page_block->image) }}" alt="w3pvt" class="img-fluid"></a>
+                                </div>
+                                <div class="col-lg-7 services-grid-inf">
+                                    {!! $page_block->text !!}
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </section>
+
             @elseif($page_block->type=='6')
                 <section class="page-block-pdf" id="block{{$page_block->id}}">
                     <div class="container">
@@ -76,9 +105,9 @@
                         {!! $page_block->text !!}
                     </div>
                 </section>
-            @elseif($page_block->type=='7')
 
-            <!-- banner slider -->
+                <!-- banner slider -->
+            @elseif($page_block->type=='7')
                 <div id="homepage-slider" class="st-slider">
                     <input type="radio" class="cs_anchor radio" name="slider" id="play1" checked="" />
                     @foreach($page_block->sliders as $slider)
@@ -114,29 +143,29 @@
                     </div>
                     <!-- banner-hny-info -->
                     <div class="banner-hny-info">
-                        <h3>Создаем новое
-                            <br>Пишевое поведение</h3>
+                        <h3>config('main_slider_line1', 'Создаем новое') }}
+                            <br>config('main_slider_line1', 'Пишевое поведение') }}</h3>
                         <div class="top-buttons mx-auto text-center mt-md-5 mt-3">
-                            <a href="single.html" class="btn more mr-2">Подробнее</a>
-                            <a href="contact.html" class="btn">Записаться</a>
+                            <a href="config('main_slider_link1', '/') }}" class="btn more mr-2">Подробнее</a>
+                            <a href="config('main_slider_link2', '/') }}" class="btn">Записаться</a>
                         </div>
                         <div class="d-flex hny-stats-inf">
                             <div class="col-md-4 stats_w3pvt_counter_grid mt-3">
                                 <div class="d-md-flex justify-content-center">
-                                    <h5 class="counter">{{ config('practic_years') }}</h5><br/>
-                                    <p class="para-w3pvt">лет практики</p>
+                                    <h5 class="counter">{{ config('main_slider_col1_value', 38) }}</h5><br/>
+                                    <p class="para-w3pvt">{{ config('main_slider_col1_text', 'лет практики') }}</p>
                                 </div>
                             </div>
                             <div class="col-md-4 stats_w3pvt_counter_grid mt-3">
                                 <div class="d-md-flex justify-content-center">
-                                    <h5 class="counter">{{ config('trennings') }}</h5>
-                                    <p class="para-w3pvt"> тренингов</p>
+                                    <h5 class="counter">{{ config('main_slider_col2_value', 200000) }}</h5><br/>
+                                    <p class="para-w3pvt">{{ config('main_slider_col2_text', 'тренингов') }}</p>
                                 </div>
                             </div>
                             <div class="col-md-4 stats_w3pvt_counter_grid mt-3">
                                 <div class="d-md-flex justify-content-center">
-                                    <h5 class="counter">{{ config('clients') }}</h5>
-                                    <p class="para-w3pvt">пациентов</p>
+                                    <h5 class="counter">{{ config('main_slider_col3_value', 300000) }}</h5><br/>
+                                    <p class="para-w3pvt">{{ config('main_slider_col3_text', 'клиентов') }}</p>
                                 </div>
                             </div>
                         </div>
@@ -344,28 +373,28 @@
             <div class="container py-md-5">
                 <h3 class="tittle-w3ls text-left mb-5"><span class="pink">Расписание</span> по городам</h3>
 
-                <div class="row">
-                    <div class="col-md-6">
+{{--                <div class="row">--}}
+{{--                    <div class="col-md-6">--}}
 
-                    </div>
-                    <div class="col-md-3">
-                        <select class="form-control months">
-                            <option value="0">
-                                все месяцы
-                            </option>
-                            @foreach($months as $item)
-                                <option value="{{ $loop->index+1 }}">
-                                    {{ $item }}
-                                </option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="col-md-3">
-                        <button type="button" class="btn btn-primary">
-                            сбросить фильтр
-                        </button>
-                    </div>
-                </div>
+{{--                    </div>--}}
+{{--                    <div class="col-md-3">--}}
+{{--                        <select class="form-control months">--}}
+{{--                            <option value="0">--}}
+{{--                                все месяцы--}}
+{{--                            </option>--}}
+{{--                            @foreach($months as $item)--}}
+{{--                                <option value="{{ $loop->index+1 }}">--}}
+{{--                                    {{ $item }}--}}
+{{--                                </option>--}}
+{{--                            @endforeach--}}
+{{--                        </select>--}}
+{{--                    </div>--}}
+{{--                    <div class="col-md-3">--}}
+{{--                        <button type="button" class="btn btn-primary">--}}
+{{--                            сбросить фильтр--}}
+{{--                        </button>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
 
 
                 @foreach($cities as $item)

@@ -23,7 +23,7 @@ Route::get('/survey/{type?}', 'SurveyController@show');
 Route::get('/pay-services', 'PayServiceController@show');
 Route::post('/get-pay-service', 'PayServiceController@getData');
 Route::post('/check-pay-service', 'PayServiceController@checkData');
-Route::get('/pay-service/{id}', 'PayServiceController@showService');
+
 Route::post('/pay-service/get', 'PayServiceController@showPrivate');
 Route::get('/get-file/{file}', 'PayServiceController@getFile');
 
@@ -37,6 +37,7 @@ Route::post('/reviews', 'ReviewController@save');
 Route::group(['middleware' => ['auth']], function () {
     Route::post('/survey', 'SurveyController@save');
     Route::post('/reviews', 'ReviewController@save');
+    Route::get('/pay-service/{id}', 'PayServiceController@showService');
 });
 
 

@@ -118,9 +118,6 @@ class PageBlockController extends Controller
             elseif ($this->type==7) {
                 $str = '<a href="/admin/sliders?set='.$this->id.'">слайдеры</a>';
             }
-            elseif ($this->type==9) {
-                $str = '<a href="/admin/photosets?set='.$this->id.'">фотогалерея</a>';
-            }
             elseif ($this->type==10) {
                 $str = '<a href="/admin/mailforms?set='.$this->id.'">почтовая форма</a>';
             }
@@ -179,11 +176,13 @@ class PageBlockController extends Controller
         $form->select('type', 'Тип текстового блока')->options(function ($id) {
             $list = [
                 '1' => 'Стандарт',
-                '2' => 'Блок с фото',
-                '3'=> 'Промо-блок',
+                '2' => 'Блок с фото слева',
+                '3' => 'Блок с фото справа',
+                '4'=> 'Блок с фото для статьи',
+                '5'=> 'Промо-блок',
                 '7'=> 'Слайдеры',
-                '8'=> 'Блок во всю ширину',
-                '9'=> 'Фотогалерея',
+                '8'=> 'Произвольный блок',
+//                '9'=> 'Фотогалерея',
                 '10'=> 'Почтовая форма',
                 '11'=> 'Фото-отзывы',
                 '12'=> 'Вопросы-ответы'

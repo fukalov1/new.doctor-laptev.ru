@@ -47,13 +47,24 @@
                         {!! $page_block->text !!}
                     </div>
                 </section>
-            @elseif($page_block->type=='5')
-                <section class="page-block-link" id="block{{$page_block->id}}">
-                    <div class="container">
-                        <h1>{{ $page_block->header }}</h1>
-                        {!! $page_block->text !!}
-                    </div>
-                </section>
+                    {{--            промо-блок--}}
+                @elseif($page_block->type=='5')
+                    <section class="services" id="block{{$page_block->id}}">
+                        <div class="over-lay-blue py-5">
+                            <div class="container py-md-5">
+                                <div class="row my-4">
+                                    <div class="col-lg-5 services-innfo pr-5">
+                                        <h3 class="tittle-w3ls two mb-3 text-left">{{ $page_block->header }}</h3>
+                                        <p class="sub-tittle mt-2 mb-sm-3 text-left"></p>
+                                        <a href="services.html"><img src="{{ asset('/uploads/'.$page_block->image) }}" alt="w3pvt" class="img-fluid"></a>
+                                    </div>
+                                    <div class="col-lg-7 services-grid-inf">
+                                        {!! $page_block->text !!}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
             @elseif($page_block->type=='6')
                 <section class="page-block-pdf" id="block{{$page_block->id}}">
                     <div class="container">
@@ -99,29 +110,29 @@
                     </div>
                     <!-- banner-hny-info -->
                     <div class="banner-hny-info">
-                        <h3>СОЗДАЕМ НОВОЕ
-                            <br>ПИЩЕВОЕ ПОВЕДЕНИЕ</h3>
+                        <h3>{{ config('main_slider_line1', 'Создаем новое') }}
+                            <br>{{ config('main_slider_line1', 'Пишевое поведение') }} </h3>
                         <div class="top-buttons mx-auto text-center mt-md-5 mt-3">
-                            <a href="/ob-avtore/moy-trenning" class="btn more mr-2">Подробнее</a>
-                            <a href="/onlayn-servis/anketirovanie" class="btn">Записаться</a>
+                            <a href="{{ config('main_slider_link1', '/ob-avtore/moy-trenning') }}" class="btn more mr-2">Подробнее</a>
+                            <a href="{{ config('main_slider_link2', '/onlayn-servis/anketirovanie') }}" class="btn">Записаться</a>
                         </div>
                         <div class="d-flex hny-stats-inf">
                             <div class="col-md-4 stats_w3pvt_counter_grid mt-3">
                                 <div class="justify-content-center">
-                                    <h5 class="counter">{{ config('practic_years') }}</h5>
-                                    <p class="para-w3pvt">лет практики</p>
+                                    <h5 class="counter">{{ config('main_slider_col1_value', 38) }}</h5>
+                                    <p class="para-w3pvt">{{ config('main_slider_col1_text', 'лет практики') }}</p>
                                 </div>
                             </div>
                             <div class="col-md-4 stats_w3pvt_counter_grid mt-3">
                                 <div class="justify-content-center">
-                                    <h5 class="counter">{{ config('trennings') }}</h5>
-                                    <p class="para-w3pvt">тренингов</p>
+                                    <h5 class="counter">{{ config('main_slider_col2_value', 200000) }}</h5>
+                                    <p class="para-w3pvt">{{ config('main_slider_col2_text', 'тренингов') }}</p>
                                 </div>
                             </div>
                             <div class="col-md-4 stats_w3pvt_counter_grid mt-3">
                                 <div class="justify-content-center">
-                                    <h5 class="counter">{{ config('clients') }}</h5>
-                                    <p class="para-w3pvt">клиентов</p>
+                                    <h5 class="counter">{{ config('main_slider_col3_value', 300000) }}</h5>
+                                    <p class="para-w3pvt">{{ config('main_slider_col3_text', 'клиентов') }}</p>
                                 </div>
                             </div>
                         </div>
@@ -232,141 +243,6 @@
     </div>
     <!-- //banner -->
 
-    <!-- //home -->
-
-    <!--/ab-->
-    <section class="banner_bottom py-5">
-        <div class="container py-md-5">
-            <div class="row features-w3pvt-main" id="features">
-                <div class="col-md-4 feature-gird">
-                    <div class="row features-hny-inner-gd">
-                        <div class="col-md-3 featured_grid_left">
-                            <div class="icon_left_grid">
-                                <span class="fa fa-globe" aria-hidden="true"></span>
-                            </div>
-                        </div>
-                        <div class="col-md-9 featured_grid_right_info pl-lg-0">
-                            <h4><a class="link-hny" href="single.html">Онлайн-сервисы</a></h4>
-                            <p>Эта услуга дает возможность перезапустить программу, продлить программу, выполнить дополнительный питьевой режим или приступить к выполнению программы через некоторое время после основного тренинга.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 feature-gird">
-                    <div class="row features-hny-inner-gd">
-                        <div class="col-md-3 featured_grid_left">
-                            <div class="icon_left_grid">
-                                <span class="fa fa-laptop" aria-hidden="true"></span>
-                            </div>
-                        </div>
-                        <div class="col-md-9 featured_grid_right_info pl-lg-0">
-                            <h4><a class="link-hny" href="single.html">Нейромозговые карты</a></h4>
-                            <p>Лаптев Андрей Викторович создаёт для своих клиентов удивительные картины. Источником вдохновения становятся мозговые волны, которые вырабатывает мозг доктора во время суггестивной фиксации или в момент максимального психоэмоционального напряжения при проведении сеансов.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 feature-gird">
-                    <div class="row features-hny-inner-gd">
-                        <div class="col-md-3 featured_grid_left">
-                            <div class="icon_left_grid">
-                                <span class="fa fa-handshake-o" aria-hidden="true"></span>
-                            </div>
-                        </div>
-                        <div class="col-md-9 featured_grid_right_info pl-lg-0">
-                            <h4><a class="link-hny" href="single.html">Восстанавливающий сеанс</a></h4>
-                            <p>Lorem Ipsum is simply text the printing and typesetting standard industry.</p>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-    <!--//ab-->
-
-    <!--/services-->
-    <section class="services" id="services">
-        <div class="over-lay-blue py-5">
-            <div class="container py-md-5">
-                <div class="row my-4">
-                    <div class="col-lg-5 services-innfo pr-5">
-                        <h3 class="tittle-w3ls two mb-3 text-left"><span class="pink">Мой</span> арсенал</h3>
-                        <p class="sub-tittle mt-2 mb-sm-3 text-left">Современные психотехники и авторские разработки.</p>
-                        <a href="services.html"><img src="images/ab2.jpg" alt="w3pvt" class="img-fluid"></a>
-                    </div>
-                    <div class="col-lg-7 services-grid-inf">
-                        <div class="row services-w3pvt-main mt-5">
-                            <div class="col-lg-6 feature-gird">
-                                <div class="row features-hny-inner-gd mt-3">
-                                    <div class="col-md-2 featured_grid_left">
-                                        <div class="icon_left_grid">
-{{--                                            <span class="fa fa-paint-brush" aria-hidden="true"></span>--}}
-                                        </div>
-                                    </div>
-                                    <div class="col-md-10 featured_grid_right_info">
-                                        <h4><a class="link-hny" href="single.html">Суггестивные формулы</a></h4>
-                                        <p>Lorem Ipsum is simply text the printing and typesetting standard industry.</p>
-
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="col-lg-6 feature-gird">
-                                <div class="row features-hny-inner-gd mt-3">
-                                    <div class="col-md-2 featured_grid_left">
-                                        <div class="icon_left_grid">
-{{--                                            <span class="fa fa-bullhorn" aria-hidden="true"></span>--}}
-                                        </div>
-                                    </div>
-                                    <div class="col-md-10 featured_grid_right_info">
-                                        <h4><a class="link-hny" href="single.html">Снятие зажимов</a></h4>
-                                        <p>Lorem Ipsum is simply text the printing and typesetting standard industry.</p>
-
-                                    </div>
-
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="row services-w3pvt-main mt-5">
-                            <div class="col-lg-6 feature-gird ">
-                                <div class="row features-hny-inner-gd mt-3">
-                                    <div class="col-md-2 featured_grid_left">
-                                        <div class="icon_left_grid">
-{{--                                            <span class="fa fa-shield" aria-hidden="true"></span>--}}
-                                        </div>
-                                    </div>
-                                    <div class="col-md-10 featured_grid_right_info">
-                                        <h4><a class="link-hny" href="single.html">Рефрейминг</a></h4>
-                                        <p>Lorem Ipsum is simply text the printing and typesetting standard industry.</p>
-
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="col-lg-6 feature-gird">
-                                <div class="row features-hny-inner-gd mt-3">
-                                    <div class="col-md-2 featured_grid_left">
-                                        <div class="icon_left_grid">
-{{--                                            <span class="fa fa-lightbulb-o" aria-hidden="true"></span>--}}
-                                        </div>
-                                    </div>
-                                    <div class="col-md-10 featured_grid_right_info">
-                                        <h4><a class="link-hny" href="single.html">Психопластика желудка</a></h4>
-                                        <p>Lorem Ipsum is simply text the printing and typesetting standard industry.</p>
-
-                                    </div>
-
-                                </div>
-                            </div>
-
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--//services-->
 
         <section class="projects py-5" id="gallery">
                 <div class="container py-md-5">

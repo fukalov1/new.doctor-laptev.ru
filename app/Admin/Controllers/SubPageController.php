@@ -102,7 +102,7 @@ class SubPageController extends Controller
             ]);
         });
 
-        $grid->id('Id');
+        $grid->created_at('Дата создания')->sortable();
 //        $grid->parent_id('Parent id');
 //        $grid->title('Title');
 //        $grid->description('Description');
@@ -111,6 +111,8 @@ class SubPageController extends Controller
             $str = $this->name;
             if ($this->relation)
                 $str = "<a href='/admin/sub_pages?set={$this->id}' title='перейти к подразделам или вложенным страницам'>{$this->name}</a>";
+            else
+                return "<a href='/admin/page_blocks?set={$this->id}' title='перейти к текстовым блокам страницы'>{$this->name}</a>";
             return $str;
         });
         $grid->url('Адрес страницы')->display(function($url) {
