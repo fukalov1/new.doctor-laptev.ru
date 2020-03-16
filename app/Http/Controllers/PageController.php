@@ -117,7 +117,7 @@ class PageController extends Controller
                 Mail::send('emails.sendform', ['data' => $data], function ($message) use ($data) {
                     $emails = explode(',',$data['to']);
                     $message->from(config('email'), ' ', config('company_name'));
-                    $message->to($emails)->subject('Заказ сметы с taktilnaya-plitka.ru. ');
+                    $message->to($emails)->subject('Письмо с сайта ');
 //                    $message->to($data['to'], 'admin')->subject('Заказ сметы с taktilnaya-plitka.ru. ');
                 });
                 $data = ['success' => true, 'result' => 'Спасибо за Ваше обращение. <br/><br/>Сообщение успешно отправлено администратору.<br/><br/> В ближайшее время Вы получите ответ.'];
