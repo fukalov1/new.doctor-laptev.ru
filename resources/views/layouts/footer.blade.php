@@ -3,33 +3,40 @@
         <div class="row inner_sec_info">
 
 
-            <div class="col-lg-5 banner_bottom_left">
-
-                <div class="login p-md-5 p-4 mx-auto bg-white mw-100">
+            <div class="col-lg-5 banner_bottom_left form-area1">
+                <form id="sendform1" class="send-form" method="post">
+                    <div class="login p-md-5 p-4 mx-auto bg-white mw-100">
                     <h4>
                         Письмо Доктору Лаптеву</h4>
                     <form action="#" method="post">
                         <div class="form-group">
                             <label>Ваше имя</label>
 
-                            <input type="text" class="form-control" id="validationDefault01" placeholder="" required="">
+                            <input type="text" class="form-control" name="name1" id="name1" placeholder="" required>
                         </div>
                         <div class="form-group">
-                            <label>Ваш Email</label>
-                            <input type="text" class="form-control" id="validationDefault02" placeholder="" required="">
+                            <label>Ваш E-mail</label>
+                            <input type="text" class="form-control" name="email1" id="email1" placeholder="" required>
                         </div>
 
-                        <div class="form-group mb-4">
-                            <label class="mb-2">Ваш телефон</label>
-                            <input type="text" class="form-control" id="password1" placeholder="" required="">
+                        <div class="form-group">
+                            <label>Ваш телефон</label>
+                            <input type="text" class="form-control phone" name="phone1" id="phone1" placeholder="" required>
                         </div>
 
-                        <button type="submit" class="btn more black submit mb-4">Отправить</button>
+                        <div class="form-group">
+                            <label>Сообщение</label>
+                            <textarea class="form-control" name="message1" id="message1" placeholder="" required></textarea>
+                        </div>
+
+                        @csrf
+                        <input type="hidden" name="uid" value="1">
+                        <button type="submit" class="btn more black submit mb-4 submit-button" rel="1">Отправить</button>
 
                     </form>
 
                 </div>
-
+                </form>
             </div>
             <div class="col-lg-7 banner_bottom_grid help pl-lg-5">
                 <img src="images/ab1.jpg" alt=" " class="img-fluid mb-4">

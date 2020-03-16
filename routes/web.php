@@ -27,7 +27,7 @@ Route::post('/check-pay-service', 'PayServiceController@checkData');
 Route::post('/pay-service/get', 'PayServiceController@showPrivate');
 Route::get('/get-file/{file}', 'PayServiceController@getFile');
 
-
+Route::post('/send_form/{id}', 'PageController@sendFormData');
 
 Route::post('/survey', 'SurveyController@save');
 Route::get('/reviews', 'ReviewController@show');
