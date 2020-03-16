@@ -103,14 +103,14 @@ class PageController extends Controller
                     'url' =>  url()->current(),
                     'email' => request('email'.$id),
                     'name' => request('name'.$id),
-                    'fio' => request('fio'),
+                    'fio' => request('name'.$id),
                     'phone' => request('phone'.$id),
                     'direction' => request('direction'),
                     'message' => request('message' . $id),
                     'to' => $mailform->sender
                 ];
 
-
+//dd($data);
                 Log::channel('sitelog')->info('Send mail from ' . config('email') . '  name: ' . request('fio') . '  email: ' . request('email'));
 
                 Mail::send('emails.sendform', ['data' => $data], function ($message) use ($data) {

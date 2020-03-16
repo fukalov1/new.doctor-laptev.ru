@@ -27,12 +27,9 @@ IP: {{ $data['ip'] }}<br/>
         ФИО: {{ $data['fio'] }}<br/>
     @endif
 @endif
-@if(key_exists('name', $data))
-    @if(isset($data['name']))
-        Наименование: {{ $data['name'] }}<br/>
-    @endif
-@endif
+
 E-mail: {{ $data['email'] }}<br/>
+
 @if(key_exists('phone', $data))
     @if(isset($data['phone']))
         Телефон: {{ $data['phone'] }}<br/>
