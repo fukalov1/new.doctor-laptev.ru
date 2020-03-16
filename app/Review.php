@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 class Review extends Model
 {
-    protected $fillable = ['name', 'city', 'email', 'text', 'hide'];
+    protected $fillable = ['name', 'city', 'email', 'text', 'hide', 'created_at'];
 
     public function importGb() {
         try {
@@ -25,6 +25,7 @@ class Review extends Model
                             'city' => $item->city,
                             'email' => $item->email,
                             'hide' => $item->hide,
+                            'created_at' => $item->timestamp
                         ]);
                     $s++;
                 } catch (\Exception $exception) {

@@ -117,8 +117,8 @@
             <div class="col-lg-8 mt-8 ad-info">
                 <h4 class="mb-4">Контактная информация</h4>
                 <p><span class="fa fa-map-marker"></span>{{ config('address')  }}<span>Москва.</span></p>
-                <p class="phone"><span class="fa fa-phone"></span>{{ config('mobile')  }}</p>
-                <p class="phone"><span class="fa fa-fax"></span> {{ config('phone')  }} </p>
+                <p ><span class="fa fa-phone"></span>{{ config('mobile')  }}</p>
+                <p ><span class="fa fa-fax"></span> {{ config('phone')  }} </p>
                 <p><span class="fa fa-envelope"></span><a href="mailto:{{ config('email')  }}">{{ config('email')  }}</a></p>
             </div>
 
