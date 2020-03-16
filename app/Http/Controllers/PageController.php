@@ -101,11 +101,10 @@ class PageController extends Controller
                 $data = [
                     'ip' => $this->getIp(),
                     'url' =>  url()->current(),
-                    'email' => request('email'),
-                    'name' => request('name'),
+                    'email' => request('email'.$id),
+                    'name' => request('name'.$id),
                     'fio' => request('fio'),
-                    'email' => request('email'),
-                    'phone' => request('phone'),
+                    'phone' => request('phone'.$id),
                     'direction' => request('direction'),
                     'message' => request('message' . $id),
                     'to' => $mailform->sender
