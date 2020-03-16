@@ -30,7 +30,7 @@
                         <div class="row inner_sec_info">
 
                             <div class="col-md-6 banner_bottom_grid help">
-                                <img src="{{ asset('/uploads/images/'.$page_block->image) }}" alt=" " class="img-fluid">
+                                <img src="{{ asset('/uploads/'.$page_block->image) }}" alt=" " class="img-fluid">
                             </div>
                             <div class="col-md-6 banner_bottom_left mt-lg-0 mt-4">
                                 <h4><a class="link-hny" href="services.html">
@@ -57,7 +57,7 @@
                                 <a class="btn more black mt-3" href="services.html" role="button">Подробнее</a>
                             </div>
                             <div class="col-md-6 banner_bottom_grid help">
-                                <img src="{{ asset('/uploads/images/'.$page_block->image) }}" alt=" " class="img-fluid">
+                                <img src="{{ asset('/uploads/'.$page_block->image) }}" alt=" " class="img-fluid">
                             </div>
 
                         </div>
