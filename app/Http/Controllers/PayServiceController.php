@@ -109,6 +109,7 @@ class PayServiceController extends Controller
 
         $page_blocks = $this->pageBlock->where('page_id', $page->id)->where('orders','>',0)->orderBy('orders')->get();
         $data['page_blocks'] = $page_blocks;
+        $data['postform'] = $this->pageBlock->where('page_id', 1)->where('type',10)->first();
         return view($template, $data);
     }
 
@@ -171,6 +172,7 @@ class PayServiceController extends Controller
         $data['message'] = 'Ваша анкета успешно зарегистрирована!';
         $page_blocks = $this->pageBlock->where('page_id', $page->id)->where('orders','>',0)->orderBy('orders')->get();
         $data['page_blocks'] = $page_blocks;
+        $data['postform'] = $this->pageBlock->where('page_id', 1)->where('type',10)->first();
 //dd($data);
         return view('survey', $data);
     }

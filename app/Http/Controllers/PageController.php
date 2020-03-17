@@ -71,6 +71,7 @@ class PageController extends Controller
 //        dd($this->page->getMainPhotoReview());
         $page_blocks = $this->pageBlock->where('page_id', $page->id)->where('orders','>',0)->orderBy('orders')->get();
         $data['page_blocks'] = $page_blocks;
+        $data['postform'] = $this->pageBlock->where('page_id', 1)->where('type',10)->first();
 //        $data['banners'] = $banners;
 //        $data['bread_crumbs'] = '<a href="/">Главная</a> /'.$this->bread_crubs;
 

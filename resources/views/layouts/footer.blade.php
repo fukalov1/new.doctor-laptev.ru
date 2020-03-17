@@ -39,9 +39,9 @@
                 </form>
             </div>
             <div class="col-lg-7 banner_bottom_grid help pl-lg-5">
-                <img src="images/ab1.jpg" alt=" " class="img-fluid mb-4">
-                <h4><a class="link-hny" href="/onlayn-servis">НАЧНЕМ ПРОГРАММУ?</a></h4>
-                <p class="mt-3">Пройдите <a href="/survey">первичное анкетирование</a> и получите первоочередное право на <a href="/ob-avtore/moy-trenning">тренинг</a>.</p>
+                <img src="{{ asset('/uploads/'.$postform->image) }}" alt="{{ $postform->title }}" class="img-fluid mb-4">
+                <h4>{{ $postform->header }}</h4>
+                {!!  $postform->text !!}
 
             </div>
         </div>
