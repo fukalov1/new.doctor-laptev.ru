@@ -123,7 +123,19 @@ class PayServiceController extends AdminController
         $form->switch('active', __('Активный'));
         $form->number('show_count', __('Число показов'))->default(1);
         $form->number('max_time', __('Максимальная продолжительность'));
-        $form->ckeditor('text', 'Текст')
+        $form->ckeditor('text', 'Текст публичной части')
+            ->options(
+                [
+                    'filebrowserBrowseUrl' =>  '/ckfinder/browser',
+                    'filebrowserImageBrowseUrl' =>  '/ckfinder/browser',
+                    'filebrowserUploadUrl' => '/ckfinder/browser?type=Files',
+                    'filebrowserImageUploadUrl' => '/ckfinder/browser?command=QuickUpload&type=Images',
+                    'lang' => 'ru',
+                    'height' => 500,
+                    'filebrowserWindowWidth' => '1000',
+                    'filebrowserWindowHeight' => '700'
+                ])->default('-');
+        $form->ckeditor('private_text', 'Текст закрытой части')
             ->options(
                 [
                     'filebrowserBrowseUrl' =>  '/ckfinder/browser',
