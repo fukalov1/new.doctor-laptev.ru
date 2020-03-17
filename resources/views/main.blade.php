@@ -111,7 +111,7 @@
                     <!-- banner-hny-info -->
                     <div class="banner-hny-info">
                         <h3>{{ config('main_slider_line1', 'Создаем новое') }}
-                            <br>{{ config('main_slider_line1', 'Пишевое поведение') }} </h3>
+                            <br>{{ config('main_slider_line2', 'Пишевое поведение') }} </h3>
                         <div class="top-buttons mx-auto text-center mt-md-5 mt-3">
                             <a href="{{ config('main_slider_link1', '/ob-avtore/moy-trenning') }}" class="btn more mr-2">Подробнее</a>
                             <a href="{{ config('main_slider_link2', '/onlayn-servis/anketirovanie') }}" class="btn">Записаться</a>

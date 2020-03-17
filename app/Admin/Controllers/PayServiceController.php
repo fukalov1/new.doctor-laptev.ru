@@ -39,7 +39,7 @@ class PayServiceController extends AdminController
         });
         $grid->column('price', __('Стоимость'));
         $grid->column('active', __('Активный'))->display(function () {
-            return $this->active ? 'нет' : 'да';
+            return $this->active ? 'да' : 'нет';
         })->sortable();
         $grid->column('show_count', __('Макс. число показов'));
         $grid->column('max_time', __('Макс. время показа'));
