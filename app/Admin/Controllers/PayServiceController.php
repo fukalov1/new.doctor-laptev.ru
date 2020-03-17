@@ -2,6 +2,8 @@
 
 namespace App\Admin\Controllers;
 
+use App\Code;
+use App\GroupCode;
 use App\PayService;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
@@ -32,7 +34,9 @@ class PayServiceController extends AdminController
         });
 
         $grid->column('name', __('Наименование'));
-        $grid->column('group_code.name', __('Группа кодов'));
+        $grid->column('group_code.name', __('Группа кодов'))->display(function () {
+            return '<a href="/admin/codes?set='.$this->group_code_id.'">'.$this->group_code->name.'</a>';
+        });
         $grid->column('price', __('Стоимость'));
         $grid->column('active', __('Активный'))->display(function () {
             return $this->active ? 'нет' : 'да';
@@ -109,7 +113,11 @@ class PayServiceController extends AdminController
     {
         $form = new Form(new PayService());
 
-        $form->text('group_code_id', __('Группа кодов'));
+//        $form->text('group_code_id', __('Группа кодов'));
+        $form->select('group_code_id', 'Группа кодов')->options(function ($id) {
+            $codes = GroupCode::select('id','name')->get();
+            return $codes->pluck('name', 'id');
+        });
         $form->text('name', __('Наименование'));
         $form->decimal('price', __('Стоимость'));
         $form->switch('active', __('Активный'));
