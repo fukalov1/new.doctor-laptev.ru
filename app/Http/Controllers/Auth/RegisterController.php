@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
 use App\Page;
+use App\PageBlock;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -37,9 +38,10 @@ class RegisterController extends Controller
      *
      * @return void
      */
-    public function __construct(Page $page)
+    public function __construct(Page $page, PageBlock $pageBlock)
     {
         $this->page = $page;
+        $this->pageBlock = $pageBlock;
         $this->middleware('guest');
     }
 
@@ -81,6 +83,7 @@ class RegisterController extends Controller
     {
         $data = ['pages'=>collect([])];
         $data['pages'] = $this->page->getMenu();
+        $data['postform'] = $this->pageBlock->where('page_id', 1)->where('type',10)->first();
         return view('auth.register', $data);
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Page;
+use App\PageBlock;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
@@ -34,9 +35,10 @@ class LoginController extends Controller
      *
      * @return void
      */
-    public function __construct(Page $page)
+    public function __construct(Page $page, PageBlock $pageBlock)
     {
         $this->page = $page;
+        $this->pageBlock = $pageBlock;
         $this->middleware('guest')->except('logout');
     }
 
@@ -44,6 +46,7 @@ class LoginController extends Controller
     {
         $data = ['pages'=>collect([])];
         $data['pages'] = $this->page->getMenu();
+        $data['postform'] = $this->pageBlock->where('page_id', 1)->where('type',10)->first();
         return view('auth.login', $data);
     }
 }

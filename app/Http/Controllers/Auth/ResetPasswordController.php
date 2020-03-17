@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Page;
+use App\PageBlock;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 use Illuminate\Http\Request;
@@ -23,9 +24,10 @@ class ResetPasswordController extends Controller
 
     use ResetsPasswords;
 
-    public function __construct(Page $page)
+    public function __construct(Page $page, PageBlock $pageBlock)
     {
         $this->page = $page;
+        $this->pageBlock = $pageBlock;
     }
 
     /**
@@ -39,6 +41,7 @@ class ResetPasswordController extends Controller
     {
         $data = ['pages'=>collect([])];
         $data['pages'] = $this->page->getMenu();
+        $data['postform'] = $this->pageBlock->where('page_id', 1)->where('type',10)->first();
         return view('auth.passwords.reset', $data)->with(
             ['token' => $token, 'email' => $request->email]
         );
