@@ -2,6 +2,7 @@
 
 namespace App\Admin\Controllers;
 
+use App\Admin\Extensions\CheckRow;
 use App\GroupCode;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
@@ -25,6 +26,12 @@ class GroupCodeController extends AdminController
     protected function grid()
     {
         $grid = new Grid(new GroupCode());
+
+        $grid->actions(function ($actions) {
+            $actions->disableView();
+//            $actions->append('<a href="/admin/load_codes"><i class="fa fa-paper-plane"></i>загрузить коды доступа</a>');
+//            $actions->prepend(new CheckRow($actions->getKey()));
+        });
 
 //        $grid->column('id', __('Id'));
         $grid->column('pay_service.name', __('Платный сервис'));
@@ -73,6 +80,10 @@ class GroupCodeController extends AdminController
         $form->text('name', __('Наименование группы'));
         $form->date('start_date', __('Дата начала'))->default(date('Y-m-d'));
         $form->date('end_date', __('Срок окончания'))->default(date('Y-m-d'));
+        $form->filecode('file', 'Файл групп кодов (импорт только из редактирования)')
+            ->disk('codes')
+            ->dir('files')
+            ->rules('mimes:txt');
 
         return $form;
     }

@@ -51,6 +51,10 @@ return [
             'driver' => 'local',
             'root' => storage_path('videoshow'),
         ],
+        'codes' => [
+            'driver' => 'local',
+            'root' => storage_path('codes'),
+        ],
 
         'admin' => [
             'driver' => 'local',

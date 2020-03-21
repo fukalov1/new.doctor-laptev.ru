@@ -2,11 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3c791e86-834c-48b9-b2fa-0e52a8ebe085" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_03_17_100511_add_payservice_text1.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Admin/Extensions/CheckRow.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Admin/Extensions/Form/Field/FileCode.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Admin/Controllers/PayServiceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Admin/Controllers/PayServiceController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/private.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/private.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/show_payservice.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/show_payservice.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Admin/Controllers/GroupCodeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Admin/Controllers/GroupCodeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Admin/bootstrap.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Admin/bootstrap.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/filesystems.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/filesystems.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -156,22 +157,22 @@
   <component name="ProjectId" id="1XwekaV3HMHoKu8cGuljl4cidvp" />
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/emails" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Admin/Extensions/Form/Field" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/storage/app/public/videoshow" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/Admin/Extensions/Form/Field" />
       <recent name="$PROJECT_DIR$/resources/views/emails" />
       <recent name="$PROJECT_DIR$/public" />
       <recent name="$PROJECT_DIR$/resources/views" />
       <recent name="$PROJECT_DIR$/app/Http/Controllers" />
-      <recent name="$PROJECT_DIR$/app/Http/Middleware" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/storage/app/public/videoshow" />
     </key>
   </component>
   <component name="RunDashboard">
