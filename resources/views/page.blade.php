@@ -369,6 +369,112 @@
     @endif
 
     @if($cities->count()>0)
+        <section class="block_maps"  id="map_city">
+                <div class="container">
+                    <h2>Где проводятся сеансы?</h2>
+
+                    <div class="contact-maps" id="block_city">
+                        <div class="map-item">
+                            <div id="map" style="width:100%; height:100%"></div>
+                        </div>
+                        <div class="container pos-r">
+                            <div class="contact-maps-txt">
+                                <div class="contact-maps-txt-item">
+                                        @foreach($cities as $point)
+{{--                                            @if($point_type->id == 1)--}}
+{{--                                                <p class="locations location{{ $point->map_id }}">--}}
+{{--                                                    <a href="javascript: myMap.setCenter(destinations['point{{$point->id}}'], 16);">--}}
+{{--                                                        {!!  preg_replace('/\|/','<br/><i class="far fa-clock"></i>',$point->name) !!}--}}
+{{--                                                    </a>--}}
+{{--                                                </p>--}}
+{{--                                            @else--}}
+                                                <p>
+                                                    <a href="javascript: myMap.setCenter(destinations['point{{$point->id}}'], 16);">
+                                                        {!!  preg_replace('/\|/','<br/><i class="far fa-clock"></i>',$point->name) !!}
+                                                    </a>
+                                                </p>
+{{--                                            @endif--}}
+                                        @endforeach
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <script src="http://api-maps.yandex.ru/2.0/?load=package.full&lang=ru-RU" type="text/javascript"></script>
+                    <script type="text/javascript">
+
+                        var myAreas = {};
+                        var destinations = {};
+                        var myMap;
+
+                        // function showArea() {
+                        //     console.log('test', document.getElementById('area').value);
+                        //     myMap.setCenter(myAreas['area'+document.getElementById('area').value], 16);
+                        // }
+
+                        // Как только будет загружен API и готов DOM, выполняем инициализацию
+                        ymaps.ready(init);
+
+                        function init () {
+                            // Создание экземпляра карты и его привязка к контейнеру с
+                            // заданным id ("map")
+                            myMap = new ymaps.Map('map', {
+                                // При инициализации карты, обязательно нужно указать
+                                // ее центр и коэффициент масштабирования
+                                center: [61.698653, 99.505405], // Тольятти
+                                // controls: ['fullscreenControl','zoomControl'],
+                                // behaviors: ['default', 'scrollZoom'],
+                                zoom: 1
+                            });
+
+                            destinations = {
+                                'center' : [61.698653, 99.505405]
+                            };
+
+                            // массив облатей
+
+
+                            // массив меток
+                            let myPoints = [];
+                            @foreach($cities as $map)
+
+                                myAreas['area{{$map->id}}'] = [{{$map->xcoord}},{{$map->ycoord}}];
+
+                            @foreach($cities as $point)
+                            console.log('{{$point->name}}','{{$point->xcoord}}','{{$point->ycoord}}');
+                            myPoints.push(new ymaps.Placemark(
+                                // Координаты метки
+                                [{{$point->xcoord}},{{$point->ycoord}}] , {
+                                // Свойства
+                                // Текст метки
+                                hintContent: '{{$point->name}}'
+                            }, {
+                                iconImageHref: 'http://zdirect.pro/front-end/179/images/loc-ico.png', // картинка иконки
+                                    iconImageSize: [55, 41], // размеры картинки
+                                    iconImageOffset: [-6, -10] // смещение картинки
+                            }));
+
+                            destinations['point{{$point->id}}'] = [{{$point->xcoord}},{{$point->ycoord}}];
+
+                            @endforeach
+                            @endforeach
+
+                            console.log(myPoints);
+
+                            // Добавление меток на карту
+                            myPoints.forEach(function (item) {
+                                myMap.geoObjects.add(item);
+                            });
+
+
+                        }
+                    </script>
+                </div>
+            </section>
+    @endif
+
+    @if($cities->count()>0)
         <section class="projects py-5" id="gallery">
             <div class="container py-md-5">
                 <h3 class="tittle-w3ls text-left mb-5"><span class="pink">Расписание</span> по городам</h3>

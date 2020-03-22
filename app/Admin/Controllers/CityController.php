@@ -73,25 +73,34 @@ class CityController extends AdminController
     protected function form()
     {
         $form = new Form(new City());
-        $form->switch('show', __('Активен'));
-        $form->date('date', __('Дата'));
-        $form->text('name', __('Наименование'));
-        $form->myimage('image', __('Image'));
-        $form->ckeditor('text', 'Описание')
-            ->options(
-                [
-                    'filebrowserBrowseUrl' =>  '/ckfinder/browser',
-                    'filebrowserImageBrowseUrl' =>  '/ckfinder/browser',
-                    'filebrowserUploadUrl' => '/ckfinder/browser?type=Files',
-                    'filebrowserImageUploadUrl' => '/ckfinder/browser?command=QuickUpload&type=Images',
-                    'lang' => 'ru',
-                    'height' => 500,
-                    'filebrowserWindowWidth' => '1000',
-                    'filebrowserWindowHeight' => '700'
-                ])->default('-');
 
-        $form->number('orders', __('Очередность'))->default(1);
+        $form->tab('Основная', function ($form) {
+            $form->switch('show', __('Активен'));
+            $form->date('date', __('Дата'));
+            $form->text('name', __('Наименование'));
+            $form->myimage('image', __('Image'));
+            $form->ckeditor('text', 'Описание')
+                ->options(
+                    [
+                        'filebrowserBrowseUrl' => '/ckfinder/browser',
+                        'filebrowserImageBrowseUrl' => '/ckfinder/browser',
+                        'filebrowserUploadUrl' => '/ckfinder/browser?type=Files',
+                        'filebrowserImageUploadUrl' => '/ckfinder/browser?command=QuickUpload&type=Images',
+                        'lang' => 'ru',
+                        'height' => 500,
+                        'filebrowserWindowWidth' => '1000',
+                        'filebrowserWindowHeight' => '700'
+                    ])->default('-');
 
+            $form->number('orders', __('Очередность'))->default(1);
+        })->tab('Координаты', function ($form) {
+            $form->text('xcoord', 'Долгота')->default('1');
+            $form->text('ycoord', 'Широта')->default('1');
+            $form->text('content', 'Ссылка');
+            $form->text('header', 'Заголовок');
+            $form->text('body', 'Описание');
+            $form->text('hint', 'Подсказка');
+        });
         return $form;
     }
 }
