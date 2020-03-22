@@ -465,8 +465,11 @@
 
                             // Добавление меток на карту
                             myPoints.forEach(function (item) {
-                                myMap.geoObjects.add(item);
+                                // myMap.geoObjects.add(item);
                             });
+
+                            mark = new ymaps.Placemark([55.751428,37.618876],{}, {preset: "islands#redIcon", draggable: true});
+                            myMap.geoObjects.add(mark);
 
 
                         }
