@@ -369,13 +369,13 @@
     @endif
 
     @if($cities->count()>0)
-        <section class="block_maps"  id="map_city">
+        <section class="block_maps"  id="map_city" style="padding-top: 90px;">
                 <div class="container">
                     <h2>Где проводятся сеансы?</h2>
 
                     <div class="contact-maps" id="block_city">
                         <div class="map-item">
-                            <div id="map" style="width:100%; height:100%"></div>
+                            <div id="map" style="width:100%; height:400px;"></div>
                         </div>
                         <div class="container pos-r">
                             <div class="contact-maps-txt">
@@ -426,7 +426,7 @@
                                 center: [61.698653, 99.505405], // Тольятти
                                 // controls: ['fullscreenControl','zoomControl'],
                                 // behaviors: ['default', 'scrollZoom'],
-                                zoom: 1
+                                zoom: 5
                             });
 
                             destinations = {
