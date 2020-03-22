@@ -468,7 +468,7 @@
                                 // myMap.geoObjects.add(item);
                             });
 
-                            mark = new ymaps.Placemark([55.751428,37.618876],{}, {preset: "islands#redIcon", draggable: true});
+                            mark = new ymaps.Placemark([55.751428,37.618876],{hintContent: 'Москва'}, {preset: "islands#redIcon", draggable: false});
                             myMap.geoObjects.add(mark);
 
 
