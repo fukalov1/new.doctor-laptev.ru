@@ -464,9 +464,9 @@
                             console.log(myPoints);
 
                             // Добавление меток на карту
-                            // myPoints.forEach(function (item) {
-                            //     myMap.geoObjects.add(item);
-                            // });
+                            myPoints.forEach(function (item) {
+                                myMap.geoObjects.add(item);
+                            });
 
 
                         }
