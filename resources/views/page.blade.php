@@ -400,8 +400,9 @@
                         </div>
                     </div>
 
-
-                    <script src="http://api-maps.yandex.ru/2.0/?load=package.full&lang=ru-RU" type="text/javascript"></script>
+                    <script src="https://api-maps.yandex.ru/2.1/?apikey=e5db01fb-1c20-456d-b884-cf0d71279a63&lang=ru_RU"
+                            type="text/javascript"/>
+{{--                    <script src="http://api-maps.yandex.ru/2.0/?load=package.full&lang=ru-RU" type="text/javascript"></script>--}}
                     <script type="text/javascript">
 
                         var myAreas = {};
