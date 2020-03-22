@@ -426,7 +426,7 @@
                                 center: [56.326797, 44.006516], // Тольятти
                                 // controls: ['fullscreenControl','zoomControl'],
                                 // behaviors: ['default', 'scrollZoom'],
-                                zoom: 7
+                                zoom: 6
                             });
 
                             destinations = {
