@@ -377,10 +377,10 @@
                         <div class="map-item">
                             <div id="map" style="width:100%; height:400px;"></div>
                         </div>
-                        <div class="container pos-r">
-                            <div class="contact-maps-txt">
-                                <div class="contact-maps-txt-item">
-                                        @foreach($cities as $point)
+{{--                        <div class="container pos-r">--}}
+{{--                            <div class="contact-maps-txt">--}}
+{{--                                <div class="contact-maps-txt-item">--}}
+{{--                                        @foreach($cities as $point)--}}
 {{--                                            @if($point_type->id == 1)--}}
 {{--                                                <p class="locations location{{ $point->map_id }}">--}}
 {{--                                                    <a href="javascript: myMap.setCenter(destinations['point{{$point->id}}'], 16);">--}}
@@ -388,16 +388,16 @@
 {{--                                                    </a>--}}
 {{--                                                </p>--}}
 {{--                                            @else--}}
-                                                <p>
-                                                    <a href="javascript: myMap.setCenter(destinations['point{{$point->id}}'], 16);">
-                                                        {!!  preg_replace('/\|/','<br/><i class="far fa-clock"></i>',$point->name) !!}
-                                                    </a>
-                                                </p>
+{{--                                                <p>--}}
+{{--                                                    <a href="javascript: myMap.setCenter(destinations['point{{$point->id}}'], 16);">--}}
+{{--                                                        {!!  preg_replace('/\|/','<br/><i class="far fa-clock"></i>',$point->name) !!}--}}
+{{--                                                    </a>--}}
+{{--                                                </p>--}}
 {{--                                            @endif--}}
-                                        @endforeach
-                                </div>
-                            </div>
-                        </div>
+{{--                                        @endforeach--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
                     </div>
 
                     <script src="https://api-maps.yandex.ru/2.1/?apikey=e5db01fb-1c20-456d-b884-cf0d71279a63&lang=ru_RU"
@@ -423,14 +423,14 @@
                             myMap = new ymaps.Map('map', {
                                 // При инициализации карты, обязательно нужно указать
                                 // ее центр и коэффициент масштабирования
-                                center: [61.698653, 99.505405], // Тольятти
+                                center: [56.326797, 44.006516], // Тольятти
                                 // controls: ['fullscreenControl','zoomControl'],
                                 // behaviors: ['default', 'scrollZoom'],
-                                zoom: 5
+                                zoom: 7
                             });
 
                             destinations = {
-                                'center' : [61.698653, 99.505405]
+                                'center' : [56.326797, 44.006516]
                             };
 
                             // массив облатей
@@ -456,7 +456,7 @@
                                     iconImageOffset: [-6, -10] // смещение картинки
                             }));
 
-                            destinations['point{{$point->id}}'] = [{{$point->xcoord}},{{$point->ycoord}}];
+                            {{--destinations['point{{$point->id}}'] = [{{$point->xcoord}},{{$point->ycoord}}];--}}
 
                             @endforeach
                             @endforeach
