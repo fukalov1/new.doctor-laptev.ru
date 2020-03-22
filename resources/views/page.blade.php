@@ -450,11 +450,7 @@
                                 // Свойства
                                 // Текст метки
                                 hintContent: '{{$point->name}}'
-                            }, {
-                                iconImageHref: 'http://zdirect.pro/front-end/179/images/loc-ico.png', // картинка иконки
-                                    iconImageSize: [55, 41], // размеры картинки
-                                    iconImageOffset: [-6, -10] // смещение картинки
-                            }));
+                            }, {preset: "islands#redIcon", draggable: false}));
 
                             {{--destinations['point{{$point->id}}'] = [{{$point->xcoord}},{{$point->ycoord}}];--}}
 
@@ -465,15 +461,11 @@
 
                             // Добавление меток на карту
                             myPoints.forEach(function (item) {
-                                // myMap.geoObjects.add(item);
+                                myMap.geoObjects.add(item);
                             });
 
-                            mark = new ymaps.Placemark([55.751428,37.618876], {hintContent: 'Москва'}, {
-                                iconImageHref: 'http://zdirect.pro/front-end/179/images/loc-ico.png', // картинка иконки
-                                    iconImageSize: [55, 41], // размеры картинки
-                                    iconImageOffset: [-6, -10] // смещение картинки
-                            });
-                            myMap.geoObjects.add(mark);
+                            // mark = new ymaps.Placemark([55.751428,37.618876],{hintContent: 'Москва'}, {preset: "islands#redIcon", draggable: false});
+                            // myMap.geoObjects.add(mark);
 
 
                         }
