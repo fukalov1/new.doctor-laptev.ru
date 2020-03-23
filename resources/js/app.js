@@ -10,6 +10,13 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
+// import { yandexMap, ymapMarker } from 'vue-yandex-maps'
+
+// import YmapPlugin from 'vue-yandex-maps'
+
+// Vue.use(YmapPlugin, settings);
+
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -30,8 +37,37 @@ Vue.component('pay-service', require('./components/PayService.vue').default);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+// const settings = {
+//     apiKey: 'e5db01fb-1c20-456d-b884-cf0d71279a63',
+//     lang: 'ru_RU',
+//     coordorder: 'latlong',
+//     version: '2.1'
+// }
+
+
 const app = new Vue({
     el: '#app',
+    // components: { yandexMap, ymapMarker },
+    data() {
+        return {
+            settings: {
+                apiKey: 'e5db01fb-1c20-456d-b884-cf0d71279a63',
+                lang: 'ru_RU',
+                coordorder: 'latlong',
+                version: '2.1'
+            },
+            coords: [54, 39],
+            markerIcon: {
+                layout: 'default#imageWithContent',
+                imageHref: '/images/33447.png',
+                imageSize: [43, 43],
+                imageOffset: [0, 0],
+                content: '123 v12',
+                contentOffset: [0, 15],
+                contentLayout: '<div style="background: red; width: 50px; color: #FFFFFF; font-weight: bold;">$[properties.iconContent]</div>'
+            }
+        }
+    }
 });
 
 

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\City;
 use App\QuestBlock;
 use App\Review;
 use App\SubDomain;
@@ -21,7 +22,7 @@ class PageController extends Controller
     public $bread_crubs;
 
     public function __construct(Page $page, PageBlock $pageBlock, Direction $direction, DirectionItem $directionItem,
-                                Slider $slider, SliderItem $sliderItem, Photoset $photoset, MailForm $mailForm, Review $review)
+                                Slider $slider, SliderItem $sliderItem, Photoset $photoset, MailForm $mailForm, Review $review, City $city)
     {
         $this->page = $page;
         $this->pageBlock = $pageBlock;
@@ -32,6 +33,7 @@ class PageController extends Controller
         $this->photoset = $photoset;
         $this->mailForm = $mailForm;
         $this->reviews = $review;
+        $this->city = $city;
     }
 
     public function show(Page $page)
@@ -54,6 +56,11 @@ class PageController extends Controller
 //        $limit_news = 4;
 //        $limit_news = $limit_news - count($banners);
 
+        $cities = $this->city
+            ->where('show', true)
+            ->orderBy('date')
+            ->get();
+
         $this->getBeadCrumbs($page->id);
         if ($location!='') {
             $location .= '_';
@@ -64,7 +71,7 @@ class PageController extends Controller
         $data['pages'] = $this->page->getMenu();
         $data['photo_reviews'] = collect([]);
         $data['articles'] = collect([]);
-        $data['cities'] = collect([]);
+        $data['cities'] = $cities;
         $data['reviews'] = $this->reviews->getMainReview();
         $data['main_article'] = $this->page->getMainArticle();
         $data['main_photo_review'] = $this->page->getMainPhotoReview();

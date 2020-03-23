@@ -243,8 +243,76 @@
     </div>
     <!-- //banner -->
 
+    @if($cities->count()>0)
+        <section class="block_maps"  id="map_city" style="padding-top: 90px;">
+            <div class="container">
+                <h3 class="tittle-w3ls text-left mb-5"><span class="pink">Расписание</span> тренингов в городах</h3>
 
-        <section class="projects py-5" id="gallery">
+                <div class="contact-maps" id="block_city">
+                    <div class="map-item">
+                        <div id="map" style="width:100%; height:400px;"></div>
+                    </div>
+
+                </div>
+
+                <script src="https://api-maps.yandex.ru/2.1/?apikey=e5db01fb-1c20-456d-b884-cf0d71279a63&lang=ru_RU"
+                        type="text/javascript"></script>
+                <script type="text/javascript">
+
+                    var myMap;
+
+                    // Как только будет загружен API и готов DOM, выполняем инициализацию
+                    ymaps.ready(init);
+
+                    function init () {
+                        // Создание экземпляра карты и его привязка к контейнеру с
+                        // заданным id ("map")
+                        myMap = new ymaps.Map('map', {
+                            // При инициализации карты, обязательно нужно указать
+                            // ее центр и коэффициент масштабирования
+                            center: [56.326797, 44.006516], // Тольятти
+                            // controls: ['fullscreenControl','zoomControl'],
+                            // behaviors: ['default', 'scrollZoom'],
+                            zoom: 5
+                        });
+
+                        destinations = {
+                            'center' : [56.326797, 44.006516]
+                        };
+
+                        // массив меток
+                        let myPoints = [];
+                        @foreach($cities as $point)
+                        console.log('{{$point->name}}','{{$point->xcoord}}','{{$point->ycoord}}');
+                        myPoints.push(
+                            new ymaps.Placemark(
+                                // Координаты метки
+                                [{{$point->xcoord}}, {{$point->ycoord}}] , {
+                                    hintContent: '{{$point->name}}',
+                                    balloonContent: '<a href="/cities#city{{$point->id}}">Подробности проведения тренинга в г.{{$point->name}}</a>'
+                                },
+                                {
+                                    iconLayout: 'default#image',
+                                    iconImageHref: '/images/map-icon.png',
+                                    iconImageSize: [10, 10],
+                                    iconImageOffset: [-3, -3]
+                                }
+                            )
+                        );
+                        @endforeach
+
+                        // Добавление меток на карту
+                        myPoints.forEach(function (item) {
+                            myMap.geoObjects.add(item);
+                        });
+                    }
+                </script>
+            </div>
+        </section>
+    @endif
+
+
+    <section class="projects py-5" id="gallery">
                 <div class="container py-md-5">
                     <h3 class="tittle-w3ls text-left mb-5"><span class="pink">Потрясающие</span> результаты!</h3>
                     <div class="row news-grids mt-md-5 mt-4 text-center">

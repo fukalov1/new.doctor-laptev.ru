@@ -50571,7 +50571,10 @@ __webpack_require__.r(__webpack_exports__);
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
-window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js"); // import { yandexMap, ymapMarker } from 'vue-yandex-maps'
+// import YmapPlugin from 'vue-yandex-maps'
+// Vue.use(YmapPlugin, settings);
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -50589,9 +50592,36 @@ Vue.component('pay-service', __webpack_require__(/*! ./components/PayService.vue
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+// const settings = {
+//     apiKey: 'e5db01fb-1c20-456d-b884-cf0d71279a63',
+//     lang: 'ru_RU',
+//     coordorder: 'latlong',
+//     version: '2.1'
+// }
 
 var app = new Vue({
-  el: '#app'
+  el: '#app',
+  // components: { yandexMap, ymapMarker },
+  data: function data() {
+    return {
+      settings: {
+        apiKey: 'e5db01fb-1c20-456d-b884-cf0d71279a63',
+        lang: 'ru_RU',
+        coordorder: 'latlong',
+        version: '2.1'
+      },
+      coords: [54, 39],
+      markerIcon: {
+        layout: 'default#imageWithContent',
+        imageHref: '/images/33447.png',
+        imageSize: [43, 43],
+        imageOffset: [0, 0],
+        content: '123 v12',
+        contentOffset: [0, 15],
+        contentLayout: '<div style="background: red; width: 50px; color: #FFFFFF; font-weight: bold;">$[properties.iconContent]</div>'
+      }
+    };
+  }
 });
 $(document).ready(function () {
   /*
