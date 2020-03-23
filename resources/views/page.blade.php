@@ -369,110 +369,86 @@
     @endif
 
     @if($cities->count()>0)
-        <section class="block_maps"  id="map_city" style="padding-top: 90px;">
-                <div class="container">
-                    <h2>Где проводятся сеансы?</h2>
-
-                    <div class="contact-maps" id="block_city">
-                        <div class="map-item">
-                            <div id="map" style="width:100%; height:400px;"></div>
-                        </div>
-{{--                        <div class="container pos-r">--}}
-{{--                            <div class="contact-maps-txt">--}}
-{{--                                <div class="contact-maps-txt-item">--}}
-{{--                                        @foreach($cities as $point)--}}
-{{--                                            @if($point_type->id == 1)--}}
-{{--                                                <p class="locations location{{ $point->map_id }}">--}}
-{{--                                                    <a href="javascript: myMap.setCenter(destinations['point{{$point->id}}'], 16);">--}}
-{{--                                                        {!!  preg_replace('/\|/','<br/><i class="far fa-clock"></i>',$point->name) !!}--}}
-{{--                                                    </a>--}}
-{{--                                                </p>--}}
-{{--                                            @else--}}
-{{--                                                <p>--}}
-{{--                                                    <a href="javascript: myMap.setCenter(destinations['point{{$point->id}}'], 16);">--}}
-{{--                                                        {!!  preg_replace('/\|/','<br/><i class="far fa-clock"></i>',$point->name) !!}--}}
-{{--                                                    </a>--}}
-{{--                                                </p>--}}
-{{--                                            @endif--}}
-{{--                                        @endforeach--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-                    </div>
-
-                    <script src="https://api-maps.yandex.ru/2.1/?apikey=e5db01fb-1c20-456d-b884-cf0d71279a63&lang=ru_RU"
-                            type="text/javascript"></script>
-{{--                    <script src="http://api-maps.yandex.ru/2.0/?load=package.full&lang=ru-RU" type="text/javascript"></script>--}}
-                    <script type="text/javascript">
-
-                        var myAreas = {};
-                        var destinations = {};
-                        var myMap;
-
-                        // function showArea() {
-                        //     console.log('test', document.getElementById('area').value);
-                        //     myMap.setCenter(myAreas['area'+document.getElementById('area').value], 16);
-                        // }
-
-                        // Как только будет загружен API и готов DOM, выполняем инициализацию
-                        ymaps.ready(init);
-
-                        function init () {
-                            // Создание экземпляра карты и его привязка к контейнеру с
-                            // заданным id ("map")
-                            myMap = new ymaps.Map('map', {
-                                // При инициализации карты, обязательно нужно указать
-                                // ее центр и коэффициент масштабирования
-                                center: [56.326797, 44.006516], // Тольятти
-                                // controls: ['fullscreenControl','zoomControl'],
-                                // behaviors: ['default', 'scrollZoom'],
-                                zoom: 4
-                            });
-
-                            destinations = {
-                                'center' : [56.326797, 44.006516]
-                            };
-
-                            // массив облатей
-
-
-                            // массив меток
-                            let myPoints = [];
-                            @foreach($cities as $map)
-
-                                myAreas['area{{$map->id}}'] = [{{$map->xcoord}},{{$map->ycoord}}];
-
-                            @foreach($cities as $point)
-                            console.log('{{$point->name}}','{{$point->xcoord}}','{{$point->ycoord}}');
-                            myPoints.push(new ymaps.Placemark(
-                                // Координаты метки
-                                [{{$point->xcoord}},{{$point->ycoord}}] , {
-                                // Свойства
-                                // Текст метки
-                                hintContent: '{{$point->name}}'
-                            }, {preset: "islands#redIcon", draggable: false}));
-
-                            {{--destinations['point{{$point->id}}'] = [{{$point->xcoord}},{{$point->ycoord}}];--}}
-
-                            @endforeach
-                            @endforeach
-
-                            console.log(myPoints);
-
-                            // Добавление меток на карту
-                            myPoints.forEach(function (item) {
-                                myMap.geoObjects.add(item);
-                            });
-
-                            // mark = new ymaps.Placemark([55.751428,37.618876],{hintContent: 'Москва'}, {preset: "islands#redIcon", draggable: false});
-                            // myMap.geoObjects.add(mark);
-
-
-                        }
-                    </script>
-                </div>
-            </section>
+        <br/><br/><br/><br/><br/>карта!<br/><br/><br/><br/><br/>
+        <yandex-map :settings="settings" :coords="coords">
+            <ymap-marker
+                marker-id="123"
+                :coords="coords"
+                :icon="markerIcon"
+            />
+        </yandex-map>
     @endif
+
+{{--    @if($cities->count()>0)--}}
+{{--        <section class="block_maps"  id="map_city" style="padding-top: 90px;">--}}
+{{--                <div class="container">--}}
+{{--                    <h2>Где проводятся сеансы?</h2>--}}
+
+{{--                    <div class="contact-maps" id="block_city">--}}
+{{--                        <div class="map-item">--}}
+{{--                            <div id="map" style="width:100%; height:400px;"></div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+
+{{--                    <script src="https://api-maps.yandex.ru/2.1/?apikey=e5db01fb-1c20-456d-b884-cf0d71279a63&lang=ru_RU"--}}
+{{--                            type="text/javascript"></script>--}}
+{{--                    <script type="text/javascript">--}}
+
+{{--                        var myAreas = {};--}}
+{{--                        var destinations = {};--}}
+{{--                        var myMap;--}}
+
+{{--                        // Как только будет загружен API и готов DOM, выполняем инициализацию--}}
+{{--                        ymaps.ready(init);--}}
+
+{{--                        function init () {--}}
+{{--                            // Создание экземпляра карты и его привязка к контейнеру с--}}
+{{--                            // заданным id ("map")--}}
+{{--                            myMap = new ymaps.Map('map', {--}}
+{{--                                // При инициализации карты, обязательно нужно указать--}}
+{{--                                // ее центр и коэффициент масштабирования--}}
+{{--                                center: [56.326797, 44.006516], // Тольятти--}}
+{{--                                // controls: ['fullscreenControl','zoomControl'],--}}
+{{--                                // behaviors: ['default', 'scrollZoom'],--}}
+{{--                                zoom: 4--}}
+{{--                            });--}}
+
+{{--                            destinations = {--}}
+{{--                                'center' : [56.326797, 44.006516]--}}
+{{--                            };--}}
+
+{{--                            // массив меток--}}
+{{--                            let myPoints = [];--}}
+{{--                            @foreach($cities as $map)--}}
+
+{{--                                myAreas['area{{$map->id}}'] = [{{$map->xcoord}},{{$map->ycoord}}];--}}
+
+{{--                            @foreach($cities as $point)--}}
+{{--                            console.log('{{$point->name}}','{{$point->xcoord}}','{{$point->ycoord}}');--}}
+{{--                            myPoints.push(new ymaps.Placemark(--}}
+{{--                                // Координаты метки--}}
+{{--                                [{{$point->xcoord}},{{$point->ycoord}}] , {--}}
+{{--                                // Свойства--}}
+{{--                                // Текст метки--}}
+{{--                                hintContent: '{{$point->name}}'--}}
+{{--                            }, {preset: "islands#redIcon", draggable: false}));--}}
+
+{{--                            --}}{{--destinations['point{{$point->id}}'] = [{{$point->xcoord}},{{$point->ycoord}}];--}}
+
+{{--                            @endforeach--}}
+{{--                            @endforeach--}}
+
+{{--                            console.log(myPoints);--}}
+
+{{--                            // Добавление меток на карту--}}
+{{--                            myPoints.forEach(function (item) {--}}
+{{--                                myMap.geoObjects.add(item);--}}
+{{--                            });--}}
+{{--                        }--}}
+{{--                    </script>--}}
+{{--                </div>--}}
+{{--            </section>--}}
+{{--    @endif--}}
 
     @if($cities->count()>0)
         <section class="projects py-5" id="gallery">

@@ -19,7 +19,6 @@
 </head>
 <body>
 <div id="app">
-</div>
 @include('layouts.header')
 
     @yield('content')
@@ -27,6 +26,6 @@
 @include('layouts.footer')
 
 @include('layouts.scripts')
-
+</div>
 </body>
 </html>
