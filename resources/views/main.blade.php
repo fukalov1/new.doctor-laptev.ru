@@ -246,7 +246,7 @@
     @if($cities->count()>0)
         <section class="block_maps"  id="map_city" style="padding-top: 90px;">
             <div class="container">
-                <h3 class="tittle-w3ls text-left mb-5"><span class="pink">Расписание</span> тренингов в городах</h3>
+                <h3 class="tittle-w3ls text-left mb-5"><span class="pink">Грода в расписании</span> сейчас</h3>
 
                 <div class="contact-maps" id="block_city">
                     <div class="map-item">
@@ -283,7 +283,7 @@
                         // массив меток
                         let myPoints = [];
                         @foreach($cities as $point)
-                        console.log('{{$point->name}}','{{$point->xcoord}}','{{$point->ycoord}}');
+{{--                        console.log('{{$point->name}}','{{$point->xcoord}}','{{$point->ycoord}}');--}}
                         myPoints.push(
                             new ymaps.Placemark(
                                 // Координаты метки

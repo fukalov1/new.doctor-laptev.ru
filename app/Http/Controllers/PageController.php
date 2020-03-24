@@ -56,10 +56,13 @@ class PageController extends Controller
 //        $limit_news = 4;
 //        $limit_news = $limit_news - count($banners);
 
-        $cities = $this->city
-            ->where('show', true)
-            ->orderBy('date')
-            ->get();
+        $cities = collect([]);
+        if ($page->id == 1) {
+            $cities = $this->city
+                ->where('show', true)
+                ->orderBy('date')
+                ->get();
+        }
 
         $this->getBeadCrumbs($page->id);
         if ($location!='') {
