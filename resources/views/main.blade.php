@@ -31,7 +31,6 @@
                                     <h4><a class="link-hny" href="services.html">
                                             {{ $page_block->header }}</a></h4>
                                     {!! $page_block->text !!}
-                                    <a class="btn more black mt-3" href="services.html" role="button">Подробнее</a>
 
                                 </div>
                             </div>
@@ -113,8 +112,8 @@
                         <h3>{{ config('main_slider_line1', 'Создаем новое') }}
                             <br>{{ config('main_slider_line2', 'Пишевое поведение') }} </h3>
                         <div class="top-buttons mx-auto text-center mt-md-5 mt-3">
-                            <a href="{{ config('main_slider_link1', '/ob-avtore/moy-trenning') }}" class="btn more mr-2">Подробнее</a>
-                            <a href="{{ config('main_slider_link2', '/onlayn-servis/anketirovanie') }}" class="btn">Записаться</a>
+                            <a href="{{ config('main_slider_link1', '/ob-avtore/moy-trenning') }}" class="btn more mr-2">{{ config('main_slider_btn1', 'Подробнее') }}</a>
+                            <a href="{{ config('main_slider_link2', '/onlayn-servis/anketirovanie') }}" class="btn">{{ config('main_slider_btn2', 'Записаться') }}</a>
                         </div>
                         <div class="d-flex hny-stats-inf">
                             <div class="col-md-4 stats_w3pvt_counter_grid mt-3">
@@ -246,7 +245,7 @@
     @if($cities->count()>0)
         <section class="block_maps"  id="map_city" style="padding-top: 90px;">
             <div class="container">
-                <h3 class="tittle-w3ls text-left mb-5"><span class="pink">Грода в расписании</span> сейчас</h3>
+                <h3 class="tittle-w3ls text-left mb-5"><span class="pink">Города в расписании</span> сейчас</h3>
 
                 <div class="contact-maps" id="block_city">
                     <div class="map-item">

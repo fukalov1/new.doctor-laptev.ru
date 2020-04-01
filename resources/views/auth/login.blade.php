@@ -29,8 +29,22 @@
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">Пароль</label>
 
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                            <div class="col-md-6 input-group">
+                                <input
+                                    :type="passwordFieldType"
+                                    v-model="password"
+                                    id="password"
+                                    name="password"
+                                    class="form-control @error('password') is-invalid @enderror"
+                                    data-toggle="password" required
+
+                                    autocomplete="current-password">
+                                <div class="input-group-addon">
+                                    <i @click="switchVisibility" class="fa fa-eye-slash btn show-pass" aria-hidden="true"></i>
+                                </div>
+
+{{--                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">--}}
+
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">

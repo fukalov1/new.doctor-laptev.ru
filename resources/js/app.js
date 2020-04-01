@@ -50,6 +50,8 @@ const app = new Vue({
     // components: { yandexMap, ymapMarker },
     data() {
         return {
+            password: '',
+            passwordFieldType: 'password',
             settings: {
                 apiKey: 'e5db01fb-1c20-456d-b884-cf0d71279a63',
                 lang: 'ru_RU',
@@ -66,6 +68,11 @@ const app = new Vue({
                 contentOffset: [0, 15],
                 contentLayout: '<div style="background: red; width: 50px; color: #FFFFFF; font-weight: bold;">$[properties.iconContent]</div>'
             }
+        }
+    },
+    methods: {
+        switchVisibility() {
+            this.passwordFieldType = this.passwordFieldType === 'password' ? 'text' : 'password'
         }
     }
 });
@@ -90,6 +97,14 @@ $(document).ready(function() {
             });
 
     */
+
+    // if($("#password").is("selector")) {
+    //     console.log('show news password');
+    //     $("#password").password('toggle');
+    // }
+    // else {
+    //     console.log('not found password');
+    // }
 
     $(document).on("click", "#video1-play", function () {
 

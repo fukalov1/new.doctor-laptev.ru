@@ -50604,6 +50604,8 @@ var app = new Vue({
   // components: { yandexMap, ymapMarker },
   data: function data() {
     return {
+      password: '',
+      passwordFieldType: 'password',
       settings: {
         apiKey: 'e5db01fb-1c20-456d-b884-cf0d71279a63',
         lang: 'ru_RU',
@@ -50621,6 +50623,11 @@ var app = new Vue({
         contentLayout: '<div style="background: red; width: 50px; color: #FFFFFF; font-weight: bold;">$[properties.iconContent]</div>'
       }
     };
+  },
+  methods: {
+    switchVisibility: function switchVisibility() {
+      this.passwordFieldType = this.passwordFieldType === 'password' ? 'text' : 'password';
+    }
   }
 });
 $(document).ready(function () {
@@ -50640,6 +50647,13 @@ $(document).ready(function () {
               }
           });
    */
+  // if($("#password").is("selector")) {
+  //     console.log('show news password');
+  //     $("#password").password('toggle');
+  // }
+  // else {
+  //     console.log('not found password');
+  // }
   $(document).on("click", "#video1-play", function () {
     var video = document.getElementById("video1");
     var playBtn = document.getElementById("video1-play");

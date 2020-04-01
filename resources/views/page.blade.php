@@ -36,7 +36,6 @@
                                 <h4><a class="link-hny" href="services.html">
                                         {{ $page_block->header }}</a></h4>
                                 {!! $page_block->text !!}
-                                <a class="btn more black mt-3" href="services.html" role="button">Подробнее</a>
 
                             </div>
                         </div>
@@ -54,7 +53,7 @@
                                 <h4><a class="link-hny" href="services.html">
                                         {{ $page_block->header }}</a></h4>
                                 {!! $page_block->text !!}
-                                <a class="btn more black mt-3" href="services.html" role="button">Подробнее</a>
+
                             </div>
                             <div class="col-md-6 banner_bottom_grid help">
                                 <img src="{{ asset('/uploads/'.$page_block->image) }}" alt=" " class="img-fluid">
@@ -380,8 +379,7 @@
                                 <img src="{{ asset('/uploads/images/thumbnail/'.$item->image) }}" alt=" " class="img-fluid">
                             </div>
                             <div class="col-md-8 banner_bottom_left mt-lg-0 mt-4">
-                                <h4><a class="link-hny" href="services.html">
-                                        {{ $item->name }}</a></h4>
+                                <h4>{{ $item->name }} - {{ $item->date->format('d.m.Y') }}г.</h4>
                                 {!! $item->text !!}
 
                             </div>

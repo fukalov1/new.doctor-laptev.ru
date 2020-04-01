@@ -166,6 +166,14 @@ nav ul {
     display: block;
 }
 
+.inner_sec_info {
+    min-height: 300px;
+}
+
+.show-pass {
+    background-color: #989898;
+}
+
 ul.menu {
     margin-top: 0.4em;
 }
@@ -665,6 +673,7 @@ li>a:only-child:after {
 .btn {
     border: 2px solid #fff;
     padding: 11px 30px;
+    margin-top: -2px;
     color: #fff;
     font-size: 16px;
     letter-spacing: 1px;
