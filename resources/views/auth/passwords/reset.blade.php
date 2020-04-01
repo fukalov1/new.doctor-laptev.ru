@@ -34,8 +34,18 @@
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">Пароль</label>
 
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                            <div class="col-md-6 input-group">
+                                <input
+                                    :type="passwordFieldType"
+                                    v-model="password"
+                                    id="password"
+                                    name="password"
+                                    class="form-control @error('password') is-invalid @enderror"
+                                    data-toggle="password" required
+                                    autocomplete="new-password">
+                                <div class="input-group-addon">
+                                    <i @click="switchVisibility" class="fa fa-eye-slash btn show-pass" aria-hidden="true"></i>
+                                </div>
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -49,7 +59,14 @@
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-right">Подтверждение пароля</label>
 
                             <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                <input
+                                    :type="passwordFieldType"
+                                    v-model="password_confirmation"
+                                    id="password-confirm"
+                                    name="password_confirmation"
+                                    class="form-control @error('password') is-invalid @enderror"
+                                    data-toggle="password" required
+                                    autocomplete="new-password">
                             </div>
                         </div>
 

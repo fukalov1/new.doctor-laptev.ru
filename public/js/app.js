@@ -50605,6 +50605,7 @@ var app = new Vue({
   data: function data() {
     return {
       password: '',
+      password_confirmation: '',
       passwordFieldType: 'password',
       settings: {
         apiKey: 'e5db01fb-1c20-456d-b884-cf0d71279a63',

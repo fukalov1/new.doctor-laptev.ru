@@ -37,7 +37,6 @@
                                     name="password"
                                     class="form-control @error('password') is-invalid @enderror"
                                     data-toggle="password" required
-
                                     autocomplete="current-password">
                                 <div class="input-group-addon">
                                     <i @click="switchVisibility" class="fa fa-eye-slash btn show-pass" aria-hidden="true"></i>
