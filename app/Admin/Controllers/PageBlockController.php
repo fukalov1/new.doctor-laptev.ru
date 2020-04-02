@@ -208,7 +208,7 @@ class PageBlockController extends Controller
  	                'filebrowserWindowHeight' => '700'
                 ])->default('-');
 //        $form->myresizeimage('image', 'Фото');
-        $form->image('image', 'Фото');
+        $form->image('image', 'Фото')->disk('public');
 
         return $form;
     }

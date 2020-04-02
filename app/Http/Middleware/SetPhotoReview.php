@@ -16,7 +16,7 @@ class SetPhotoReview
     public function handle($request, Closure $next)
     {
         if($request['set']) {
-            session(['phpto_review_id' => $request['set']]);
+            session(['photo_review_id' => $request['set']]);
         }
 
         return $next($request);

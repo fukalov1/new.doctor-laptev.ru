@@ -15,7 +15,7 @@ class PhotoReviewItemController extends AdminController
      *
      * @var string
      */
-    protected $title = 'App\PhotoReviewItem';
+    protected $title = 'Фото отзывы клиентов';
 
     /**
      * Make a grid builder.
@@ -25,16 +25,26 @@ class PhotoReviewItemController extends AdminController
     protected function grid()
     {
         $grid = new Grid(new PhotoReviewItem());
+        $grid->model()->orderBy('created_at', 'desc');
 
         $grid->column('id', __('Id'));
-        $grid->column('photo_review_id', __('Photo review id'));
-        $grid->column('title', __('Title'));
+//        $grid->column('photo_review_id', __('Photo review id'));
+//        $grid->column('title', __('Title'));
         $grid->column('text', __('Text'));
-        $grid->column('url', __('Url'));
-        $grid->column('image', __('Image'));
-        $grid->column('orders', __('Orders'));
-        $grid->column('created_at', __('Created at'));
-        $grid->column('updated_at', __('Updated at'));
+//        $grid->column('url', __('Url'));
+        $grid->column('image', __('Image'))->display(function ($image) {
+            return '<img class="photo'.$this->id.'" src="/uploads/images/thumbnail/'.$this->image.'">';
+        });
+        $grid->column('image1', __('Image'))->display(function ($image) {
+            return '<img class="photo'.$this->id.'" src="/uploads/images/thumbnail/'.$this->image1.'">';
+        });
+        $grid->column('image2', __('Image'))->display(function ($image) {
+            return '<img class="photo'.$this->id.'" src="/uploads/images/thumbnail/'.$this->image2.'">';
+        });
+
+//        $grid->column('orders', __('Orders'));
+//        $grid->column('created_at', __('Created at'));
+//        $grid->column('updated_at', __('Updated at'));
 
         return $grid;
     }
@@ -71,11 +81,13 @@ class PhotoReviewItemController extends AdminController
     {
         $form = new Form(new PhotoReviewItem());
 
-        $form->number('photo_review_id', __('Photo review id'));
-        $form->text('title', __('Title'));
+        $form->hidden('photo_review_id')->value(session('photo_review_id'));
+//        $form->text('title', __('Title'));
         $form->textarea('text', __('Text'));
-        $form->url('url', __('Url'));
+//        $form->url('url', __('Url'));
         $form->imageReview('image', __('Image'));
+        $form->imageReview('image1', __('Image1'));
+        $form->imageReview('image2', __('Image2'));
         $form->number('orders', __('Orders'))->default(1);
 
         return $form;

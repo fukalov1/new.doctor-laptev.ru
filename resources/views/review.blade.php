@@ -71,29 +71,13 @@
         </div>
         </section>
     @else
-        <section class="banner_bottom py-5">
+        <section class="banner_bottom py-5" id="sendform">
             <div class="container py-md-5">
                 <h3 class="tittle-w3ls text-left mb-5"><span class="pink">Оставьте свой отзыв</span> </h3>
                 <form method="POST">
                 @if($error!='')
                     <p style="color: #ff0000;">Проверка результата уравнения не прошла!</p>
                 @endif
-
-{{--                <div class="row">--}}
-{{--                    <div class="col-md-4">--}}
-{{--                        <label>ФИО</label><br/>--}}
-{{--                        <b>--}}
-{{--                            {{ Auth::user()->name }}--}}
-{{--                        </b>--}}
-{{--                    </div>--}}
-{{--                    <div class="col-md-4">--}}
-
-{{--                    </div>--}}
-{{--                    <div class="col-md-4">--}}
-{{--                        <label>Email</label><br/>--}}
-{{--                        {{ Auth::user()->email }}--}}
-{{--                    </div>--}}
-{{--                </div>--}}
                 <div class="row">
                     <div class="col-md-12">
                         <label>Текст Вашего отзыва</label>

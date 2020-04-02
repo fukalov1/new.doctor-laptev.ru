@@ -377,7 +377,9 @@
                     @else
                         <div class="col-lg-3 col-md-6 blog-grid-info px-0">
                             <div class="date-post">
-                                <h6 class="date">{{ $item->created_at }}</h6>
+                                <h6 class="date">
+{{--                                    {{ $item->created_at }}--}}
+                                </h6>
                                 <h4><a class="link-hny" href="{{ $item->url }}">{{ $item->name }}</a></h4>
                                 <p>{!! $item->anons !!}</p>
                             </div>
@@ -404,6 +406,17 @@
             <div class="container py-md-5">
                 <h3 class="tittle-w3ls two text-center mb-5">Отзывы</h3>
                 <div class="row my-4">
+                    <div class="col-lg-4">
+                        <a class="btn more black" href="/reviews" role="button">Все отзывы</a>
+                    </div>
+                    <div class="col-lg-4 text-right">
+
+                    </div>
+                    <div class="col-lg-4 text-right">
+                        <a class="btn more black" href="/reviews#sendform" role="button">Оставить отзыв</a>
+                    </div>
+                </div>
+                <div class="row my-4">
                     @foreach($reviews as $item)
                     <div class="col-lg-4 testimonials_grid mt-3">
                         <div class="p-lg-5 p-4 testimonials-gd-vj">
@@ -424,9 +437,7 @@
                         </div>
                     </div>
                     @endforeach
-                        <div class="text-right">
-                            <a class="btn more black" href="/reviews" role="button">Все отзывы</a>
-                        </div>
+
                 </div>
             </div>
         </div>

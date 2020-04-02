@@ -32,7 +32,9 @@ class PhotoReviewController extends AdminController
         $grid = new Grid(new PhotoReview());
 
         $grid->column('id', __('Id'));
-        $grid->column('name', __('Name'));
+        $grid->column('name', __('Name'))->display(function () {
+            return '<a href="/admin/photo-review-items?set='.$this->id.'">'.$this->name.'</a>';
+        });
         $grid->column('page_id', __('Page id'));
         $grid->column('page_block_id', __('Page block id'));
         $grid->column('created_at', __('Created at'));

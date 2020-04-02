@@ -45,7 +45,7 @@ class Review extends Model
         $result = $this->create(
             [
                 'name' => Auth::user()->name,
-                'city' => Auth::user()->city->name,
+                'city' => Auth::user()->city,
                 'email' => Auth::user()->email,
                 'text' => $data->text,
             ]);

@@ -92,15 +92,19 @@ class SubPageController extends Controller
     protected function grid()
     {
         $grid = new Grid(new Page);
+
         $grid->model()->where('parent_id',session('page_id'));
+
+        if (session('page_id')==config('id_articles', 7))
+            $grid->model()->orderBy('created_at', 'desc');
+
+
         $grid->filter(function($filter){
             // Remove the default id filter
             $filter->disableIdFilter();
-            $filter->equal('news_branch', 'Раздел новостей')->radio([
-                '0'    => 'нет',
-                '1'    => 'да',
-            ]);
+            $filter->like('name', 'Наименование ');
         });
+
 
         $grid->created_at('Дата создания')->sortable();
 //        $grid->parent_id('Parent id');

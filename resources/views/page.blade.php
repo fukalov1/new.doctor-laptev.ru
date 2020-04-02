@@ -70,7 +70,7 @@
                     <div class="container p-md-5">
                         <div class="about-hny-info text-left px-md-5">
                             <h3 class="tittle-w3ls mb-3">{{ $page_block->header }}</h3>
-                                <img src="{{ asset('/uploads/images/'.$page_block->image) }}" alt=" " class="img-fluid img-article">
+                                <img src="{{ asset('/uploads/'.$page_block->image) }}" alt=" " class="img-fluid img-article">
                             {!! $page_block->text !!}
 
                         </div>

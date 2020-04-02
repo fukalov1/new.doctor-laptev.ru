@@ -76,6 +76,7 @@ class  ReviewController extends Controller
         $rules = ['captcha' => 'required|captcha'];
         $validator = validator()->make(request()->all(), $rules);
         if ($validator->fails()) {
+
             return $this->show(request(), 'failed');
         }
         else {
@@ -84,6 +85,7 @@ class  ReviewController extends Controller
 //                Log::channel('sitelog')->info('Send mail from ' . config('email') . '  name: ' . request('fio') . '  email: ' . request('email'));
                 return $this->showResult();
             } catch (\Exception $error) {
+                dd($error->getMessage());
 //                Log::channel('sitelog')->info('Error! Sender: '.config('email').'  Receiver: '. $mailform->sender.' User:' . request('email') . ' name: ' . request('fio') . ' ' . request('direction').' Error: '.$error->getMessage());
                 echo $error->getMessage();
                 return $this->show(request(), request('type'), 'error');
@@ -118,6 +120,7 @@ class  ReviewController extends Controller
         $data['request'] = collect([]);
         $data['message'] = 'Ваша отзыв успешно отправлен! После проверки он будет опубликован. Спасибо!';
         $page_blocks = $this->pageBlock->where('page_id', $page->id)->where('orders','>',0)->orderBy('orders')->get();
+        $data['postform'] = $this->pageBlock->where('page_id', 1)->where('type',10)->first();
         $data['page_blocks'] = $page_blocks;
 //dd($data);
         return view('survey', $data);
