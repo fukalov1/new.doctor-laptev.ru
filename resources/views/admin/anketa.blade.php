@@ -7,7 +7,7 @@
                     Город
                 </td>
                 <td>
-                    {{ $user->city->name }}
+                    {{ $user->city }}
                 </td>
             </tr>
             <tr>
