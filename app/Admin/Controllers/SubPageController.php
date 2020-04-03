@@ -179,7 +179,7 @@ class SubPageController extends Controller
 
             $form->switch('relation', 'Вложения');
             $form->text('name', 'Наименование');
-            if(session('page_id')==config('id_article',9))
+            if(session('page_id')==config('id_articles',9))
                 $form->textarea('anons', 'Анонс');
             $form->number('order', 'Номер показа в меню')->default(1);
 
