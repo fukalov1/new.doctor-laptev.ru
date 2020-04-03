@@ -293,11 +293,12 @@
             <div class="container py-md-5">
                 <h3 class="tittle-w3ls text-left mb-5"><span class="pink">Статьи</span> о похудении</h3>
         @foreach($articles as $article)
+            @foreach($article->page_blocks as $page_block)
                     <div class="py-md-5">
                     <div class="row inner_sec_info">
 
                         <div class="col-md-6 banner_bottom_grid help">
-                            <img src="{{ asset('/uploads/images/'.$article->image) }}" alt=" " class="img-fluid">
+                            <img src="{{ asset('/uploads/'.$page_block->image) }}" alt=" " class="img-fluid">
                         </div>
                         <div class="col-md-6 banner_bottom_left mt-lg-0 mt-4">
                             <h4><a class="link-hny" href="{{ $article->url }}">
@@ -310,6 +311,7 @@
                         </div>
                     </div>
                     </div>
+            @endforeach
         @endforeach
             </div>
         </section>
