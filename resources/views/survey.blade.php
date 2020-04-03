@@ -205,7 +205,7 @@
                         @endforeach
                         <div class="row form-group">
                             <div class="col-md-4">
-                                Поститайте результат и запишите ответ
+                                Посчитайте результат и запишите ответ
                             </div>
                             <div class="col-md-4">
                                 <img src="{{ Captcha::src('math') }}"/>

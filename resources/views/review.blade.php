@@ -96,7 +96,7 @@
                     </div>
                     <div class="col-md-4">
                         <label>
-                            Поститайте результат
+                            Посчитайте результат
                         </label><br/>
                         <img src="{{ Captcha::src('math') }}"/>
                     </div>
