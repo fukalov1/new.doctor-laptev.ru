@@ -14,7 +14,8 @@ use Encore\Admin\Show;
 class SubPageController extends Controller
 {
     use HasResourceActions;
-    public $bread_crubs='';
+    public $bread_crumbs='';
+    public $bread_crumb_value='';
 
     /**
      * Index interface.
@@ -25,15 +26,15 @@ class SubPageController extends Controller
     public function index(Content $content)
     {
         $this->getHeader();
-        $this->getBeadCrumbs(session('page_id'));
+        $this->getBreadCrumbs(session('page_id'));
         if (Admin::user()->isAdministrator())
-            $this->bread_crubs = '<a href="/admin/pages"> Структура сайта</a> / '.$this->bread_crubs;
+            $this->bread_crumbs = '<a href="/admin/pages"> Структура сайта</a> / '.$this->bread_crumbs;
 
 
         return $content
-            ->header('Раздел '.$this->page_name)
-            ->description(' список подразделов/страниц')
-            ->body($this->bread_crubs)
+            ->header('Раздел "'.$this->page_name.'""')
+            ->description($this->bread_crumbs)
+            ->body($this->bread_crumbs)
             ->body($this->grid());
     }
 
@@ -78,9 +79,10 @@ class SubPageController extends Controller
     public function create(Content $content)
     {
         $this->getHeader();
+        $this->getBreadCrumbs(session('page_id'));
         return $content
             ->header('Раздел '.$this->page_name)
-            ->description(' список подразделов/страниц')
+            ->description($this->bread_crumbs)
             ->body($this->form());
     }
 
@@ -169,9 +171,11 @@ class SubPageController extends Controller
      */
     protected function form()
     {
-        $form = new Form(new Page);
 
+        $form = new Form(new Page);
+//dd('bread_crumbs', session('page_id'), $this->getBreadCrumbs(session('page_id')));
         $form->tab('Основная', function ($form) {
+
 
             $form->switch('relation', 'Вложения');
             $form->text('name', 'Наименование');
@@ -188,7 +192,7 @@ class SubPageController extends Controller
             $form->text('title', 'Заголовок страницы');
             $form->text('description', 'Описание станицы');
             $form->text('keywords', 'Ключевые слова');
-            $form->translate('url', 'Адрес страницы (url)');
+            $form->translate('url', 'Адрес страницы (url)')->attribute('rel', $this->bread_crumb_value);
             $form->text('redirect', 'Перенаправление');
 
         });
@@ -208,13 +212,14 @@ class SubPageController extends Controller
         }
     }
 
-    private function getBeadCrumbs($id)
+    private function getBreadCrumbs($id)
     {
         $page = Page::find($id);
-        $this->bread_crubs = " <a href='/admin/sub_pages?set={$page->id}'>".$page->name."</a> / ".$this->bread_crubs;
+        $this->bread_crumbs = " <a href='/admin/sub_pages?set={$page->id}'>".$page->name."</a> / ".$this->bread_crumbs;
+        $this->bread_crumb_value = $page->name."/".$this->bread_crumb_value;
 
         if (($page->parent_id>0) and (Admin::user()->isAdministrator()) ) {
-            $this->getBeadCrumbs($page->parent_id);
+            $this->getBreadCrumbs($page->parent_id);
         }
     }
 
