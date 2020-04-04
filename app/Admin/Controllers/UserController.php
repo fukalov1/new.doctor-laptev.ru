@@ -106,14 +106,15 @@ class UserController extends AdminController
         $form = new Form(new User());
 
         $form->text('name', __('ФИО'));
-        $form->select('city_id', 'Город')->options(function ($city) {
+        $form->text('city', __('Город указанный при регистрации'));
+        $form->select('city_id', 'Город из анкеты')->options(function ($city) {
             $cities = City::pluck('name','id')->all();
             return $cities;
         })->default(1);
         $form->text('phone', __('Телефон'));
         $form->email('email', __('Email'));
         $form->datetime('email_verified_at', __('Email verified at'))->default(date('Y-m-d H:i:s'));
-        $form->password('password', __('Password'));
+//        $form->password('password', __('Password'));
 //        $form->text('remember_token', __('Remember token'));
 
         return $form;
