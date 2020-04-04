@@ -49,13 +49,13 @@ class UserController extends AdminController
         $grid->model()->orderBy('id', 'desc');
 
 //        $grid->column('id', __('Id'));
-        $grid->column('cities.name', __('Город'));
-        $grid->column('name', __('ФИО'));
+        $grid->column('cities.name', __('Город'))->sortable();
+        $grid->column('name', __('ФИО'))->sortable();
 //        $grid->column('name', 'ФИО')->display(function ($city) {
 //            return '<a href="/admin/profiles" title="анкета"></a>';
 //        });
-        $grid->column('phone', __('Телефон'));
-        $grid->column('email', __('Email'));
+        $grid->column('phone', __('Телефон'))->sortable();
+        $grid->column('email', __('Email'))->sortable();
         $grid->anketa('Анкета')->display(function () {
             $profiles = Profile::where('user_id', $this->id)->get();
             $data = '';
