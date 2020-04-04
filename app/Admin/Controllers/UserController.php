@@ -49,7 +49,7 @@ class UserController extends AdminController
         $grid->model()->orderBy('id', 'desc');
 
 //        $grid->column('id', __('Id'));
-        $grid->column('city.name', __('Город'));
+        $grid->column('cities.name', __('Город'));
         $grid->column('name', __('ФИО'));
 //        $grid->column('name', 'ФИО')->display(function ($city) {
 //            return '<a href="/admin/profiles" title="анкета"></a>';
@@ -92,6 +92,7 @@ class UserController extends AdminController
         $show->field('created_at', __('Created at'));
         $show->field('updated_at', __('Updated at'));
         $show->field('city_id', __('City id'));
+        $show->field('city', __('City'));
 
         return $show;
     }
@@ -106,8 +107,8 @@ class UserController extends AdminController
         $form = new Form(new User());
 
         $form->text('name', __('ФИО'));
-        $form->text('city', __('Город указанный при регистрации'));
-        $form->select('city_id', 'Город из анкеты')->options(function ($city) {
+        $form->text('city', __('Город, указанный при регистрации'))->default('');
+        $form->select('city_id', 'Город из анкеты')->options(function () {
             $cities = City::pluck('name','id')->all();
             return $cities;
         })->default(1);
