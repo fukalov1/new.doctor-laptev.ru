@@ -110,6 +110,7 @@ class UserController extends AdminController
             $cities = City::pluck('name','id')->all();
             return $cities;
         })->default(1);
+        $form->phone('email', __('Телефон'));
         $form->email('email', __('Email'));
         $form->datetime('email_verified_at', __('Email verified at'))->default(date('Y-m-d H:i:s'));
         $form->password('password', __('Password'));
