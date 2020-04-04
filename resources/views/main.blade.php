@@ -360,33 +360,39 @@
             <h3 class="tittle-w3ls text-center mb-5">Полезная информация</h3>
 
             <div class="blog-grids-main row text-left">
-                @foreach($main_article as $item)
+                @foreach($main_article as $article)
                     @if($loop->iteration<3)
-                <div class="col-lg-3 col-md-6 blog-grid-img px-0">
-                    <img src="{{ asset('uploads/images/thumbnail/'.$item->image) }}" alt="Popup Image" class="img-fluid" />
-                </div>
-                <div class="col-lg-3 col-md-6 blog-grid-info px-0">
-                    <div class="date-post">
-                        <h6 class="date">
-{{--                            {{ $item->created_at }}--}}
-                        </h6>
-                        <h4><a class="link-hny" href="{{ $item->url }}">{{ $item->name }}</a></h4>
-                        <p>{!! $item->anons !!}</p>
-                    </div>
-                </div>
-                    @else
-                        <div class="col-lg-3 col-md-6 blog-grid-info px-0">
-                            <div class="date-post">
-                                <h6 class="date">
-{{--                                    {{ $item->created_at }}--}}
-                                </h6>
-                                <h4><a class="link-hny" href="{{ $item->url }}">{{ $item->name }}</a></h4>
-                                <p>{!! $item->anons !!}</p>
+                        @foreach($article->page_blocks as $item)
+                            <div class="col-lg-3 col-md-6 blog-grid-img px-0">
+                                <img src="{{ asset('uploads/images/thumbnail/'.preg_replace('/images\//', '',$item->image)) }}" alt="Popup Image"
+                                     class="img-fluid"/>
                             </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 blog-grid-img px-0">
-                            <img src="{{ asset('uploads/images/thumbnail/'.$item->image) }}" alt="Popup Image" class="img-fluid" />
-                        </div>
+                            <div class="col-lg-3 col-md-6 blog-grid-info px-0">
+                                <div class="date-post">
+                                    <h6 class="date">
+                                        {{--                            {{ $item->created_at }}--}}
+                                    </h6>
+                                    <h4><a class="link-hny" href="{{ $article->url }}">{{ $article->name }}</a></h4>
+                                    <p>{!! $article->anons !!}</p>
+                                </div>
+                            </div>
+                        @endforeach
+                    @else
+                        @foreach($article->page_blocks as $item)
+                            <div class="col-lg-3 col-md-6 blog-grid-info px-0">
+                                <div class="date-post">
+                                    <h6 class="date">
+                                        {{--                                    {{ $item->created_at }}--}}
+                                    </h6>
+                                    <h4><a class="link-hny" href="{{ $article->url }}">{{ $article->name }}</a></h4>
+                                    <p>{!! $article->anons !!}</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 blog-grid-img px-0">
+                                <img src="{{ asset('uploads/images/thumbnail/'.preg_replace('/images\//', '',$item->image)) }}" alt="Popup Image"
+                                     class="img-fluid"/>
+                            </div>
+                        @endforeach
                     @endif
                 @endforeach
 

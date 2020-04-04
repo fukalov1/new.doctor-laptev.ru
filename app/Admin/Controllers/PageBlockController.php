@@ -208,9 +208,23 @@ class PageBlockController extends Controller
  	                'filebrowserWindowHeight' => '700'
                 ])->default('-');
 //        $form->myresizeimage('image', 'Фото');
-        $form->image('image', 'Фото')->disk('public');
+
+        if ($this->isBlock4Article()) {
+            $form->imageArticle('image', 'Фото для статьи')->disk('public');
+        }
+        else {
+            $form->image('image', 'Фото')->disk('public');
+        }
 
         return $form;
+    }
+
+    private function isBlock4Article() {
+        $result = false;
+        if ((session('page_id')==config('id_articles', 7)) or
+            (Page::find(session('page_id'))->parent_id==config('id_articles', 7)))
+            $result = true;
+        return $result;
     }
 
     private function getHeader() {
