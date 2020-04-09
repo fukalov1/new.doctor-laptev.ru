@@ -21,7 +21,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'phone', 'password', 'user_id', 'deleted_at', 'city_id'
+        'name', 'email', 'phone', 'password', 'user_id', 'deleted_at', 'city_id', 'city'
     ];
 
     /**
@@ -43,7 +43,7 @@ class User extends Authenticatable
     ];
 
     public function cities() {
-        return $this->belongsTo(City::class);
+        return $this->hasOne(City::class, 'id', 'city_id');
     }
 
     public function profiles() {
@@ -58,12 +58,15 @@ class User extends Authenticatable
             $e = 0;
             foreach ($users as $user) {
                 try {
+                    echo "User ".$user->fio." city ".$user->city."\n";
+                    $city = City::find($user->city) ? City::find($user->city)->name : 'не найден';
                     $result = $this->updateOrCreate(
                         ['email' => $user->email],
                         [
                         'name' => $user->fio,
                         'phone' => $user->phone,
                         'password' => '12345678',
+                        'city' => $city,
                         'city_id' => $user->city,
                         ]);
                     if ($result->id) {

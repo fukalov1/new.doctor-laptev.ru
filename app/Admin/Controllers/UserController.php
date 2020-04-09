@@ -49,7 +49,8 @@ class UserController extends AdminController
         $grid->model()->orderBy('id', 'desc');
 
 //        $grid->column('id', __('Id'));
-        $grid->column('cities.name', __('Город'))->sortable();
+        $grid->column('city', __('Город регистрации'))->sortable();
+        $grid->column('cities.name', __('Город анкеты'))->sortable();
         $grid->column('name', __('ФИО'))->sortable();
 //        $grid->column('name', 'ФИО')->display(function ($city) {
 //            return '<a href="/admin/profiles" title="анкета"></a>';
