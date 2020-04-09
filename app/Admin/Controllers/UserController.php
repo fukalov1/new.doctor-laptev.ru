@@ -36,7 +36,8 @@ class UserController extends AdminController
             // Add a column filter
             $filter->like('name', 'ФИО');
             $filter->like('email', 'E-mail');
-            $filter->like('city.name', 'Город');
+            $filter->like('city', 'Город регистрации');
+            $filter->like('cities.name', 'Город анкеты');
 //            $filter->like('profiles.code', 'Код клиента');
             $filter->equal('profiles.type', 'Тип анкет')->radio([
                 ''   => 'Все',
