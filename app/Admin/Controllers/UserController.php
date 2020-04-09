@@ -44,22 +44,23 @@ class UserController extends AdminController
                 'первичная'    => 'Первичная анкета',
                 'вторичная'    => 'Вторичная анкета',
             ]);
+            $filter->between('profiles.created_at', 'Дата анкеты')->date();
 
         });
 
-        $grid->model()->orderBy('id', 'desc');
+        $grid->model()->orderBy('name');
 
 //        $grid->column('id', __('Id'));
+        $grid->column('name', __('ФИО'))->sortable();
         $grid->column('city', __('Город регистрации'))->sortable();
         $grid->column('cities.name', __('Город анкеты'))->sortable();
-        $grid->column('name', __('ФИО'))->sortable();
 //        $grid->column('name', 'ФИО')->display(function ($city) {
 //            return '<a href="/admin/profiles" title="анкета"></a>';
 //        });
         $grid->column('phone', __('Телефон'))->sortable();
         $grid->column('email', __('Email'))->sortable();
         $grid->anketa('Анкета')->display(function () {
-            $profiles = Profile::where('user_id', $this->id)->get();
+            $profiles = Profile::where('user_id', $this->id)->orderBy('created_at', 'desc')->get();
             $data = '';
             foreach ($profiles as $profile) {
                 $data .= '<a href="/admin/show-anketa/'.$profile->id.'">'.$profile->type.' от ('.$profile->created_at.')</a><br/>';
