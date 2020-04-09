@@ -5,6 +5,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Admin/Controllers/CityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Admin/Controllers/CityController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Admin/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Admin/Controllers/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SurveyController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SurveyController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -210,7 +211,7 @@
       <workItem from="1583298848082" duration="33360000" />
       <workItem from="1585665011161" duration="9053000" />
       <workItem from="1585731452442" duration="28405000" />
-      <workItem from="1586235982517" duration="3901000" />
+      <workItem from="1586235982517" duration="4922000" />
     </task>
     <servers />
   </component>
