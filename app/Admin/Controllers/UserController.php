@@ -2,6 +2,7 @@
 
 namespace App\Admin\Controllers;
 
+use App\Admin\Actions\Post\ExportVcard;
 use App\City;
 use App\Profile;
 use App\User;
@@ -9,6 +10,7 @@ use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Show;
+use JeroenDesloovere\VCard\VCard;
 
 class UserController extends AdminController
 {
@@ -46,6 +48,10 @@ class UserController extends AdminController
             ]);
             $filter->between('profiles.created_at', 'Дата анкеты')->date();
 
+        });
+
+        $grid->actions(function ($actions) {
+            $actions->add(new ExportVcard());
         });
 
         $grid->model()->orderBy('name');
@@ -123,4 +129,75 @@ class UserController extends AdminController
 
         return $form;
     }
+
+
+    public function exportVCard30($id)
+    {
+        $result = '';
+        $user = User::find($id);
+        if($user) {
+            $vcard = new VCard();
+
+            $lastname='';
+            $firstname = '';
+            $result = $this->getUserName($user->name);
+            if (json_decode($result)->success) {
+                $lastname = json_decode($result)->lastname;
+                $firstname = json_decode($result)->firstname;
+            }
+            else {
+                return false;
+            }
+//            dd('l:',$lastname, 'f:',$firstname);
+            $lastname = $lastname;
+            $firstname = $firstname;
+            $additional = '';
+            $prefix = '';
+            $suffix = '';
+
+            $vcard->addName($lastname, $firstname, $additional, $prefix, $suffix);
+
+            $vcard->addCompany('Клиент доктора Лаптева');
+            $vcard->addJobtitle('Клиент');
+            $vcard->addEmail($user->email);
+            $vcard->addPhoneNumber($user->phone, 'PREF;WORK');
+            $vcard->addPhoneNumber($user->phone, 'WORK');
+            $vcard->addAddress(null, null, null, $user->city, null, null, 'Russia');
+            $vcard->addLabel($user->city);
+//            $vcard->addURL('http://www.jeroendesloovere.be');
+
+//            $vcard->addPhoto(__DIR__ . '/landscape.jpeg');
+
+// return vcard as a string
+//return $vcard->getOutput();
+
+// return vcard as a download
+            return $vcard->download();
+        }
+        return false;
+    }
+
+    private function getUserName($str) {
+        $str = rtrim($str);
+        $str = ltrim($str);
+        $str = preg_replace('/\s+/', ' ', $str);
+        $fio = explode(" ",$str);
+        if (is_array($fio)) {
+            $lastname = $fio[0];
+            if(count($fio)==3) {
+                $firstname = $fio[1]." ".$fio[2];
+            }
+            elseif(count($fio)==2) {
+                $firstname = $fio[1];
+            }
+            else {
+                $firstname = $fio[0];
+            }
+            return json_encode(['success' => true, 'firstname' => $firstname, 'lastname' => $lastname]);
+        }
+        else {
+            return json_encode(['success' => false]);
+        }
+    }
+
 }

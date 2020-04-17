@@ -46,6 +46,8 @@ Route::group([
     Route::get('ajaxImageUpload', 'AjaxFileUploadController@ajaxImageUpload');
     Route::post('ajax-upload', 'AjaxFileUploadController@ajaxFileUploadPost')->name('ajaxFileUpload');
 
+    Route::get('export/vcard30/{id}', 'UserController@exportVCard30');
+
 
 //    $router->resource('sub-domains', SubDomainController::class);
 });
