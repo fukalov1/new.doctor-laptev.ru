@@ -171,7 +171,10 @@ class PageController extends Controller
         });
 
         $form->saving(function (Form $form) {
-            $form->url = $this->translit($form->name);
+            if($form->name=='Главная')
+                $form->url = '';
+            else
+                $form->url = $this->translit($form->name);
         });
 
         return $form;
