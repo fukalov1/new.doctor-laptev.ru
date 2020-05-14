@@ -26,23 +26,19 @@ $(document).ready(function() {
     if ($( "a" ).hasClass( "modalbox" ))
         $("a.modalbox").fancybox();
 
-    if ($( "input[type=text]" ).hasClass( "name" )) {
-        console.log('test is name');
-        $('input.name').on('change', function () {
-            console.log('change value name');
-            let bread_crumbs = '';
-            if ($( "input[type=text]" ).hasClass( "url" )) {
-                bread_crumbs = $('input.url').attr('rel');
-            }
 
-            let url = translit(bread_crumbs+$('input.name').val());
-            console.log('bread_crumbs',bread_crumbs,'name', $('input.name').val(), url);
-            if ($( "input[type=text]" ).hasClass( "url" ) && $('input.url').val()==='') {
-                $('input.url').val(url)
-            }
-        });
+    function prepareUrl() {
+        let bread_crumbs = '';
+        if ($( "input[type=text]" ).hasClass( "url" )) {
+            bread_crumbs = $('input.url').attr('rel');
+        }
+
+        let url = translit(bread_crumbs+$('input.name').val());
+        console.log('bread_crumbs',bread_crumbs,'name', $('input.name').val(), url);
+        if ($( "input[type=text]" ).hasClass( "url" ) && $('input.url').val()==='') {
+            $('input.url').val(url)
+        }
     }
-
 
     function translit(s)
     {
