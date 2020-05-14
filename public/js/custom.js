@@ -27,7 +27,9 @@ $(document).ready(function() {
         $("a.modalbox").fancybox();
 
     if ($( "input[type=text]" ).hasClass( "name" )) {
+        console.log('test is name');
         $('input.name').on('change', function () {
+            console.log('change value name');
             let bread_crumbs = '';
             if ($( "input[type=text]" ).hasClass( "url" )) {
                 bread_crumbs = $('input.url').attr('rel');

@@ -21,7 +21,8 @@
         </section>
     @endif
 
-{{--    v2a+TBXB--}}
+{{--    v2a+TBXB--
+}}
 
     @if($payservice->id)
         <section class="banner_bottom py-5">
