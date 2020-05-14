@@ -59,7 +59,7 @@
                     </a>
                 </h2>
                 <p class="mb-3">
-                    <img src="{{asset('/images/logo.jpg')}}" width="300"/>
+                    <img src="{{asset('/images/logo.webp')}}" width="300"/>
                 </p>
                 <h5>Одобрено <span>  людьми</span> </h5>
                 <div class="icon-social mt-4">
