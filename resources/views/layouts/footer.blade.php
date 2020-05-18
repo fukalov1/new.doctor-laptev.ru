@@ -39,7 +39,7 @@
                 </form>
             </div>
             <div class="col-lg-7 banner_bottom_grid help pl-lg-5">
-                <img src="{{ asset('/uploads/'.$postform->image) }}" alt="{{ $postform->title }}" class="img-fluid mb-4">
+                <img src="{{ asset('/uploads/'.$postform->image) }}" alt="{{ $postform->title }}" class="img-fluid mb-4" loading="lazy">
                 <h4>{{ $postform->header }}</h4>
                 {!!  $postform->text !!}
 

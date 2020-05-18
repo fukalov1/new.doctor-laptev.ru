@@ -68,7 +68,7 @@ class PhotoReviewItem extends Model
                         $i->resize(round($height * $w / $h, 0), $height);
                         $i->resizeCanvas($width, $height, 'center', false, 'ffffff');
                     }
-                    $i->save(public_path('uploads') . '/images/thumbnail/' . $filename);
+                    $i->save(public_path('uploads') . '/images/thumbnail/' . $filename, 70);
                     copy($file, public_path('uploads/images/'.$filename) );
                 }
                 catch (\Exception $exception) {
