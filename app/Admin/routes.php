@@ -43,11 +43,15 @@ Route::group([
     $router->resource('reviews', ReviewController::class);
     $router->resource('video-files', VideoFilesController::class)->middleware('set_payservice');;
 
+    $router->resource('settings', SettingController::class);
+
+
     Route::get('ajaxImageUpload', 'AjaxFileUploadController@ajaxImageUpload');
     Route::post('ajax-upload', 'AjaxFileUploadController@ajaxFileUploadPost')->name('ajaxFileUpload');
 
     Route::get('export/vcard30/{id}', 'UserController@exportVCard30');
 
+    $router->post('set-site-enable', 'SettingController@SetSiteEnable');
 
 //    $router->resource('sub-domains', SubDomainController::class);
 });

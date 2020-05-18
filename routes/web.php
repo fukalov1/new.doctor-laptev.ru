@@ -12,35 +12,40 @@
 */
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/articles', 'ArticleController@showAll');
-Route::get('/photo-reviews', 'PhotoReviewController@show');
-Route::get('/cities', 'CityController@show');
-Route::get('/survey/{type?}', 'SurveyController@show');
-Route::get('/pay-services', 'PayServiceController@show');
-Route::post('/get-pay-service', 'PayServiceController@getData');
-Route::post('/check-pay-service', 'PayServiceController@checkData');
-
-Route::post('/pay-service/get', 'PayServiceController@showPrivate');
-Route::get('/get-file/{file}', 'PayServiceController@getFile');
-
-Route::post('/send_form/{id}', 'PageController@sendFormData');
-
-Route::post('/survey', 'SurveyController@save');
-Route::get('/reviews', 'ReviewController@show');
-Route::post('/reviews', 'ReviewController@save');
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 
 
-Route::group(['middleware' => ['auth']], function () {
+Route::group([
+    'middleware' => 'enable'
+], function() {
+
+    Route::get('/articles', 'ArticleController@showAll');
+    Route::get('/photo-reviews', 'PhotoReviewController@show');
+    Route::get('/cities', 'CityController@show');
+    Route::get('/survey/{type?}', 'SurveyController@show');
+    Route::get('/pay-services', 'PayServiceController@show');
+    Route::post('/get-pay-service', 'PayServiceController@getData');
+    Route::post('/check-pay-service', 'PayServiceController@checkData');
+
+    Route::post('/pay-service/get', 'PayServiceController@showPrivate');
+    Route::get('/get-file/{file}', 'PayServiceController@getFile');
+
+    Route::post('/send_form/{id}', 'PageController@sendFormData');
+
     Route::post('/survey', 'SurveyController@save');
+    Route::get('/reviews', 'ReviewController@show');
     Route::post('/reviews', 'ReviewController@save');
-    Route::get('/pay-service/{id}', 'PayServiceController@showService');
-});
 
+
+    Route::group(['middleware' => ['auth']], function () {
+        Route::post('/survey', 'SurveyController@save');
+        Route::post('/reviews', 'ReviewController@save');
+        Route::get('/pay-service/{id}', 'PayServiceController@showService');
+    });
+});
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');

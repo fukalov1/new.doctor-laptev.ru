@@ -45,7 +45,7 @@ class RouteServiceProvider extends ServiceProvider
         $this->mapWebRoutes();
 
         if (Schema::hasTable('pages')) {
-            $router->group(['middleware' => ['web']], function ($router) {
+            $router->group(['middleware' => ['web', 'enable']], function ($router) {
                 $pages = Page::all();
                 foreach ($pages as $page) {
                     $router->get($page->url,

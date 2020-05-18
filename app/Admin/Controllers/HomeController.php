@@ -4,6 +4,7 @@ namespace App\Admin\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Profile;
+use App\Setting;
 use App\User;
 use App\City;
 use App\Code;
@@ -28,13 +29,50 @@ class HomeController extends Controller
                     $cities = new City();
                     $profiles = new Profile();
                     $codes = new Code();
+                    $setting = Setting::where('name', 'SiteEnable')->first();
+                    $site_enable = '<input type="radio" name="siteEnable" class="site-enable" value="1" checked> да
+                            <input type="radio" name="siteEnable" class="site-enable" value="0"> нет';
+                    if ($setting->value==0) {
+                        $site_enable = '<input type="radio" name="siteEnable" class="site-enable" value="1"> да
+                            <input type="radio" name="siteEnable" class="site-enable" value="0" checked> нет';
+                    }
+
+                    $content = '<div class="box-body">
+        <div class="table-responsive">
+            <table class="table table-striped">
+                    <tr>
+                        <td width="50%">Клиентов:</td>
+                        <td>'.count($users->all()).'</td>
+                    </tr>
+                    <tr>
+                        <td width="50%">Первичных анкет:</td>
+                        <td>'.count($profiles->where('type','первичная')->get()).'</td>
+                    </tr>
+                    <tr>
+                        <td width="50%">Вторичных анкет:</td>
+                        <td>'.count($profiles->where('type','вторичная')->get()).'</td>
+                    </tr>
+                    <tr>
+                        <td width="50%">Городов (активных/всего):</td>
+                        <td>'.count($cities->where('show',1)->get()).'/'.count($cities->all()).'</td>
+                    </tr>
+                    <tr>
+                        <td width="50%">Выдано кодов:</td>
+                        <td>'.count($codes->where('free',0)->get()).'</td>
+                    </tr>
+                    <tr>
+                        <td width="50%">Сайт включен:</td>
+                        <td>
+                            '.$site_enable.'
+                        </td>
+                    </tr>
+            </table>
+        </div>
+        <!-- /.table-responsive -->
+    </div>';
+
                     $column->append(
-                        '<h5>Клиентов: <b>'.count($users->all()).'</b><br>'
-                        .'Первичных анкет: <b>'.count($profiles->where('type','первичная')->get()).'</b><br>'
-                        .'Вторичных анкет: <b>'.count($profiles->where('type','вторичная')->get()).'</b><br>'
-                        .'Городов (активных/всего): <b>'.count($cities->where('show',1)->get()).'/'.count($cities->all()).'</b><br>'
-                        .'Выдано кодов: <b>'.count($codes->where('free',0)->get()).'</b><br>'
-                        .'</h5>'
+                        $content
                     );
                 });
 

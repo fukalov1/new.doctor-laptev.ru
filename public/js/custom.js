@@ -22,6 +22,29 @@ $(document).ready(function() {
         });
     }
 
+    $('input[name="siteEnable"]').on('click', function () {
+        // if ($(this).val()==1){
+            console.log('Включен');
+            $.ajax({
+                url: "/admin/set-site-enable",
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                type: "Post",
+                data: {value: $(this).val()},
+                success: function (data) {
+                    console.log('Состояния сайта ');
+                },
+                error: function (data) {
+                    console.log('Ошибка при изменении состояния сайта');
+                },
+                complete: function (data) {
+                }
+            });
+        // } else {
+        //     console.log('Выключен');
+        // }
+    });
 
     if ($( "a" ).hasClass( "modalbox" ))
         $("a.modalbox").fancybox();
