@@ -25,7 +25,7 @@
                             <div class="row inner_sec_info">
 
                                 <div class="col-md-6 banner_bottom_grid help">
-                                    <img src="{{ asset('/uploads/'.$page_block->image) }}" alt=" " class="img-fluid">
+                                    <img src="{{ asset('/uploads/'.$page_block->image) }}" loading="lazy" alt=" " class="img-fluid">
                                 </div>
                                 <div class="col-md-6 banner_bottom_left mt-lg-0 mt-4">
                                     <h4><a class="link-hny" href="services.html">
@@ -55,7 +55,7 @@
                                     <div class="col-lg-5 services-innfo pr-5">
                                         <h3 class="tittle-w3ls two mb-3 text-left">{{ $page_block->header }}</h3>
                                         <p class="sub-tittle mt-2 mb-sm-3 text-left"></p>
-                                        <a href="services.html"><img src="{{ asset('/uploads/'.$page_block->image) }}" alt="w3pvt" class="img-fluid"></a>
+                                        <a href="services.html"><img src="{{ asset('/uploads/'.$page_block->image) }}" loading="lazy" alt="w3pvt" class="img-fluid"></a>
                                     </div>
                                     <div class="col-lg-7 services-grid-inf">
                                         {!! $page_block->text !!}
@@ -320,9 +320,9 @@
                                 <a href="#gal{{ $item->id }}">
                                     <div class="img-dbl">
                                         <img src="{{ asset('uploads/images/thumbnail/'.$item->image) }}"
-                                                     alt="w3pvt" class="img-fluid">
+                                             loading="lazy" alt="w3pvt" class="img-fluid">
                                         <img src="{{ asset('uploads/images/thumbnail/'.$item->image1) }}"
-                                                     alt="w3pvt" class="img-fluid">
+                                             loading="lazy"         alt="w3pvt" class="img-fluid">
                                     </div>
                                 </a>
                                 <div class="gal-info">
@@ -336,11 +336,11 @@
                         <div id="gal{{ $item->id }}" class="pop-overlay">
                             <div class="popup">
                                 <img src="{{ asset('uploads/images/'.$item->image) }}" alt="Popup Image"
-                                     class="img-fluid" width="30%"/>
+                                     loading="lazy" class="img-fluid" width="30%"/>
                                 <img src="{{ asset('uploads/images/'.$item->image1) }}" alt="Popup Image"
-                                     class="img-fluid" width="30%"/>
+                                     loading="lazy" class="img-fluid" width="30%"/>
                                 <img src="{{ asset('uploads/images/'.$item->image2) }}" alt="Popup Image"
-                                     class="img-fluid" width="30%"/>
+                                     loading="lazy" class="img-fluid" width="30%"/>
                                 <p class="mt-4">{!! $item->text  !!}</p>
                                 <a class="close" href="#gallery">&times;</a>
                             </div>
@@ -365,7 +365,7 @@
                         @foreach($article->page_blocks as $item)
                             <div class="col-lg-3 col-md-6 blog-grid-img px-0">
                                 <img src="{{ asset('uploads/images/thumbnail/'.preg_replace('/images\//', '',$item->image)) }}" alt="Popup Image"
-                                     class="img-fluid"/>
+                                     loading="lazy" class="img-fluid"/>
                             </div>
                             <div class="col-lg-3 col-md-6 blog-grid-info px-0">
                                 <div class="date-post">
