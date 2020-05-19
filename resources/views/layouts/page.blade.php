@@ -5,14 +5,15 @@
 <!--[if IE 8 ]>    <html lang="en" class="ie8">    <![endif]-->
 <!--[if IE 9 ]>    <html lang="en" class="ie9">    <![endif]-->
 <!--[if (gt IE 9)|!(IE)]><!-->
-<html class="no-js" lang="">
+<html class="no-js" lang="ru" amp>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>{{ $data->title  }}</title>
     <meta name="description" content="{{ $data->description }}" />
     <meta name="keywords" content="{{ $data->keywords }}"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0">
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
 
     <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
@@ -33,6 +34,10 @@
     <meta name="theme-color" content="#ffffff">
 
     <meta name="yandex-verification" content="ae7cf7d5c8c9c3d3" />
+
+    <noscript>
+        <style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}></style>
+    </noscript>
 
     @include('layouts.styles')
 
