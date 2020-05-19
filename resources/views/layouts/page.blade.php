@@ -35,9 +35,7 @@
 
     <meta name="yandex-verification" content="ae7cf7d5c8c9c3d3" />
 
-    <noscript>
-        <style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}></style>
-    </noscript>
+    <style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}></style>
 
     @include('layouts.styles')
 
