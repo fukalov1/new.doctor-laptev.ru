@@ -77,16 +77,15 @@ class PhotoReviewController extends AdminController
         $form->hidden('page_block_id')->value(session('page_block_id'));
         $form->text('name', 'Наименование');
 
-        $form->hasMany('items', function (Form\NestedForm $form) {
-            $form->number('orders', 'Номер показа')->default(1);
-            $form->text('title','Заголовок');
-            $form->textarea('text', 'Текст');
-            $form->imageReview('image', 'Фото');
-            $form->imageReview('image1', 'Фото1');
-            $form->imageReview('image2', 'Фото2');
-//                $form->file('image', 'Картинка');
-        });
-
+//        $form->hasMany('items', function (Form\NestedForm $form) {
+//            $form->number('orders', 'Номер показа')->default(1);
+//            $form->text('title','Заголовок');
+//            $form->textarea('text', 'Текст');
+//            $form->imageReview('image', 'Фото');
+//            $form->imageReview('image1', 'Фото1');
+//            $form->imageReview('image2', 'Фото2');
+//        });
+//
 
         return $form;
     }
