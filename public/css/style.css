@@ -729,6 +729,10 @@ li>a:only-child:after {
     transition: all 0.15s ease;
 }
 
+.img-photo-review {
+    width: 30%;
+}
+
 .social-icon:hover {
     color: #fff;
 }

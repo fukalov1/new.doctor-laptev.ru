@@ -7,8 +7,8 @@
                 <form id="sendform1" class="send-form" method="post">
                     <div class="login p-md-5 p-4 mx-auto bg-white mw-100">
                     <h4>
-                        Письмо Доктору Лаптеву</h4>
-                    <form action="#" method="post">
+                        Письмо Доктору Лаптеву
+                    </h4>
                         <div class="form-group">
                             <label>Ваше имя</label>
 
@@ -32,10 +32,7 @@
                         @csrf
                         <input type="hidden" name="uid" value="1">
                         <button type="submit" class="btn more black submit mb-4 submit-button" rel="1">Отправить</button>
-
-                    </form>
-
-                </div>
+                    </div>
                 </form>
             </div>
             <div class="col-lg-7 banner_bottom_grid help pl-lg-5">

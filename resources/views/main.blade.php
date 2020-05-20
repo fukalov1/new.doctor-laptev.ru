@@ -338,11 +338,11 @@
                         <div id="gal{{ $item->id }}" class="pop-overlay">
                             <div class="popup">
                                 <img src="{{ asset('uploads/images/'.$item->image) }}" alt="Popup Image"
-                                     loading="lazy" class="img-fluid" width="30%"/>
+                                     loading="lazy" class="img-fluid" class="img-photo-review"/>
                                 <img src="{{ asset('uploads/images/'.$item->image1) }}" alt="Popup Image"
-                                     loading="lazy" class="img-fluid" width="30%"/>
+                                     loading="lazy" class="img-fluid" class="img-photo-review"/>
                                 <img src="{{ asset('uploads/images/'.$item->image2) }}" alt="Popup Image"
-                                     loading="lazy" class="img-fluid" width="30%"/>
+                                     loading="lazy" class="img-fluid" class="img-photo-review"/>
                                 <div class="mt-4">{!! $item->text  !!}</div>
                                 <a class="close" href="#gallery">&times;</a>
                             </div>
