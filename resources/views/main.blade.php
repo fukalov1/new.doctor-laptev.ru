@@ -371,9 +371,9 @@
                             </div>
                             <div class="col-lg-3 col-md-6 blog-grid-info px-0">
                                 <div class="date-post">
-                                    <h6 class="date">
-                                        {{--                            {{ $item->created_at }}--}}
-                                    </h6>
+{{--                                    <h6 class="date">--}}
+{{--                                                                    {{ $item->created_at }}--}}
+{{--                                    </h6>--}}
                                     <h4><a class="link-hny" href="{{ $article->url }}">{{ $article->name }}</a></h4>
                                     <div>{!! $article->anons !!}</div>
                                 </div>
