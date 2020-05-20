@@ -17,7 +17,7 @@
                     <div class="container p-md-5">
                         <div class="about-hny-info text-left px-md-5">
                             <h3 class="tittle-w3ls mb-3">{{ $page_block->header }}</h3>
-                            <p class="sub-tittle mt-3 mb-4"> {!! $page_block->text !!}</p>
+                            <div class="sub-tittle mt-3 mb-4"> {!! $page_block->text !!}</div>
 
                         </div>
                     </div>
@@ -338,7 +338,7 @@
                                 </div>
                             </a>
                             <div class="gal-info">
-                                <h5>{{ $item->title }}<span class="decription">{!!  $item->text !!}</span></h5>
+                                <h5>{{ $item->title }}<span class="decription">{{  strip_tags($item->text) }}</span></h5>
                             </div>
                         </div>
                     @endforeach
@@ -353,7 +353,7 @@
                                  class="img-fluid" width="30%"/>
                             <img src="{{ asset('uploads/images/'.$item->image2) }}" alt="Popup Image"
                                  class="img-fluid" width="30%"/>
-                            <p class="mt-4">{!! $item->text !!}</p>
+                            <div class="mt-4">{!! $item->text !!}</div>
                             <a class="close" href="#gallery">&times;</a>
                         </div>
                     </div>

@@ -12,7 +12,7 @@
                         <div class="container p-md-5">
                             <div class="about-hny-info text-left px-md-5">
                                 <h3 class="tittle-w3ls mb-3">{{ $page_block->header }}</h3>
-                                <p class="sub-tittle mt-3 mb-4"> {!! $page_block->text !!}</p>
+                                <div class="sub-tittle mt-3 mb-4"> {!! $page_block->text !!}</div>
 {{--                                <a class="btn more black" href="single.html" role="button">Читать больше</a>--}}
                             </div>
                         </div>
@@ -214,7 +214,7 @@
                                         <div class="col-md-4 gal-img">
                                         <a href="#gal1"><img src="{{ asset('uploads/images/thumbnail/'.$item->image) }}" alt="w3pvt" class="img-fluid"></a>
                                         <div class="gal-info">
-                                            <h5>{{ $item->title }}<span class="decription">{{ $item->text }}</span></h5>
+                                            <h5>{{ $item->title }}<span class="decription">{{  strip_tags($item->text) }}</span></h5>
                                         </div>
                                     </div>
                                     @endforeach
@@ -224,7 +224,7 @@
                                 <div id="gal1" class="pop-overlay">
                                     <div class="popup">
                                         <img src="{{ asset('uploads/images/thumbnail/'.$item->image) }}" alt="Popup Image" class="img-fluid" />
-                                        <p class="mt-4">test{!! $item->text !!}</p>
+                                        <div class="mt-4">test{!! $item->text !!}</div>
                                         <a class="close" href="#gallery">&times;</a>
                                     </div>
                                 </div>
@@ -328,7 +328,7 @@
                                     </div>
                                 </a>
                                 <div class="gal-info">
-                                    <h5>{{ $item->title }}<span class="decription">{!!  $item->text !!}</span></h5>
+                                    <h5>{{ $item->title }}<span class="decription">{{  strip_tags($item->text) }}</span></h5>
                                 </div>
                             </div>
                         @endforeach
@@ -343,7 +343,7 @@
                                      loading="lazy" class="img-fluid" width="30%"/>
                                 <img src="{{ asset('uploads/images/'.$item->image2) }}" alt="Popup Image"
                                      loading="lazy" class="img-fluid" width="30%"/>
-                                <p class="mt-4">{!! $item->text  !!}</p>
+                                <div class="mt-4">{!! $item->text  !!}</div>
                                 <a class="close" href="#gallery">&times;</a>
                             </div>
                         </div>
@@ -375,7 +375,7 @@
                                         {{--                            {{ $item->created_at }}--}}
                                     </h6>
                                     <h4><a class="link-hny" href="{{ $article->url }}">{{ $article->name }}</a></h4>
-                                    <p>{!! $article->anons !!}</p>
+                                    <div>{!! $article->anons !!}</div>
                                 </div>
                             </div>
                         @endforeach
@@ -387,7 +387,7 @@
                                         {{--                                    {{ $item->created_at }}--}}
                                     </h6>
                                     <h4><a class="link-hny" href="{{ $article->url }}">{{ $article->name }}</a></h4>
-                                    <p>{!! $article->anons !!}</p>
+                                    <div>{!! $article->anons !!}</div>
                                 </div>
                             </div>
                             <div class="col-lg-3 col-md-6 blog-grid-img px-0">
