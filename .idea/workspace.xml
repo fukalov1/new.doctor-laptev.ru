@@ -2,26 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3c791e86-834c-48b9-b2fa-0e52a8ebe085" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Admin/Actions/Post/ExportPDF.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Admin/Actions/Post/ProfileProcessed.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Admin/Controllers/ProfileCityController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Admin/Controllers/UserCityController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/profilePDF.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/programPDF.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/new.doctor-laptev.ru.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/new.doctor-laptev.ru.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Admin/Controllers/CityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Admin/Controllers/CityController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Admin/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Admin/Controllers/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Admin/Controllers/ProfileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Admin/Controllers/ProfileController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Admin/Controllers/QuestionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Admin/Controllers/QuestionController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Admin/routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Admin/routes.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Profile.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Profile.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/footer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/footer.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/show_payservice.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/show_payservice.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -243,7 +225,7 @@
       <workItem from="1589487064067" duration="24900000" />
       <workItem from="1589976438950" duration="2976000" />
       <workItem from="1590036193042" duration="1911000" />
-      <workItem from="1590128067887" duration="17559000" />
+      <workItem from="1590128067887" duration="19009000" />
     </task>
     <servers />
   </component>

@@ -21,8 +21,6 @@
         </section>
     @endif
 
-{{--    HAo9:Thq
-}}
 
     @if($payservice->id)
         <section class="banner_bottom py-5">
