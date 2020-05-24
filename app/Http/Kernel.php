@@ -83,6 +83,8 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'set_user' => \App\Http\Middleware\SetUser::class,
+        'set_city' => \App\Http\Middleware\SetCity::class,
+        'set_question' => \App\Http\Middleware\SetQuestion::class,
         'set_page' => \App\Http\Middleware\SetPage::class,
         'set_payservice' => \App\Http\Middleware\SetPayService::class,
         'set_page_block' => \App\Http\Middleware\SetPageBlock::class,

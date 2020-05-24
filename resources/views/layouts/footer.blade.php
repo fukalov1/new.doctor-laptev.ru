@@ -52,7 +52,7 @@
         <div class="row footer-grids">
             <div class="col-lg-4 mt-4">
                 <p class="mb-3">
-                    <img src="{{asset('/images/logo.webp')}}" width="300" alt="логотип Доктора Лаптева"/>
+                    <img src="{{asset('/images/logo.png')}}" width="300" alt="логотип Доктора Лаптева"/>
                 </p>
                 <h5>Одобрено <span>  людьми</span> </h5>
                 <div class="icon-social mt-4">

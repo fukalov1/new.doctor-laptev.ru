@@ -3,11 +3,13 @@
 namespace App\Admin\Controllers;
 
 use App\Profile;
+use App\Question;
 use App\User;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Show;
+use PDF;
 
 class ProfileController extends AdminController
 {
@@ -97,5 +99,48 @@ class ProfileController extends AdminController
         $form->text('type', __('Тип'));
 
         return $form;
+    }
+
+
+
+    public function exportProgramPDF($id)
+    {
+
+        $type = 'первичная';
+        if($profile = Profile::find($id)) {
+            $type = $profile->type;
+            $name = $type=='первичная' ? 'programma_pervichnaya' : 'programma_vtorichnaya';
+
+
+            $data = [];
+            $data['profile'] = $profile;
+
+            $pdf = PDF::loadView('programPDF', $data)->setPaper('a4');
+            return $pdf->download("$name.pdf");
+        }
+        else {
+            return response('not found');
+        }
+    }
+
+    public function exportProfilePDF($id)
+    {
+
+        $type = 'первичная';
+        if($profile = Profile::find($id)) {
+            $type = $profile->type;
+
+
+            $data = [];
+            $data['profile'] = $profile;
+            $data['user'] = User::find($profile->user_id);
+            $data['questions'] = Question::where('type', $type)->get();
+
+            $pdf = PDF::loadView('profilePDF', $data)->setPaper('a4');
+            return $pdf->download("profile$id.pdf");
+        }
+        else {
+            return response('not found');
+        }
     }
 }

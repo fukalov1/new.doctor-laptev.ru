@@ -30,11 +30,15 @@ Route::group([
     $router->resource('photo-review-items', PhotoReviewItemController::class)->middleware('set_photo_review');
     $router->resource('map_sub_points', MapSubPointController::class)->middleware('set_point');
     $router->resource('quest_blocks', QuestBlockController::class)->middleware('set_page_block');
-    $router->resource('questions', QuestionController::class)->middleware('set_quest_block');
+    $router->resource('questions', QuestionController::class);
     $router->resource('cities', CityController::class);
     $router->resource('users', UserController::class);
+    $router->resource('city-users', ProfileCityController::class)->middleware('set_city');
     $router->resource('profiles', ProfileController::class)->middleware('set_user');
+
     $router->resource('questions', QuestionController::class);
+    $router->resource('answers', AnswerController::class)->middleware('set_question');
+
     $router->resource('pay-services', PayServiceController::class);
     $router->post('save-video-files', 'VideoFilesController@saveFiles');
     $router->resource('group-codes', GroupCodeController::class);
@@ -50,6 +54,8 @@ Route::group([
     Route::post('ajax-upload', 'AjaxFileUploadController@ajaxFileUploadPost')->name('ajaxFileUpload');
 
     Route::get('export/vcard30/{id}', 'UserController@exportVCard30');
+    Route::get('export/program-pdf/{id}', 'ProfileController@exportProgramPDF');
+    Route::get('export/profile-pdf/{id}', 'ProfileController@exportProfilePDF');
 
     $router->post('set-site-enable', 'SettingController@SetSiteEnable');
 

@@ -15,7 +15,7 @@ class QuestionController extends AdminController
      *
      * @var string
      */
-    protected $title = 'App\Question';
+    protected $title = 'Вопросы анкеты';
 
     /**
      * Make a grid builder.
@@ -41,12 +41,14 @@ class QuestionController extends AdminController
         });
 
         $grid->column('id', __('Id'));
-        $grid->column('type', __('Type'));
-        $grid->column('name', __('Name'));
-        $grid->column('text', __('Text'));
-        $grid->column('orders', __('Orders'));
-        $grid->column('created_at', __('Created at'));
-        $grid->column('updated_at', __('Updated at'));
+        $grid->column('type', __('Тип'));
+//        $grid->column('name', __(''));
+        $grid->column('text', __('Текст'))->display(function () {
+            return '<a href="/admin/answers?set='.$this->id.'">'.$this->text.'</a>';
+        });
+        $grid->column('orders', __('Очередность'));
+//        $grid->column('created_at', __('Created at'));
+//        $grid->column('updated_at', __('Updated at'));
 
         return $grid;
     }

@@ -26,9 +26,11 @@ class CityController extends AdminController
     {
         $grid = new Grid(new City());
 
-        $grid->column('id', __('Id'));
+//        $grid->column('id', __('Id'));
         $grid->column('date', __('Дата'));
-        $grid->column('name', __('Город'));
+        $grid->column('name', __('Город'))->display(function () {
+            return '<a href="/admin/city-users?set='.$this->id.'">'.$this->name.'</a>';
+        });
         $grid->column('image', 'Картинка')->display(function () {
             $str = $this->image!='' ? '<img src="/uploads/images/'.$this->image.'" height="100"/>' : '';
             return $str;

@@ -41,7 +41,7 @@ class HomeController extends Controller
         <div class="table-responsive">
             <table class="table table-striped">
                     <tr>
-                        <td width="50%">Клиентов:</td>
+                        <td width="50%"><a href="/admin/users">Клиентов:</a></td>
                         <td>'.count($users->all()).'</td>
                     </tr>
                     <tr>
@@ -53,7 +53,7 @@ class HomeController extends Controller
                         <td>'.count($profiles->where('type','вторичная')->get()).'</td>
                     </tr>
                     <tr>
-                        <td width="50%">Городов (активных/всего):</td>
+                        <td width="50%"><a href="/admin/cities">Городов (активных/всего)</a>:</td>
                         <td>'.count($cities->where('show',1)->get()).'/'.count($cities->all()).'</td>
                     </tr>
                     <tr>
