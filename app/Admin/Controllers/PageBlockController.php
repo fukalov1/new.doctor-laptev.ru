@@ -125,7 +125,7 @@ class PageBlockController extends Controller
                 $str = '<a href="/admin/photo-reviews?set='.$this->id.'">Фото-отзывы</a>';
             }
             elseif ($this->type==12) {
-                $str = '<a href="/admin/quest_blocks?set='.$this->id.'">вопросы-ответы</a>';
+                $str = '<a href="/admin/micro_blocks?set='.$this->id.'">микро-блоки</a>';
             }
             return $str;
         });
@@ -185,7 +185,7 @@ class PageBlockController extends Controller
 //                '9'=> 'Фотогалерея',
                 '10'=> 'Почтовая форма',
                 '11'=> 'Фото-отзывы',
-                '12'=> 'Вопросы-ответы'
+                '12'=> 'Микроблоки'
                 ];
             return $list;
         })->default(1);

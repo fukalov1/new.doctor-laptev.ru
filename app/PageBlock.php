@@ -1,13 +1,6 @@
 <?php
 
 namespace App;
-use App\Page;
-use App\Map;
-use App\Photoset;
-use App\Slider;
-use App\Direction;
-use App\MailForm;
-use App\QuestBlock;
 use Illuminate\Database\Eloquent\Model;
 
 class PageBlock extends Model
@@ -16,12 +9,12 @@ class PageBlock extends Model
 
     public function pages()
     {
-        return $this->belongsTo(Page::class)->where('page_block.orders', '>', 'ffds')->orderBy('orders');
+        return $this->belongsTo(Page::class)->where('page_block.orders', '>', '0')->orderBy('orders');
     }
 
-    public function  quest_blocks()
+    public function  micro_blocks()
     {
-        return $this->hasMany(QuestBlock::class);
+        return $this->hasMany(MicroBlock::class);
     }
 
     public function photo_reviews()

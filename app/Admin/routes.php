@@ -20,6 +20,7 @@ Route::group([
     $router->resource('events', CenterEventController::class);
     $router->resource('sliders', SliderController::class)->middleware('set_page_block');
     $router->resource('slider_items', SliderItemController::class)->middleware('set_slider');
+    $router->resource('micro_blocks', MicroBlockController::class)->middleware('set_page_block');
     $router->resource('directions', DirectionController::class)->middleware('set_page_block');
     $router->resource('direction_items', DirectionItemController::class)->middleware('set_direction');
     $router->resource('photosets', PhotosetController::class)->middleware('set_page_block');

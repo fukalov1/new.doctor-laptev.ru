@@ -23,7 +23,7 @@
                     </div>
                 </section>
                 <!-- //about -->
-            {{--блок с фото слева--}}
+                {{--блок с фото слева--}}
             @elseif($page_block->type=='2')
                 <section class="banner_bottom py-5">
                     <div class="container py-md-5">
@@ -70,7 +70,8 @@
                     <div class="container p-md-5">
                         <div class="about-hny-info text-left px-md-5">
                             <h3 class="tittle-w3ls mb-3">{{ $page_block->header }}</h3>
-                                <img src="{{ asset('/uploads/'.$page_block->image) }}" alt=" " class="img-fluid img-article">
+                            <img src="{{ asset('/uploads/'.$page_block->image) }}" alt=" "
+                                 class="img-fluid img-article">
                             {!! $page_block->text !!}
 
                         </div>
@@ -78,7 +79,7 @@
                 </section>
                 {{--блок для статьи--}}
 
-{{--            промо-блок--}}
+                {{--            промо-блок--}}
             @elseif($page_block->type=='5')
                 <section class="services" id="block{{$page_block->id}}">
                     <div class="over-lay-blue py-5">
@@ -87,7 +88,9 @@
                                 <div class="col-lg-5 services-innfo pr-5">
                                     <h3 class="tittle-w3ls two mb-3 text-left"></h3>
                                     <p class="sub-tittle mt-2 mb-sm-3 text-left">{{ $page_block->header }}</p>
-                                    <a href="services.html"><img src="{{ asset('/uploads/images/'.$page_block->image) }}" alt="w3pvt" class="img-fluid"></a>
+                                    <a href="services.html"><img
+                                            src="{{ asset('/uploads/images/'.$page_block->image) }}" alt="w3pvt"
+                                            class="img-fluid"></a>
                                 </div>
                                 <div class="col-lg-7 services-grid-inf">
                                     {!! $page_block->text !!}
@@ -108,10 +111,10 @@
                 <!-- banner slider -->
             @elseif($page_block->type=='7')
                 <div id="homepage-slider" class="st-slider">
-                    <input type="radio" class="cs_anchor radio" name="slider" id="play1" checked="" />
+                    <input type="radio" class="cs_anchor radio" name="slider" id="play1" checked=""/>
                     @foreach($page_block->sliders as $slider)
                         @foreach($slider->items as $item)
-                            <input type="radio" class="cs_anchor radio" name="slider" id="slide{{ $item->id }}" />
+                            <input type="radio" class="cs_anchor radio" name="slider" id="slide{{ $item->id }}"/>
                         @endforeach
                     @endforeach
                     <div class="images">
@@ -215,7 +218,8 @@
                                 <div class="row">
                                     @foreach($item->fields as $field)
                                         <div class="col4">
-                                            <input type="text" class="form-control {{ $field->field_name }}" rel="{{ $field->field_name }}"
+                                            <input type="text" class="form-control {{ $field->field_name }}"
+                                                   rel="{{ $field->field_name }}"
                                                    id="{{ $field->field_name }}{{ $item->id }}"
                                                    name="{{ $field->field_name }}"
                                                    required
@@ -236,51 +240,31 @@
                         </div>
                     </section>
                 @endforeach
+            @elseif($page_block->type=='12')
+                <section class="page-micro-block" id="micro-block{{$page_block->id}}">
+                    <div class="container">
+                        @if ($page_block->header!='')
+                            <h1>{{ $page_block->header }}</h1>
+                        @endif
+                        <div class="features-w3pvt-main row" id="features{{$page_block->id}}">
+                            @foreach($page_block->micro_blocks as $item)
+                                <div class="col-md-4 feature-gird">
+                                    <div class="features-hny-inner-gd row">
+                                        <div class="col-md-3 featured_grid_left">
+                                            <div class="icon_left_grid">&nbsp;</div>
+                                        </div>
 
-{{--            @elseif($page_block->type=='11')--}}
-{{--                @foreach($page_block->photo_reviews as $review)--}}
-{{--                <!-- /projects -->--}}
-{{--                    <section class="projects py-5" id="block{{ $page_block->id }}">--}}
-{{--                        <div class="container py-md-5">--}}
-{{--                            <h3 class="tittle-w3ls text-left mb-5"><span class="pink">Потрясающие</span> результаты!</h3>--}}
-{{--                            <div class="row news-grids mt-md-5 mt-4 text-center">--}}
-{{--                                @foreach($review->items as $item)--}}
-{{--                                    <div class="col-md-4 gal-img">--}}
-{{--                                        <a href="#gal{{ $item->id }}">--}}
-{{--                                            <div class="img-dbl">--}}
-{{--                                                <img src="{{ asset('uploads/images/thumbnail/'.$item->image) }}"--}}
-{{--                                                     alt="w3pvt" class="img-fluid">--}}
-{{--                                                <img src="{{ asset('uploads/images/thumbnail/'.$item->image1) }}"--}}
-{{--                                                     alt="w3pvt" class="img-fluid">--}}
-{{--                                            </div>--}}
-{{--                                        </a>--}}
-{{--                                        <div class="gal-info">--}}
-{{--                                            <h5>{{ $item->title }}<span class="decription">{!!  $item->text !!}</span></h5>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                @endforeach--}}
-{{--                            </div>--}}
-{{--                            <!-- popup-->--}}
-{{--                            @foreach($review->items as $item)--}}
-{{--                                <div id="gal{{ $item->id }}" class="pop-overlay">--}}
-{{--                                    <div class="popup">--}}
-{{--                                        <img src="{{ asset('uploads/images/'.$item->image) }}" alt="Popup Image"--}}
-{{--                                             class="img-fluid" width="30%"/>--}}
-{{--                                        <img src="{{ asset('uploads/images/'.$item->image1) }}" alt="Popup Image"--}}
-{{--                                             class="img-fluid" width="30%"/>--}}
-{{--                                        <img src="{{ asset('uploads/images/'.$item->image2) }}" alt="Popup Image"--}}
-{{--                                             class="img-fluid" width="30%"/>--}}
-{{--                                        <p class="mt-4">{{ $item->text }}</p>--}}
-{{--                                        <a class="close" href="#gallery">&times;</a>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                        @endforeach--}}
-{{--                        <!-- //popup -->--}}
-{{--                        </div>--}}
-{{--                    </section>--}}
-{{--                    <!-- //projects -->--}}
-
-{{--                @endforeach--}}
+                                        <div class="col-md-9 featured_grid_right_info pl-lg-0">
+                                            <h4><a class="link-hny" href="{{ $item->url }}"
+                                                   title="переход на {{ $item->name }}">{{ $item->name }}</a></h4>
+                                            {!! $item->text !!}
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                </section>
             @endif
         @endforeach
 
@@ -292,27 +276,28 @@
         <section class="banner_bottom py-5">
             <div class="container py-md-5">
                 <h3 class="tittle-w3ls text-left mb-5"><span class="pink">Статьи</span> о похудении</h3>
-        @foreach($articles as $article)
-            @foreach($article->page_blocks as $page_block)
-                    <div class="py-md-5">
-                    <div class="row inner_sec_info">
+                @foreach($articles as $article)
+                    @foreach($article->page_blocks as $page_block)
+                        <div class="py-md-5">
+                            <div class="row inner_sec_info">
 
-                        <div class="col-md-6 banner_bottom_grid help">
-                            <img src="{{ asset('/uploads/'.$page_block->image) }}" alt=" " class="img-fluid">
-                        </div>
-                        <div class="col-md-6 banner_bottom_left mt-lg-0 mt-4">
-                            <h4><a class="link-hny" href="{{ $article->url }}">
-                                    {{ $article->name }}</a></h4>
-                            {!! $article->anons !!}
-                           <div class="text-right">
-                               <a class="btn more black mt-3" href="{{ $article->url }}" role="button">Читать</a>
-                           </div>
+                                <div class="col-md-6 banner_bottom_grid help">
+                                    <img src="{{ asset('/uploads/'.$page_block->image) }}" alt=" " class="img-fluid">
+                                </div>
+                                <div class="col-md-6 banner_bottom_left mt-lg-0 mt-4">
+                                    <h4><a class="link-hny" href="{{ $article->url }}">
+                                            {{ $article->name }}</a></h4>
+                                    {!! $article->anons !!}
+                                    <div class="text-right">
+                                        <a class="btn more black mt-3" href="{{ $article->url }}"
+                                           role="button">Читать</a>
+                                    </div>
 
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    </div>
-            @endforeach
-        @endforeach
+                    @endforeach
+                @endforeach
             </div>
         </section>
         <section class="banner_bottom py-5">
@@ -338,7 +323,8 @@
                                 </div>
                             </a>
                             <div class="gal-info">
-                                <h5>{{ $item->title }}<span class="decription">{{  strip_tags($item->text) }}</span></h5>
+                                <h5>{{ $item->title }}<span class="decription">{{  strip_tags($item->text) }}</span>
+                                </h5>
                             </div>
                         </div>
                     @endforeach
@@ -375,19 +361,19 @@
             <div class="container py-md-5">
                 <h3 class="tittle-w3ls text-left mb-5"><span class="pink">Расписание</span> по городам</h3>
                 @foreach($cities as $item)
-                        <div class="row inner_sec_info" id="city{{ $item->id }}">
+                    <div class="row inner_sec_info" id="city{{ $item->id }}">
 
-                            <div class="col-md-4 banner_bottom_grid help">
-                                <img src="{{ asset('/uploads/images/thumbnail/'.$item->image) }}" alt=" " class="img-fluid">
-                            </div>
-                            <div class="col-md-8 banner_bottom_left mt-lg-0 mt-4">
-                                <h4>{{ $item->name }} - {{ $item->date->format('d.m.Y') }}г.</h4>
-                                {!! $item->text !!}
-
-                            </div>
+                        <div class="col-md-4 banner_bottom_grid help">
+                            <img src="{{ asset('/uploads/images/thumbnail/'.$item->image) }}" alt=" " class="img-fluid">
                         </div>
+                        <div class="col-md-8 banner_bottom_left mt-lg-0 mt-4">
+                            <h4>{{ $item->name }} - {{ $item->date->format('d.m.Y') }}г.</h4>
+                            {!! $item->text !!}
+
+                        </div>
+                    </div>
                 @endforeach
-                </div>
+            </div>
             </div>
         </section>
     @endif

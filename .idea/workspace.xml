@@ -3,7 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="3c791e86-834c-48b9-b2fa-0e52a8ebe085" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/show_payservice.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/show_payservice.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Admin/Controllers/PageBlockController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Admin/Controllers/PageBlockController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Admin/routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Admin/routes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/PageBlock.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/PageBlock.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/main.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/main.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/page.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/page.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -225,7 +229,9 @@
       <workItem from="1589487064067" duration="24900000" />
       <workItem from="1589976438950" duration="2976000" />
       <workItem from="1590036193042" duration="1911000" />
-      <workItem from="1590128067887" duration="19009000" />
+      <workItem from="1590128067887" duration="22175000" />
+      <workItem from="1590385049585" duration="133000" />
+      <workItem from="1590388572592" duration="2592000" />
     </task>
     <servers />
   </component>
