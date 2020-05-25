@@ -12,7 +12,7 @@ $(document).ready(function ($) {
     $('.submit-button').click(function() {
 
         let send = true;
-        let id = $(this).attr('rel');
+        let id = $(this).attr('data-for');
         let empty_field = '';
         $('.field').each(function () {
             if ($(this).val()==='' || $(this).val()===' ') {

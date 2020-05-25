@@ -4,7 +4,7 @@
 
 
             <div class="col-lg-5 banner_bottom_left form-area1">
-                <form id="sendform_id1" class="send-form" method="post">
+                <form id="sendform1" class="send-form" method="post">
                     <div class="login p-md-5 p-4 mx-auto bg-white mw-100">
                     <h4>
                         Письмо Доктору Лаптеву
@@ -31,7 +31,7 @@
 
                         @csrf
                         <input type="hidden" name="uid" value="1">
-                        <button type="submit" class="btn more black submit mb-4 submit-button" rel="_id1">Отправить</button>
+                        <button type="submit" class="btn more black submit mb-4 submit-button" data-for="1">Отправить</button>
                     </div>
                 </form>
             </div>
