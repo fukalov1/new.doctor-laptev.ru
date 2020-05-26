@@ -52,9 +52,9 @@
         <div class="row footer-grids">
             <div class="col-lg-4 mt-4">
                 <p class="mb-3">
-                    <img src="{{asset('/images/logo.png')}}" width="300" alt="логотип Доктора Лаптева"/>
+                    <img src="{{asset('/images/logo.jpg')}}" width="300" alt="логотип Доктора Лаптева"/>
                 </p>
-                <h5>Одобрено <span>  людьми</span> </h5>
+                <h5>Проверено <span> временем</span>,<br/><span>одобрено</span> людьми.</h5>
                 <div class="icon-social mt-4">
                     <a href="#" class="button-footr">
                         <span class="fa mx-2 fa-facebook"></span>
@@ -131,7 +131,7 @@
     <div class="container">
         <div class="row d-flex">
             <div class="col-lg-9 copy_w3pvt">
-                <p class="text-lg-left text-center">© 2019 Доктор Лаптев. Все права зарегистрированы.</p>
+                <p class="text-lg-left text-center">© {{ date('Y', time()) }} Доктор Лаптев. Все права зарегистрированы.</p>
 
             </div>
             <!-- move top -->

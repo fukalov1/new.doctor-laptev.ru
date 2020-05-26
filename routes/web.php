@@ -48,4 +48,12 @@ Route::group([
 
 Auth::routes();
 
+Route::group([
+    'middleware' => 'auth'
+], function() {
+    Route::get('user-profile', 'UserController@show');
+    Route::post('user-profile', 'UserController@update')->name('user-profile');
+});
+
+
 //Route::get('/home', 'HomeController@index')->name('home');

@@ -7,7 +7,7 @@
 <!--<![endif]-->
 <head>
     <meta charset="utf-8" />
-    <title></title>
+    <title>Уведомление о регистрации анкеты. Доктор Лаптев.</title>
     <meta name="description" content="" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -19,9 +19,6 @@
 </head>
 <body>
 
-URL: {{ $data['url'] }}<br/>
-IP: {{ $data['ip'] }}<br/>
-
 <table border="0" width="80%">
     <tr>
         <td>
@@ -29,41 +26,12 @@ IP: {{ $data['ip'] }}<br/>
         </td>
         <td align="right"><a class="navbar-brand brand-custom" href="/">Доктор Лаптев<sup>®</sup></a></td>
     </tr>
-    @if(key_exists('fio', $data))
-    <tr>
-        <td>ФИО:</td>
-        <td>
-            @if(isset($data['fio']))
-                {{ $data['fio'] }}<br/>
-            @endif
-        </td>
-    </tr>
-    @endif
-    @if(key_exists('phone', $data))
-    <tr>
-        <td>Телефон:</td>
-        <td>
-            @if(isset($data['phone']))
-                {{ $data['phone'] }}<br/>
-            @endif
-        </td>
-    </tr>
-    @endif
-    <tr>
-        <td>Email:</td>
-        <td>
-           {{ $data['email'] or ''}}<br/>
-        </td>
-    </tr>
-    <tr>
-        <td>Текст сообщения:</td>
-        <td>
-           {{ $data['message'] or ''}}<br/>
-        </td>
-    </tr>
     <tr>
         <td colspan="2">
-            121596, г.Москва, ул.Горбунова, д.2, стр.3, офис А 207 б/ц " ГРАНД СЕТУНЬ ПЛАЗА" , ИП Лаптев А.В.Москва.
+            <h4>Спасибо!</h4>
+            Вы успешно отправили анкету на официальном сайте <a href="{{ asset('/') }}">Доктора Лаптева</a>.
+            <br/>
+            После ее обработки Вам будет выслано уведомление и подготовлена индивидуальная программа с рекомендациями по избавлению от пищевой зависимости.
         </td>
     </tr>
 

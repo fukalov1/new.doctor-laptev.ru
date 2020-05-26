@@ -21,6 +21,9 @@
                     </a>
 
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ route('user-profile') }}">
+                            профиль
+                        </a>
                         <a class="dropdown-item" href="{{ route('logout') }}"
                            onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -36,7 +39,7 @@
             </ul>
         </div>
         <nav class="wthree-w3ls navbar-nav navbar-expand-lg navbar-light navbar-custom bg-transparent">
-            <a class="navbar-brand brand-custom" href="/">Доктор Лаптев<sup>&reg;</sup></a>
+            <a class="navbar-brand brand-custom" id="home" href="/">Доктор Лаптев<sup>&reg;</sup></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>

@@ -40,6 +40,20 @@
                         </div>
 
                         <div class="form-group row">
+                            <label for="skype" class="col-md-4 col-form-label text-md-right">Skype</label>
+
+                            <div class="col-md-6">
+                                <input id="skype" type="skype" class="form-control @error('skype') is-invalid @enderror" name="email" value="{{ old('skype') }}" autocomplete="skype">
+
+                                @error('skype')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">Пароль</label>
 
                             <div class="col-md-6 input-group">

@@ -4,12 +4,14 @@ namespace App;
 
 use App\Profile;
 use http\Env\Request;
+use Mail;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Notifications\ResetPassword;
+use Illuminate\Support\Facades\Log;
 
 class User extends Authenticatable
 {
@@ -21,7 +23,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'phone', 'password', 'user_id', 'deleted_at', 'city_id', 'city'
+        'name', 'email', 'skype', 'phone', 'password', 'user_id', 'deleted_at', 'city_id', 'city'
     ];
 
     /**
@@ -124,11 +126,32 @@ class User extends Authenticatable
                     $profile->answers()->attach($item);
                 }
             }
+            $this->noticeCreateSurvey();
     }
 
     public function sendPasswordResetNotification($token)
     {
         $this->notify(new ResetPassword($token));
+    }
+
+    public function noticeCreateSurvey()
+    {
+        $user = Auth::user();
+             Log::channel('sitelog')->info('Send mail from ' . config('email') . '  name: ' . Auth::user()->name . '  email: ' . Auth::user()->email);
+
+             try {
+                Mail::send('emails.survey_notice', ['user' => $user], function ($message) use ($user) {
+//                    $emails = explode(',',$user->email);
+                    $message->from(config('email'), ' ', env('APP_NAME'));
+                    $message->to($user->email)->subject('Уведомление о регистрации анкеты');
+//                    $message->to($data['to'], 'admin')->subject('Заказ сметы с taktilnaya-plitka.ru. ');
+                });
+            }
+            catch (\Exception $error) {
+//                dd($error->message);
+//                dd($data);
+                Log::channel('sitelog')->info('Error! Sender: '.config('email').'  Receiver: '. $user->email.' User:' . $user->name.' Error: '.$error->getMessage());
+            }
     }
 
 }
