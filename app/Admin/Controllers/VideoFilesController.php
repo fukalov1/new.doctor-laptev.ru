@@ -45,10 +45,10 @@ class VideoFilesController extends AdminController
         $payservice = new PayService();
         if (session('payservice_id')) {
             if ($payservice->updateVideoFiles(session('payservice_id'))) {
-//                dd('success');
+//                dd('success',session('payservice_id'));
             }
             else {
-//                dd('failed');
+//                dd('failed',session('payservice_id'));
             }
         }
         return redirect('/admin/pay-services');

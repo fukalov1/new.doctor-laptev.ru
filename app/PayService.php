@@ -16,7 +16,7 @@ class PayService extends Model
     public function updateVideoFiles($id) {
         try {
 
-            $path = 'app/public/videoshow/';
+            $path = 'app/public/';
 
             $filename = md5(session('payservice_id', 1) . env('SECRET_KEY'));
             $data = [];

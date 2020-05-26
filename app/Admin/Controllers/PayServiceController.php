@@ -49,15 +49,15 @@ class PayServiceController extends AdminController
         $grid->media('Медиа-файлы')->display(function () {
             $str = '<a href="/admin/video-files?set='.$this->id.'"><i class="fa fa-paper-plane"></i> управлять</a><br/>';
             if ($this->video_m4v)
-            $str .= '<a href="'.$this->video_m4v.'">'.$this->video_m4v.'</a><br/>';
+            $str .= '<a target="_blank" href="/storage/'.$this->video_m4v.'">'.$this->video_m4v.'</a><br/>';
             if ($this->video_webm)
-            $str .= '<a href="'.$this->video_webm.'">'.$this->video_webm.'</a><br/>';
+            $str .= '<a target="_blank" href="/storage/'.$this->video_webm.'">'.$this->video_webm.'</a><br/>';
             if ($this->video_ogv)
-            $str .= '<a href="'.$this->video_ogv.'">'.$this->video_ogv.'</a><br/>';
+            $str .= '<a target="_blank" href="/storage/'.$this->video_ogv.'">'.$this->video_ogv.'</a><br/>';
             if ($this->video_mp4)
-            $str .= '<a href="'.$this->video_mp4.'">'.$this->video_mp4.'</a><br/>';
+            $str .= '<a target="_blank" href="/storage/'.$this->video_mp4.'">'.$this->video_mp4.'</a><br/>';
             if ($this->audio_mp3)
-            $str .= '<a href="'.$this->audio_mp3.'">'.$this->audio_mp3.'</a>';
+            $str .= '<a target="_blank" href="/storage/'.$this->audio_mp3.'">'.$this->audio_mp3.'</a>';
 
             return $str;
         });

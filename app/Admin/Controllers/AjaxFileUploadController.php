@@ -43,7 +43,7 @@ class AjaxFileUploadController extends AdminController
                     $extension = pathinfo($_FILES['upl']['name'], PATHINFO_EXTENSION);
                     $filename  = md5(session('payservice_id', 1).env('SECRET_KEY')).'.'.$extension;
 
-                    if(move_uploaded_file($_FILES['upl']['tmp_name'], storage_path('/app/public/videoshow/tmp/'.$filename))) {
+                    if(move_uploaded_file($_FILES['upl']['tmp_name'], storage_path('/app/public/tmp/'.$filename))) {
                         return Response()->json([
                             'status' => 'success'
                         ]);
