@@ -19,8 +19,6 @@
 </head>
 <body>
 
-URL: {{ $data['url'] }}<br/>
-IP: {{ $data['ip'] }}<br/>
 
 <table border="0" width="80%">
     <tr>
@@ -34,7 +32,7 @@ IP: {{ $data['ip'] }}<br/>
         <td>ФИО:</td>
         <td>
             @if(isset($data['fio']))
-                {{ $data['fio'] }}<br/>
+                {{ $data['fio'] }}
             @endif
         </td>
     </tr>
@@ -44,7 +42,7 @@ IP: {{ $data['ip'] }}<br/>
         <td>Телефон:</td>
         <td>
             @if(isset($data['phone']))
-                {{ $data['phone'] }}<br/>
+                {{ $data['phone'] }}
             @endif
         </td>
     </tr>
@@ -52,20 +50,28 @@ IP: {{ $data['ip'] }}<br/>
     <tr>
         <td>Email:</td>
         <td>
-           {{ $data['email'] or ''}}<br/>
+           {{ $data['email'] }}
         </td>
     </tr>
     <tr>
         <td>Текст сообщения:</td>
         <td>
-           {{ $data['message'] or ''}}<br/>
+           {{ $data['message'] }}
         </td>
     </tr>
-    <tr>
-        <td colspan="2">
-            121596, г.Москва, ул.Горбунова, д.2, стр.3, офис А 207 б/ц " ГРАНД СЕТУНЬ ПЛАЗА" , ИП Лаптев А.В.Москва.
+   <tr>
+        <td>URL:</td>
+        <td>
+            {{ $data['url'] }}
         </td>
     </tr>
+   <tr>
+        <td>IP:</td>
+        <td>
+            {{ $data['ip'] }}
+        </td>
+    </tr>
+
 
 </table>
 </body>
