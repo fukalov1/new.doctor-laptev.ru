@@ -108,6 +108,8 @@ class User extends Authenticatable
 
     public function addProfile($user)
     {
+        User::find(Auth::id())->update(['city_id' => $user->city]);
+
             $profile = Profile::create([
                 'user_id' => Auth::id(),
                 'age' => $user->age,
