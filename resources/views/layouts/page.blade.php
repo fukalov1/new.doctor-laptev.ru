@@ -40,13 +40,10 @@
 </head>
 <body>
 <div id="app">
-@include('layouts.header')
-
+    @include('layouts.header')
     @yield('content')
-
-@include('layouts.footer')
-
-@include('layouts.scripts')
+    @include('layouts.footer')
 </div>
+@include('layouts.scripts')
 </body>
 </html>

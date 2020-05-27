@@ -31,7 +31,7 @@
 
                         @csrf
                         <input type="hidden" name="uid" value="1">
-                        <button type="button" class="btn more black submit mb-4 submit-button" data-for="1">Отправить</button>
+                        <button type="button" class="btn more black submit mb-4 submit-button" datarel="1">Отправить</button>
                     </div>
                 </form>
             </div>
