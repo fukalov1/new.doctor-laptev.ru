@@ -125,7 +125,7 @@
             loadData() {
                 axios.post(`/get-pay-service`, {id: this.id, code: this.code})
                     .then(response => {
-                        let path = '/storage/videoshow';
+                        let path = '/storage';
                         this.payservice = response.data;
                         this.payservice.image = `/uploads/${this.payservice.image}`
                         this.payservice.video_mp4 = `${path}/${this.payservice.video_mp4}`

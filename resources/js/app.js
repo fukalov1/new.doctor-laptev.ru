@@ -4,9 +4,13 @@ window.Vue = require('vue');
 
 Vue.component('pay-service', require('./components/PayService.vue').default);
 
+import PayService from './components/PayService.vue'
 
 const app = new Vue({
     el: '#app',
+    components: {
+        PayService
+    },
     data() {
         return {
             password: '',

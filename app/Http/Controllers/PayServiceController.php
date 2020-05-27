@@ -197,11 +197,13 @@ class PayServiceController extends Controller
     {
         $id = $request->id;
         $code = $request->code;
-        return json_encode($this->payService->find($id)->with(['group_code' => function($q) use ($code)  {
+
+        $payService = $this->payService->where('id', $id)->with(['group_code' => function($q) use ($code)  {
             $q->with(['codes' => function ($query) use ($code)  {
                 $query->where('code',$code);
             }]);
-        }])->first());
+        }])->first();
+        return json_encode($payService);
     }
 
     public function checkData(Request $request)

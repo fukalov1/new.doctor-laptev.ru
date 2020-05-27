@@ -21,8 +21,6 @@
         </section>
     @endif
 
-{{--    v2a+TBXB--}}
-
     @if($payservice->count()>0)
         <section class="banner_bottom py-5">
             <div class="container py-md-5">
