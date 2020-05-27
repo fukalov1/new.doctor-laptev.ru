@@ -2,6 +2,7 @@
 
 namespace App\Admin\Controllers;
 
+use App\Admin\Actions\Post\BatchProcessed;
 use App\Admin\Actions\Post\ProfileProcessed;
 use App\Profile;
 use App\User;
@@ -47,6 +48,11 @@ class ProfileCityController extends AdminController
             $actions->disableEdit();
             $actions->disableView();
             $actions->add(new ProfileProcessed());
+        });
+
+        $grid->batchActions(function ($batch) {
+            $batch->disableDelete();
+            $batch->add(new BatchProcessed());
         });
 
         $grid->filter(function($filter){

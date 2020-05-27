@@ -52,7 +52,7 @@ class PayServiceController extends Controller
         $data['pages'] = $this->page->getMenu();
         $data['error'] = $error;
         $data['request'] = $request;
-        $data['payservice'] = $this->payService->get();
+        $data['payservice'] = $this->payService->where('active', true)->get();
         $data['message'] = null;
         $page_blocks = $this->pageBlock->where('page_id', $page->id)->where('orders','>',0)->orderBy('orders')->get();
         $data['page_blocks'] = $page_blocks;
