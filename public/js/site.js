@@ -13,11 +13,10 @@ $(document).ready(function ($) {
 
         let send = true;
         let id = $(this).attr('data-for');
-        let id = $(this).attr('data-for');
         let empty_field = '';
         $('.field').each(function () {
             if ($(this).val()==='' || $(this).val()===' ') {
-                empty_field = $(this).attr('rel');
+                empty_field = $(this).attr('data-for');
                 send  = false;
                 return false;
             }
@@ -51,7 +50,7 @@ $(document).ready(function ($) {
             console.log('Заполните поле ', empty_field, id);
             $('#'+empty_field+id).toggleClass('empty-field');
         }
-        console.log('send data form ', $(this).attr('rel'));
+        console.log('send data form ', $(this).attr('data-for'));
         return false;
     });
 
