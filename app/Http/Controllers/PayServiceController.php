@@ -109,8 +109,8 @@ class PayServiceController extends Controller
         $data['message'] = null;
         $time = time();
         $data['time'] = $time;
-//        dd(env('ROBOKASSA_LOGIN'),":",$payservice->price,":$time:",env('ROBOKASSA_PASSWORD1'),":shp_email=",Auth::user()->email,":shp_payid=",$id);
-        $data['sign'] = md5(env('ROBOKASSA_LOGIN').":".round($payservice->price,0).":$time:".env('ROBOKASSA_PASSWORD1').":shp_email=".Auth::user()->email.":shp_payid=".$id);
+//        dd(env('ROBOKASSA_LOGIN'),":",$payservice->price,":$time:",env('ROBOKASSA_PASS1'),":shp_email=",Auth::user()->email,":shp_payid=",$id);
+        $data['sign'] = md5(env('ROBOKASSA_LOGIN').":".round($payservice->price,0).":$time:".env('ROBOKASSA_PASS1').":shp_email=".Auth::user()->email.":shp_payid=".$id);
 
         $page_blocks = $this->pageBlock->where('page_id', $page->id)->where('orders','>',0)->orderBy('orders')->get();
         $data['page_blocks'] = $page_blocks;
