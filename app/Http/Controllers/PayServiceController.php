@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 use App\City;
 use App\Code;
+use App\LogPayment;
 use App\Question;
 use App\QuestBlock;
 use App\SubDomain;
+use http\Env\Response;
 use Illuminate\Support\Facades\Auth;
 use Mail;
 use App\Page;
@@ -23,7 +25,7 @@ class PayServiceController extends Controller
 
     public function __construct(Page $page, PageBlock $pageBlock, MailForm $mailForm,
                                 City $city, Question $question, User $user,
-                                PayService $payService, Code $code)
+                                PayService $payService, Code $code, LogPayment $logPayment)
     {
         $this->page = $page;
         $this->pageBlock = $pageBlock;
@@ -33,6 +35,7 @@ class PayServiceController extends Controller
         $this->user = $user;
         $this->payService = $payService;
         $this->code = $code;
+        $this->logPayment = $logPayment;
     }
 
     public function show(Request $request)
@@ -311,4 +314,194 @@ class PayServiceController extends Controller
 
     }
 
+    public function paySuccess(Request $request)
+    {
+        // регистрационная информация (пароль #1)
+// registration info (password #1)
+        $pass1 = env('ROBOKASSA_PASS1');
+
+// чтение параметров
+// read parameters
+        $out_summ = $request->OutSum;
+        $inv_id = $request->InvId;
+        $shp_payid = $request->shp_payid;
+        $shp_email = $request->shp_email;
+        $crc = $request->SignatureValue;
+
+        $crc = strtoupper($crc);
+
+        $my_crc = strtoupper(md5("$out_summ:$inv_id:$pass1:shp_email=$shp_email:shp_payid=$shp_payid"));
+
+        //print "$crc=".md5("$out_summ:$inv_id:$mrh_pass1:shp_email:$shp_email:shp_payid=$shp_payid")."=$out_summ:$inv_id:$mrh_pass1:shp_email=$shp_email:shp_payid=$shp_payid<br/>";
+
+        // проверка корректности подписи
+        if ($my_crc != $crc)
+        {
+            $result  = "Проверка подписи при оплате услуги № $inv_id не прошла. Платеж отклонен.";
+
+            $data = $this->prepareData();
+            $data['message'] = $result;
+            $data['payservice'] = null;
+
+            return view('payment', $data);
+
+        }
+        else {
+            $this->logPayment->insert([
+                'inv_id' => $inv_id,
+                'sum' => $out_summ,
+                'pay_service_id' => $shp_payid,
+                'user_id' => Auth::id(),
+                'success' => true
+            ]);
+
+            $data = $this->prepareData();
+            $data['message'] = "Оплата услуги № $inv_id на сумму $out_summ успешно совершена";
+            $data['payservice'] = null;
+
+            return view('payment', $data);
+        }
+    }
+
+    public function payResult(Request $request)
+    {
+// регистрационная информация (пароль #2)
+        $pass2 = env('ROBOKASSA_PASS2');;
+
+//установка текущего времени
+        $date = date('Y-m-d h:i:s', time());
+
+// чтение параметров
+        $out_summ = $request->OutSum;
+        $inv_id = $request->InvId;
+        $shp_payid = $request->shp_payid;
+        $shp_email = $request->shp_email;
+        $crc = $request->SignatureValue;
+
+        $crc = strtoupper($crc);
+
+        $my_crc = strtoupper(md5("$out_summ:$inv_id:$pass2:shp_email=$shp_email:shp_payid=$shp_payid"));
+
+// проверка корректности подписи
+        if ($my_crc !=$crc)
+        {
+
+            $this->logPayment->insert([
+                'inv_id' => $inv_id,
+                'sum' => $out_summ,
+                'pay_service_id' => $shp_payid,
+                'user_id' => Auth::id(),
+                'success' => false,
+                'comment' => "Error:$my_crc !=$crc"
+            ]);
+
+
+            $result  = "Проверка подписи при оплате услуги № $inv_id не прошла. Платеж отклонен.";;
+
+            $data = $this->prepareData();
+            $data['message'] = $result;
+            $data['payservice'] = null;
+
+            return view('payment', $data);
+        }
+        else {
+// признак успешно проведенной операции
+            $this->logPayment->insert([
+                'inv_id' => $inv_id,
+                'sum' => $out_summ,
+                'pay_service_id' => $shp_payid,
+                'user_id' => Auth::id(),
+                'success' => true,
+                'comment' => ""
+            ]);
+
+            $pay_service = $this->payService->find($shp_payid);
+            $code = $this->code
+                ->where($pay_service->group_code)
+                ->where('free', 1)
+                ->take(1)
+                ->get();
+
+            $this->code
+                ->find($code->id)
+                ->update([
+                    'email' => $shp_email,
+                    'free' => 0
+                ]);
+
+            $this->noticePay($pay_service, $code, $inv_id, $out_summ);
+            $result = "Услуга успешно оплачена. № $inv_id";
+            $data = $this->prepareData();
+            $data['message'] = $result;
+            $data['payservice'] = null;
+
+            return view('payment', $data);
+        }
+    }
+
+    public function payFail(Request $request)
+    {
+        $inv_id = $request->InvId;
+        $result  = "Вы отказались от оплаты регистации анкеты № $inv_id";
+
+        $data = $this->prepareData();
+        $data['message'] = $result;
+        $data['payservice'] = null;
+
+        return view('payment', $data);
+
+    }
+
+    private function noticePay($pay_service, $code, $inv_id, $sum)
+    {
+        $user = Auth::user();
+        Log::channel('sitelog')->info('Payment No ' . $inv_id . '  Sum: ' . $sum . ' User email: ' . Auth::user()->email);
+
+        $data = [];
+        $data['inf_id'] = $inv_id;
+        $data['sum'] = $sum;
+        $data['pay_service'] = $pay_service;
+        $data['code'] = $code;
+        $data['user'] = Auth::user();
+
+        try {
+            Mail::send('emails.pay_notice', ['data' => $data], function ($message) use ($user) {
+//                    $emails = explode(',',$user->email);
+                $message->from(config('email'), ' ', env('APP_NAME'));
+                $message->to($user->email)->subject('Уведомление об оплате услуги');
+//                    $message->to($data['to'], 'admin')->subject('Заказ сметы с taktilnaya-plitka.ru. ');
+            });
+        }
+        catch (\Exception $error) {
+//                dd($error->message);
+//                dd($data);
+            Log::channel('sitelog')->info('Error sending payment No ' . $inv_id . '  Sum: ' . $sum . ' User email: ' . Auth::user()->email);
+        }
+    }
+
+    private function prepareData() {
+        $page = Page::find(3);
+        $data = ['data' => $page];
+
+        $cities = $this->city
+            ->where('show', true)
+            ->orderBy('date')
+            ->get();
+
+        $this->getBeadCrumbs($page->id);
+
+        $data['phone'] = config('phone');
+        $data['email'] = config('email');
+        $data['address'] = config('address');
+        $data['pages'] = $this->page->getMenu();
+        $data['cities'] = $cities;
+//        $data['questions'] = $questions;
+//        $data['type'] = $type;
+//        $data['error'] = $error;
+//        $data['request'] = $request;
+        $page_blocks = $this->pageBlock->where('page_id', $page->id)->where('orders','>',0)->orderBy('orders')->get();
+        $data['page_blocks'] = $page_blocks;
+        $data['postform'] = $this->pageBlock->where('page_id', 1)->where('type',10)->first();
+        return $data;
+    }
 }

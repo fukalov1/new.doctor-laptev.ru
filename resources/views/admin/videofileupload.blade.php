@@ -12,7 +12,7 @@
 
 
     <div class="form-group">
-        <label>Файлы к сервису (jpg,m4v,webm,ogv,mp4,mp3,txt)</label>
+        <label>Файлы к сервису (m4v,webm,ogv,mp4)</label>
         <form id="upload" method="post" action="/admin/ajax-upload" enctype="multipart/form-data">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <div id="drop">

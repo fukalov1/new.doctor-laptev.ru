@@ -46,6 +46,16 @@ Route::group([
     });
 });
 
+Route::group([
+    'prefix' => 'payment'
+], function() {
+    Route::get('result', 'PayServiceController@payResult');
+    Route::get('success', 'PayServiceController@paySuccess');
+    Route::get('fail', 'PayServiceController@payFail');
+});
+
+
+
 Auth::routes();
 
 Route::group([
