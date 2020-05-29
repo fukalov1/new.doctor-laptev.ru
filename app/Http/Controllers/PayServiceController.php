@@ -505,10 +505,9 @@ class PayServiceController extends Controller
 //                    $message->to($data['to'], 'admin')->subject('Заказ сметы с taktilnaya-plitka.ru. ');
             });
         }
-        catch (\Exception $error) {
-//                dd($error->message);
+        catch (\Throwable $error) {
 //                dd($data);
-            Log::channel('sitelog')->info('Error sending payment No ' . $inv_id . '  Sum: ' . $sum . ' User email: ' . Auth::user()->email);
+            Log::channel('sitelog')->info('Failed sending payment No ' . $inv_id . '  Sum: ' . $sum . ' User email: ' . $email." Error: ".$error->getMessage());
         }
     }
 
