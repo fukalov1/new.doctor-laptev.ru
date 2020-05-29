@@ -14,7 +14,7 @@
                 <h5>
                     {{  $message }}
                     <br/> Через 5 секунд Вы будете перенаправлены на главную страницу
-{{--                    <meta http-equiv="refresh" content="5;URL=/">--}}
+                    <meta http-equiv="refresh" content="5;URL=/">
                 </h5>
             </div>
         </section>
