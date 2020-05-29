@@ -4,7 +4,15 @@
 
 
             <div class="col-lg-5 banner_bottom_left form-area1">
-                <form id="sendform1" class="send-form" method="post">
+                @guest
+                    <div class="login p-md-5 p-4 mx-auto bg-white mw-100">
+                        <h4>
+                            Письмо Доктору Лаптеву
+                        </h4>
+                        Вы сможете отправить письмо после <a href="{{ asset('login') }}">авторизации</a> на сайте
+                    </div>
+                @else
+                    <form id="sendform1" class="send-form" method="post">
                     <div class="login p-md-5 p-4 mx-auto bg-white mw-100">
                     <h4>
                         Письмо Доктору Лаптеву
@@ -34,6 +42,7 @@
                         <button type="button" class="btn more black submit mb-4 submit-button" datarel="1">Отправить</button>
                     </div>
                 </form>
+                @endguest
             </div>
             <div class="col-lg-7 banner_bottom_grid help pl-lg-5">
                 <img src="{{ asset('/uploads/'.$postform->image) }}" alt="{{ $postform->title }}" class="img-fluid mb-4" loading="lazy">
