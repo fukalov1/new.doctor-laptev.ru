@@ -493,7 +493,7 @@ class PayServiceController extends Controller
         $data = [];
         $data['inv_id'] = $inv_id;
         $data['sum'] = $sum;
-        $data['pay_service'] = $pay_service->first();
+        $data['pay_service'] = $pay_service;
         $data['code'] = $code->first()->code;
         $data['user'] = $user;
         try {
