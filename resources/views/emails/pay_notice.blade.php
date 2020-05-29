@@ -28,7 +28,7 @@
     <tr>
         <td colspan="2">
             <h4>Поступила оплата</h4>
-            Номер чека {{ $data['pay_service']->price }} на сумму  руб
+            Счет № {{ $data['inv_id'] }} на сумму {{ $data['pay_service']->price }}  руб.
             <br/>Услуга "{{ $data['pay_service']->name }}"
             <br/>Ваш код доступа: <b>{{ $data['code'] }}</b>
 
