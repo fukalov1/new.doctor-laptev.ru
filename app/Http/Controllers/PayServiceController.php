@@ -358,6 +358,7 @@ class PayServiceController extends Controller
                     ->where('group_code_id', $pay_service->group_code->id)
                     ->where('free', 1)
                     ->first();
+                $code_id = $code->id;
 
                 $this->logPayment->updateOrCreate(
                     [
@@ -376,13 +377,17 @@ class PayServiceController extends Controller
 
                 $this->code->update(
                     [
+                        'id' => $code_id
+                    ],
+                    [
                         'free' => 0,
                         'client' => $user->name,
                         'phone' => $user->phone,
                         'email' => $user->email
                     ]
                 );
-                $this->noticePay($pay_service, null, $inv_id, $out_summ, $shp_email);
+
+                $this->noticePay($pay_service, $code, $inv_id, $out_summ, $shp_email);
                 $data = $this->prepareData();
                 $data['message'] = "Оплата услуги № $inv_id на сумму $out_summ успешно совершена";
                 $data['payservice'] = null;
