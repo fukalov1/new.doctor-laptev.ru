@@ -367,7 +367,7 @@ class PayServiceController extends Controller
                     ->where('free', 1)
                     ->take(1)
                     ->get();
-                $this->noticePay($pay_service, $code, $inv_id, $out_summ);
+                $this->noticePay($pay_service, $code, $inv_id, $out_summ, $shp_email);
                 $data = $this->prepareData();
                 $data['message'] = "Оплата услуги № $inv_id на сумму $out_summ успешно совершена";
                 $data['payservice'] = null;
@@ -462,7 +462,7 @@ class PayServiceController extends Controller
                     'free' => 0
                 ]);
 
-            $this->noticePay($pay_service, $code, $inv_id, $out_summ);
+            $this->noticePay($pay_service, $code, $inv_id, $out_summ, $shp_email);
             $result = "Услуга успешно оплачена. № $inv_id";
             $data = $this->prepareData();
             $data['message'] = $result;
@@ -485,17 +485,17 @@ class PayServiceController extends Controller
 
     }
 
-    private function noticePay($pay_service, $code, $inv_id, $sum)
+    private function noticePay($pay_service, $code, $inv_id, $sum, $email)
     {
-        $user = Auth::user();
-        Log::channel('sitelog')->info('Payment No ' . $inv_id . '  Sum: ' . $sum . ' User email: ' . Auth::user()->email);
+        $user = $this->user->where('email', $email)->first();
+        Log::channel('sitelog')->info('Payment No ' . $inv_id . '  Sum: ' . $sum . ' User email: ' . $email);
 
         $data = [];
         $data['inf_id'] = $inv_id;
         $data['sum'] = $sum;
         $data['pay_service'] = $pay_service;
         $data['code'] = $code;
-        $data['user'] = Auth::user();
+        $data['user'] = $this->user->where('email', $email)->first();
 
         try {
             Mail::send('emails.pay_notice', ['data' => $data], function ($message) use ($user) {
