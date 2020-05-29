@@ -361,6 +361,13 @@ class PayServiceController extends Controller
                     'updated_at' => date('Y-m-d H:i:s')
                 ]);
 
+                $pay_service = $this->payService->find($shp_payid);
+                $code = $this->code
+                    ->where($pay_service->group_code)
+                    ->where('free', 1)
+                    ->take(1)
+                    ->get();
+                $this->noticePay($pay_service, $code, $inv_id, $out_summ);
                 $data = $this->prepareData();
                 $data['message'] = "Оплата услуги № $inv_id на сумму $out_summ успешно совершена";
                 $data['payservice'] = null;
