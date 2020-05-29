@@ -351,22 +351,27 @@ class PayServiceController extends Controller
 
             $user = $this->user->where('email', $shp_email)->first();
             if($user) {
-                $this->logPayment->insert([
-                    'inv_id' => $inv_id,
-                    'sum' => $out_summ,
-                    'pay_service_id' => $shp_payid,
-                    'user_id' => $user->id,
-                    'success' => true,
-                    'created_at' => date('Y-m-d H:i:s'),
-                    'updated_at' => date('Y-m-d H:i:s')
-                ]);
-
                 $pay_service = $this->payService->find($shp_payid);
                 $code = $this->code
                     ->where('group_code_id', $pay_service->group_code->id)
                     ->where('free', 1)
-                    ->take(1)
-                    ->get();
+                    ->first();
+
+                $this->logPayment->updateOrCreate(
+                    [
+                        'inv_id' => $inv_id,
+                        'pay_service_id' => $shp_payid,
+                        'user_id' => $user->id
+                    ],
+                    [
+                        'sum' => $out_summ,
+                        'success' => true,
+                        'comment' => $code->code,
+                        'created_at' => date('Y-m-d H:i:s'),
+                        'updated_at' => date('Y-m-d H:i:s')
+                    ]
+                );
+
                 $this->noticePay($pay_service, $code, $inv_id, $out_summ, $shp_email);
                 $data = $this->prepareData();
                 $data['message'] = "Оплата услуги № $inv_id на сумму $out_summ успешно совершена";
@@ -409,58 +414,21 @@ class PayServiceController extends Controller
 // проверка корректности подписи
         if ($my_crc !=$crc)
         {
-
-            $user = $this->user->where('email', $shp_email)->first();
-            if(isset($user)) {
-                $this->logPayment->insert([
-                    'inv_id' => $inv_id,
-                    'sum' => $out_summ,
-                    'pay_service_id' => $shp_payid,
-                    'user_id' => $user->id,
-                    'success' => false,
-                    'comment' => "Error:$my_crc !=$crc",
-                    'created_at' => date('Y-m-d H:i:s'),
-                    'updated_at' => date('Y-m-d H:i:s')
-
-                ]);
-            }
-
             $result  = "Проверка подписи при оплате услуги № $inv_id не прошла. Платеж отклонен.";;
-
             $data = $this->prepareData();
             $data['message'] = $result;
             $data['payservice'] = null;
-
             return view('payment', $data);
         }
         else {
 // признак успешно проведенной операции
             $user = $this->user->where('email', $shp_email)->first();
-            if(isset($user)) {
-                $this->logPayment->insert([
-                    'inv_id' => $inv_id,
-                    'sum' => $out_summ,
-                    'pay_service_id' => $shp_payid,
-                    'user_id' => $user->id,
-                    'success' => true,
-                    'comment' => "",
-                    'created_at' => date('Y-m-d H:i:s'),
-                    'updated_at' => date('Y-m-d H:i:s')
-                ]);
-            }
             $pay_service = $this->payService->find($shp_payid);
-            $code = $this->code
-                ->where('group_code_id', $pay_service->group_code->id)
-                ->where('free', 1)
-                ->take(1)
-                ->get();
-
-            $this->code
-                ->find($code->id)
-                ->update([
-                    'email' => $shp_email,
-                    'free' => 0
-                ]);
+            $code = $this->logPayment()
+                ->where('inv_id', $inv_id)
+                ->where('pay_service_id', $shp_payid)
+                ->where('user_id', $user->email)
+                ->first();
 
             $this->noticePay($pay_service, $code, $inv_id, $out_summ, $shp_email);
             $result = "Услуга успешно оплачена. № $inv_id";
