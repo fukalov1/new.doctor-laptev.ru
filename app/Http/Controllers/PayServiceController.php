@@ -355,7 +355,7 @@ class PayServiceController extends Controller
                 $pay_service = $this->payService->find($shp_payid);
 
                 $code = $this->code
-                    ->where('group_code_id', $pay_service->group_code->id)
+                    ->where('group_code_id', $pay_service->group_code_id)
                     ->where('free', 1)
                     ->first();
                 $code_id = $code->id;
