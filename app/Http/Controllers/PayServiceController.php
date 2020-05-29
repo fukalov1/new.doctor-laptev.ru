@@ -352,10 +352,6 @@ class PayServiceController extends Controller
             $user = $this->user->where('email', $shp_email)->first();
             if($user) {
                 $pay_service = $this->payService->find($shp_payid);
-                $code = $this->code
-                    ->where('group_code_id', $pay_service->group_code->id)
-                    ->where('free', 1)
-                    ->first();
 
                 $this->logPayment->updateOrCreate(
                     [
@@ -366,13 +362,12 @@ class PayServiceController extends Controller
                     [
                         'sum' => $out_summ,
                         'success' => true,
-                        'comment' => $code->code,
                         'created_at' => date('Y-m-d H:i:s'),
                         'updated_at' => date('Y-m-d H:i:s')
                     ]
                 );
 
-                $this->noticePay($pay_service, $code, $inv_id, $out_summ, $shp_email);
+                $this->noticePay($pay_service, null, $inv_id, $out_summ, $shp_email);
                 $data = $this->prepareData();
                 $data['message'] = "Оплата услуги № $inv_id на сумму $out_summ успешно совершена";
                 $data['payservice'] = null;
@@ -424,13 +419,46 @@ class PayServiceController extends Controller
 // признак успешно проведенной операции
             $user = $this->user->where('email', $shp_email)->first();
             $pay_service = $this->payService->find($shp_payid);
-            $code = $this->logPayment
-                ->where('inv_id', $inv_id)
-                ->where('pay_service_id', $shp_payid)
-                ->where('user_id', $user->id)
-                ->first();
+            $code = null;
+            if($user) {
+                $pay_service = $this->payService->find($shp_payid);
+                $code = $this->code
+                    ->where('group_code_id', $pay_service->group_code->id)
+                    ->where('free', 1)
+                    ->first();
 
-            $this->noticePay($pay_service, $code, $inv_id, $out_summ, $shp_email);
+                $this->logPayment->updateOrCreate(
+                    [
+                        'inv_id' => $inv_id,
+                        'pay_service_id' => $shp_payid,
+                        'user_id' => $user->id
+                    ],
+                    [
+                        'sum' => $out_summ,
+                        'success' => true,
+                        'comment' => $code->code,
+                        'created_at' => date('Y-m-d H:i:s'),
+                        'updated_at' => date('Y-m-d H:i:s')
+                    ]
+                );
+
+                $this->code->update(
+                    [
+                        'free' => 0,
+                        'client' => $user->name,
+                        'phone' => $user->phone,
+                        'email' => $user->email
+                    ]
+                );
+
+                $this->noticePay($pay_service, $code, $inv_id, $out_summ, $shp_email);
+                $data = $this->prepareData();
+                $data['message'] = "Оплата услуги № $inv_id на сумму $out_summ успешно совершена";
+                $data['payservice'] = null;
+
+                $this->noticePay($pay_service, $code, $inv_id, $out_summ, $shp_email);
+            }
+
             $result = "Услуга успешно оплачена. № $inv_id";
             $data = $this->prepareData();
             $data['message'] = $result;
@@ -462,7 +490,11 @@ class PayServiceController extends Controller
         $data['inv_id'] = $inv_id;
         $data['sum'] = $sum;
         $data['pay_service'] = $pay_service;
-        $data['code'] = $code->first()->code;
+        if ($code)
+            $data['code'] = $code->first()->code;
+        else
+            $data['code'] = null;
+
         $data['user'] = $user;
         try {
             Mail::send('emails.pay_notice', ['data' => $data], function ($message) use ($user) {

@@ -30,8 +30,9 @@
             <h4>Успешная оплата</h4>
             Счет № {{ $data['inv_id'] }} на сумму {{ $data['pay_service']->price }}  руб.
             <br/>Услуга <b>"{{ $data['pay_service']->name }}"</b>
-            <br/>Ваш код доступа: <b>{{ $data['code'] }}</b>
-
+            @if($data['code'] !== null)
+                <br/>Ваш код доступа: <b>{{ $data['code'] }}</b>
+            @endif
             <br/>
             <br/>
             Просмотр услуги Вы можете осуществить по ссылке <a href="{{ asset('/pay-services') }}">платные сервисы</a><br/><br/>
