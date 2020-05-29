@@ -333,7 +333,7 @@ class PayServiceController extends Controller
 
         $my_crc = strtoupper(md5("$out_summ:$inv_id:$pass1:shp_email=$shp_email:shp_payid=$shp_payid"));
 
-        //print "$crc=".md5("$out_summ:$inv_id:$mrh_pass1:shp_email:$shp_email:shp_payid=$shp_payid")."=$out_summ:$inv_id:$mrh_pass1:shp_email=$shp_email:shp_payid=$shp_payid<br/>";
+//        print "$crc=".md5("$out_summ:$inv_id:$pass1:shp_email:$shp_email:shp_payid=$shp_payid")."=$out_summ:$inv_id:$pass1:shp_email=$shp_email:shp_payid=$shp_payid<br/>";
 
         // проверка корректности подписи
         if ($my_crc != $crc)
@@ -348,19 +348,33 @@ class PayServiceController extends Controller
 
         }
         else {
-            $this->logPayment->insert([
-                'inv_id' => $inv_id,
-                'sum' => $out_summ,
-                'pay_service_id' => $shp_payid,
-                'user_id' => Auth::id(),
-                'success' => true
-            ]);
 
-            $data = $this->prepareData();
-            $data['message'] = "Оплата услуги № $inv_id на сумму $out_summ успешно совершена";
-            $data['payservice'] = null;
+            $user = $this->user->where('email', $shp_email)->first();
+            if($user) {
+                $this->logPayment->insert([
+                    'inv_id' => $inv_id,
+                    'sum' => $out_summ,
+                    'pay_service_id' => $shp_payid,
+                    'user_id' => $user->id,
+                    'success' => true
+                ]);
 
-            return view('payment', $data);
+                $data = $this->prepareData();
+                $data['message'] = "Оплата услуги № $inv_id на сумму $out_summ успешно совершена";
+                $data['payservice'] = null;
+
+                return view('payment', $data);
+            }
+            else {
+                $result  = "Клиент с email $shp_email не найден.";
+
+                $data = $this->prepareData();
+                $data['message'] = $result;
+                $data['payservice'] = null;
+
+                return view('payment', $data);
+
+            }
         }
     }
 
@@ -387,15 +401,17 @@ class PayServiceController extends Controller
         if ($my_crc !=$crc)
         {
 
-            $this->logPayment->insert([
-                'inv_id' => $inv_id,
-                'sum' => $out_summ,
-                'pay_service_id' => $shp_payid,
-                'user_id' => Auth::id(),
-                'success' => false,
-                'comment' => "Error:$my_crc !=$crc"
-            ]);
-
+            $user = $this->user->where('email', $shp_email)->first();
+            if(isset($user)) {
+                $this->logPayment->insert([
+                    'inv_id' => $inv_id,
+                    'sum' => $out_summ,
+                    'pay_service_id' => $shp_payid,
+                    'user_id' => $user->id,
+                    'success' => false,
+                    'comment' => "Error:$my_crc !=$crc"
+                ]);
+            }
 
             $result  = "Проверка подписи при оплате услуги № $inv_id не прошла. Платеж отклонен.";;
 
@@ -407,15 +423,17 @@ class PayServiceController extends Controller
         }
         else {
 // признак успешно проведенной операции
-            $this->logPayment->insert([
-                'inv_id' => $inv_id,
-                'sum' => $out_summ,
-                'pay_service_id' => $shp_payid,
-                'user_id' => Auth::id(),
-                'success' => true,
-                'comment' => ""
-            ]);
-
+            $user = $this->user->where('email', $shp_email)->first();
+            if(isset($user)) {
+                $this->logPayment->insert([
+                    'inv_id' => $inv_id,
+                    'sum' => $out_summ,
+                    'pay_service_id' => $shp_payid,
+                    'user_id' => $user->id,
+                    'success' => true,
+                    'comment' => ""
+                ]);
+            }
             $pay_service = $this->payService->find($shp_payid);
             $code = $this->code
                 ->where($pay_service->group_code)
