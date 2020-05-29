@@ -491,16 +491,15 @@ class PayServiceController extends Controller
         Log::channel('sitelog')->info('Payment No ' . $inv_id . '  Sum: ' . $sum . ' User email: ' . $email);
 
         $data = [];
-        $data['inf_id'] = $inv_id;
+        $data['inv_id'] = $inv_id;
         $data['sum'] = $sum;
-        $data['pay_service'] = $pay_service;
-        $data['code'] = $code;
-        $data['user'] = $this->user->where('email', $email)->first();
-
+        $data['pay_service'] = $pay_service->first();
+        $data['code'] = $code->first()->code;
+        $data['user'] = $user;
         try {
             Mail::send('emails.pay_notice', ['data' => $data], function ($message) use ($user) {
 //                    $emails = explode(',',$user->email);
-                $message->from(config('email'), ' ', env('APP_NAME'));
+                $message->from(config('email'));
                 $message->to($user->email)->subject('Уведомление об оплате услуги');
 //                    $message->to($data['to'], 'admin')->subject('Заказ сметы с taktilnaya-plitka.ru. ');
             });
