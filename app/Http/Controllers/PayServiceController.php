@@ -424,10 +424,10 @@ class PayServiceController extends Controller
 // признак успешно проведенной операции
             $user = $this->user->where('email', $shp_email)->first();
             $pay_service = $this->payService->find($shp_payid);
-            $code = $this->logPayment()
+            $code = $this->logPayment
                 ->where('inv_id', $inv_id)
                 ->where('pay_service_id', $shp_payid)
-                ->where('user_id', $user->email)
+                ->where('user_id', $user->id)
                 ->first();
 
             $this->noticePay($pay_service, $code, $inv_id, $out_summ, $shp_email);
