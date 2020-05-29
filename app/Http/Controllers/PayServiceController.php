@@ -363,7 +363,7 @@ class PayServiceController extends Controller
 
                 $pay_service = $this->payService->find($shp_payid);
                 $code = $this->code
-                    ->where('pay_service_id', $pay_service->group_code->id)
+                    ->where('group_code_id', $pay_service->group_code->id)
                     ->where('free', 1)
                     ->take(1)
                     ->get();
@@ -450,7 +450,7 @@ class PayServiceController extends Controller
             }
             $pay_service = $this->payService->find($shp_payid);
             $code = $this->code
-                ->where('pay_service_id', $pay_service->group_code->id)
+                ->where('group_code_id', $pay_service->group_code->id)
                 ->where('free', 1)
                 ->take(1)
                 ->get();
