@@ -500,6 +500,7 @@ class PayServiceController extends Controller
             Mail::send('emails.pay_notice', ['data' => $data], function ($message) use ($user) {
 //                    $emails = explode(',',$user->email);
                 $message->from(config('email'));
+                $message->cc(config('email'));
                 $message->to($user->email)->subject('Уведомление об оплате услуги');
 //                    $message->to($data['to'], 'admin')->subject('Заказ сметы с taktilnaya-plitka.ru. ');
             });
