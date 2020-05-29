@@ -68,21 +68,21 @@
                                     <div class="card" style="width: 18rem;">
                                         <form action="https://auth.robokassa.ru/Merchant/Index.aspx" method="POST">
                                             <input type="hidden" name="MrchLogin" value="doctorlaptev">
-                                            <input type="hidden" id="OutSum7" name="OutSum" value="{{ $payservice->price }}">
-                                            <input type="hidden" id="InvId7" name="InvId" value="{{ $time }}">
+                                            <input type="hidden" id="OutSum{{ $payservice->id }}" name="OutSum" value="{{ round($payservice->price) }}">
+                                            <input type="hidden" id="InvId{{ $payservice->id }}" name="InvId" value="{{ $time }}">
                                             <input type="hidden" name="Desc" value="Покупка кода доступа к услуге {{ $payservice->name }}">
-                                            <input type="hidden" id="SignatureValue7" name="SignatureValue" value="{{ $sign }}">
+                                            <input type="hidden" id="SignatureValue{{ $payservice->id }}" name="SignatureValue" value="{{ $sign }}">
                                             <input type="hidden" name="IncCurrLabel" value="">
                                             <input type="hidden" name="payment_method" value="full_prepayment">
                                             <input type="hidden" name="payment_object" value="excise">
                                             <input type="hidden" name="Culture" value="ru">
-                                            <input type="hidden" class="shp_email" rel="7" id="shp_email7" name="shp_email" value="{{ Auth::user()->email }}">
-                                            <input type="hidden" id="shp_payid7" name="shp_payid" value="7">
+                                            <input type="hidden" class="shp_email" rel="{{ $payservice->id }}" id="shp_email{{ $payservice->id }}" name="shp_email" value="{{ Auth::user()->email }}">
+                                            <input type="hidden" id="shp_payid{{ $payservice->id }}" name="shp_payid" value="{{ $payservice->id }}">
                                         <div class="card-body">
                                             <h4 class="card-title">Покупка</h4>
                                             <p class="card-text">Вы можете купить код доступа к услуге прямо сейчас и приступить к просмотру! </p>
                                             <p>
-                                            <h5>Стоимость: {{ $payservice->price }} руб.</h5>
+                                            <h5>Стоимость: {{ round($payservice->price) }} руб.</h5>
                                             </p>
                                             <p></p>
                                             <button class="btn btn-success" type="submit">Купить</button>
