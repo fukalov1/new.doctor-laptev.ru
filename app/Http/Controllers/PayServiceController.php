@@ -356,7 +356,9 @@ class PayServiceController extends Controller
                     'sum' => $out_summ,
                     'pay_service_id' => $shp_payid,
                     'user_id' => $user->id,
-                    'success' => true
+                    'success' => true,
+                    'created_at' => date('Y-m-d H:i:s'),
+                    'updated_at' => date('Y-m-d H:i:s')
                 ]);
 
                 $data = $this->prepareData();
@@ -409,7 +411,10 @@ class PayServiceController extends Controller
                     'pay_service_id' => $shp_payid,
                     'user_id' => $user->id,
                     'success' => false,
-                    'comment' => "Error:$my_crc !=$crc"
+                    'comment' => "Error:$my_crc !=$crc",
+                    'created_at' => date('Y-m-d H:i:s'),
+                    'updated_at' => date('Y-m-d H:i:s')
+
                 ]);
             }
 
@@ -431,7 +436,9 @@ class PayServiceController extends Controller
                     'pay_service_id' => $shp_payid,
                     'user_id' => $user->id,
                     'success' => true,
-                    'comment' => ""
+                    'comment' => "",
+                    'created_at' => date('Y-m-d H:i:s'),
+                    'updated_at' => date('Y-m-d H:i:s')
                 ]);
             }
             $pay_service = $this->payService->find($shp_payid);
