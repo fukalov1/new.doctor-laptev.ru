@@ -375,11 +375,8 @@ class PayServiceController extends Controller
                     ]
                 );
 
-                $this->code->update(
-                    [
-                        'id' => $code_id
-                    ],
-                    [
+                Code::find($code_id)
+                    ->update([
                         'free' => 0,
                         'client' => $user->name,
                         'phone' => $user->phone,
@@ -407,6 +404,10 @@ class PayServiceController extends Controller
 
             }
         }
+    }
+
+    protected function dispatch($job)
+    {
     }
 
     public function payResult(Request $request)
