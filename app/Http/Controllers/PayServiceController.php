@@ -406,7 +406,6 @@ class PayServiceController extends Controller
         else {
 // признак успешно проведенной операции
             $user = $this->user->where('email', $shp_email)->first();
-            $pay_service = $this->payService->find($shp_payid);
             $code = null;
             if($user) {
                 $pay_service = $this->payService->find($shp_payid);
@@ -451,7 +450,7 @@ class PayServiceController extends Controller
 
                 Log::channel('sitelog')->info('Success payment No ' . $inv_id . '  Sum: ' . $out_summ . ' User email: ' . $shp_email." ID Code: ".$code_id." Code: ".$code_nmbr);
 
-                $this->noticePay($pay_service, $code, $inv_id, $out_summ, $shp_email);
+                $this->noticePay($pay_service, $code_nmbr, $inv_id, $out_summ, $shp_email);
                 $data = $this->prepareData();
                 $data['message'] = "Оплата услуги № $inv_id на сумму $out_summ успешно совершена";
                 $data['payservice'] = null;
@@ -490,10 +489,7 @@ class PayServiceController extends Controller
         $data['inv_id'] = $inv_id;
         $data['sum'] = $sum;
         $data['pay_service'] = $pay_service;
-        if ($code)
-            $data['code'] = $code->code;
-        else
-            $data['code'] = null;
+        $data['code'] = $code;
 
         $data['user'] = $user;
         try {
