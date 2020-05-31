@@ -415,7 +415,24 @@ class PayServiceController extends Controller
                     ->where('group_code_id', $pay_service->group_code_id)
                     ->where('free', 1)
                     ->first();
-                $code_id = $code->id;
+
+                $code_nmbr = 'будет выдан администратором';
+                if($code===null) {
+                    $code_id = '0';
+                }
+                else {
+                    $code_nmbr = $code->code;
+                    $code_id = $code->id;
+                    Code::find($code_id)
+                        ->update([
+                                'free' => 0,
+                                'client' => $user->name,
+                                'phone' => $user->phone,
+                                'email' => $user->email
+                            ]
+                        );
+
+                }
 
                 $this->logPayment->updateOrCreate(
                     [
@@ -426,22 +443,13 @@ class PayServiceController extends Controller
                     [
                         'sum' => $out_summ,
                         'success' => true,
-                        'comment' => $code->code,
+                        'comment' => $code_nmbr,
                         'created_at' => date('Y-m-d H:i:s'),
                         'updated_at' => date('Y-m-d H:i:s')
                     ]
                 );
 
-                Code::find($code_id)
-                    ->update([
-                            'free' => 0,
-                            'client' => $user->name,
-                            'phone' => $user->phone,
-                            'email' => $user->email
-                        ]
-                    );
-
-                Log::channel('sitelog')->info('Success payment No ' . $inv_id . '  Sum: ' . $out_summ . ' User email: ' . $shp_email." ID Code: ".$code->id." Code: ".$code->code);
+                Log::channel('sitelog')->info('Success payment No ' . $inv_id . '  Sum: ' . $out_summ . ' User email: ' . $shp_email." ID Code: ".$code_id." Code: ".$code_nmbr);
 
                 $this->noticePay($pay_service, $code, $inv_id, $out_summ, $shp_email);
                 $data = $this->prepareData();
@@ -456,7 +464,7 @@ class PayServiceController extends Controller
             $data['message'] = $result;
             $data['payservice'] = null;
 
-            return \response('OK'.$shp_payid);
+            return \response('OK'.$inv_id);
         }
     }
 
