@@ -354,38 +354,6 @@ class PayServiceController extends Controller
             if($user) {
                 $pay_service = $this->payService->find($shp_payid);
 
-                $code = $this->code
-                    ->where('group_code_id', $pay_service->group_code_id)
-                    ->where('free', 1)
-                    ->first();
-                $code_id = $code->id;
-
-                $this->logPayment->updateOrCreate(
-                    [
-                        'inv_id' => $inv_id,
-                        'pay_service_id' => $shp_payid,
-                        'user_id' => $user->id
-                    ],
-                    [
-                        'sum' => $out_summ,
-                        'success' => true,
-                        'comment' => $code->code,
-                        'created_at' => date('Y-m-d H:i:s'),
-                        'updated_at' => date('Y-m-d H:i:s')
-                    ]
-                );
-
-                Code::find($code_id)
-                    ->update([
-                        'free' => 0,
-                        'client' => $user->name,
-                        'phone' => $user->phone,
-                        'email' => $user->email
-                    ]
-                );
-
-                Log::channel('sitelog')->info('Success payment No ' . $inv_id . '  Sum: ' . $out_summ . ' User email: ' . $shp_email." ID Code: ".$code->id." Code: ".$code->code);
-
                 $this->noticePay($pay_service, $code, $inv_id, $out_summ, $shp_email);
                 $data = $this->prepareData();
                 $data['message'] = "Оплата услуги № $inv_id на сумму $out_summ успешно совершена";
@@ -442,6 +410,38 @@ class PayServiceController extends Controller
             $code = null;
             if($user) {
                 $pay_service = $this->payService->find($shp_payid);
+
+                $code = $this->code
+                    ->where('group_code_id', $pay_service->group_code_id)
+                    ->where('free', 1)
+                    ->first();
+                $code_id = $code->id;
+
+                $this->logPayment->updateOrCreate(
+                    [
+                        'inv_id' => $inv_id,
+                        'pay_service_id' => $shp_payid,
+                        'user_id' => $user->id
+                    ],
+                    [
+                        'sum' => $out_summ,
+                        'success' => true,
+                        'comment' => $code->code,
+                        'created_at' => date('Y-m-d H:i:s'),
+                        'updated_at' => date('Y-m-d H:i:s')
+                    ]
+                );
+
+                Code::find($code_id)
+                    ->update([
+                            'free' => 0,
+                            'client' => $user->name,
+                            'phone' => $user->phone,
+                            'email' => $user->email
+                        ]
+                    );
+
+                Log::channel('sitelog')->info('Success payment No ' . $inv_id . '  Sum: ' . $out_summ . ' User email: ' . $shp_email." ID Code: ".$code->id." Code: ".$code->code);
 
                 $this->noticePay($pay_service, $code, $inv_id, $out_summ, $shp_email);
                 $data = $this->prepareData();
