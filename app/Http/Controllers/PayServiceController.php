@@ -55,7 +55,7 @@ class PayServiceController extends Controller
         $data['pages'] = $this->page->getMenu();
         $data['error'] = $error;
         $data['request'] = $request;
-        $data['payservice'] = $this->payService->where('active', true)->get();
+        $data['payservice'] = $this->payService->getActive();
         $data['message'] = null;
         $page_blocks = $this->pageBlock->where('page_id', $page->id)->where('orders','>',0)->orderBy('orders')->get();
         $data['page_blocks'] = $page_blocks;
@@ -406,9 +406,6 @@ class PayServiceController extends Controller
         }
     }
 
-    protected function dispatch($job)
-    {
-    }
 
     public function payResult(Request $request)
     {
@@ -472,7 +469,7 @@ class PayServiceController extends Controller
         $data['message'] = $result;
         $data['payservice'] = null;
 
-        return view('payment', $data);
+        return \response('OK');
 
     }
 
@@ -486,7 +483,7 @@ class PayServiceController extends Controller
         $data['sum'] = $sum;
         $data['pay_service'] = $pay_service;
         if ($code)
-            $data['code'] = $code->first()->code;
+            $data['code'] = $code->code;
         else
             $data['code'] = null;
 

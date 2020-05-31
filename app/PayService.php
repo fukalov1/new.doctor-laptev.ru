@@ -13,6 +13,15 @@ class PayService extends Model
         return $this->belongsTo(GroupCode::class);
     }
 
+    public function codes() {
+        return $this->hasManyThrough('App\Code','App\GroupCode');
+    }
+
+    public function getActive() {
+        return $this->where('active', true)
+                ->get();
+    }
+
     public function updateVideoFiles($id) {
         try {
 
