@@ -450,10 +450,10 @@ class PayServiceController extends Controller
 
                 Log::channel('sitelog')->info('Success payment No ' . $inv_id . '  Sum: ' . $out_summ . ' User email: ' . $shp_email." ID Code: ".$code_id." Code: ".$code_nmbr);
 
-                $this->noticePay($pay_service, $code_nmbr, $inv_id, $out_summ, $shp_email);
+//                $this->noticePay($pay_service, $code_nmbr, $inv_id, $out_summ, $shp_email);
                 $data = $this->prepareData();
                 $data['message'] = "Оплата услуги № $inv_id на сумму $out_summ успешно совершена";
-                $data['payservice'] = null;
+//                $data['payservice'] = null;
 
                 $this->noticePay($pay_service, $code, $inv_id, $out_summ, $shp_email);
             }
