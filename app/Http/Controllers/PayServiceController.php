@@ -354,7 +354,7 @@ class PayServiceController extends Controller
             if($user) {
                 $pay_service = $this->payService->find($shp_payid);
 
-                $this->noticePay($pay_service, $code, $inv_id, $out_summ, $shp_email);
+//                $this->noticePay($pay_service, $code, $inv_id, $out_summ, $shp_email);
                 $data = $this->prepareData();
                 $data['message'] = "Оплата услуги № $inv_id на сумму $out_summ успешно совершена";
                 $data['payservice'] = null;
