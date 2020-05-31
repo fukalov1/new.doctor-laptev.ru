@@ -456,7 +456,7 @@ class PayServiceController extends Controller
             $data['message'] = $result;
             $data['payservice'] = null;
 
-            return view('payment', $data);
+            return \response('OK'.$shp_payid);
         }
     }
 
@@ -469,7 +469,7 @@ class PayServiceController extends Controller
         $data['message'] = $result;
         $data['payservice'] = null;
 
-        return \response('OK');
+        return view('payment', $data);
 
     }
 
