@@ -54,6 +54,18 @@ class LogPaymentsController extends AdminController
             $actions->disableView();
         });
 
+        $grid->filter(function($filter){
+
+            // Remove the default id filter
+            $filter->disableIdFilter();
+
+            $filter->like('inv_id', 'Номер счета');
+            $filter->like('user.name', 'Клиент');
+            $filter->like('user.email', 'E-mail');
+            $filter->between('created_at', 'Дата оплаты')->date();
+
+        });
+
         $grid->model()->where('pay_service_id', session('payservice_id'))->orderByDesc('updated_at');
 
 //        $grid->column('id', __('Id'));
