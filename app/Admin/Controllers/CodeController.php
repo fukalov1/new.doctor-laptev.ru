@@ -3,9 +3,12 @@
 namespace App\Admin\Controllers;
 
 use App\Code;
+use App\GroupCode;
 use Encore\Admin\Controllers\AdminController;
+use Encore\Admin\Facades\Admin;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
+use Encore\Admin\Layout\Content;
 use Encore\Admin\Show;
 
 class CodeController extends AdminController
@@ -16,12 +19,49 @@ class CodeController extends AdminController
      * @var string
      */
     protected $title = 'Коды доступа';
+    public $page_id;
+    public $page_name = '';
 
+
+    public function index(Content $content)
+    {
+        $this->getHeader();
+        return $content
+            ->header(' Коды доступа "'.$this->page_name.'"')
+            ->description('список')
+            ->body($this->grid());
+    }
+
+    /**
+     * Show interface.
+     *
+     * @param mixed $id
+     * @param Content $content
+     * @return Content
+     */
+    public function show($id, Content $content)
+    {
+        $this->getHeader();
+        return $content
+            ->header('Раздел '.$this->page_name)
+            ->description(' список подразделов/страниц')
+            ->body($this->detail($id));
+    }
+
+    /**
+     * Edit interface.
+     *
+     * @param mixed $id
+     * @param Content $content
+     * @return Content
+     */
     /**
      * Make a grid builder.
      *
      * @return Grid
      */
+
+
     protected function grid()
     {
         $grid = new Grid(new Code());
@@ -95,14 +135,20 @@ class CodeController extends AdminController
     {
         $form = new Form(new Code());
 
-        $form->number('group_code_id', __('Group code id'));
-        $form->text('client', __('Client'));
-        $form->mobile('phone', __('Phone'));
+        $form->hidden('group_code_id')->value(session('group_code_id'));
+        $form->text('client', __('Клиент'));
+        $form->mobile('phone', __('Телефон'));
         $form->email('email', __('Email'));
-        $form->text('code', __('Code'));
-        $form->number('count', __('Count'));
-        $form->switch('free', __('Free'))->default(1);
+        $form->text('code', __('Код'))->required();
+        $form->number('count', __('Количество просмотров'))->default(0);
+        $form->switch('Free', __('Свободен'))->default(1);
 
         return $form;
+    }
+    private function getHeader() {
+        $data = GroupCode::find(session('group_code_id'));
+        if ($data) {
+            $this->page_name = $data->name;
+        }
     }
 }

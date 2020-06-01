@@ -16,6 +16,8 @@ class SubPageController extends Controller
     use HasResourceActions;
     public $bread_crumbs='';
     public $bread_crumb_value='';
+    public $page_id;
+    public $page_name = '';
 
     /**
      * Index interface.

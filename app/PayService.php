@@ -10,7 +10,7 @@ class PayService extends Model
     protected $fillable = ['name', 'video_mp4', 'video_m4v', 'video_webm', 'video_ogv', 'audio_mp3', 'image'];
 
     public function group_code() {
-        return $this->belongsTo(GroupCode::class);
+        return $this->hasOne(GroupCode::class);
     }
 
     public function codes() {
