@@ -58,14 +58,13 @@ class LogPaymentsController extends AdminController
 
 //        $grid->column('id', __('Id'));
         $grid->column('inv_id', __('Номер счета'));
-        $grid->column('updated at', __('Дата оплаты'));
+        $grid->column('created_at', __('Created at'));
         $grid->column('sum', __('Сумма'));
 //        $grid->column('pay_service_id', __('Pay service id'));
         $grid->column('user.name', __('Плательщик'));
         $grid->column('user.email', __('Email плательщика'));
 //        $grid->column('success', __('Success'));
 //        $grid->column('comment', __('Comment'));
-//        $grid->column('created_at', __('Created at'));
 
         return $grid;
     }
