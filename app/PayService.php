@@ -17,6 +17,10 @@ class PayService extends Model
         return $this->hasManyThrough('App\Code','App\GroupCode');
     }
 
+    public function log_payments() {
+        return $this->hasMany(LogPayment::class);
+    }
+
     public function getActive() {
         return $this->where('active', true)
                 ->get();

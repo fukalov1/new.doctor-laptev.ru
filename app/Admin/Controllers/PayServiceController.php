@@ -64,7 +64,7 @@ class PayServiceController extends AdminController
             return $str;
         });
         $grid->payments('Оплаты')->display(function () {
-            return '<a href="/admin/payments?set='.$this->id.'"><i class="fa fa-money"></i> перейти</a>';
+            return '<a href="/admin/log-payments?set='.$this->id.'">'.$this->log_payments()->get()->count().'</a>';
         });
 //        $grid->column('video_m4v', __('Video m4v'));
 //        $grid->column('video_webm', __('Video webm'));

@@ -41,12 +41,15 @@ Route::group([
     $router->resource('answers', AnswerController::class)->middleware('set_question');
 
     $router->resource('pay-services', PayServiceController::class);
+
+    $router->resource('log-payments', LogPaymentsController::class)->middleware('set_payservice');
+
     $router->post('save-video-files', 'VideoFilesController@saveFiles');
     $router->resource('group-codes', GroupCodeController::class);
     $router->resource('codes', CodeController::class)->middleware('set_group_code');
 
     $router->resource('reviews', ReviewController::class);
-    $router->resource('video-files', VideoFilesController::class)->middleware('set_payservice');;
+    $router->resource('video-files', VideoFilesController::class)->middleware('set_payservice');
 
     $router->resource('settings', SettingController::class);
 
