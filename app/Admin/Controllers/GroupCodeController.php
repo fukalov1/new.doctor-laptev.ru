@@ -36,7 +36,15 @@ class GroupCodeController extends AdminController
 //        $grid->column('id', __('Id'));
         $grid->column('pay_service.name', __('Платный сервис'));
         $grid->column('name', 'Наименование группы')->display(function () {
+            $code_free = $this->codes()->where('free', true)->get()->count();
+            $code_all = $this->codes()->get()->count();
             return '<a href="/admin/codes?set='.$this->id.'">'.$this->name.'</a>';
+        });
+        $grid->code_free('Свободных')->display(function (){
+            return $code_free = $this->codes()->where('free', true)->get()->count();
+        });
+        $grid->code_фдд('Всего')->display(function (){
+            return $code_all = $this->codes()->get()->count();
         });
         $grid->column('start_date', __('Дата начала'));
         $grid->column('end_date', __('Срок окончания'));

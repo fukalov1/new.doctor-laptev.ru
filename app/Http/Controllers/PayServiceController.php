@@ -427,7 +427,8 @@ class PayServiceController extends Controller
                                 'free' => 0,
                                 'client' => $user->name,
                                 'phone' => $user->phone,
-                                'email' => $user->email
+                                'email' => $user->email,
+                                'date' => date('Y-m-d h:i:s', time())
                             ]
                         );
 
