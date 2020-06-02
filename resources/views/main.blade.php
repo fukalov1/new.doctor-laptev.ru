@@ -89,7 +89,7 @@
                                 @foreach($slider->items as $item)
                                     <div class="image-slide">
                                         <div class="banner-w3pvt-{{ $item->id }}"
-                                             style="background: url({{ asset('/uploads/'.preg_replace('/\s/','%20',$page_block->image) ) }}) no-repeat top;">
+                                             style="background: url({{ asset('/uploads/'.preg_replace('/\s/','%20',$item->image) ) }}) no-repeat top;">
                                             <div class="overlay-w3ls">
 
                                             </div>
