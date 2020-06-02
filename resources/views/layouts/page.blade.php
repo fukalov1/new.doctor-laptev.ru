@@ -32,7 +32,7 @@
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
 
-    <meta name="yandex-verification" content="ae7cf7d5c8c9c3d3" />
+    <meta name="yandex-verification" content="b6f9b61117689983" />
 
 
     @include('layouts.styles')
