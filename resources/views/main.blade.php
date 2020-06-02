@@ -3,7 +3,7 @@
 
 @section('content')
 
-    <div id="home">
+    <div>
 
     @foreach($page_blocks as $page_block)
         @if($page_block->type == '1')
