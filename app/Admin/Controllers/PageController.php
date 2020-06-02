@@ -87,7 +87,7 @@ class PageController extends Controller
 
         });
 
-        $grid->id('Id');
+//        $grid->id('Id');
 //        $grid->parent_id('Parent id');
 //        $grid->title('Title');
 //        $grid->description('Description');
@@ -106,7 +106,9 @@ class PageController extends Controller
                 $link = '<a href="'.env('APP_URL').'/'.$this->url.'" target="_blank" title="просмотр страницы '.$this->name.'">'.$this->url.'</a>';
             return $link;
         });
-//        $grid->relation('Relation');
+        $grid->only_auth('Закрытая часть')->display(function () {
+            return $this->only_auth ? 'да' : 'нет';
+        });
         $grid->order('Номер показа');
         $grid->page_blocks('Текстовые блоки')->display(function ($page_blocks) {
             $count = count($page_blocks);
@@ -154,6 +156,7 @@ class PageController extends Controller
             $form->switch('relation', 'Вложения');
             $form->text('name', 'Наименование')->required()->autofocus();
             $form->number('order', 'Номер показа в меню')->default(1);
+            $form->switch('only_auth', 'Закрытая часть');
 
 //            $form->hasMany('page_blocks', 'Блоки страниц', function (Form\NestedForm $form) {
 //                $form->number('orders', 'Номер показа нас странице');

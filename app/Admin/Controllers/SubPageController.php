@@ -131,7 +131,10 @@ class SubPageController extends Controller
                 $link = '<a href="'.env('APP_URL').'/'.$this->url.'" target="_blank" title="просмотр страницы '.$this->name.'">'.$this->url.'</a>';
             return $link;
         });
-//        $grid->relation('Relation');
+        $grid->only_auth('Закрытая часть')->display(function () {
+            return $this->only_auth ? 'да' : 'нет';
+        });
+        //        $grid->relation('Relation');
         $grid->order('Номер показа')->editable();
         $grid->page_blocks('Кол-во блоков')->display(function ($page_blocks) {
             $count = count($page_blocks);
@@ -184,6 +187,7 @@ class SubPageController extends Controller
             if(session('page_id')==config('id_articles',9))
                 $form->textarea('anons', 'Анонс');
             $form->number('order', 'Номер показа в меню')->default(1);
+            $form->switch('only_auth', 'Закрытая часть');
 
 //            $form->hasMany('page_blocks', 'Блоки страниц', function (Form\NestedForm $form) {
 //                $form->number('orders', 'Номер показа нас странице');

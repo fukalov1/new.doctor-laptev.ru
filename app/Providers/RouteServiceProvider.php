@@ -48,15 +48,28 @@ class RouteServiceProvider extends ServiceProvider
             $router->group(['middleware' => ['web', 'enable']], function ($router) {
                 $pages = Page::all();
                 foreach ($pages as $page) {
-                    $router->get($page->url,
-                        [
-                            'as' => $page->route_name, function () use ($page, $router) {
-                            return $this->app->call('App\Http\Controllers\PageController@show',
-                                [
-                                    'page' => $page,
-                                    'parameters' => $router->current()->parameters
-                                ]);
-                        }]);
+                    if ($page->only_auth) {
+                        $router->get($page->url,
+                            [
+                                'as' => $page->route_name, function () use ($page, $router) {
+                                return $this->app->call('App\Http\Controllers\PageController@show',
+                                    [
+                                        'page' => $page,
+                                        'parameters' => $router->current()->parameters
+                                    ]);
+                            }])->middleware('auth');
+                    }
+                    else {
+                        $router->get($page->url,
+                            [
+                                'as' => $page->route_name, function () use ($page, $router) {
+                                return $this->app->call('App\Http\Controllers\PageController@show',
+                                    [
+                                        'page' => $page,
+                                        'parameters' => $router->current()->parameters
+                                    ]);
+                            }]);
+                    }
                 }
             });
         }
