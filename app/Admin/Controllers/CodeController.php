@@ -75,6 +75,7 @@ class CodeController extends AdminController
             $filter->like('client', 'Клиент');
             $filter->like('email', 'E-mail');
             $filter->like('code', 'Номер кода');
+            $filter->lt('count', 'Количество просмотров до ');
             $filter->between('date', 'Дата выдачи')->date();
             $filter->equal('free')->radio([
                 ''   => 'Все',
