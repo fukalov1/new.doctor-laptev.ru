@@ -25,7 +25,7 @@
                         <div class="row inner_sec_info">
 
                             <div class="col-md-6 banner_bottom_grid help">
-                                <img src="{{ asset('/uploads/'.preg_replace('/\s/','%20',preg_replace('/\s/','%20',$page_block->image)) }}" loading="lazy" alt=" "
+                                <img src="{{ asset('/uploads/'.preg_replace('/\s/','%20',$page_block->image) ) }}" loading="lazy" alt=" "
                                      class="img-fluid">
                             </div>
                             <div class="col-md-6 banner_bottom_left mt-lg-0 mt-4">
@@ -56,7 +56,7 @@
                                 <div class="col-lg-5 services-innfo pr-5">
                                     <h3 class="tittle-w3ls two mb-3 text-left">{{ $page_block->header }}</h3>
                                     <p class="sub-tittle mt-2 mb-sm-3 text-left"></p>
-                                    <a href="services.html"><img src="{{ asset('/uploads/'.preg_replace('/\s/','%20',$page_block->image)) }}"
+                                    <a href="services.html"><img src="{{ asset('/uploads/'.preg_replace('/\s/','%20',$page_block->image) ) }}"
                                                                  loading="lazy" alt="w3pvt" class="img-fluid"></a>
                                 </div>
                                 <div class="col-lg-7 services-grid-inf">
@@ -89,7 +89,7 @@
                                 @foreach($slider->items as $item)
                                     <div class="image-slide">
                                         <div class="banner-w3pvt-{{ $item->id }}"
-                                             style="background: url({{ asset('/uploads/'.$item->image) }}) no-repeat top;">
+                                             style="background: url({{ asset('/uploads/'.preg_replace('/\s/','%20',$page_block->image) ) }}) no-repeat top;">
                                             <div class="overlay-w3ls">
 
                                             </div>
@@ -157,7 +157,7 @@
                                     <div class="image-preview">
                                         <div class="photo-gallery-item">
                                             <a href="/uploads/images/{{$photo->image}}" class="modalbox">
-                                                <img src="/uploads/images/thumbnail/{{$photo->image}}" alt="">
+                                                <img src="/uploads/images/thumbnail/{{preg_replace('/\s/','%20',$photo->image)}}" alt="{{ $photoset->name }}">
                                             </a>
 
                                             <div class="title">
@@ -218,7 +218,7 @@
                             <div class="row news-grids mt-md-5 mt-4 text-center">
                                 @foreach($item->items as $item)
                                     <div class="col-md-4 gal-img">
-                                        <a href="#gal1"><img src="{{ asset('uploads/images/thumbnail/'.$item->image) }}"
+                                        <a href="#gal1"><img src="{{ asset('uploads/images/thumbnail/'.preg_replace('/\s/','%20',$item->image) ) }}"
                                                              alt="w3pvt" class="img-fluid"></a>
                                         <div class="gal-info">
                                             <h5>{{ $item->title }}<span
@@ -231,7 +231,7 @@
                             @foreach($item->items as $item)
                                 <div id="gal1" class="pop-overlay">
                                     <div class="popup">
-                                        <img src="{{ asset('uploads/images/thumbnail/'.$item->image) }}"
+                                        <img src="{{ asset('uploads/images/thumbnail/'.preg_replace('/\s/','%20',$item->image) ) }}"
                                              alt="Popup Image" class="img-fluid"/>
                                         <div class="mt-4">test{!! $item->text !!}</div>
                                         <a class="close" href="#gallery">&times;</a>
@@ -350,9 +350,9 @@
                     <div class="col-md-4 gal-img">
                         <a href="#gal{{ $item->id }}">
                             <div class="img-dbl">
-                                <img src="{{ asset('uploads/images/thumbnail/'.$item->image) }}"
+                                <img src="{{ asset('uploads/images/thumbnail/'.preg_replace('/\s/','%20',$item->image)) }}"
                                      loading="lazy" alt="w3pvt" class="img-fluid">
-                                <img src="{{ asset('uploads/images/thumbnail/'.$item->image1) }}"
+                                <img src="{{ asset('uploads/images/thumbnail/'.preg_replace('/\s/','%20',$item->image1) ) }}"
                                      loading="lazy" alt="w3pvt" class="img-fluid">
                             </div>
                         </a>
@@ -366,11 +366,11 @@
             @foreach($main_photo_review as $item)
                 <div id="gal{{ $item->id }}" class="pop-overlay">
                     <div class="popup">
-                        <img src="{{ asset('uploads/images/'.$item->image) }}" alt="Popup Image"
+                        <img src="{{ asset('uploads/images/'.preg_replace('/\s/','%20',$item->image) ) }}" alt="Popup Image"
                              loading="lazy" class="img-fluid img-photo-review"/>
-                        <img src="{{ asset('uploads/images/'.$item->image1) }}" alt="Popup Image"
+                        <img src="{{ asset('uploads/images/'.preg_replace('/\s/','%20',$item->image1) ) }}" alt="Popup Image"
                              loading="lazy" class="img-fluid img-photo-review"/>
-                        <img src="{{ asset('uploads/images/'.$item->image2) }}" alt="Popup Image"
+                        <img src="{{ asset('uploads/images/'.preg_replace('/\s/','%20',$item->image2) ) }}" alt="Popup Image"
                              loading="lazy" class="img-fluid img-photo-review"/>
                         <div class="mt-4">{!! $item->text  !!}</div>
                         <a class="close" href="#gallery">&times;</a>
@@ -396,7 +396,7 @@
                         @foreach($article->page_blocks as $item)
                             <div class="col-lg-3 col-md-6 blog-grid-img px-0">
                                 <img
-                                    src="{{ asset('uploads/images/thumbnail/'.preg_replace('/images\//', '',$item->image)) }}"
+                                    src="{{ asset('uploads/images/thumbnail/'.preg_replace('/images\//', '',$item->image) ) }}"
                                     alt="Popup Image"
                                     loading="lazy" class="img-fluid"/>
                             </div>
