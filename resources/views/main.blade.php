@@ -25,7 +25,7 @@
                         <div class="row inner_sec_info">
 
                             <div class="col-md-6 banner_bottom_grid help">
-                                <img src="{{ asset('/uploads/'.$page_block->image) }}" loading="lazy" alt=" "
+                                <img src="{{ asset('/uploads/'.preg_replace('/\s/','%20',preg_replace('/\s/','%20',$page_block->image)) }}" loading="lazy" alt=" "
                                      class="img-fluid">
                             </div>
                             <div class="col-md-6 banner_bottom_left mt-lg-0 mt-4">
@@ -56,7 +56,7 @@
                                 <div class="col-lg-5 services-innfo pr-5">
                                     <h3 class="tittle-w3ls two mb-3 text-left">{{ $page_block->header }}</h3>
                                     <p class="sub-tittle mt-2 mb-sm-3 text-left"></p>
-                                    <a href="services.html"><img src="{{ asset('/uploads/'.$page_block->image) }}"
+                                    <a href="services.html"><img src="{{ asset('/uploads/'.preg_replace('/\s/','%20',$page_block->image)) }}"
                                                                  loading="lazy" alt="w3pvt" class="img-fluid"></a>
                                 </div>
                                 <div class="col-lg-7 services-grid-inf">
