@@ -140,7 +140,7 @@
             playVideo() {
                 console.log('start timer');
                 this.startTimer();
-                axios.post(`/check-pay-service`, {id: this.payservice.group_code_id, code: this.code})
+                axios.post(`/check-pay-service`, {id: this.id, code: this.code})
                     .then(response => {
                         console.log(response.data.success);
                         // if(response.data.success) {

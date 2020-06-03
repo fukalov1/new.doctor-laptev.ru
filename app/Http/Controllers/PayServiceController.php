@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\City;
 use App\Code;
+use App\GroupCode;
 use App\LogPayment;
 use App\Question;
 use App\QuestBlock;
@@ -229,13 +230,15 @@ class PayServiceController extends Controller
         $code = $request->code;
 
         try {
+            $group_code = GroupCode::where('pay_service_id', $id)->first();
+            $client_code = $this->code->where('group_code_id', $group_code->id)->where('code', $code)->first();
+            $count = $client_code->count+1;
 
-            $client_code = $this->code->where('group_code_id', $id)->where('code', $code);
-            $client_code->increment('count');
             $client_code->update([
                 'client'=> Auth::user()->name,
                 'phone'=> Auth::user()->phone,
                 'email'=> Auth::user()->email,
+                'count' => $count
                 ]);
             return json_encode(['success' => true]);
         }
