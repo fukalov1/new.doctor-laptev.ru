@@ -82,7 +82,7 @@ class PayServiceController extends Controller
 
         $code = $request->code;
         $valid_code = $this->payService->where('id', $request->id)->first();
-        if ($valid_code->codes->where('code', $request->code)->count()==0) {
+        if ($valid_code->codes->where('code', $request->code)->where('count','<', $valid_code->show_count)->count()==0) {
 
             $payservice = collect(new PayService());
             $payservice->name = '';
