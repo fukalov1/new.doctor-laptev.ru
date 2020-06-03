@@ -142,7 +142,7 @@ class CodeController extends AdminController
         $form->email('email', __('Email'));
         $form->text('code', __('Код'))->required();
         $form->number('count', __('Количество просмотров'))->default(0);
-        $form->switch('Free', __('Свободен'))->default(1);
+        $form->switch('free', __('Свободен'))->default(1);
 
         return $form;
     }
