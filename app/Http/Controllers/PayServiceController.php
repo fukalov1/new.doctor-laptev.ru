@@ -78,7 +78,20 @@ class PayServiceController extends Controller
         $data['address'] = config('address');
         $data['pages'] = $this->page->getMenu();
         $data['error'] = $error;
-        $data['payservice'] = $this->payService->find($request->id);
+
+        $code = $request->code;
+        $valid_code = $this->payService->where('id', $request->id)->first();
+        if ($valid_code->codes->where('code', $request->code)->count()==0) {
+
+            $payservice = collect(new PayService());
+            $payservice->name = '';
+            $payservice->private_text = '';
+            $payservice->price = '';
+            $data['payservice'] = $payservice;
+        }
+        else {
+            $data['payservice'] = $this->payService->find($request->id);
+        }
         $data['message'] = null;
         $data['id'] = $request->id;
         $data['code'] = $request->code;
