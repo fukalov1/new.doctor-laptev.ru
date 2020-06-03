@@ -4,6 +4,7 @@ namespace App\Admin\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Profile;
+use App\Review;
 use App\Setting;
 use App\User;
 use App\City;
@@ -28,6 +29,7 @@ class HomeController extends Controller
                     $users = new User();
                     $cities = new City();
                     $profiles = new Profile();
+                    $reviews = new Review();
                     $codes = new Code();
                     $setting = Setting::where('name', 'SiteEnable')->first();
                     $site_enable = '<input type="radio" name="siteEnable" class="site-enable" value="1" checked> да
@@ -57,8 +59,12 @@ class HomeController extends Controller
                         <td>'.count($cities->where('show',1)->get()).'/'.count($cities->all()).'</td>
                     </tr>
                     <tr>
-                        <td width="50%">Выдано кодов:</td>
+                        <td width="50%"><a href="/admin/group-codes">Выдано кодов</a>:</td>
                         <td>'.count($codes->where('free',0)->get()).'</td>
+                    </tr>
+                    <tr>
+                        <td width="50%"><a href="/admin/reviews">Отзывов</a>:</td>
+                        <td>'.count($reviews->get()).'</td>
                     </tr>
                     <tr>
                         <td width="50%">Сайт включен:</td>
