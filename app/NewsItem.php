@@ -24,7 +24,7 @@ class NewsItem extends Model  implements Feedable
 
     public static function getFeedItems()
     {
-        $query =  Page::where('parent_id', config('id_articles'))
+        $query =  Page::where('parent_id', config('id_articles').'11111111')
             ->select('id', 'title', 'description as summary', 'updated_at', 'url as link', 'id as author')->get()->toArray();
 
         $items = collect(); // create new collection

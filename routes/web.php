@@ -10,9 +10,12 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+use App\Page;
 use Illuminate\Support\Facades\Route;
 
 Route::feeds();
+
 
 Route::group([
     'middleware' => 'enable'

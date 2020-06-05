@@ -2,13 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3c791e86-834c-48b9-b2fa-0e52a8ebe085" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/feeds/news.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/rss.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/new.doctor-laptev.ru.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/new.doctor-laptev.ru.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Page.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Page.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/NewsItem.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/NewsItem.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/page.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/page.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
@@ -164,6 +161,7 @@
       <path value="$PROJECT_DIR$/vendor/phenx/php-font-lib" />
       <path value="$PROJECT_DIR$/vendor/barryvdh/laravel-dompdf" />
       <path value="$PROJECT_DIR$/vendor/spatie/laravel-feed" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php80" />
     </include_path>
   </component>
   <component name="ProjectId" id="1XwekaV3HMHoKu8cGuljl4cidvp" />
@@ -245,7 +243,7 @@
       <workItem from="1591179498679" duration="5361000" />
       <workItem from="1591189251685" duration="4360000" />
       <workItem from="1591256300834" duration="2093000" />
-      <workItem from="1591267095022" duration="7087000" />
+      <workItem from="1591267095022" duration="15023000" />
     </task>
     <servers />
   </component>

@@ -53,6 +53,7 @@
 </script>
 <noscript><div><img src="https://mc.yandex.ru/watch/64554091" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
+
 @include('feed::links')
 <div id="app">
     @include('layouts.header')
