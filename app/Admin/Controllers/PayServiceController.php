@@ -35,9 +35,14 @@ class PayServiceController extends AdminController
 
         $grid->column('name', __('Наименование'));
         $grid->column('group_code.name', __('Группа кодов'))->display(function () {
-            $code_free = $this->codes()->where('free', true)->get()->count();
-            $code_all = $this->codes()->get()->count();
-            return '<a href="/admin/codes?set='.$this->group_code->id.'">'.$this->group_code->name.' ('.$code_free.'/'.$code_all.')</a>';
+            if ($this->group_code) {
+                $code_free = $this->codes()->where('free', true)->get()->count();
+                $code_all = $this->codes()->get()->count();
+                return '<a href="/admin/codes?set=' . $this->group_code->id . '">' . $this->group_code->name . ' (' . $code_free . '/' . $code_all . ')</a>';
+            }
+            else {
+                return '<a href="/admin/group-codes">назначить</a>';
+            }
         });
         $grid->column('price', __('Стоимость'));
         $grid->column('active', __('Активный'))->display(function () {
@@ -116,10 +121,10 @@ class PayServiceController extends AdminController
         $form = new Form(new PayService());
 
 //        $form->display('group_code.name', __('Группа кодов'));
-        $form->select('group_code.id', 'Группа кодов')->options(function ($id) {
-            $codes = GroupCode::select('id','name')->get();
-            return $codes->pluck('name', 'id');
-        });
+//        $form->select('group_code.id', 'Группа кодов')->options(function ($id) {
+//            $codes = GroupCode::select('id','name')->get();
+//            return $codes->pluck('name', 'id');
+//        });
         $form->text('name', __('Наименование'));
         $form->decimal('price', __('Стоимость'));
         $form->switch('active', __('Активный'));

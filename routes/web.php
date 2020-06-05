@@ -14,7 +14,7 @@
 use App\Page;
 use Illuminate\Support\Facades\Route;
 
-Route::feeds();
+//Route::feeds();
 
 
 Route::group([

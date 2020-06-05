@@ -4,6 +4,7 @@ namespace App\Admin\Controllers;
 
 use App\Admin\Extensions\CheckRow;
 use App\GroupCode;
+use App\PayService;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
@@ -35,6 +36,7 @@ class GroupCodeController extends AdminController
 
 //        $grid->column('id', __('Id'));
         $grid->column('pay_service.name', __('Платный сервис'));
+
         $grid->column('name', 'Наименование группы')->display(function () {
             $code_free = $this->codes()->where('free', true)->get()->count();
             $code_all = $this->codes()->get()->count();
@@ -84,7 +86,12 @@ class GroupCodeController extends AdminController
     {
         $form = new Form(new GroupCode());
 
-        $form->number('pay_service_id', __('Платный сервис'));
+//        $form->number('pay_service_id', __('Платный сервис'));
+        $form->select('pay_service_id', 'Платный сервис')->options(function ($id) {
+            $codes = PayService::select('id','name')->get();
+            return $codes->pluck('name', 'id');
+        });
+
         $form->text('name', __('Наименование группы'));
         $form->date('start_date', __('Дата начала'))->default(date('Y-m-d'));
         $form->date('end_date', __('Срок окончания'))->default(date('Y-m-d'));
