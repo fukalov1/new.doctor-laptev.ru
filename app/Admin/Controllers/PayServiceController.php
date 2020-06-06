@@ -33,6 +33,7 @@ class PayServiceController extends AdminController
             $actions->prepend('<a href=""><i class="fa fa-paper-plane"></i>Медиа-файлы</a>');
         });
 
+        $grid->column('orders', __('Номер показа'))->editable();
         $grid->column('name', __('Наименование'));
         $grid->column('group_code.name', __('Группа кодов'))->display(function () {
             if ($this->group_code) {
@@ -125,6 +126,7 @@ class PayServiceController extends AdminController
 //            $codes = GroupCode::select('id','name')->get();
 //            return $codes->pluck('name', 'id');
 //        });
+        $form->number('orders', __('Номер показа'));
         $form->text('name', __('Наименование'));
         $form->decimal('price', __('Стоимость'));
         $form->switch('active', __('Активный'));

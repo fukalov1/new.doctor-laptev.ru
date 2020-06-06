@@ -23,7 +23,8 @@ class PayService extends Model
 
     public function getActive() {
         return $this->where('active', true)
-                ->get();
+            ->orderBy('orders')
+            ->get();
     }
 
     public function updateVideoFiles($id) {
