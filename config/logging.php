@@ -61,7 +61,10 @@ return [
             'emoji' => ':boom:',
             'level' => 'critical',
         ],
-
+        'site' => [
+            'driver' => 'daily',
+            'path' => storage_path('logs/site.log'),
+        ],
         'papertrail' => [
             'driver' => 'monolog',
             'level' => 'debug',

@@ -24,31 +24,33 @@ class NewsItem extends Model  implements Feedable
 
     public static function getFeedItems()
     {
-        $query =  Page::where('parent_id', config('id_articles').'11111111')
-            ->select('id', 'title', 'description as summary', 'updated_at', 'url as link', 'id as author')->get()->toArray();
+        $query =  Page::where('parent_id', config('id_articles'))
+            ->select('id', 'title', 'description as summary', 'updated_at', 'url as link', 'id as author')
+            ->orderByDesc('created_at')
+            ->get();
 
-        $items = collect(); // create new collection
+//        $items = collect(); // create new collection
+//
+//        foreach ($query as $key => $value) {
+//            if ($value['title']=='')
+//                continue;
+//            $query[$key]['created_at'] = Carbon::parse($value['updated_at'])->format('dS F Y H:i a');
+//            $query[$key]['link'] = 'https://doctor-laptev.ru/' . $value['link'];
+//            $query[$key]['author'] = 'Лаптев А.В.';
+//
+//
+//
+//            $instance = new static; // create new NewsItem model class
+//
+//            foreach($value as $attribute => $_value) {
+//                $instance->{$attribute} = $_value; // copy available attribute/column and its value
+//            }
+//
+//            $instance->exists = true; // tell this model is already exists, forcely
+//            $items[$key] = $instance; // assign this model to the collection
+//        }
 
-        foreach ($query as $key => $value) {
-            if ($value['title']=='')
-                continue;
-            $query[$key]['created_at'] = Carbon::parse($value['updated_at'])->format('dS F Y H:i a');
-            $query[$key]['link'] = 'https://doctor-laptev.ru/' . $value['link'];
-            $query[$key]['author'] = 'Лаптев А.В.';
-
-
-
-            $instance = new static; // create new NewsItem model class
-
-            foreach($value as $attribute => $_value) {
-                $instance->{$attribute} = $_value; // copy available attribute/column and its value
-            }
-
-            $instance->exists = true; // tell this model is already exists, forcely
-            $items[$key] = $instance; // assign this model to the collection
-        }
-
-        return $items;
+        return $query;
 
     }
 

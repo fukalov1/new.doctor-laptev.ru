@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\NewsItem;
 use App\QuestBlock;
 use App\SubDomain;
 use Mail;
@@ -19,11 +20,12 @@ class ArticleController extends Controller
 {
     public $bread_crubs;
 
-    public function __construct(Page $page, PageBlock $pageBlock, MailForm $mailForm)
+    public function __construct(Page $page, PageBlock $pageBlock, MailForm $mailForm, NewsItem $newsItem)
     {
         $this->page = $page;
         $this->pageBlock = $pageBlock;
         $this->mailForm = $mailForm;
+        $this->newsItem = $newsItem;
     }
 
     public function showAll()
@@ -196,4 +198,11 @@ class ArticleController extends Controller
 
     }
 
+    public function getFeeds()
+    {
+        $items =  $this->newsItem->getFeedItems();
+        return response()
+            ->view('feeds.news', ['updated' => $items->first()->updated_at, 'items' => $items])
+            ->header('Content-type', 'text/xml');
+    }
 }

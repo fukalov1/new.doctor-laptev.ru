@@ -14,12 +14,14 @@
 use App\Page;
 use Illuminate\Support\Facades\Route;
 
-//Route::feeds();
+Route::feeds();
 
 
 Route::group([
     'middleware' => 'enable'
 ], function() {
+
+    Route::get('/feeds', 'ArticleController@getFeeds');
 
     Route::get('/articles', 'ArticleController@showAll');
     Route::get('/photo-reviews', 'PhotoReviewController@show');
