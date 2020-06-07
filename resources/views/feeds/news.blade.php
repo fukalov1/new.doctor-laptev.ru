@@ -11,10 +11,11 @@
         <pubDate>{{ $updated }}</pubDate>
 
         @foreach($items as $item)
-            <item>
+            <item turbo="true">
                 <title><![CDATA[{{ $item->title }}]]></title>
                 <link>{{ url($item->link) }}</link>
                 <description><![CDATA[{!! $item->summary !!}]]></description>
+                <turbo:content><![CDATA[ {!! $item->summary !!}]]></turbo:content>
                 <author><![CDATA[ Лаптев А.В. ]]></author>
                 <guid>{{ url($item->id) }}</guid>
                 <pubDate>{{ $item->created_at }}</pubDate>
