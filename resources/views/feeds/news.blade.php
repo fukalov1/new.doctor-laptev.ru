@@ -1,32 +1,24 @@
-{!! '<?xml version="1.0" encoding="UTF-8"?>' !!}
-<feed xmlns="http://www.w3.org/2005/Atom">
-    <id>{{ asset('feeds') }}</id>
-    <link href="{{ asset('feeds') }}"/>
-    <title>
-        <![CDATA[ Новости сайта Доктор Лаптев www.doctor-laptev.ru ]]>
-    </title>
-    <description>Канал об избавлении от пищевой зависимости</description>
-    <language>ru-RU</language>
-    <updated> {{ $updated }}</updated>
-    @foreach($items as $item)
-        <entry>
-            <title>
-                <![CDATA[ {{ $item->title }} ]]>
-            </title>
-            <link rel="alternate" href="{{ asset( $item->link ) }}"/>
-            <id>{{ $item->id }}</id>
-            <author>
-                <name>
-                    <![CDATA[ Лаптев А.В. ]]>
-                </name>
-            </author>
-            <summary type="html">
-                <![CDATA[{{ $item->summary }} ]]>
-            </summary>
-            <category type="html">
-                <![CDATA[ ]]>
-            </category>
-            <updated>{{ $item->created_at }}</updated>
-        </entry>
-    @endforeach
-</feed>
+<?=
+/* Using an echo tag here so the `<? ... ?>` won't get parsed as short tags */
+'<?xml version="1.0" encoding="UTF-8"?>'.PHP_EOL
+?>
+<rss version="2.0">
+    <channel>
+        <title><![CDATA[ Новости сайта Доктор Лаптев www.doctor-laptev.ru ]]></title>
+        <link><![CDATA[{{ asset('feeds') }}]]></link>
+        <description><![CDATA[ Канал об избавлении от пищевой зависимости ]]></description>
+        <language>ru</language>
+        <pubDate>{{ $updated }}</pubDate>
+
+        @foreach($items as $item)
+            <item>
+                <title><![CDATA[{{ $item->title }}]]></title>
+                <link>{{ url($item->link) }}</link>
+                <description><![CDATA[{!! $item->summary !!}]]></description>
+                <author><![CDATA[ Лаптев А.В. ]]></author>
+                <guid>{{ url($item->id) }}</guid>
+                <pubDate>{{ $item->created_at }}</pubDate>
+            </item>
+        @endforeach
+    </channel>
+</rss>
