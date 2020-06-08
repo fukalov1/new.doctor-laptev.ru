@@ -3,6 +3,7 @@
 namespace App\Admin\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\PayService;
 use App\Profile;
 use App\Review;
 use App\Setting;
@@ -28,6 +29,7 @@ class HomeController extends Controller
 //                    $column->append(Dashboard::environment());
                     $users = new User();
                     $cities = new City();
+                    $pay_service = new PayService();
                     $profiles = new Profile();
                     $reviews = new Review();
                     $codes = new Code();
@@ -57,6 +59,10 @@ class HomeController extends Controller
                     <tr>
                         <td width="50%"><a href="/admin/cities">Городов (активных/всего)</a>:</td>
                         <td>'.count($cities->where('show',1)->get()).'/'.count($cities->all()).'</td>
+                    </tr>
+                    <tr>
+                        <td width="50%"><a href="/admin/pay-services">Платных сервисов (активных/всего)</a>:</td>
+                        <td>'.count($pay_service->where('active',1)->get()).'/'.count($pay_service->all()).'</td>
                     </tr>
                     <tr>
                         <td width="50%"><a href="/admin/group-codes">Выдано кодов</a>:</td>
