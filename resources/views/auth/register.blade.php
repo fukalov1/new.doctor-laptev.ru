@@ -134,6 +134,13 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
+                                <input type="checkbox" name="agreement" required>
+                                Вы даете согласие на обработку персональных данных и соглашаетесь c <a href="{{ asset('/politika-konfidencialnosti') }}">Политикой конфиденциальности</a> и <a href="{{ asset('/polzovatelskoe-soglashenie') }}">Пользовательским соглашением</a>
+                            </div>
+                        </div>
+
+                        <div class="form-group row mb-0">
+                            <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn more black">
                                     Зарегистрировать
                                 </button>

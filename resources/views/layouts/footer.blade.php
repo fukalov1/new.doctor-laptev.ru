@@ -83,54 +83,24 @@
 
                 </div>
             </div>
-{{--            <div class="col-lg-4 mt-4">--}}
-{{--                <h4 class="mb-4">Quick Links</h4>--}}
-{{--                <div class="links-wthree d-flex">--}}
-{{--                    <ul class="list-info-wthree">--}}
-{{--                        <li><a href="#"><span class="fa fa-angle-double-right" aria-hidden="true"></span> Online Websites</a></li>--}}
-{{--                        <li><a href="#"><span class="fa fa-angle-double-right" aria-hidden="true"></span> Free Application</a></li>--}}
-{{--                        <li><a href="#"><span class="fa fa-angle-double-right" aria-hidden="true"></span> Support Helpline</a></li>--}}
-{{--                        <li><a href="#"><span class="fa fa-angle-double-right" aria-hidden="true"></span> Privacy Ploicy</a></li>--}}
-{{--                        <li><a href="#"><span class="fa fa-angle-double-right" aria-hidden="true"></span> Ready to Build</a></li>--}}
-{{--                        <li><a href="#"><span class="fa fa-angle-double-right" aria-hidden="true"></span> Free Application</a></li>--}}
-{{--                    </ul>--}}
-{{--                    <ul class="list-info-wthree ml-5">--}}
-{{--                        <li>--}}
-{{--                            <a href="index.html"><span class="fa fa-angle-double-right" aria-hidden="true"></span>--}}
-{{--                                Home--}}
-{{--                            </a>--}}
-{{--                        </li>--}}
-{{--                        <li>--}}
-{{--                            <a href="about.html"><span class="fa fa-angle-double-right" aria-hidden="true"></span>--}}
-{{--                                About Us--}}
-{{--                            </a>--}}
-{{--                        </li>--}}
-{{--                        <li>--}}
-{{--                            <a href="single.html"><span class="fa fa-angle-double-right" aria-hidden="true"></span>--}}
-{{--                                Single Page--}}
-{{--                            </a>--}}
-{{--                        </li>--}}
-{{--                        <li>--}}
-{{--                            <a href="team.html"><span class="fa fa-angle-double-right" aria-hidden="true"></span>--}}
-{{--                                Team--}}
-{{--                            </a>--}}
-{{--                        </li>--}}
-{{--                        <li>--}}
-{{--                            <a href="contact.html"><span class="fa fa-angle-double-right" aria-hidden="true"></span>--}}
-{{--                                Contact Us--}}
-{{--                            </a>--}}
-{{--                        </li>--}}
-{{--                    </ul>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-            <div class="col-lg-8 mt-8 ad-info">
+            <div class="col-lg-4 mt-4 ad-info">
                 <h4 class="mb-4">Контактная информация</h4>
                 <p><span class="fa fa-map-marker"></span>{{ config('address')  }}<span>Москва.</span></p>
                 <p ><span class="fa fa-phone"></span>{{ config('mobile')  }}</p>
                 <p ><span class="fa fa-fax"></span> {{ config('phone')  }} </p>
                 <p><span class="fa fa-envelope"></span><a href="mailto:{{ config('email')  }}">{{ config('email')  }}</a></p>
             </div>
+            <div class="col-lg-4 mt-4">
 
+                <div class="links-wthree d-flex">
+                    <ul class="list-info-wthree">
+                        <li><a href="{{ asset('/polzovatelskoe-soglashenie') }}"><span class="fa fa-angle-double-right" aria-hidden="true"></span>Пользовательское соглашение</a></li>
+                        <li><a href="{{ asset('/politika-konfidencialnosti') }}"><span class="fa fa-angle-double-right" aria-hidden="true"></span>Политика конфиденциальности</a></li>
+                        <li><a href="{{ asset('/otkaz-ot-obyazatelstv') }}"><span class="fa fa-angle-double-right" aria-hidden="true"></span>Отказ от обязательств</a></li>
+                    </ul>
+
+                </div>
+            </div>
         </div>
     </div>
 </footer>

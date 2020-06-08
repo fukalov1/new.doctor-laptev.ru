@@ -26,9 +26,9 @@ class AjaxFileUploadController extends AdminController
      */
     public function ajaxFileUploadPost(Request $request)
     {
-//        dd( pathinfo($_FILES['upl']['name'], PATHINFO_EXTENSION));
+        dd( pathinfo($_FILES['upl']['name'], PATHINFO_EXTENSION));
         $validator = Validator::make($request->all(), [
-            'upl' => 'required|mimes:m4v,mp4,webm,ogv,mpga,wav,mp3|max:51200',
+            'upl' => 'required|mimes:m4v,mp4,webm,ogv,mpga,wav,mp3|max:1051200',
         ]);
 
 

@@ -146,7 +146,7 @@ nav:after {
  * and adding "position:reltive" */
 
 nav ul {
-    float: right;
+    /*float: right;*/
     padding: 0;
     margin: 0;
     list-style: none;
@@ -439,6 +439,9 @@ li>a:only-child:after {
     nav ul li {
         display: block;
         width: 94%;
+    }
+    nav ul {
+        background-color: #ffffff;
     }
 
 }
@@ -1597,6 +1600,16 @@ h4.title-hny {
     z-index: 2;
 }
 
+@media (max-width: 480px) {
+    nav ul {
+        background-color: #ffffff;
+        z-index: 99;
+    }
+    .fake-radio {
+        display: none;
+    }
+}
+
 @media (min-width: 480px) {
     #timeline .demo-card {
         max-width: 60%;
@@ -1608,6 +1621,7 @@ h4.title-hny {
     #timeline .demo-card {
         max-width: 40%;
     }
+
 }
 
 @media (min-width: 1000px) {
