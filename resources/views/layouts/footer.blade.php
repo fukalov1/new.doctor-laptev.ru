@@ -17,20 +17,6 @@
                     <h4>
                         Письмо Доктору Лаптеву
                     </h4>
-                        <div class="form-group">
-                            <label>Ваше имя</label>
-
-                            <input type="text" class="form-control" name="name1" id="name1" placeholder="" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Ваш E-mail</label>
-                            <input type="text" class="form-control" name="email1" id="email1" placeholder="" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Ваш телефон</label>
-                            <input type="text" class="form-control phone" name="phone1" id="phone1" placeholder="" required>
-                        </div>
 
                         <div class="form-group">
                             <label>Сообщение</label>

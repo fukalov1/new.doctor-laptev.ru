@@ -1600,7 +1600,7 @@ h4.title-hny {
     z-index: 2;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
     nav ul {
         background-color: #ffffff;
         z-index: 99;

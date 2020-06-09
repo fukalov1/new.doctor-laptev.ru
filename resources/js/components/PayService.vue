@@ -58,9 +58,9 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-12 text-center d-md-none d-xs-block">
-                <h3>Услуга не доступна для получения на мобильных устройствах</h3>
-            </div>
+<!--            <div class="col-md-12 text-center d-md-none d-xs-block">-->
+<!--                <h3>Услуга не доступна для получения на мобильных устройствах</h3>-->
+<!--            </div>-->
         </div>
 
     </div>

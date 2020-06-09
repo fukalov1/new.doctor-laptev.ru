@@ -15,7 +15,7 @@
                 <title><![CDATA[{{ $item->title }}]]></title>
                 <link>{{ url($item->link) }}</link>
                 <description><![CDATA[{!! $item->summary !!}]]></description>
-                <turbo:content><![CDATA[ {!! $item->summary !!}]]></turbo:content>
+                <turbo:content><![CDATA[ {!! $item->anons !!}]]></turbo:content>
                 <author><![CDATA[ Лаптев А.В. ]]></author>
                 <guid>{{ url($item->id) }}</guid>
                 <pubDate>{{ $item->created_at }}</pubDate>
