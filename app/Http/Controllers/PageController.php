@@ -16,6 +16,7 @@ use App\Photoset;
 use App\MailForm;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
 
 class PageController extends Controller
 {
