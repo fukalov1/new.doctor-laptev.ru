@@ -416,7 +416,7 @@ class PayServiceController extends Controller
         $crc = strtoupper($crc);
 
         $my_crc = strtoupper(md5("$out_summ:$inv_id:$pass2:shp_email=$shp_email:shp_payid=$shp_payid"));
-        dd("$out_summ:$inv_id:$pass2:shp_email=$shp_email:shp_payid=$shp_payid");
+//        dd("$out_summ:$inv_id:$pass2:shp_email=$shp_email:shp_payid=$shp_payid");
 
 // проверка корректности подписи
         if ($my_crc !=$crc)
