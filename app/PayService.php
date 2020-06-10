@@ -54,6 +54,27 @@ class PayService extends Model
                 $data['audio_mp3'] = $filename . '.mp3';
                 rename(storage_path($path.'tmp/' . $filename . '.mp3'), storage_path($path . $filename . '.mp3'));
             }
+
+            if (file_exists(storage_path($path.'tmp/' . $filename . '.MP4'))) {
+                $data['video_mp4'] = $filename . '.mp4';
+                rename(storage_path($path.'tmp/' . $filename . '.MP4'), storage_path($path . $filename . '.mp4'));
+            }
+            if (file_exists(storage_path($path.'tmp/' . $filename . '.WEBM'))) {
+                $data['video_webm'] = $filename . '.webm';
+                rename(storage_path($path.'tmp/' . $filename . '.WEBM'), storage_path($path . $filename . '.webm'));
+            }
+            if (file_exists(storage_path($path.'tmp/' . $filename . '.M4V'))) {
+                $data['video_m4v'] = $filename . '.m4v';
+                rename(storage_path($path.'tmp/' . $filename . '.M4V'), storage_path($path . $filename . '.m4v'));
+            }
+            if (file_exists(storage_path($path.'tmp/' . $filename . '.OGV'))) {
+                $data['video_ogv'] = $filename . '.ogv';
+                rename(storage_path($path.'tmp/' . $filename . '.OGV'), storage_path($path . $filename . '.ogv'));
+            }
+            if (file_exists(storage_path($path.'tmp/' . $filename . '.MP3'))) {
+                $data['audio_mp3'] = $filename . '.mp3';
+                rename(storage_path($path.'tmp/' . $filename . '.MP3'), storage_path($path . $filename . '.mp3'));
+            }
             if (count($data) > 0) {
                 $this->find($id)->update($data);
             }
