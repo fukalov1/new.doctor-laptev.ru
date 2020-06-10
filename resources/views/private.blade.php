@@ -35,11 +35,15 @@
 
                 <div class="row">
                     <div class="col-md-12">
+                        @if($payservice->id>0)
                         @if($payservice->show_private)
                             <pay-service :id="{{ $id }}" :code="'{{ $code }}'">
                             </pay-service>
                         @else
                             <h5 class="text-center">Дополнительное видео будет доступно позже</h5>
+                        @endif
+                        @else
+                            <h5 class="text-center">Количество просмотров по данному коду исчерпано</h5>
                         @endif
                     </div>
                 </div>

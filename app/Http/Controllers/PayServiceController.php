@@ -89,8 +89,10 @@ class PayServiceController extends Controller
         if ($valid_code->codes->where('code', $request->code)->where('count','<', $valid_code->show_count)->count()==0) {
 
             $payservice = collect(new PayService());
+            $payservice->id = 0;
             $payservice->name = '';
             $payservice->private_text = '';
+            $payservice->show_private = false;
             $payservice->price = '';
             $data['payservice'] = $payservice;
         }
