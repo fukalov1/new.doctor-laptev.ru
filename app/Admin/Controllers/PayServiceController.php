@@ -49,6 +49,9 @@ class PayServiceController extends AdminController
         $grid->column('active', __('Активный'))->display(function () {
             return $this->active ? 'да' : 'нет';
         })->sortable();
+        $grid->column('show_private', __('Закрытое видео'))->display(function () {
+            return $this->show_private ? 'активно' : 'не активно';
+        })->sortable();
         $grid->column('show_count', __('Макс. число показов'));
         $grid->column('max_time', __('Макс. время показа'));
         $grid->column('image', __('Image'))->display(function () {
@@ -144,6 +147,7 @@ class PayServiceController extends AdminController
                     'filebrowserWindowWidth' => '1000',
                     'filebrowserWindowHeight' => '700'
                 ])->default('-');
+        $form->switch('show_private', __('Видео закрытой части активно'));
         $form->ckeditor('private_text', 'Текст закрытой части')
             ->options(
                 [
