@@ -52,7 +52,7 @@
                         <div>
                             <video v-show="playing"
                                    id="video1"
-                                   muted
+                                   :muted="{true : payservice.start_date }"
                                    :poster="payservice.image"
                                    style="width:100%" :title="payservice.name">
                                 <source v-if="payservice.video_mp4" :src="payservice.video_mp4" type="video/mp4"/>
