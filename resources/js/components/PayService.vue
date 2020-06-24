@@ -49,10 +49,10 @@
 <!--                                Трансляция {{ payservice.name }} еще не начата.-->
 <!--                            </h4>-->
 <!--                        </div>-->
-                        <div>
+                        <div v-if="payservice.start_date">
                             <video v-show="playing"
                                    id="video1"
-                                   :muted="{true : payservice.start_date }"
+                                   muted
                                    :poster="payservice.image"
                                    style="width:100%" :title="payservice.name">
                                 <source v-if="payservice.video_mp4" :src="payservice.video_mp4" type="video/mp4"/>
@@ -61,6 +61,20 @@
                                 <source v-if="payservice.video_m4v" :src="payservice.video_m4v"/>
                             </video>
                             <audio id="audio1">
+                                <source v-if="payservice.audio_mp3" :src="payservice.audio_mp3" type="audio/mpeg">
+                            </audio>
+                        </div>
+                        <div v-else>
+                            <video v-show="playing"
+                                   id="video2"
+                                   :poster="payservice.image"
+                                   style="width:100%" :title="payservice.name">
+                                <source v-if="payservice.video_mp4" :src="payservice.video_mp4" type="video/mp4"/>
+                                <source v-if="payservice.video_webm" :src="payservice.video_webm" type="video/webm"/>
+                                <source v-if="payservice.video_ogv" :src="payservice.video_ogv" type="video/ogg"/>
+                                <source v-if="payservice.video_m4v" :src="payservice.video_m4v"/>
+                            </video>
+                            <audio id="audio2">
                                 <source v-if="payservice.audio_mp3" :src="payservice.audio_mp3" type="audio/mpeg">
                             </audio>
                         </div>
@@ -188,7 +202,7 @@
             },
             playVideo() {
                 console.log('start timer');
-                let video = document.getElementById("video1");
+                let video = document.getElementById("video2");
                 video.play();
                 this.playAudio();
 
@@ -221,13 +235,13 @@
             },
             playAudio() {
                 if (this.payservice.audio_mp3) {
-                    let audio = document.getElementById("audio1");
+                    let audio = document.getElementById("audio2");
                     audio.play();
                 }
             },
             stopAudio() {
                 if (this.payservice.audio_mp3) {
-                    let audio = document.getElementById("audio1");
+                    let audio = document.getElementById("audio2");
                     audio.pause();
                 }
             },
@@ -239,7 +253,7 @@
             stopTimer() {
                 console.log('stop player');
                 clearTimeout(this.timer);
-                let video = document.getElementById("video1");
+                let video = document.getElementById("video2");
                 video.pause();
                 this.stopAudio();
                 this.playing = false;
