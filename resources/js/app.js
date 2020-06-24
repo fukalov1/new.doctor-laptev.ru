@@ -2,6 +2,9 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
+import moment from 'moment';
+moment().format();
+
 Vue.component('pay-service', require('./components/PayService.vue').default);
 
 import PayService from './components/PayService.vue'

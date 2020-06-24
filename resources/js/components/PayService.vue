@@ -11,9 +11,24 @@
                     Осталось просмотров: {{ lastCount }}
                 </h5>
             </div>
-            <div class="col-md-12 text-center pb-5 d-none d-sm-block">
-                <button class="btn btn-danger"
-                        id="video1-play" @click="playVideo()" v-if="lastCount>0">Начать просмотр</button>
+            <div class="col-md-12 text-center pb-5 d-none d-sm-block"  v-if="lastCount>0">
+                <div v-if="start_date">
+                    <h4 v-if="playing">
+                        Идет трансляция
+                    </h4>
+                    <h4 v-else-if="showVideo===0">
+                        Начало трансляции в  {{ startDate }}
+                    </h4>
+                    <div v-if="!playing && showVideo>0">
+                        <h4 class="tittle-w3ls text-center mb-5">
+                            {{ payservice.name }} окончен.
+                        </h4>
+                    </div>
+                </div>
+                <button
+                    class="btn btn-danger"
+                    id="video1-play"
+                    @click="playVideo()" v-else>Начать просмотр</button>
             </div>
             <div class="col-md-12 text-center d-none d-sm-block">
                 <div id="frame" class="easyhtml5video">
@@ -28,28 +43,25 @@
                         Количество просмотров по введенному коду доступа использовано. Просмотр невозможен.
                     </div>
                     <div v-else>
-                        <div v-if="finishPlay">
-                            <h4 class="tittle-w3ls text-left mb-5">
-                                {{ payservice.name }} окончен.
-                            </h4>
-                        </div>
-                        <div v-else>
-                            <video v-if="payservice.video_mp4"
-                        id="video1"
-                        :poster="payservice.image"
-                        style="width:100%" :title="payservice.name">
-                        <source :src="payservice.video_mp4" type="video/mp4"/>
-                        <source :src="payservice.video_webm" type="video/webm"/>
-                        <source :src="payservice.video_ogv" type="video/ogg"/>
-                        <source :src="payservice.video_m4v"/>
-<!--                        <object type="application/x-shockwave-flash" data="/flashfox.swf" width="640" height="493" style="position:relative;">-->
-<!--                            <param name="movie" value="/flashfox.swf"/>-->
-<!--                            <param name="allowFullScreen" value="true/">-->
-<!--                            <param name="flashVars" value="autoplay=false&amp;controls=false&amp;fullScreenEnabled=false&amp;posterOnEnd=true&amp;loop=false&amp;poster=/images/ab1.jpg&amp;src=/1459391843.m4v"/>-->
-<!--                            <embed src="/flashfox.swf" width="640" height="493" style="position:relative;" flashvars="autoplay=false&amp;controls=false&amp;fullScreenEnabled=false&amp;posterOnEnd=true&amp;loop=false&amp;poster=/1459391843.jpg&amp;src=/1459391843.m4v" allowfullscreen="true" wmode="transparent" type="application/x-shockwave-flash" pluginspage="http://www.adobe.com/go/getflashplayer_en">-->
-<!--                            <img alt="1459391843" src="/1459391843.jpg" style="position:absolute;left:0;" width="100%" title="Video playback is not supported by your browser"/>-->
-<!--                        </object>-->
-                    </video>
+
+<!--                        <div v-else-if="showVideo==0">-->
+<!--                            <h4 class="tittle-w3ls text-left mb-5">-->
+<!--                                Трансляция {{ payservice.name }} еще не начата.-->
+<!--                            </h4>-->
+<!--                        </div>-->
+                        <div>
+                            <video v-show="playing"
+                                   id="video1"
+                                   :poster="payservice.image"
+                                   style="width:100%" :title="payservice.name">
+                                <source :src="payservice.video_mp4" type="video/mp4"/>
+                                <source :src="payservice.video_webm" type="video/webm"/>
+                                <source :src="payservice.video_ogv" type="video/ogg"/>
+                                <source :src="payservice.video_m4v"/>
+                            </video>
+                            <audio id="audio1">
+                                <source :src="payservice.audio_mp3" type="audio/mpeg">
+                            </audio>
                         </div>
                     </div>
                     <div class="eh5v_script">
@@ -67,6 +79,9 @@
 </template>
 
 <script>
+
+    import moment from 'moment'
+
     export default {
         name: 'PayService',
         props: {
@@ -89,9 +104,15 @@
                     video_ogv: null,
                     video_webm: null,
                 },
+                start_date: null,
+                current_date: null,
+                finish_date: null,
                 timer: null,
+                timer1: null,
                 currentTime: 0,
-                finishPlay: false
+                finishPlay: false,
+                max_time: null,
+                playing: false
             }
         },
         created() {
@@ -106,6 +127,24 @@
             }
         },
         computed: {
+            startDate: function () {
+                return moment(this.payservice.start_date).format('DD-MM-YYYY HH:mm:ss');
+            },
+            showVideo: function () {
+                let result = 0;
+                if ( (this.current_date >= this.start_date)
+                    && (this.current_date <= this.finish_date) ) {
+                    result = 1;
+                }
+                else if (this.current_date < this.start_date) {
+                    result = 0;
+                }
+                else {
+                    result = 2;
+                }
+
+                return result;
+            },
             validCode: function () {
                 let result = 0;
                 if (this.payservice.group_code) {
@@ -127,11 +166,20 @@
                     .then(response => {
                         let path = '/storage';
                         this.payservice = response.data;
+
                         this.payservice.image = `/uploads/${this.payservice.image}`
                         this.payservice.video_mp4 = `${path}/${this.payservice.video_mp4}`
                         this.payservice.video_m4v = `${path}/${this.payservice.video_m4v}`
                         this.payservice.video_ogv = `${path}/${this.payservice.video_ogv}`
                         this.payservice.video_webm = `${path}/${this.payservice.video_webm}`
+                        this.payservice.audio_mp3 = `${path}/${this.payservice.audio_mp3}`
+                        if (this.payservice.start_date) {
+                            this.start_date = Date.parse(this.payservice.start_date)/1000;
+                            this.finish_date = Date.parse(this.payservice.start_date)/1000+this.payservice.max_time;
+                            this.current_date = Date.parse(Date())/1000;
+                            console.log('start_date', this.start_date, 'finish_date', this.finish_date, this.current_date);
+                            this.startVideo();
+                        }
                     })
                     .catch(error => {
                         reject(error);
@@ -139,7 +187,12 @@
             },
             playVideo() {
                 console.log('start timer');
+                let video = document.getElementById("video1");
+                video.play();
+                this.playAudio();
+
                 this.startTimer();
+                this.playing = true;
                 axios.post(`/check-pay-service`, {id: this.id, code: this.code})
                     .then(response => {
                         console.log(response.data.success);
@@ -151,13 +204,44 @@
 
                     });
             },
+            startVideo() {
+                this.timer1 = setInterval(() => {
+                    this.current_date++;
+                    if ( this.showVideo === 1 ){
+                        this.playVideo();
+                        clearTimeout(this.timer1);
+                    }
+                    else if ( this.showVideo == 0 ){
+                    }
+                    else {
+                        this.finishPlay = true;
+                    }
+                }, 1000)
+            },
+            playAudio() {
+                if (this.payservice.audio_mp3) {
+                    let audio = document.getElementById("audio1");
+                    audio.play();
+                }
+            },
+            stopAudio() {
+                if (this.payservice.audio_mp3) {
+                    let audio = document.getElementById("audio1");
+                    audio.pause();
+                }
+            },
             startTimer() {
                 this.timer = setInterval(() => {
                     this.currentTime++
                 }, 1000)
             },
             stopTimer() {
+                console.log('stop player');
                 clearTimeout(this.timer);
+                let video = document.getElementById("video1");
+                video.pause();
+                this.stopAudio();
+                this.playing = false;
                 this.finishPlay = true;
             },
         }

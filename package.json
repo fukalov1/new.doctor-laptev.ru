@@ -25,6 +25,7 @@
     },
     "dependencies": {
         "bootstrap-show-password": "^1.2.1",
+        "moment": "^2.27.0",
         "vue-yandex-maps": "^0.10.6"
     }
 }

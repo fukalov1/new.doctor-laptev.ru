@@ -135,6 +135,7 @@ class PayServiceController extends AdminController
         $form->switch('active', __('Активный'));
         $form->number('show_count', __('Число показов'))->default(1);
         $form->number('max_time', __('Максимальная продолжительность'));
+        $form->datetime('start_date', 'Время запуска');
         $form->ckeditor('text', 'Текст публичной части')
             ->options(
                 [

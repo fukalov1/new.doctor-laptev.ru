@@ -44,12 +44,13 @@ Route::group([
 
     $router->resource('log-payments', LogPaymentsController::class)->middleware('set_payservice');
 
-    $router->post('save-video-files', 'VideoFilesController@saveFiles');
     $router->resource('group-codes', GroupCodeController::class);
     $router->resource('codes', CodeController::class)->middleware('set_group_code');
 
     $router->resource('reviews', ReviewController::class);
     $router->resource('video-files', VideoFilesController::class)->middleware('set_payservice');
+    $router->post('video-files/save', 'VideoFilesController@saveFiles');
+    $router->post('video-files/delete', 'VideoFilesController@deleteFile');
 
     $router->resource('settings', SettingController::class);
 

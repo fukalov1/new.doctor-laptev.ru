@@ -8,7 +8,7 @@ use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Layout\Content;
 use Encore\Admin\Show;
-use http\Env\Request;
+use Illuminate\Support\Facades\Request;
 
 class VideoFilesController extends AdminController
 {
@@ -52,6 +52,30 @@ class VideoFilesController extends AdminController
             }
         }
         return redirect('/admin/pay-services');
+
+    }
+
+    public function deleteFile(Request $request)
+    {
+        $filename = request()->filename;
+        $filetype = request()->filetype;
+        $payservice = new PayService();
+
+        if (session('payservice_id')) {
+            if ($payservice->find(session('payservice_id'))->update([$filetype => null])) {
+                try {
+                    unlink(storage_path('app/public/'.$filename));
+                }
+                catch (\Exception $exception) {
+                    
+                }
+                //                dd('success',session('payservice_id'));
+            }
+            else {
+//                dd('failed',session('payservice_id'));
+            }
+        }
+        return redirect('/admin/video-files?set='.session('payservice_id'));
 
     }
 
