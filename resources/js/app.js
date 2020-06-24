@@ -53,7 +53,6 @@ $(document).ready(function() {
         var current = document.getElementById("video1-current");
         var duration = document.getElementById("video1-duration");
 
-        video.muted(false);
         video.play();
         $("#video1-play").hide();
     });
