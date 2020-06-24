@@ -51,7 +51,7 @@
 <!--                        </div>-->
                         <div v-if="payservice.start_date">
                             <video v-show="playing"
-                                   id="video1"
+                                   id="video2"
                                    muted
                                    :poster="payservice.image"
                                    style="width:100%" :title="payservice.name">
@@ -66,7 +66,7 @@
                         </div>
                         <div v-else>
                             <video v-show="playing"
-                                   id="video2"
+                                   id="video1"
                                    :poster="payservice.image"
                                    style="width:100%" :title="payservice.name">
                                 <source v-if="payservice.video_mp4" :src="payservice.video_mp4" type="video/mp4"/>
