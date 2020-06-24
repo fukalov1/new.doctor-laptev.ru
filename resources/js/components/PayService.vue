@@ -60,9 +60,6 @@
                                 <source v-if="payservice.video_ogv" :src="payservice.video_ogv" type="video/ogg"/>
                                 <source v-if="payservice.video_m4v" :src="payservice.video_m4v"/>
                             </video>
-                            <audio id="audio2">
-                                <source v-if="payservice.audio_mp3" :src="payservice.audio_mp3" type="audio/mpeg">
-                            </audio>
                         </div>
                         <div v-else>
                             <video v-show="playing"
@@ -74,10 +71,10 @@
                                 <source v-if="payservice.video_ogv" :src="payservice.video_ogv" type="video/ogg"/>
                                 <source v-if="payservice.video_m4v" :src="payservice.video_m4v"/>
                             </video>
-                            <audio id="audio1">
-                                <source v-if="payservice.audio_mp3" :src="payservice.audio_mp3" type="audio/mpeg">
-                            </audio>
                         </div>
+                        <audio id="audio" >
+                            <source v-if="payservice.audio_mp3" :src="payservice.audio_mp3" type="audio/mpeg">
+                        </audio>
                     </div>
                     <div class="eh5v_script">
                     <ul style="position: absolute; display: none; list-style-type: none; margin: 0px; padding: 0px; background: rgb(255, 255, 255); cursor: pointer; z-index: 2147483647; box-shadow: rgb(49, 49, 49) 2px 2px 10px;"><li style="margin: 0px; padding: 3px 20px; display: none;">Pause</li><li style="margin: 0px; padding: 3px 20px; display: block;">Play</li><li style="margin: 0px; padding: 3px 20px; display: block;">Mute</li><li style="margin: 0px; padding: 3px 20px; display: none;">Unmute</li>
@@ -235,13 +232,13 @@
             },
             playAudio() {
                 if (this.payservice.audio_mp3) {
-                    let audio = document.getElementById("audio2");
+                    let audio = document.getElementById("audio");
                     audio.play();
                 }
             },
             stopAudio() {
                 if (this.payservice.audio_mp3) {
-                    let audio = document.getElementById("audio2");
+                    let audio = document.getElementById("audio");
                     audio.pause();
                 }
             },
