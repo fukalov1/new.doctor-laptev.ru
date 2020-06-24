@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3c791e86-834c-48b9-b2fa-0e52a8ebe085" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/PayService.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/PayService.vue" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -246,7 +245,7 @@
       <workItem from="1592289522539" duration="1229000" />
       <workItem from="1592845576485" duration="6146000" />
       <workItem from="1592896763602" duration="1665000" />
-      <workItem from="1592904342337" duration="21183000" />
+      <workItem from="1592904342337" duration="22005000" />
     </task>
     <servers />
   </component>
