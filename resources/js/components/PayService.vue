@@ -51,12 +51,13 @@
 <!--                        </div>-->
                         <div v-if="payservice.start_date">
                             <video v-show="playing"
-                                   id="video2"
+                                   id="video1"
                                    muted
                                    :poster="payservice.image"
                                    style="width:100%" :title="payservice.name">
                                 <source v-if="payservice.video_mp4" :src="payservice.video_mp4" type="video/mp4"/>
                                 <source v-if="payservice.video_webm" :src="payservice.video_webm" type="video/webm"/>
+                                <source v-if="payservice.video_ogv" :src="payservice.video_ogv" type="video/ogg"/>
                                 <source v-if="payservice.video_ogv" :src="payservice.video_ogv" type="video/ogg"/>
                                 <source v-if="payservice.video_m4v" :src="payservice.video_m4v"/>
                             </video>
@@ -199,7 +200,7 @@
             },
             playVideo() {
                 console.log('start timer');
-                let video = document.getElementById("video2");
+                let video = document.getElementById("video1");
                 video.play();
                 this.playAudio();
 
@@ -250,7 +251,7 @@
             stopTimer() {
                 console.log('stop player');
                 clearTimeout(this.timer);
-                let video = document.getElementById("video2");
+                let video = document.getElementById("video1");
                 video.pause();
                 this.stopAudio();
                 this.playing = false;
