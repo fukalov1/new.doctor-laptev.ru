@@ -60,7 +60,7 @@
                                 <source v-if="payservice.video_ogv" :src="payservice.video_ogv" type="video/ogg"/>
                                 <source v-if="payservice.video_m4v" :src="payservice.video_m4v"/>
                             </video>
-                            <audio id="audio1">
+                            <audio id="audio2">
                                 <source v-if="payservice.audio_mp3" :src="payservice.audio_mp3" type="audio/mpeg">
                             </audio>
                         </div>
@@ -74,7 +74,7 @@
                                 <source v-if="payservice.video_ogv" :src="payservice.video_ogv" type="video/ogg"/>
                                 <source v-if="payservice.video_m4v" :src="payservice.video_m4v"/>
                             </video>
-                            <audio id="audio2">
+                            <audio id="audio1">
                                 <source v-if="payservice.audio_mp3" :src="payservice.audio_mp3" type="audio/mpeg">
                             </audio>
                         </div>
