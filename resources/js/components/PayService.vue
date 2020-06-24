@@ -54,13 +54,13 @@
                                    id="video1"
                                    :poster="payservice.image"
                                    style="width:100%" :title="payservice.name">
-                                <source :src="payservice.video_mp4" type="video/mp4"/>
-                                <source :src="payservice.video_webm" type="video/webm"/>
-                                <source :src="payservice.video_ogv" type="video/ogg"/>
-                                <source :src="payservice.video_m4v"/>
+                                <source v-if="payservice.video_mp4" :src="payservice.video_mp4" type="video/mp4"/>
+                                <source v-if="payservice.video_webm" :src="payservice.video_webm" type="video/webm"/>
+                                <source v-if="payservice.video_ogv" :src="payservice.video_ogv" type="video/ogg"/>
+                                <source v-if="payservice.video_m4v" :src="payservice.video_m4v"/>
                             </video>
                             <audio id="audio1">
-                                <source :src="payservice.audio_mp3" type="audio/mpeg">
+                                <source v-if="payservice.audio_mp3" :src="payservice.audio_mp3" type="audio/mpeg">
                             </audio>
                         </div>
                     </div>
@@ -168,11 +168,11 @@
                         this.payservice = response.data;
 
                         this.payservice.image = `/uploads/${this.payservice.image}`
-                        this.payservice.video_mp4 = `${path}/${this.payservice.video_mp4}`
-                        this.payservice.video_m4v = `${path}/${this.payservice.video_m4v}`
-                        this.payservice.video_ogv = `${path}/${this.payservice.video_ogv}`
-                        this.payservice.video_webm = `${path}/${this.payservice.video_webm}`
-                        this.payservice.audio_mp3 = `${path}/${this.payservice.audio_mp3}`
+                        this.payservice.video_mp4 = this.payservice.video_mp4 ? `${path}/${this.payservice.video_mp4}` : null;
+                        this.payservice.video_m4v = this.payservice.video_m4v ? `${path}/${this.payservice.video_m4v}` : null;
+                        this.payservice.video_ogv = this.payservice.video_ogv ? `${path}/${this.payservice.video_ogv}` : null;
+                        this.payservice.video_webm = this.payservice.video_webm ? `${path}/${this.payservice.video_webm}` : null;
+                        this.payservice.audio_mp3 = this.payservice.audio_mp3 ? `${path}/${this.payservice.audio_mp3}` : null;
                         if (this.payservice.start_date) {
                             this.start_date = Date.parse(this.payservice.start_date)/1000;
                             this.finish_date = Date.parse(this.payservice.start_date)/1000+this.payservice.max_time;
