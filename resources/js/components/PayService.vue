@@ -12,7 +12,7 @@
                 </h5>
             </div>
             <div class="col-md-12 text-center pb-5 d-none d-sm-block"  v-if="lastCount>0">
-
+                {{ this.current_date }} < {{ this.start_date }}
                 <div v-if="auto_start">
                     <h4 v-if="playing">
                         Идет трансляция
@@ -152,7 +152,7 @@
             },
             showVideo: function () {
                 let result = 0;
-                console.log(this.current_date,' < ',this.start_date);
+                // console.log(this.current_date,' < ',this.start_date);
                 if ( (this.current_date >= this.start_date)
                     && (this.current_date <= this.finish_date) ) {
                     result = 1;

@@ -2059,8 +2059,7 @@ __webpack_require__.r(__webpack_exports__);
       return moment__WEBPACK_IMPORTED_MODULE_0___default()(this.payservice.start_date).format('DD-MM-YYYY HH:mm:ss');
     },
     showVideo: function showVideo() {
-      var result = 0;
-      console.log(this.current_date, ' < ', this.start_date);
+      var result = 0; // console.log(this.current_date,' < ',this.start_date);
 
       if (this.current_date >= this.start_date && this.current_date <= this.finish_date) {
         result = 1;
@@ -59422,6 +59421,13 @@ var render = function() {
             "div",
             { staticClass: "col-md-12 text-center pb-5 d-none d-sm-block" },
             [
+              _vm._v(
+                "\n                " +
+                  _vm._s(this.current_date) +
+                  " < " +
+                  _vm._s(this.start_date) +
+                  "\n                "
+              ),
               _vm.auto_start
                 ? _c("div", [
                     _vm.playing
