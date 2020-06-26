@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3c791e86-834c-48b9-b2fa-0e52a8ebe085" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/PayService.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/PayService.vue" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -248,7 +247,7 @@
       <workItem from="1592896763602" duration="1665000" />
       <workItem from="1592904342337" duration="24497000" />
       <workItem from="1593062056765" duration="1240000" />
-      <workItem from="1593163427255" duration="3413000" />
+      <workItem from="1593163427255" duration="3656000" />
     </task>
     <servers />
   </component>

@@ -2060,6 +2060,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     showVideo: function showVideo() {
       var result = 0;
+      console.log(this.current_date, ' < ', this.start_date);
 
       if (this.current_date >= this.start_date && this.current_date <= this.finish_date) {
         result = 1;
@@ -59421,13 +59422,6 @@ var render = function() {
             "div",
             { staticClass: "col-md-12 text-center pb-5 d-none d-sm-block" },
             [
-              _vm._v(
-                "\n                :" +
-                  _vm._s(_vm.playing) +
-                  ":" +
-                  _vm._s(_vm.showVideo) +
-                  "\n                "
-              ),
               _vm.auto_start
                 ? _c("div", [
                     _vm.playing
