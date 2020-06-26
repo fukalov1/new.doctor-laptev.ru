@@ -14,6 +14,7 @@ class AddStartdatePayservices extends Migration
     public function up()
     {
         Schema::table('pay_services', function (Blueprint $table) {
+            $table->boolean('auto_start')->default(false);
             $table->dateTime('start_date')->nullable();
         });
     }
@@ -26,6 +27,7 @@ class AddStartdatePayservices extends Migration
     public function down()
     {
         Schema::table('pay_services', function (Blueprint $table) {
+            $table->dropColumn('auto_start');
             $table->dropColumn('start_date');
         });
     }

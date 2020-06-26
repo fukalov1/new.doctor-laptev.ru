@@ -12,7 +12,7 @@
                 </h5>
             </div>
             <div class="col-md-12 text-center pb-5 d-none d-sm-block"  v-if="lastCount>0">
-                <div v-if="start_date">
+                <div v-if="auto_start">
                     <h4 v-if="playing">
                         Идет трансляция
                     </h4>
@@ -25,10 +25,10 @@
                         </h4>
                     </div>
                 </div>
-                <button
+                <button v-else
                     class="btn btn-danger"
                     id="video1-play"
-                    @click="playVideo()" v-else>Начать просмотр</button>
+                    @click="playVideo()">Начать просмотр</button>
             </div>
             <div class="col-md-12 text-center d-none d-sm-block">
                 <div id="frame" class="easyhtml5video">
@@ -140,6 +140,12 @@
             }
         },
         computed: {
+            auto_start: function() {
+                let result = false;
+                if(this.payservice.auto_start)
+                    result = this.payservice.auto_start;
+                return result;
+            },
             startDate: function () {
                 return moment(this.payservice.start_date).format('DD-MM-YYYY HH:mm:ss');
             },
