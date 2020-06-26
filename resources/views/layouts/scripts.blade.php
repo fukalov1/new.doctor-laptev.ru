@@ -1,4 +1,4 @@
-<script src="{{ asset('/js/app.js') }}" type="text/javascript"></script>
+<script src="{{ mix('/js/app.js') }}" type="text/javascript"></script>
 <script src="{{ asset('/js/site.js') }}" type="text/javascript"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js" type="text/javascript"></script>
