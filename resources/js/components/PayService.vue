@@ -12,6 +12,7 @@
                 </h5>
             </div>
             <div class="col-md-12 text-center pb-5 d-none d-sm-block"  v-if="lastCount>0">
+                :{{ playing }}:{{ showVideo }}
                 <div v-if="auto_start">
                     <h4 v-if="playing">
                         Идет трансляция
