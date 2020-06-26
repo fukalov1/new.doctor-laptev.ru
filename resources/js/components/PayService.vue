@@ -12,7 +12,6 @@
                 </h5>
             </div>
             <div class="col-md-12 text-center pb-5 d-none d-sm-block"  v-if="lastCount>0">
-                {{ this.current_date }} < {{ this.start_date }}
                 <div v-if="auto_start">
                     <h4 v-if="playing">
                         Идет трансляция
@@ -152,7 +151,7 @@
             },
             showVideo: function () {
                 let result = 0;
-                // console.log(this.current_date,' < ',this.start_date);
+                console.log(this.current_date,' < ',this.start_date);
                 if ( (this.current_date >= this.start_date)
                     && (this.current_date <= this.finish_date) ) {
                     result = 1;
@@ -195,8 +194,8 @@
                         this.payservice.video_webm = this.payservice.video_webm ? `${path}/${this.payservice.video_webm}` : null;
                         this.payservice.audio_mp3 = this.payservice.audio_mp3 ? `${path}/${this.payservice.audio_mp3}` : null;
                         if (this.payservice.start_date) {
-                            this.start_date = Date.parse(this.payservice.start_date)/1000;
-                            this.finish_date = Date.parse(this.payservice.start_date)/1000+this.payservice.max_time;
+                            this.start_date = Date.parse(Date(this.payservice.start_date))/1000;
+                            this.finish_date = Date.parse(Date(this.payservice.start_date))/1000+this.payservice.max_time;
                             this.current_date = Date.parse(Date())/1000;
                             console.log('start_date', this.start_date, 'finish_date', this.finish_date, this.current_date);
                             this.startVideo();

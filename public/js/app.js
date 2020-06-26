@@ -2003,7 +2003,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'PayService',
@@ -2059,7 +2058,8 @@ __webpack_require__.r(__webpack_exports__);
       return moment__WEBPACK_IMPORTED_MODULE_0___default()(this.payservice.start_date).format('DD-MM-YYYY HH:mm:ss');
     },
     showVideo: function showVideo() {
-      var result = 0; // console.log(this.current_date,' < ',this.start_date);
+      var result = 0;
+      console.log(this.current_date, ' < ', this.start_date);
 
       if (this.current_date >= this.start_date && this.current_date <= this.finish_date) {
         result = 1;
@@ -2108,8 +2108,8 @@ __webpack_require__.r(__webpack_exports__);
         _this.payservice.audio_mp3 = _this.payservice.audio_mp3 ? "".concat(path, "/").concat(_this.payservice.audio_mp3) : null;
 
         if (_this.payservice.start_date) {
-          _this.start_date = Date.parse(_this.payservice.start_date) / 1000;
-          _this.finish_date = Date.parse(_this.payservice.start_date) / 1000 + _this.payservice.max_time;
+          _this.start_date = Date.parse(Date(_this.payservice.start_date)) / 1000;
+          _this.finish_date = Date.parse(Date(_this.payservice.start_date)) / 1000 + _this.payservice.max_time;
           _this.current_date = Date.parse(Date()) / 1000;
           console.log('start_date', _this.start_date, 'finish_date', _this.finish_date, _this.current_date);
 
@@ -59421,13 +59421,6 @@ var render = function() {
             "div",
             { staticClass: "col-md-12 text-center pb-5 d-none d-sm-block" },
             [
-              _vm._v(
-                "\n                " +
-                  _vm._s(this.current_date) +
-                  " < " +
-                  _vm._s(this.start_date) +
-                  "\n                "
-              ),
               _vm.auto_start
                 ? _c("div", [
                     _vm.playing
