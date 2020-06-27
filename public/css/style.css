@@ -2396,4 +2396,18 @@ a.move-top span {
     }
 }
 
+.vcard {
+    color: #777777;
+}
+.vcard > div {
+    padding: 5px 0;
+}
+
+.vcard a {
+    font-size: 15px;
+    color: #777;
+    font-weight: normal;
+    letter-spacing: .5px
+}
+
 /*--//responsive--*/

@@ -71,10 +71,27 @@
             </div>
             <div class="col-lg-4 mt-4 ad-info">
                 <h4 class="mb-4">Контактная информация</h4>
-                <p><span class="fa fa-map-marker"></span>{{ config('address')  }}<span>Москва.</span></p>
-                <p ><span class="fa fa-phone"></span>{{ config('mobile')  }}</p>
-                <p ><span class="fa fa-fax"></span> {{ config('phone')  }} </p>
-                <p><span class="fa fa-envelope"></span><a href="mailto:{{ config('email')  }}">{{ config('email')  }}</a></p>
+                <div class="vcard">
+                    <div>
+                        <span class="category">Психологические услуги</span>
+                        <span class="fn org">Доктор Лаптев</span>
+                    </div>
+                    <div class="adr">
+                        <span class="locality">г. Москва</span>,
+                        <span class="street-address">{{ config('address')  }}</span>
+                    </div>
+                    <div><span class="fa fa-phone"></span> <span class="tel">{{ config('mobile')  }}</span></div>
+                    <div><span class="fa fa-envelope"></span> <a href="mailto:{{ config('email')  }}">{{ config('email')  }}</a></div>
+                    <div><span class="fa fa-fax"></span> <span class="workhours"> {{ config('phone')  }} </span>
+                        <span class="url">
+                            <span class="value-title" title="https://doctor-laptev.ru"> </span>
+                        </span>
+                    </div>
+                </div>
+{{--                <p><span class="fa fa-map-marker"></span>{{ config('address')  }}<span>Москва.</span></p>--}}
+{{--                <p ><span class="fa fa-phone"></span>{{ config('mobile')  }}</p>--}}
+{{--                <p ><span class="fa fa-fax"></span> {{ config('phone')  }} </p>--}}
+{{--                <p><span class="fa fa-envelope"></span><a href="mailto:{{ config('email')  }}">{{ config('email')  }}</a></p>--}}
             </div>
             <div class="col-lg-4 mt-4">
 
