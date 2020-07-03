@@ -28,7 +28,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <h4 class="tittle-w3ls text-left mb-5">{{ $payservice->name }}</h4>
-                        {!!  $payservice->private_text !!}
+                        {!!  preg_replace("/<iframe\s/", "<iframe allowfullscreen ", $payservice->private_text) !!}
                         </p>
                     </div>
                 </div>
