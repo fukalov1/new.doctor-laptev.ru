@@ -28,16 +28,22 @@
                 @if($error!='')
                     <p style="color: #ff0000;">Проверка результата уравнения не прошла!</p>
                 @endif
+
                 @foreach($payservice as $item)
-                <div class="row">
-                    <div class="col-md-10">
-                        <h4 class="tittle-w3ls text-left mb-5">{{ $item->name }}</h4>
-                        {!! $item->text !!}
+                    <div class="row inner_sec_info" id="city{{ $item->id }}">
+
+                        <div class="col-md-4 banner_bottom_grid help">
+                            <img src="{{ asset('/uploads/'.$item->image) }}" alt=" " class="img-fluid">
+                        </div>
+                        <div class="col-md-8 banner_bottom_left mt-lg-0 mt-4">
+                            <h4>{{ $item->name }}</h4>
+                            {!! $item->text !!}
+                            <a href="/pay-service/{{ $item->id }}" class="btn more black"> Получить услугу</a>
+                        </div>
+                        <div class="col-md-12 banner_bottom_left mt-lg-0 mt-4">
+                            <hr/>
+                        </div>
                     </div>
-                    <div class="col-md-2 text-right">
-                        <a href="/pay-service/{{ $item->id }}" class="btn more black"> Получить</a>
-                    </div>
-                </div>
                 @endforeach
             </div>
         </section>
