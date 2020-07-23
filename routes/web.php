@@ -28,6 +28,7 @@ Route::group([
     Route::get('/cities', 'CityController@show');
     Route::get('/survey/{type?}', 'SurveyController@show');
     Route::get('/pay-services', 'PayServiceController@show');
+    Route::get('/pay-services-archive', 'PayServiceController@showArchive');
     Route::post('/get-pay-service', 'PayServiceController@getData');
     Route::post('/check-pay-service', 'PayServiceController@checkData');
 

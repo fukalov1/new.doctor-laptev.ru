@@ -68,6 +68,31 @@ class PayServiceController extends Controller
         return view($template, $data);
     }
 
+    public function showArchive(Request $request)
+    {
+//dd($error);
+        $page = Page::find(config('payservice_id', 3));
+        $template = 'payservice_archive';
+        $data = ['data' => $page];
+//        dd($page->id);
+        $error = '';
+
+        $this->getBeadCrumbs($page->id);
+
+        $data['phone'] = config('phone');
+        $data['email'] = config('email');
+        $data['address'] = config('address');
+        $data['pages'] = $this->page->getMenu();
+        $data['error'] = $error;
+        $data['request'] = $request;
+        $data['payservice'] = $this->payService->getArchive();
+        $data['message'] = null;
+        $page_blocks = $this->pageBlock->where('page_id', $page->id)->where('orders','>',0)->orderBy('orders')->get();
+        $data['page_blocks'] = $page_blocks;
+        $data['postform'] = $this->pageBlock->where('page_id', 1)->where('type',10)->first();
+        return view($template, $data);
+    }
+
     public function showPrivate(Request $request)
     {
         $page = Page::find(config('payservice_id', 3));

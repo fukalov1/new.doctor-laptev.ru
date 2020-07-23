@@ -33,8 +33,23 @@ class PayServiceController extends AdminController
             $actions->prepend('<a href=""><i class="fa fa-paper-plane"></i>Медиа-файлы</a>');
         });
 
+        $grid->filter(function($filter){
+
+            // Remove the default id filter
+            $filter->disableIdFilter();
+            $filter->equal('archive', 'Архивный')->radio([
+                '0'    => 'нет',
+                '1'    => 'да',
+            ]);
+//            $filter->between('profiles.created_at', 'Дата анкеты')->date();
+
+        });
+
         $grid->column('orders', __('Номер показа'))->editable();
-        $grid->column('name', __('Наименование'));
+        $grid->column('name', __('Наименование'))->display(function () {
+            $archive = $this->archive ? '(архивный)' : '';
+            return $this->name.' '.$archive;
+        });
         $grid->column('group_code.name', __('Группа кодов'))->display(function () {
             if ($this->group_code) {
                 $code_free = $this->codes()->where('free', true)->get()->count();
@@ -129,6 +144,7 @@ class PayServiceController extends AdminController
 //            $codes = GroupCode::select('id','name')->get();
 //            return $codes->pluck('name', 'id');
 //        });
+        $form->switch('archive', __('Архивный'));
         $form->number('orders', __('Номер показа'));
         $form->text('name', __('Наименование'));
         $form->decimal('price', __('Стоимость'));

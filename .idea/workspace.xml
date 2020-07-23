@@ -2,8 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3c791e86-834c-48b9-b2fa-0e52a8ebe085" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/views/payservice_archive.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/payservice.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/payservice.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Admin/Controllers/PayServiceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Admin/Controllers/PayServiceController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PayServiceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PayServiceController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/PayService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/PayService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/emails/survey_notice.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/emails/survey_notice.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -162,7 +168,7 @@
   <component name="ProjectId" id="1XwekaV3HMHoKu8cGuljl4cidvp" />
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/assets/js" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -170,17 +176,17 @@
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/resources/views" />
+      <recent name="$PROJECT_DIR$/public/assets/js" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/app/Lib" />
+      <recent name="$PROJECT_DIR$/resources/views/emails" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/resources/views/layouts" />
       <recent name="$PROJECT_DIR$/resources/views" />
       <recent name="$PROJECT_DIR$/storage/app/public/videoshow" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/public/assets/js" />
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/app/Lib" />
-      <recent name="$PROJECT_DIR$/resources/views" />
-      <recent name="$PROJECT_DIR$/resources/views/emails" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -252,7 +258,8 @@
       <workItem from="1593432596400" duration="602000" />
       <workItem from="1593770588689" duration="1423000" />
       <workItem from="1594925184955" duration="2101000" />
-      <workItem from="1595012232466" duration="16000" />
+      <workItem from="1595012232466" duration="1863000" />
+      <workItem from="1595525189518" duration="3129000" />
     </task>
     <servers />
   </component>

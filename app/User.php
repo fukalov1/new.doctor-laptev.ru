@@ -128,7 +128,7 @@ class User extends Authenticatable
                     $profile->answers()->attach($item);
                 }
             }
-            $this->noticeCreateSurvey();
+            $this->noticeCreateSurvey($user->city);
     }
 
     public function sendPasswordResetNotification($token)
@@ -136,13 +136,14 @@ class User extends Authenticatable
         $this->notify(new ResetPassword($token));
     }
 
-    public function noticeCreateSurvey()
+    public function noticeCreateSurvey($city_id)
     {
         $user = Auth::user();
+        $city = City::find($city_id);
              Log::channel('sitelog')->info('Send mail from ' . config('email') . '  name: ' . Auth::user()->name . '  email: ' . Auth::user()->email);
 
              try {
-                Mail::send('emails.survey_notice', ['user' => $user], function ($message) use ($user) {
+                Mail::send('emails.survey_notice', ['user' => $user, 'city' => $city->name], function ($message) use ($user) {
 //                    $emails = explode(',',$user->email);
                     $message->from(config('email'), ' ', env('APP_NAME'));
                     $message->to($user->email)->subject('Уведомление о регистрации анкеты');

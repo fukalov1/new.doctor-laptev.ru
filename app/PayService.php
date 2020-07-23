@@ -23,6 +23,14 @@ class PayService extends Model
 
     public function getActive() {
         return $this->where('active', true)
+            ->where('archive','0')
+            ->orderBy('orders')
+            ->get();
+    }
+
+    public function getArchive() {
+        return $this->where('active', true)
+            ->where('archive','1')
             ->orderBy('orders')
             ->get();
     }
