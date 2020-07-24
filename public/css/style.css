@@ -2276,11 +2276,15 @@ a.move-top span {
     }
 
     .banner-hny-info {
-        padding: 7em 0 1em;
+        padding: 8em 0 1em;
     }
 }
 
 @media(max-width:600px) {
+
+    .navbar-toggler {
+        background-color: #ffffff;
+    }
 
     .banner-w3pvt-1,
     .banner-w3pvt-2,
@@ -2307,6 +2311,11 @@ a.move-top span {
 }
 
 @media(max-width:414px) {
+
+    .navbar-toggler {
+        background-color: #ffffff;
+    }
+
     .hny-stats-inf {
         margin: 3em auto 0;
         width: 95%;
@@ -2336,6 +2345,10 @@ a.move-top span {
 
 @media(max-width:384px) {
 
+    .navbar-toggler {
+        background-color: #ffffff;
+    }
+
     h3.tittle-w3ls,
     h3.tittle-w3ls.two {
         font-size: 1.6em;
@@ -2360,6 +2373,10 @@ a.move-top span {
 
 @media(max-width:375px) {
 
+    .navbar-toggler {
+        background-color: #ffffff;
+    }
+
     h3.tittle-w3ls,
     h3.tittle-w3ls.two {
         font-size: 1.5em;
@@ -2375,6 +2392,9 @@ a.move-top span {
 
 @media(max-width:320px) {
 
+    .navbar-toggler {
+        background-color: #ffffff;
+    }
     .banner-w3pvt-1,
     .banner-w3pvt-2,
     .banner-w3pvt-3,

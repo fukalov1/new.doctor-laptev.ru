@@ -8,6 +8,7 @@
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PayServiceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PayServiceController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/PayService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/PayService.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/emails/survey_notice.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/emails/survey_notice.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
@@ -259,7 +260,7 @@
       <workItem from="1593770588689" duration="1423000" />
       <workItem from="1594925184955" duration="2101000" />
       <workItem from="1595012232466" duration="1863000" />
-      <workItem from="1595525189518" duration="3129000" />
+      <workItem from="1595525189518" duration="4046000" />
     </task>
     <servers />
   </component>
