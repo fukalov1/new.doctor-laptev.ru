@@ -11,7 +11,7 @@
                     Осталось просмотров: {{ lastCount }}
                 </h5>
             </div>
-            <div class="col-md-12 text-center pb-5 d-none d-sm-block"  v-if="lastCount>0">
+            <div class="col-md-12 text-center pb-5 "  v-if="lastCount>0">
                 <div v-if="auto_start">
                     <h4 v-if="playing">
                         Идет трансляция
@@ -30,7 +30,7 @@
                     id="video1-play"
                     @click="playVideo()">Начать просмотр</button>
             </div>
-            <div class="col-md-12 text-center d-none d-sm-block">
+            <div class="col-md-12 text-center">
                 <div id="frame" class="easyhtml5video">
                     <div class="spacer">
 
@@ -278,7 +278,7 @@
     }
     .easyhtml5video {
         position:relative;
-        width:640px;
+        width: 100%;
         display: inline-grid;
     }
 </style>
