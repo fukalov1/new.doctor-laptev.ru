@@ -124,7 +124,7 @@ class UserController extends AdminController
         $form->text('phone', __('Телефон'));
         $form->email('email', __('Email'));
         $form->datetime('email_verified_at', __('Email verified at'))->default(date('Y-m-d H:i:s'));
-//        $form->password('password', __('Password'));
+        $form->password('password', __('Password'))->default('123456789');
 //        $form->text('remember_token', __('Remember token'));
 
         return $form;
