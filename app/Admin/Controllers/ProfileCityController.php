@@ -122,19 +122,25 @@ class ProfileCityController extends AdminController
     {
         $form = new Form(new Profile());
 
-//        $form->select('user_id', 'Пациент')->options(function ($user_id) {
-//            return User::find($this->user_id);
-//        });
-        $form->hidden('user_id')->value(session('user_id'));
+        $form->select('user_id', 'Клиент')->options(function ($user_id) {
+            $codes = User::select('id', \DB::raw('concat(name, " (",email,")") as name'))->get();
+            return $codes->pluck('name', 'id');
+        });
         $form->switch('status', __('Статус'));
-        $form->number('age', __('Возраст'));
-        $form->number('weight', __('Вес'));
-        $form->number('rost', __('Рост'));
-        $form->text('davlen', __('Давление'));
+        $form->number('age', __('Возраст'))->default(40);
+        $form->number('weight', __('Вес'))->default(80);
+        $form->number('rost', __('Рост'))->default(170);
+        $form->text('davlen', __('Давление'))->default('нормальное');
         $form->text('code', __('Код'));
         $form->text('response', __('Вопрос'));
         $form->textarea('info', __('Информация'));
-        $form->text('type', __('Тип'));
+        $form->text('type', __('Тип'))->default('первичная');
+
+        $form->saving(function (Form $form) {
+            $user = User::find($form->user_id);
+            $user->city_id = session('city_id');
+            $user->save();
+        });
 
         return $form;
     }
