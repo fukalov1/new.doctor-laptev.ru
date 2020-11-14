@@ -113,7 +113,7 @@
                                 <input id="phone" type="phone"
                                        class="form-control phone @error('phone') is-invalid @enderror"
                                        name="phone" value="{{ old('phone') }}" required
-                                       placeholder="+7 (***) ***-****"
+                                       placeholder="8**********"
                                        autocomplete="phone">
 
                                 @error('phone')
