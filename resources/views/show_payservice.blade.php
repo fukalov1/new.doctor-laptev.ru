@@ -71,6 +71,7 @@
                                             <input type="hidden" id="OutSum{{ $payservice->id }}" name="OutSum" value="{{ round($payservice->price) }}">
                                             <input type="hidden" id="InvId{{ $payservice->id }}" name="InvId" value="{{ $time }}">
                                             <input type="hidden" name="Desc" value="Покупка кода доступа к услуге {{ $payservice->name }}">
+                                            <input type="hidden" id="Receipt{{ $payservice->id }}" name="Receipt" value="{{ $payservice->receipt }}">
                                             <input type="hidden" id="SignatureValue{{ $payservice->id }}" name="SignatureValue" value="{{ $sign }}">
                                             <input type="hidden" name="IncCurrLabel" value="">
                                             <input type="hidden" name="payment_method" value="full_prepayment">

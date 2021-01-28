@@ -154,12 +154,29 @@ class PayServiceController extends Controller
         $data['message'] = null;
         $time = time();
         $data['time'] = $time;
+
+        $receipt = json_encode([
+            "sno" => "usn_income",
+            "items" => [
+                "name" => $payservice->name,
+                "quantity" => 1,
+                "sum" => $payservice->price,
+                "payment_method" => "full_payment",
+                "payment_object" => "service",
+                "tax" => "none"]
+        ]);
+
+        $receipt_urlencode = urlencode($receipt);
+
+
 //        dd(env('ROBO_LOGIN'),round($payservice->price),$time,env('ROBO_PASS1'),Auth::user()->email,$id);
-        $data['sign'] = md5(env('ROBO_LOGIN').":".round($payservice->price).":$time:".env('ROBO_PASS1').":shp_email=".Auth::user()->email.":shp_payid=".$id);
+        $data['sign'] = md5(env('ROBO_LOGIN').":".round($payservice->price).":$time:$receipt_urlencode:".env('ROBO_PASS1').":shp_email=".Auth::user()->email.":shp_payid=".$id);
 //        dd('Sign: '.$data['sign'].'Data for sign: '.env('ROBO_LOGIN').":".round($payservice->price).":$time:".env('ROBO_PASS1').":shp_email=".Auth::user()->email.":shp_payid=".$id);
         Log::info('Sign: '.$data['sign'].'Data for sign: '.env('ROBO_LOGIN').":".round($payservice->price).":$time:".env('ROBO_PASS1').":shp_email=".Auth::user()->email.":shp_payid=".$id);
 //        $this->logger->setText('Sign: '.$data['sign'].' Data for sign: '.env('ROBO_LOGIN').":".round($payservice->price).":$time:".env('ROBO_PASS1').":shp_email=".Auth::user()->email.":shp_payid=".$id)->logError();
 //        $data['sign'] = md5(env('ROBO_LOGIN').":".round($payservice->price,0).":$time:".env('ROBO_PASS1').":shp_email=".Auth::user()->email.":shp_payid=".$id);
+
+        $data['receipt'] = $receipt_urlencode;
 
         $page_blocks = $this->pageBlock->where('page_id', $page->id)->where('orders','>',0)->orderBy('orders')->get();
         $data['page_blocks'] = $page_blocks;
