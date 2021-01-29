@@ -157,13 +157,17 @@ class PayServiceController extends Controller
 
         $receipt = json_encode([
             "sno" => "usn_income",
-            "items" => [
-                "name" => 'Психологическая услуга',
-                "quantity" => 1,
-                "sum" => $payservice->price,
-                "payment_method" => "full_payment",
-                "payment_object" => "service",
-                "tax" => "none"]
+            "items" =>
+                [
+                    [
+                        "name" => 'Психологическая услуга',
+                        "quantity" => 1,
+                        "sum" => $payservice->price,
+                        "payment_method" => "full_payment",
+                        "payment_object" => "service",
+                        "tax" => "none"
+                    ]
+                ]
         ]);
 
         $receipt_urlencode = urlencode($receipt);
