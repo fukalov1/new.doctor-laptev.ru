@@ -158,7 +158,7 @@ class PayServiceController extends Controller
         $receipt = json_encode([
             "sno" => "usn_income",
             "items" => [
-                "name" => $payservice->name,
+                "name" => 'Психологическая услуга',
                 "quantity" => 1,
                 "sum" => $payservice->price,
                 "payment_method" => "full_payment",
@@ -170,7 +170,7 @@ class PayServiceController extends Controller
 
 
 //        dd(env('ROBO_LOGIN'),round($payservice->price),$time,env('ROBO_PASS1'),Auth::user()->email,$id);
-        $data['sign'] = md5(env('ROBO_LOGIN').":".round($payservice->price).":$time:$receipt_urlencode:".env('ROBO_PASS1').":shp_email=".Auth::user()->email.":shp_payid=".$id);
+        $data['sign'] = md5(env('ROBO_LOGIN').":".round($payservice->price).":$time:$receipt:".env('ROBO_PASS1').":shp_email=".Auth::user()->email.":shp_payid=".$id);
 //        dd('Sign: '.$data['sign'].'Data for sign: '.env('ROBO_LOGIN').":".round($payservice->price).":$time:".env('ROBO_PASS1').":shp_email=".Auth::user()->email.":shp_payid=".$id);
         Log::info('Sign: '.$data['sign'].'Data for sign: '.env('ROBO_LOGIN').":".round($payservice->price).":$time:".env('ROBO_PASS1').":shp_email=".Auth::user()->email.":shp_payid=".$id);
 //        $this->logger->setText('Sign: '.$data['sign'].' Data for sign: '.env('ROBO_LOGIN').":".round($payservice->price).":$time:".env('ROBO_PASS1').":shp_email=".Auth::user()->email.":shp_payid=".$id)->logError();
