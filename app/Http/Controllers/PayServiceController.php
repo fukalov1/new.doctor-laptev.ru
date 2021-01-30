@@ -155,25 +155,11 @@ class PayServiceController extends Controller
         $time = time();
         $data['time'] = $time;
 
-        $receipt = json_encode([
-            "sno" => "usn_income",
-            "items" =>
-                [
-                    [
-                        "name" => 'Психологическая услуга',
-                        "quantity" => 1,
-                        "sum" => $payservice->price,
-                        "payment_method" => "full_payment",
-                        "payment_object" => "service",
-                        "tax" => "none"
-                    ]
-                ]
-        ]);
+        $receipt = json_encode(["sno" => "usn_income","items" =>[["name" => 'Психологическая услуга',"quantity" => 1,"sum" => $payservice->price,"payment_method" => "full_payment","payment_object" => "service","tax" => "none"]]]);
 
-        $receipt_urlencode = urlencode($receipt);
+        $receipt_urlencode = preg_replace("/\+/","%20",urlencode($receipt));
 //        $receipt_urlencode = '%7B%22sno%22%3A%22usn_income%22%2C%22items%22%3A%5B%7B%22name%22%3A%22%5Cu041f%5Cu0441%5Cu0438%5Cu0445%5Cu043e%5Cu043b%5Cu043e%5Cu0433%5Cu0438%5Cu0447%5Cu0435%5Cu0441%5Cu043a%5Cu0430%5Cu044f%20%5Cu0443%5Cu0441%5Cu043b%5Cu0443%5Cu0433%5Cu0430%22%2C%22quantity%22%3A1%2C%22sum%22%3A1%2C%22payment_method%22%3A%22full_payment%22%2C%22payment_object%22%3A%22service%22%2C%22tax%22%3A%22none%22%7D%5D%7D';
-
-//        dd(urlencode($receipt), '%7B%22sno%22%3A%22usn_income%22%2C%22items%22%3A%5B%7B%22name%22%3A%22%5Cu041f%5Cu0441%5Cu0438%5Cu0445%5Cu043e%5Cu043b%5Cu043e%5Cu0433%5Cu0438%5Cu0447%5Cu0435%5Cu0441%5Cu043a%5Cu0430%5Cu044f%20%5Cu0443%5Cu0441%5Cu043b%5Cu0443%5Cu0433%5Cu0430%22%2C%22quantity%22%3A1%2C%22sum%22%3A1%2C%22payment_method%22%3A%22full_payment%22%2C%22payment_object%22%3A%22service%22%2C%22tax%22%3A%22none%22%7D%5D%7D');
+//        dd(, '%7B%22sno%22%3A%22usn_income%22%2C%22items%22%3A%5B%7B%22name%22%3A%22%5Cu041f%5Cu0441%5Cu0438%5Cu0445%5Cu043e%5Cu043b%5Cu043e%5Cu0433%5Cu0438%5Cu0447%5Cu0435%5Cu0441%5Cu043a%5Cu0430%5Cu044f%20%5Cu0443%5Cu0441%5Cu043b%5Cu0443%5Cu0433%5Cu0430%22%2C%22quantity%22%3A1%2C%22sum%22%3A1%2C%22payment_method%22%3A%22full_payment%22%2C%22payment_object%22%3A%22service%22%2C%22tax%22%3A%22none%22%7D%5D%7D');
 
 
 //        dd(env('ROBO_LOGIN'),round($payservice->price),$time,env('ROBO_PASS1'),Auth::user()->email,$id);
