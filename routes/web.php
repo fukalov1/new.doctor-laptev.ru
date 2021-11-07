@@ -60,6 +60,7 @@ Route::group([
 
 
 Auth::routes(['verify' => true]);
+Route::get('/verify/{token}', 'Auth\RegisterController@verify')->name('register.verify');
 
 Route::group([
     'middleware' => 'auth'

@@ -9,6 +9,7 @@ use App\Page;
 use App\PageBlock;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
@@ -70,13 +71,17 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'city' => $data['city'],
             'phone' => $data['phone'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+
+        Mail::to($user->email)->send(new VerifyMail($user));
+
+        return $user;
     }
 
     public function showRegistrationForm()
@@ -86,4 +91,15 @@ class RegisterController extends Controller
         $data['postform'] = $this->pageBlock->where('page_id', 1)->where('type',10)->first();
         return view('auth.register', $data);
     }
+
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+        event(new Registered($user = $this->create($request->all())));
+
+        return redirect()->route('login')
+            ->with('success', 'Подтвердите свой email, перейдя по ссылке');
+    }
+
+
 }

@@ -4,22 +4,23 @@ namespace App;
 
 use App\Page;
 use Illuminate\Database\Eloquent\Model;
-use Spatie\Feed\Feedable;
-use Spatie\Feed\FeedItem;
+//use Spatie\Feed\Feedable;
+//use Spatie\Feed\FeedItem;
 use Carbon\Carbon;
 
-class NewsItem extends Model  implements Feedable
+class NewsItem extends Model
 {
     public function toFeedItem()
     {
-        return FeedItem::create([
-            'id' => $this->id,
-            'title' => $this->title,
-            'summary' => $this->summary,
-            'updated' => $this->updated_at,
-            'link' => $this->link,
-            'author' => $this->author,
-        ]);
+//        return FeedItem::create([
+//            'id' => $this->id,
+//            'title' => $this->title,
+//            'summary' => $this->summary,
+//            'updated' => $this->updated_at,
+//            'link' => $this->link,
+//            'author' => $this->author,
+//        ]);
+        return [];
     }
 
     public static function getFeedItems()
