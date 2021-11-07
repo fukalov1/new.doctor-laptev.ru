@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 class RegisterController extends Controller
 {
@@ -79,6 +80,7 @@ class RegisterController extends Controller
             'city' => $data['city'],
             'phone' => $data['phone'],
             'email' => $data['email'],
+            'verify_token' => Str::random(),
             'password' => Hash::make($data['password']),
         ]);
 
