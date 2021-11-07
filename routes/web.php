@@ -11,6 +11,7 @@
 |
 */
 
+use App\Mail\Auth\VerifyMail;
 use App\Page;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
@@ -61,7 +62,7 @@ Route::group([
 
 
 Auth::routes(['verify' => true]);
-Route::get('/verify/{token}', 'RegisterController@verify')->name('register.verify');
+Route::get('/verify/{token}', [VerifyMail::class, "verify"])->name('register.verify');
 
 Route::group([
     'middleware' => 'auth'
