@@ -163,12 +163,12 @@ class PayServiceController extends Controller
 //        dd(, '%7B%22sno%22%3A%22usn_income%22%2C%22items%22%3A%5B%7B%22name%22%3A%22%5Cu041f%5Cu0441%5Cu0438%5Cu0445%5Cu043e%5Cu043b%5Cu043e%5Cu0433%5Cu0438%5Cu0447%5Cu0435%5Cu0441%5Cu043a%5Cu0430%5Cu044f%20%5Cu0443%5Cu0441%5Cu043b%5Cu0443%5Cu0433%5Cu0430%22%2C%22quantity%22%3A1%2C%22sum%22%3A1%2C%22payment_method%22%3A%22full_payment%22%2C%22payment_object%22%3A%22service%22%2C%22tax%22%3A%22none%22%7D%5D%7D');
 
 
-//        dd(config('ROBO_LOGIN'),round($payservice->price),$time,env('ROBO_PASS1'),Auth::user()->email,$id);
-        $data['sign'] = md5(config('ROBO_LOGIN').":".round($payservice->price).":$time:$receipt:".config('ROBO_PASS1').":shp_email=".Auth::user()->email.":shp_payid=".$id);
-//        dd('Sign: '.$data['sign'].'Data for sign: '.config('ROBO_LOGIN').":".round($payservice->price).":$time:".config('ROBO_PASS1').":shp_email=".Auth::user()->email.":shp_payid=".$id);
-        Log::info('Sign: '.$data['sign'].'Data for sign: '.config('ROBO_LOGIN').":".round($payservice->price).":$time:".config('ROBO_PASS1').":shp_email=".Auth::user()->email.":shp_payid=".$id);
-//        $this->logger->setText('Sign: '.$data['sign'].' Data for sign: '.config('ROBO_LOGIN').":".round($payservice->price).":$time:".config('ROBO_PASS1').":shp_email=".Auth::user()->email.":shp_payid=".$id)->logError();
-//        $data['sign'] = md5(config('ROBO_LOGIN').":".round($payservice->price,0).":$time:".config('ROBO_PASS1').":shp_email=".Auth::user()->email.":shp_payid=".$id);
+//        dd(config('app.ROBO_LOGIN'),round($payservice->price),$time,env('app.ROBO_PASS1'),Auth::user()->email,$id);
+        $data['sign'] = md5(config('app.ROBO_LOGIN').":".round($payservice->price).":$time:$receipt:".config('app.ROBO_PASS1').":shp_email=".Auth::user()->email.":shp_payid=".$id);
+//        dd('Sign: '.$data['sign'].'Data for sign: '.config('app.ROBO_LOGIN').":".round($payservice->price).":$time:".config('app.ROBO_PASS1').":shp_email=".Auth::user()->email.":shp_payid=".$id);
+        Log::info('Sign: '.$data['sign'].'Data for sign: '.config('app.ROBO_LOGIN').":".round($payservice->price).":$time:".config('app.ROBO_PASS1').":shp_email=".Auth::user()->email.":shp_payid=".$id);
+//        $this->logger->setText('Sign: '.$data['sign'].' Data for sign: '.config('app.ROBO_LOGIN').":".round($payservice->price).":$time:".config('app.ROBO_PASS1').":shp_email=".Auth::user()->email.":shp_payid=".$id)->logError();
+//        $data['sign'] = md5(config('app.ROBO_LOGIN').":".round($payservice->price,0).":$time:".config('app.ROBO_PASS1').":shp_email=".Auth::user()->email.":shp_payid=".$id);
 
         $data['receipt'] = $receipt_urlencode;
 
@@ -380,7 +380,7 @@ class PayServiceController extends Controller
     {
         // регистрационная информация (пароль #1)
 // registration info (password #1)
-        $pass1 = config('ROBO_PASS1');
+        $pass1 = config('app.ROBO_PASS1');
 
 // чтение параметров
 // read parameters
@@ -439,7 +439,7 @@ class PayServiceController extends Controller
     public function payResult(Request $request)
     {
 // регистрационная информация (пароль #2)
-        $pass2 = config('ROBO_PASS2');
+        $pass2 = config('app.ROBO_PASS2');
 
 //установка текущего времени
         $date = date('Y-m-d h:i:s', time());
