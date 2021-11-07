@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Page;
 use App\PageBlock;
 use App\Providers\RouteServiceProvider;
+use http\Client\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
