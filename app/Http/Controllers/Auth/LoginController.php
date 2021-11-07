@@ -7,7 +7,6 @@ use App\Page;
 use App\PageBlock;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -57,7 +56,7 @@ class LoginController extends Controller
             $this->guard()->logout();
             return back()->with('error', 'Вы не подтвердили адрес электронной почты. Вход невозможен.');
         }
-        return redirect()->intended($this->redirectPath());
+        return redirect()->intended(RouteServiceProvider::HOME);
     }
 
 }
