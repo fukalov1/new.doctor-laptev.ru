@@ -8,6 +8,7 @@ use App\PageBlock;
 use App\Providers\RouteServiceProvider;
 use http\Client\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -40,7 +41,7 @@ class LoginController extends Controller
     {
         $this->page = $page;
         $this->pageBlock = $pageBlock;
-//        $this->middleware('guest')->except('logout');
+        $this->middleware('guest')->except('logout');
     }
 
     public function showLoginForm()
@@ -54,8 +55,9 @@ class LoginController extends Controller
     public function authenticated(Request $request, $user)
     {
         if (!$user->email_verified_at) {
-            $this->guard()->logout();
-            return back()->with('error', 'Вы не подтвердили адрес электронной почты. Вход невозможен.');
+            Auth::logout();
+//            $this->guard()->logout();
+//            return back()->with('error', 'Вы не подтвердили адрес электронной почты. Вход невозможен.');
         }
         return redirect()->intended(RouteServiceProvider::HOME);
     }
