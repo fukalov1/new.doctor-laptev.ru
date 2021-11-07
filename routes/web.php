@@ -70,4 +70,6 @@ Route::group([
 });
 
 
-//Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/message', function () {
+    return view('message', ['text' => 'Проверьте почту. Вам выслано письмо с подтверждением электронного адреса.']);
+});
