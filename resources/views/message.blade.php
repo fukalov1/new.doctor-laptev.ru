@@ -55,38 +55,37 @@
                 <h3></h3>
                 <h4>Доктор Лаптев</h4>
 
-                {{--                <a href="/" class="btn more black error mt-4">Вернуться на главную</a>--}}
+                <div class="flex-center position-ref full-height">
+                    <div class="code">
+
+                    </div>
+
+                    <div class="message" style="padding: 10px;">
+                        <div class="fill-top">
+
+                        </div>
+                        <div class="container p-md-3">
+                        </div>
+
+                        <section class="banner_bottom py-5">
+                            <div class="container py-md-5">
+                                <h3>
+                                    Проверьте почту. Вам выслано письмо с подтверждением электронного адреса.
+                                    <br/> Через 10 секунд Вы будете перенаправлены на главную страницу
+                                    <meta http-equiv="refresh" content="10;URL=/">
+                                </h3>
+                            </div>
+                        </section>
+
+                    </div>
+                </div>
+
             </div>
 
         </div>
     </div>
 </section>
 <!--//error-->
-
-<div class="flex-center position-ref full-height">
-    <div class="code">
-
-    </div>
-
-    <div class="message" style="padding: 10px;">
-        <div class="fill-top">
-
-        </div>
-        <div class="container p-md-3">
-        </div>
-
-        <section class="banner_bottom py-5">
-            <div class="container py-md-5">
-                <h3>
-                    Проверьте почту. Вам выслано письмо с подтверждением электронного адреса.
-                    <br/> Через 10 секунд Вы будете перенаправлены на главную страницу
-                    <meta http-equiv="refresh" content="10;URL=/">
-                </h3>
-            </div>
-        </section>
-
-    </div>
-</div>
 
 
 

@@ -39,7 +39,7 @@ class LoginController extends Controller
     {
         $this->page = $page;
         $this->pageBlock = $pageBlock;
-        $this->middleware('guest')->except('logout');
+//        $this->middleware('guest')->except('logout');
     }
 
     public function showLoginForm()
