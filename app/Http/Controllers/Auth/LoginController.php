@@ -57,6 +57,7 @@ class LoginController extends Controller
         if (!$user->email_verified_at) {
             Auth::logout();
 //            $this->guard()->logout();
+            return view('message', ['text' => 'Вы не подтвердили адрес электронной почты. Вход невозможен.']);
 //            return back()->with('error', 'Вы не подтвердили адрес электронной почты. Вход невозможен.');
         }
         return redirect()->intended(RouteServiceProvider::HOME);
