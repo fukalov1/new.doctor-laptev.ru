@@ -20,6 +20,7 @@ use App\MailForm;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\App;
 
 class PayServiceController extends Controller
 {
@@ -163,11 +164,11 @@ class PayServiceController extends Controller
 
 
 //        dd(env('ROBO_LOGIN'),round($payservice->price),$time,env('ROBO_PASS1'),Auth::user()->email,$id);
-        $data['sign'] = md5(env('ROBO_LOGIN').":".round($payservice->price).":$time:$receipt:".env('ROBO_PASS1').":shp_email=".Auth::user()->email.":shp_payid=".$id);
-//        dd('Sign: '.$data['sign'].'Data for sign: '.env('ROBO_LOGIN').":".round($payservice->price).":$time:".env('ROBO_PASS1').":shp_email=".Auth::user()->email.":shp_payid=".$id);
-        Log::info('Sign: '.$data['sign'].'Data for sign: '.env('ROBO_LOGIN').":".round($payservice->price).":$time:".env('ROBO_PASS1').":shp_email=".Auth::user()->email.":shp_payid=".$id);
-//        $this->logger->setText('Sign: '.$data['sign'].' Data for sign: '.env('ROBO_LOGIN').":".round($payservice->price).":$time:".env('ROBO_PASS1').":shp_email=".Auth::user()->email.":shp_payid=".$id)->logError();
-//        $data['sign'] = md5(env('ROBO_LOGIN').":".round($payservice->price,0).":$time:".env('ROBO_PASS1').":shp_email=".Auth::user()->email.":shp_payid=".$id);
+        $data['sign'] = md5(App::environment('ROBO_LOGIN').":".round($payservice->price).":$time:$receipt:".App::environment('ROBO_PASS1').":shp_email=".Auth::user()->email.":shp_payid=".$id);
+//        dd('Sign: '.$data['sign'].'Data for sign: '.App::environment('ROBO_LOGIN').":".round($payservice->price).":$time:".App::environment('ROBO_PASS1').":shp_email=".Auth::user()->email.":shp_payid=".$id);
+        Log::info('Sign: '.$data['sign'].'Data for sign: '.App::environment('ROBO_LOGIN').":".round($payservice->price).":$time:".App::environment('ROBO_PASS1').":shp_email=".Auth::user()->email.":shp_payid=".$id);
+//        $this->logger->setText('Sign: '.$data['sign'].' Data for sign: '.App::environment('ROBO_LOGIN').":".round($payservice->price).":$time:".App::environment('ROBO_PASS1').":shp_email=".Auth::user()->email.":shp_payid=".$id)->logError();
+//        $data['sign'] = md5(App::environment('ROBO_LOGIN').":".round($payservice->price,0).":$time:".App::environment('ROBO_PASS1').":shp_email=".Auth::user()->email.":shp_payid=".$id);
 
         $data['receipt'] = $receipt_urlencode;
 
@@ -379,7 +380,7 @@ class PayServiceController extends Controller
     {
         // регистрационная информация (пароль #1)
 // registration info (password #1)
-        $pass1 = env('ROBO_PASS1');
+        $pass1 = App::environment('ROBO_PASS1');
 
 // чтение параметров
 // read parameters
@@ -438,7 +439,7 @@ class PayServiceController extends Controller
     public function payResult(Request $request)
     {
 // регистрационная информация (пароль #2)
-        $pass2 = env('ROBO_PASS2');
+        $pass2 = App::environment('ROBO_PASS2');
 
 //установка текущего времени
         $date = date('Y-m-d h:i:s', time());
