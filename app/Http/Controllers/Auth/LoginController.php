@@ -49,4 +49,14 @@ class LoginController extends Controller
         $data['postform'] = $this->pageBlock->where('page_id', 1)->where('type',10)->first();
         return view('auth.login', $data);
     }
+
+    public function authenticated(Request $request, $user)
+    {
+        if (!$user->email_verified_at) {
+            $this->guard()->logout();
+            return back()->with('error', 'Вы не подтвердили адрес электронной почты. Вход невозможен.');
+        }
+        return redirect()->intended($this->redirectPath());
+    }
+
 }
