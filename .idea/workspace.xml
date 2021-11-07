@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="3c791e86-834c-48b9-b2fa-0e52a8ebe085" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PayServiceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PayServiceController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -266,7 +265,7 @@
       <workItem from="1611847478235" duration="3113000" />
       <workItem from="1611932048543" duration="6603000" />
       <workItem from="1633876474158" duration="839000" />
-      <workItem from="1636262745325" duration="4321000" />
+      <workItem from="1636262745325" duration="4973000" />
     </task>
     <servers />
   </component>

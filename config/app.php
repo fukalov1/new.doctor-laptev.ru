@@ -235,4 +235,8 @@ return [
 
     ],
 
+    'ROBO_LOGIN' => env('ROBO_LOGIN', 'doctorlaptev'),
+    'ROBO_PASS1' => env('ROBO_PASS1', 'XnU0O0f2B7v6dIzUiFJf'),
+    'ROBO_PASS2' => env('ROBO_PASS2', 'LR0j3jghMp1HAvpS6q1k')
+
 ];
