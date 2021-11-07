@@ -13,6 +13,7 @@
 
 use App\Page;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\RegisterController;
 
 //Route::feeds();
 
@@ -60,7 +61,7 @@ Route::group([
 
 
 Auth::routes(['verify' => true]);
-Route::get('/verify/{token}', 'Auth\RegisterController@verify')->name('register.verify');
+Route::get('/verify/{token}', 'RegisterController@verify')->name('register.verify');
 
 Route::group([
     'middleware' => 'auth'
