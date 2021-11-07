@@ -12,7 +12,7 @@ use Encore\Admin\Grid;
 use Encore\Admin\Show;
 use JeroenDesloovere\VCard\VCard;
 
-class UserController extends AdminController
+class  UserController extends AdminController
 {
     /**
      * Title for current resource.

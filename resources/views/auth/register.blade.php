@@ -39,14 +39,46 @@
                             </div>
                         </div>
 
+{{--                        <div class="form-group row">--}}
+{{--                            <label for="skype" class="col-md-4 col-form-label text-md-right">Skype</label>--}}
+
+{{--                            <div class="col-md-6">--}}
+{{--                                <input id="skype" type="skype" class="form-control @error('skype') is-invalid @enderror" name="skype" value="{{ old('skype') }}" autocomplete="skype">--}}
+
+{{--                                @error('skype')--}}
+{{--                                    <span class="invalid-feedback" role="alert">--}}
+{{--                                        <strong>{{ $message }}</strong>--}}
+{{--                                    </span>--}}
+{{--                                @enderror--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+
                         <div class="form-group row">
-                            <label for="skype" class="col-md-4 col-form-label text-md-right">Skype</label>
+                            <label for="phone" class="col-md-4 col-form-label text-md-right">Телефон</label>
 
                             <div class="col-md-6">
-                                <input id="skype" type="skype" class="form-control @error('skype') is-invalid @enderror" name="skype" value="{{ old('skype') }}" autocomplete="skype">
+                                <input id="phone" type="phone"
+                                       class="form-control phone @error('phone') is-invalid @enderror"
+                                       name="phone" value="{{ old('phone') }}" required
+                                       placeholder="8**********"
+                                       autocomplete="phone">
 
-                                @error('skype')
-                                    <span class="invalid-feedback" role="alert">
+                                @error('phone')
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="city" class="col-md-4 col-form-label text-md-right">Город</label>
+
+                            <div class="col-md-6">
+                                <input id="city" type="text" class="form-control @error('city') is-invalid @enderror" name="city" value="{{ old('city') }}" required autocomplete="city">
+
+                                @error('city')
+                                <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
@@ -92,37 +124,6 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
-                            <label for="city" class="col-md-4 col-form-label text-md-right">Город</label>
-
-                            <div class="col-md-6">
-                                <input id="city" type="text" class="form-control @error('city') is-invalid @enderror" name="city" value="{{ old('city') }}" required autocomplete="city">
-
-                                @error('city')
-                                <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="phone" class="col-md-4 col-form-label text-md-right">Телефон</label>
-
-                            <div class="col-md-6">
-                                <input id="phone" type="phone"
-                                       class="form-control phone @error('phone') is-invalid @enderror"
-                                       name="phone" value="{{ old('phone') }}" required
-                                       placeholder="8**********"
-                                       autocomplete="phone">
-
-                                @error('phone')
-                                <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
 
                         <div class="form-group row">
                             <div class="col-md-12">
