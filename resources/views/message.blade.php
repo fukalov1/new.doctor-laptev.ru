@@ -51,11 +51,10 @@
 <section class="about py-5">
     <div class="container p-md-5">
         <div class="about-hny-info text-left px-md-5">
-            <div class="error-w3pvt px-md-5 text-center">
+            <div class="px-md-5 text-center">
                 <h3></h3>
                 <h4>Доктор Лаптев</h4>
 
-                <section class="banner_bottom py-5">
                     <div class="container py-md-5">
                         <h3>
                             {{ $text  }}
@@ -63,8 +62,6 @@
                             <meta http-equiv="refresh" content="10;URL=/">
                         </h3>
                     </div>
-                </section>
-
             </div>
 
         </div>
