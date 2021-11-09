@@ -59,6 +59,7 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
+            'captcha' => ['required','captcha'],
             'name' => ['required', 'string', 'max:255'],
             'city' => ['required', 'string', 'max:255'],
             'phone' => ['required', 'string', 'max:20'],
@@ -102,8 +103,9 @@ class RegisterController extends Controller
         $this->validator($request->all())->validate();
         event(new Registered($user = $this->create($request->all())));
 
-        return redirect()->route('login')
-            ->with('success', 'Подтвердите свой email, перейдя по ссылке');
+        return view('message', ['text' => 'Вам выслано письмо с подтверждением регистрации. Для завершения перейдите по ссылке']);
+//        return redirect()->route('login')
+//            ->with('success', 'Подтвердите свой email, перейдя по ссылке');
     }
 
 

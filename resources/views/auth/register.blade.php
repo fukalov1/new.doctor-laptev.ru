@@ -124,6 +124,17 @@
                             </div>
                         </div>
 
+                        <div class="row form-group">
+                            <div class="col-md-4">
+                                Посчитайте результат и запишите ответ
+                            </div>
+                            <div class="col-md-4">
+                                <img src="{{ Captcha::src('math') }}"/>
+                            </div>
+                            <div class="col-md-4">
+                                <input type="text" name="captcha" class="form-control" placeholder="введите ответ">
+                            </div>
+                        </div>
 
                         <div class="form-group row">
                             <div class="col-md-12">
