@@ -136,14 +136,6 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
-                            <div class="col-md-12">
-                                <label>
-                                    * если при регистрации Ваш email уже существует, то восстановите пароль <a href="/password/reset">здесь</a> .
-                                </label>
-                            </div>
-                        </div>
-
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <input type="checkbox" name="agreement" required>
